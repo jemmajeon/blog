@@ -80,10 +80,22 @@ footer a:hover{color:var(--ink);}
   <div class="nav-inner">
     <a class="nav-logo" href="/blog/?utm_source=blog&utm_medium=nav&utm_campaign=home">jemmajeon</a>
     <div class="nav-links">
-      <a class="nav-link on" href="/blog/?utm_source=blog&utm_medium=nav&utm_campaign=blog">블로그</a>
+      <a class="nav-link on" href="/blog/" data-to="blog">블로그</a>
+      <a class="nav-link" href="https://jemmajeon.github.io/wedding_2026/hawaii-trip-dashboard.html" data-to="hawaii">하와이</a>
+      <a class="nav-link" href="https://jemmajeon.github.io/wedding_2026/wedding-dashboard.html" data-to="wedding">결혼 준비</a>
     </div>
   </div>
 </nav>
+<script>
+(function(){
+  if(!location.hostname.includes('github.io'))return;
+  var src='blog';
+  var base='https://jemmajeon.github.io/blog/go/?';
+  document.querySelectorAll('a[data-to]').forEach(function(a){
+    if(a.dataset.to!=='blog') a.href=base+'to='+a.dataset.to+'&utm_source='+src+'&utm_medium=nav';
+  });
+})();
+</script>
 
 <div class="hero">
   <div class="eyebrow">Blog · 기록</div>
