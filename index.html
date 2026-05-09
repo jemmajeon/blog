@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jemmajeon — 블로그</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LTC8L11Y7J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LTC8L11Y7J');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fafaf8;--surface:#fff;--ink:#111;--ink-2:#444;--muted:#888;
+  --line:#e8e6e1;--primary:#1a1a2e;--accent:#e8602c;
+  --radius:10px;
+}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Pretendard Variable",Pretendard,system-ui,sans-serif;
+  font-size:16px;line-height:1.7;min-height:100vh;
+}
+/* Nav */
+nav{
+  border-bottom:1px solid var(--line);background:rgba(250,250,248,.95);
+  backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;
+}
+.nav-inner{max-width:760px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-weight:800;font-size:15px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;padding:14px 0;}
+.nav-links{display:flex;gap:0;}
+.nav-link{
+  font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;
+  padding:14px 14px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;
+}
+.nav-link:hover{color:var(--ink);}
+.nav-link.on{color:var(--ink);border-bottom-color:var(--accent);}
+/* Hero */
+.hero{
+  max-width:760px;margin:0 auto;padding:80px 24px 60px;
+}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px;}
+h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px;}
+h1 em{color:var(--accent);font-style:normal;}
+.hero-desc{font-size:17px;color:var(--ink-2);max-width:520px;line-height:1.7;}
+/* Posts */
+.posts{max-width:760px;margin:0 auto;padding:0 24px 96px;}
+.section-label{
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--line);
+}
+.post-list{display:flex;flex-direction:column;gap:0;}
+.post-item{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;
+  color:inherit;transition:opacity .15s;
+}
+.post-item:hover{opacity:.7;}
+.post-item:last-child{border-bottom:none;}
+.post-title{font-size:16px;font-weight:600;color:var(--ink);}
+.post-date{font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.post-tag{
+  display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;
+  border-radius:4px;background:#f1efe9;color:var(--muted);margin-top:4px;
+}
+.empty{padding:40px 0;color:var(--muted);font-size:15px;}
+/* Footer */
+footer{
+  border-top:1px solid var(--line);padding:24px;text-align:center;
+  font-size:12px;color:var(--muted);
+}
+footer a{color:var(--muted);text-decoration:none;}
+footer a:hover{color:var(--ink);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/blog/?utm_source=blog&utm_medium=nav&utm_campaign=home">jemmajeon</a>
+    <div class="nav-links">
+      <a class="nav-link on" href="/blog/?utm_source=blog&utm_medium=nav&utm_campaign=blog">블로그</a>
+      <a class="nav-link" href="https://jemmajeon.github.io/wedding_2026/hawaii-trip-dashboard.html?utm_source=blog&utm_medium=nav&utm_campaign=hawaii">하와이</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">Blog · 기록</div>
+  <h1>생각을 <em>정리하는</em><br>공간</h1>
+  <p class="hero-desc">개발, 자동화, 여행, 일상 — 기록하고 싶은 것들을 씁니다.</p>
+</div>
+
+<div class="posts">
+  <div class="section-label">최근 글</div>
+  <div class="post-list" id="postList">
+    <div class="empty">아직 글이 없습니다. 곧 첫 글을 올릴게요.</div>
+  </div>
+</div>
+
+<footer>
+  <a href="https://github.com/jemmajeon" target="_blank" rel="noopener">GitHub</a>
+  &nbsp;·&nbsp;
+  <a href="https://jemmajeon.github.io/wedding_2026/?utm_source=blog&utm_medium=footer&utm_campaign=wedding">결혼 준비</a>
+</footer>
+
+</body>
+</html>
