@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>울산 1박2일 | 2026-05-22 ~ 23</title>
+<style>
+  :root{
+    --bg:#f6f3ee;
+    --paper:#ffffff;
+    --ink:#1f2933;
+    --sub:#4a5563;
+    --muted:#8a8f9a;
+    --line:#e3ddd2;
+    --navy:#1f3a5f;
+    --rust:#a04a2e;
+    --moss:#5c6f4a;
+    --gold:#b9851a;
+    --sea:#356e89;
+    --soft:#faf6ee;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'Pretendard','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--sea);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 24px 80px}
+  header.hero{background:linear-gradient(135deg,#1f3a5f 0%,#2d4a6e 50%,#3e5f7e 100%);color:#fff;border-radius:18px;padding:36px 32px;box-shadow:0 12px 28px rgba(31,58,95,0.18)}
+  header.hero h1{margin:0 0 6px;font-size:32px;letter-spacing:-0.5px;font-weight:800}
+  header.hero p{margin:0;color:#d8e2ee;font-size:15px}
+  header.hero .meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;font-size:13.5px}
+  header.hero .meta div{background:rgba(255,255,255,0.08);padding:8px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.12)}
+  header.hero .meta b{color:#fff;margin-right:6px}
+  header.hero .meta span{color:#cfd9e6}
+  section{margin-top:36px}
+  section h2{font-size:21px;letter-spacing:-0.3px;margin:0 0 14px;padding-left:10px;border-left:4px solid var(--navy)}
+  section .lead{color:var(--sub);font-size:14px;margin:0 0 16px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 1px 0 rgba(0,0,0,0.02)}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media (max-width:880px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+  .summary .row{display:flex;gap:14px;flex-wrap:wrap}
+  .summary .pill{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13.5px;color:var(--sub)}
+  .summary .pill b{color:var(--ink);margin-right:6px}
+
+  .scenario{position:relative;border-top:6px solid var(--navy);padding-top:18px}
+  .scenario.transit{border-top-color:var(--moss)}
+  .scenario h3{margin:0 0 4px;font-size:18px;display:flex;align-items:center;gap:10px}
+  .scenario .badge{font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--navy);color:#fff;letter-spacing:0.5px}
+  .scenario.transit .badge{background:var(--moss)}
+  .scenario .why{color:var(--sub);font-size:14px;margin:8px 0 12px}
+  .scenario ul{margin:0;padding-left:18px;color:var(--sub);font-size:14px}
+  .scenario ul li{margin:4px 0}
+  .scenario .verdict{margin-top:14px;background:var(--soft);border-radius:10px;padding:10px 14px;font-size:13.5px;color:var(--ink)}
+  .scenario .verdict b{color:var(--rust)}
+
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .tabs button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:13.5px;cursor:pointer;color:var(--sub);font-weight:600;transition:all 0.15s}
+  .tabs button:hover{border-color:var(--navy);color:var(--navy)}
+  .tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .tabs button.transit.on{background:var(--moss);border-color:var(--moss)}
+  .tab-panel{display:none}
+  .tab-panel.on{display:block}
+
+  .timeline{position:relative;padding-left:24px}
+  .timeline::before{content:'';position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .step{position:relative;padding:10px 0 14px}
+  .step::before{content:'';position:absolute;left:-21px;top:16px;width:12px;height:12px;border-radius:50%;background:var(--navy);box-shadow:0 0 0 4px var(--bg)}
+  .transit .step::before{background:var(--moss)}
+  .step .time{font-size:12.5px;color:var(--gold);font-weight:700;letter-spacing:0.5px}
+  .step .title{font-size:15.5px;font-weight:700;margin:2px 0}
+  .step .desc{font-size:13.5px;color:var(--sub);margin:2px 0}
+  .step .tag{display:inline-block;font-size:11.5px;background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin-right:5px;color:var(--sub)}
+  .step .tag.park{background:#ecf3e8;border-color:#cfe0c0;color:var(--moss)}
+  .step .tag.food{background:#f7ece4;border-color:#e6cdb8;color:var(--rust)}
+  .step .tag.cafe{background:#fbf3df;border-color:#ead9a6;color:var(--gold)}
+  .step .tag.nature{background:#e4eef3;border-color:#c0d7e2;color:var(--sea)}
+
+  .place{display:flex;flex-direction:column;height:100%}
+  .place .name{font-size:16px;font-weight:700;margin:0 0 4px}
+  .place .area{font-size:12px;color:var(--muted);margin-bottom:8px}
+  .place .blurb{font-size:13.5px;color:var(--sub);flex:1}
+  .place .meta{margin-top:10px;font-size:12.5px;color:var(--sub)}
+  .place .meta div{margin:2px 0}
+  .place .meta b{color:var(--ink)}
+  .place .links{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+  .place .links a{font-size:12px;background:var(--soft);border:1px solid var(--line);padding:5px 10px;border-radius:8px;color:var(--sub);font-weight:600}
+  .place .links a:hover{border-color:var(--navy);color:var(--navy);text-decoration:none}
+  .place.featured{border-top:3px solid var(--rust)}
+
+  .parking-yes{color:var(--moss);font-weight:700}
+  .parking-mid{color:var(--gold);font-weight:700}
+  .parking-no{color:var(--rust);font-weight:700}
+
+  .food-card{display:flex;flex-direction:column;height:100%}
+  .food-card h4{margin:0 0 2px;font-size:15.5px}
+  .food-card .where{font-size:12px;color:var(--muted)}
+  .food-card .menu{font-size:13.5px;color:var(--sub);margin:8px 0;flex:1}
+  .food-card .price{font-size:12.5px;color:var(--ink);background:var(--soft);padding:4px 10px;border-radius:6px;display:inline-block;margin-top:4px}
+
+  .checklist{list-style:none;padding:0;margin:0}
+  .checklist li{padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--sub)}
+  .checklist li:last-child{border-bottom:none}
+  .checklist li::before{content:'☐';margin-right:10px;color:var(--navy);font-weight:700}
+
+  .compare{width:100%;border-collapse:collapse;font-size:13.5px}
+  .compare th,.compare td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
+  .compare th{background:var(--soft);font-weight:700;color:var(--ink)}
+  .compare td.head{font-weight:700;background:#fafafa;color:var(--ink)}
+
+  footer{margin-top:60px;text-align:center;color:var(--muted);font-size:12px;line-height:1.7}
+  footer .src{display:block;margin-top:8px}
+  footer a{color:var(--muted)}
+
+  .alert{background:#fff8e6;border:1px solid #e9d49a;color:#7a5a10;padding:10px 14px;border-radius:10px;font-size:13.5px;margin-top:12px}
+  .alert b{color:#5a4308}
+
+  details{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-top:10px}
+  details summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--ink)}
+  details .body{margin-top:10px;font-size:13.5px;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>울산 1박2일</h1>
+  <p>엄마(60대) + 딸(30대)의 짧고 알찬 여행. 주차 부담 적은 동선 기준.</p>
+  <div class="meta">
+    <div><b>기간</b><span>2026-05-22(금) 09:00 → 05-23(토) 15:00</span></div>
+    <div><b>도착/출발</b><span>KTX 울산역 (울주군 삼남읍)</span></div>
+    <div><b>숙소</b><span>울산역 인근</span></div>
+    <div><b>키워드</b><span>자연, 정원, 해변, 한우, 카페</span></div>
+  </div>
+</header>
+
+<section>
+  <h2>한눈에 보기</h2>
+  <div class="card summary">
+    <div class="row">
+      <div class="pill"><b>총 이동시간</b>렌트카 4~5h / 대중교통 7~8h</div>
+      <div class="pill"><b>예상 1인 비용</b>15~25만원 (숙소 별도)</div>
+      <div class="pill"><b>날씨(5월말)</b>최고 23~26도, 강수 30% 내외</div>
+      <div class="pill"><b>핵심 제약</b>운전 부담 ↓, 주차 용이 우선</div>
+    </div>
+    <div class="alert"><b>현장 확인 권장</b> 영남알프스 케이블카(신불산 X, 영남알프스 얼음골 케이블카는 밀양 소재 30분+) 운영 여부와 5월 휴무 유무는 출발 전 전화 한 통. 토요일 대왕암공원/태화강은 주차 혼잡 가능.</div>
+  </div>
+</section>
+
+<section>
+  <h2>이동수단 추천</h2>
+  <p class="lead">두 시나리오의 트레이드오프. 사용자 조건(엄마 동반, 짐, 운전 부담)에 맞춰 렌트카를 추천.</p>
+  <div class="grid-2">
+    <div class="card scenario">
+      <h3><span class="badge">RENT</span>렌트카 (추천)</h3>
+      <p class="why">울산역에서 명소가 외곽에 흩어져 있음. 차로 다니면 짐을 두고 다닐 수 있고 시간 자유로움.</p>
+      <ul>
+        <li>주차 넓은 곳 위주로 동선 짜면 운전 부담 줄어듦</li>
+        <li>간절곶, 영남알프스 입구, 반구대, 외고산은 차 없이는 비효율</li>
+        <li>봉계 한우 같이 외곽 맛집 접근 가능</li>
+        <li>엄마 페이스에 맞춰 쉬는 시간 조절 쉬움</li>
+      </ul>
+      <div class="verdict"><b>주의</b> 시내(태화강 일대) 진입은 한 차례로 줄이고, 좁은 골목 식당은 패스. 숙소 도착 후 야간 운전 피하기.</div>
+    </div>
+    <div class="card scenario transit">
+      <h3><span class="badge">TRANSIT</span>대중교통</h3>
+      <p class="why">시내 명소 위주면 가능. 외곽(간절곶, 영남알프스, 반구대)은 접근 어려움.</p>
+      <ul>
+        <li>KTX 울산역 ↔ 시내: 5002번 리무진 30~40분 간격, 약 50분</li>
+        <li>태화강 국가정원/장생포/대왕암은 시내버스 환승</li>
+        <li>걷는 양 많음, 배차 대기 시간 누적</li>
+        <li>5/23 토요일은 시내버스 혼잡 가능</li>
+      </ul>
+      <div class="verdict"><b>적합한 경우</b> 운전이 진짜 부담스럽거나, 자연보다 시내/박물관 위주로 보고 싶을 때.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>일정표</h2>
+  <p class="lead">아래 탭에서 시나리오와 날짜를 골라 확인. 시간은 여유 있게 잡았고, 컨디션 보고 한두 곳은 빼도 무방.</p>
+
+  <div class="tabs">
+    <button class="on" data-tab="rent-d1">렌트카 · Day 1</button>
+    <button data-tab="rent-d2">렌트카 · Day 2</button>
+    <button class="transit" data-tab="tr-d1">대중교통 · Day 1</button>
+    <button class="transit" data-tab="tr-d2">대중교통 · Day 2</button>
+  </div>
+
+  <div class="card">
+
+    <div class="tab-panel on" id="rent-d1">
+      <div class="timeline">
+        <div class="step">
+          <div class="time">09:00 · 도착</div>
+          <div class="title">KTX 울산역 도착, 렌트카 픽업</div>
+          <div class="desc">울산역 인근(롯데/SK/AJ 등) 픽업 30~40분. 미리 예약 권장.</div>
+          <span class="tag">소요 40분</span>
+        </div>
+        <div class="step">
+          <div class="time">10:00 · 첫 행선지</div>
+          <div class="title">반구대암각화 박물관 + 진입로 산책</div>
+          <div class="desc">국보 285호. 박물관은 무료, 진입로 1.2km 평지 산책. 60대 동반에 무난.</div>
+          <span class="tag nature">자연</span><span class="tag park">주차 ◎</span><span class="tag">차 25분</span>
+        </div>
+        <div class="step">
+          <div class="time">12:00 · 점심</div>
+          <div class="title">언양불고기거리, 한마당한우촌 또는 진미불고기</div>
+          <div class="desc">언양 참숯불고기. 갈비살 + 육회 조합. 한우암소 전문.</div>
+          <span class="tag food">한우</span><span class="tag park">주차 ○</span><span class="tag">차 10분</span>
+        </div>
+        <div class="step">
+          <div class="time">13:30 · 짧은 들름</div>
+          <div class="title">외고산 옹기마을</div>
+          <div class="desc">옹기박물관(무료) + 마을 산책 1시간. 옹기 굽는 가마 견학.</div>
+          <span class="tag">문화</span><span class="tag park">주차 ◎</span><span class="tag">차 25분</span>
+        </div>
+        <div class="step">
+          <div class="time">15:00 · 메인</div>
+          <div class="title">간절곶</div>
+          <div class="desc">등대 + 소망우체통 + 해안산책로. 잔디밭 넓고 데크 잘 정비됨. 사진 명소.</div>
+          <span class="tag nature">해변</span><span class="tag park">주차 ◎◎</span><span class="tag">차 25분</span>
+        </div>
+        <div class="step">
+          <div class="time">16:30 · 휴식</div>
+          <div class="title">카페 AOP 또는 빵쌤 울산서생점</div>
+          <div class="desc">오션뷰 대형 카페. AOP는 루프탑까지 있어 엄마와 천천히 쉬기 좋음.</div>
+          <span class="tag cafe">카페</span><span class="tag park">주차 ◎</span><span class="tag">도보권</span>
+        </div>
+        <div class="step">
+          <div class="time">18:00 · 저녁</div>
+          <div class="title">서생 해안가 횟집 또는 시내 진입 후 저녁</div>
+          <div class="desc">서생 활어회 or 울산역 인근으로 복귀해 한정식. 운전 피로 고려.</div>
+          <span class="tag food">저녁</span>
+        </div>
+        <div class="step">
+          <div class="time">20:00 · 숙소</div>
+          <div class="title">울산역 인근 숙소 체크인</div>
+          <div class="desc">차 30분 이내 복귀. 야간 장거리 운전 피하기.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="rent-d2">
+      <div class="timeline">
+        <div class="step">
+          <div class="time">08:30 · 아침</div>
+          <div class="title">호텔 조식 또는 인근 카페</div>
+          <div class="desc">체크아웃 09:00. 짐은 차에 싣고 출발.</div>
+        </div>
+        <div class="step">
+          <div class="time">09:30 · 자연</div>
+          <div class="title">영남알프스 복합웰컴센터</div>
+          <div class="desc">간월재 셔틀(운행 시) 또는 둘레길. 산 정상까지 무리하지 말고 카페와 전망대 위주.</div>
+          <span class="tag nature">자연</span><span class="tag park">주차 ◎◎</span><span class="tag">차 20분</span>
+        </div>
+        <div class="step">
+          <div class="time">11:30 · 산책</div>
+          <div class="title">작괘천, 작천정</div>
+          <div class="desc">조선시대 정자와 화강암 계곡. 영남알프스 입구에서 10분. 짧은 산책 좋음.</div>
+          <span class="tag nature">계곡</span><span class="tag park">주차 ○</span>
+        </div>
+        <div class="step">
+          <div class="time">12:30 · 점심</div>
+          <div class="title">봉계 한우 단지에서 마무리 점심</div>
+          <div class="desc">봉계 한우는 양념 불고기 + 냉면 조합. 언양과는 또 다른 결.</div>
+          <span class="tag food">한우</span><span class="tag park">주차 ○</span><span class="tag">차 15분</span>
+        </div>
+        <div class="step">
+          <div class="time">14:00 · 마지막</div>
+          <div class="title">렌트카 반납 + 울산역 도착</div>
+          <div class="desc">반납 후 도보 또는 셔틀. 30분 여유 두기.</div>
+        </div>
+        <div class="step">
+          <div class="time">15:00 · 출발</div>
+          <div class="title">KTX 울산역 출발</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tr-d1">
+      <div class="timeline transit">
+        <div class="step">
+          <div class="time">09:00 · 도착</div>
+          <div class="title">KTX 울산역 도착</div>
+          <div class="desc">짐은 역 보관함 또는 숙소 미리 체크인.</div>
+        </div>
+        <div class="step">
+          <div class="time">09:30 · 이동</div>
+          <div class="title">5002번 리무진 → 시내(공업탑/태화로터리)</div>
+          <div class="desc">약 50분 소요. 배차 30~40분.</div>
+          <span class="tag">대중교통</span>
+        </div>
+        <div class="step">
+          <div class="time">10:30 · 메인</div>
+          <div class="title">태화강 국가정원 + 십리대숲</div>
+          <div class="desc">25만평 무료 정원. 대숲 4km 산책로. 5월 봄꽃 절정.</div>
+          <span class="tag nature">정원</span><span class="tag">무료</span>
+        </div>
+        <div class="step">
+          <div class="time">12:30 · 점심</div>
+          <div class="title">시내 한정식 또는 정원 내 식당</div>
+          <div class="desc">정원 인근 한정식 다수. 엄마와 천천히.</div>
+          <span class="tag food">점심</span>
+        </div>
+        <div class="step">
+          <div class="time">14:00 · 이동+관람</div>
+          <div class="title">장생포 고래문화특구</div>
+          <div class="desc">시내버스 246/256. 고래박물관 + 5D체험관 + 모노레일.</div>
+          <span class="tag">문화</span><span class="tag">시내버스 30분</span>
+        </div>
+        <div class="step">
+          <div class="time">16:30 · 카페</div>
+          <div class="title">장생포 또는 성남동 카페</div>
+          <div class="desc">바다 가까운 카페에서 한 박자 쉬어가기.</div>
+          <span class="tag cafe">카페</span>
+        </div>
+        <div class="step">
+          <div class="time">18:00 · 저녁</div>
+          <div class="title">중구 성남동 거리 식당</div>
+          <div class="desc">젊은 분위기, 메뉴 선택지 많음.</div>
+          <span class="tag food">저녁</span>
+        </div>
+        <div class="step">
+          <div class="time">20:30 · 복귀</div>
+          <div class="title">5002번 리무진 → 울산역 숙소</div>
+          <div class="desc">막차 시간 미리 체크. 택시 대체 시 약 4만원.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tr-d2">
+      <div class="timeline transit">
+        <div class="step">
+          <div class="time">09:00 · 출발</div>
+          <div class="title">체크아웃 후 5002번 리무진 탑승</div>
+          <div class="desc">짐은 시내 코인락커 또는 역에 보관.</div>
+        </div>
+        <div class="step">
+          <div class="time">10:00 · 메인</div>
+          <div class="title">대왕암공원 + 일산해수욕장</div>
+          <div class="desc">5002 종점 인근 환승. 송림 산책 + 출렁다리 + 해안 데크 1시간 코스.</div>
+          <span class="tag nature">해안</span><span class="tag">평지 위주</span>
+        </div>
+        <div class="step">
+          <div class="time">12:30 · 점심</div>
+          <div class="title">일산해수욕장 인근 해산물</div>
+          <div class="desc">활어회 또는 회덮밥. 동구는 횟집 밀집.</div>
+          <span class="tag food">해산물</span>
+        </div>
+        <div class="step">
+          <div class="time">13:30 · 이동</div>
+          <div class="title">5002번 리무진 → KTX 울산역</div>
+          <div class="desc">약 1시간 이상 소요 가능. 시간 여유 두기.</div>
+        </div>
+        <div class="step">
+          <div class="time">15:00 · 출발</div>
+          <div class="title">KTX 울산역 출발</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>명소 카드</h2>
+  <p class="lead">주차 ◎◎(매우 넓음) / ◎(넓음) / ○(가능) / △(혼잡) 기준. 토요일 오전 인기 명소는 한 시간 일찍.</p>
+
+  <div class="grid-3">
+    <article class="card place featured">
+      <div class="name">간절곶</div>
+      <div class="area">울주군 서생면 | 해안</div>
+      <div class="blurb">한반도 동쪽 끝 등대와 해안산책로. 잔디밭과 데크가 넓어 엄마와 천천히 걷기 좋음. 카페 밀집.</div>
+      <div class="meta">
+        <div><b>주차</b> <span class="parking-yes">◎◎ 공영주차장 매우 넓음</span></div>
+        <div><b>소요</b> 1~2시간</div>
+        <div><b>입장</b> 무료</div>
+      </div>
+      <div class="links">
+        <a href="https://map.kakao.com/?q=간절곶" target="_blank" rel="noopener">카카오맵</a>
+        <a href="https://map.naver.com/p/search/간절곶" target="_blank" rel="noopener">네이버지도</a>
+      </div>
+    </article>
+
+    <article class="card place featured">
+      <div class="name">태화강 국가정원</div>
+      <div class="area">남구 | 정원, 도심</div>
+      <div class="blurb">25만평 무료 정원. 십리대숲 4km 산책로, 5월 작약과 봄꽃 절정. 안내센터 9~18시.</div>
+      <div class="meta">
+        <div><b>주차</b> <span class="parking-mid">○ 공영 다수, 일부 무료/유료 혼재</span></div>
+        <div><b>소요</b> 1.5~2.5시간</div>
+        <div><b>입장</b> 무료</div>
+      </div>
+      <div class="links">
+        <a href="https://www.ulsan.go.kr/s/garden/main.ulsan" target="_blank" rel="noopener">공식</a>
+        <a href="https://map.kakao.com/?q=태화강 국가정원" target="_blank" rel="noopener">카카오맵</a>
+      </div>
+    </article>
+
+    <article class="card place featured">
+      <div class="name">영남알프스 복합웰컴센터</div>
+      <div class="area">울주군 상북면 | 자연</div>
+      <div class="blurb">간월재/신불산 입구. 케이블카는 신불산 X(밀양 얼음골 케이블카는 별도). 둘레길과 카페 위주로 가벼운 코스 가능.</div>
+      <div class="meta">
+        <div><b>주차</b> <span class="parking-yes">◎◎ 대형 주차장</span></div>
+        <div><b>소요</b> 2~3시간</div>
+        <div><b>난이도</b> 둘레길 평이</div>
+      </div>
+      <div class="links">
+        <a href="https://map.kakao.com/?q=영남알프스 복합웰컴센터" target="_blank" rel="noopener">카카오맵</a>
+      </div>
+    </article>
+
+    <article class="card place">
+      <div class="name">반구대 암각화 + 박물관</div>
+      <div class="area">울주군 언양읍 | 문화, 자연</div>
+      <div class="blurb">국보 285호. 박물관에서 영상 본 뒤 진입로 1.2km 평지 산책. 6~8월 수몰 전 시즌.</div>
+      <div class="meta">
+        <div><b>주차</b> <span class="parking-yes">◎ 박물관 주차</span></div>
+        <div><b>소요</b> 1.5~2시간</div>
+        <div><b>입장</b> 무료</div>
+      </div>
+      <div class="links">
+        <a href="https://map.kakao.com/?q=반구대암각화박물관" target="_blank" rel="noopener">카카오맵</a>
+      </div>
+    </article>
+
+    <article class="card place">
+      <div class="name">외고산 옹기마을</div>
+      <div class="area">울주군 온양읍 | 문화</div>
+      <div class="blurb">국내 최대 옹기집산지. 옹기박물관 무료. 도예 체험과 옹기 굽는 가마 견학.</div>
+      <div class="meta">
+        <div><b>주차</b> <span class="parking-yes">◎ 마을 주차장</span></div>
+        <div><b>소요</b> 1시간</div>
+        <div><b>입장</b> 무료</div>
+      </div>
+      <div class="links">
+        <a href="https://map.kakao.com/?q=외고산 옹기마을" target="_blank" rel="noopener">카카오맵</a>
+      </div>
+    </article>
+
+    <article class="card place">
+      <div class="name">대왕암공원</div>
+      <div class="area">동구 | 해안</div>
+      <div class="blurb">100년 송림과 출렁다리. 해안 데크 산책. 주말 정오는 혼잡, 오전 일찍 권장.</div>
+      <div class="meta">
+        <div><b>주차</b> <span class="parking-mid">△ 토요일 혼잡</span></div>
+        <div><b>소요</b> 1.5시간</div>
+        <div><b>입장</b> 무료</div>
+      </div>
+      <div class="links">
+        <a href="https://map.kakao.com/?q=대왕암공원" target="_blank" rel="noopener">카카오맵</a>
+      </div>
+    </article>
+
+    <article class="card place">
+      <div class="name">장생포 고래문화특구</div>
+      <div class="area">남구 | 문화</div>
+      <div class="blurb">고래박물관, 생태체험관, 5D 영상관, 모노레일. 시내버스 246번 접근 용이.</div>
+      <div class="meta">
+        <div><b>주차</b> <span class="parking-yes">◎ 특구 주차장</span></div>
+        <div><b>소요</b> 2~3시간</div>
+        <div><b>입장</b> 박물관 5,000원</div>
+      </div>
+      <div class="links">
+        <a href="https://map.kakao.com/?q=장생포 고래문화마을" target="_blank" rel="noopener">카카오맵</a>
+      </div>
+    </article>
+
+    <article class="card place">
+      <div class="name">작괘천, 작천정</div>
+      <div class="area">울주군 삼남읍 | 계곡</div>
+      <div class="blurb">화강암 계곡 위 조선 시대 정자. 영남알프스 입구에서 10분. 짧은 산책로.</div>
+      <div class="meta">
+        <div><b>주차</b> <span class="parking-mid">○ 계곡 인근</span></div>
+        <div><b>소요</b> 40분</div>
+        <div><b>입장</b> 무료</div>
+      </div>
+      <div class="links">
+        <a href="https://map.kakao.com/?q=작천정" target="_blank" rel="noopener">카카오맵</a>
+      </div>
+    </article>
+
+    <article class="card place">
+      <div class="name">강동 화암 주상절리</div>
+      <div class="area">북구 | 해안, 지질</div>
+      <div class="blurb">2천만년 전 화산활동 흔적. 해안 산책로 짧지만 풍경 단단함. 카페 거리 인근.</div>
+      <div class="meta">
+        <div><b>주차</b> <span class="parking-yes">◎ 무료 공영</span></div>
+        <div><b>소요</b> 1시간</div>
+        <div><b>입장</b> 무료</div>
+      </div>
+      <div class="links">
+        <a href="https://map.kakao.com/?q=강동 화암 주상절리" target="_blank" rel="noopener">카카오맵</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2>맛집과 카페</h2>
+  <p class="lead">한우는 언양/봉계, 해산물은 동구/서생. 카페는 간절곶 오션뷰 강세.</p>
+
+  <div class="grid-3">
+    <article class="card food-card">
+      <h4>한마당한우촌</h4>
+      <div class="where">울주군 언양 · 한우암소 전문</div>
+      <div class="menu">갈비살 + 육회 조합. 농장 직영. 참숯불고기 정통.</div>
+      <span class="price">불고기 2만원대 / 육회 3만원대</span>
+      <div class="links" style="margin-top:8px"><a href="https://map.kakao.com/?q=한마당한우촌 언양" target="_blank" rel="noopener">위치</a></div>
+    </article>
+    <article class="card food-card">
+      <h4>진미불고기</h4>
+      <div class="where">울주군 언양불고기거리</div>
+      <div class="menu">노포 감성, 숯향 진한 불고기. 마지막 된장찌개 호평.</div>
+      <span class="price">언양불고기 1인 180g</span>
+      <div class="links" style="margin-top:8px"><a href="https://map.kakao.com/?q=진미불고기 언양" target="_blank" rel="noopener">위치</a></div>
+    </article>
+    <article class="card food-card">
+      <h4>언양기와집불고기</h4>
+      <div class="where">울주군 언양 · 한옥 분위기</div>
+      <div class="menu">담백한 불고기, 깔끔한 반찬. 한옥 외관 분위기 좋음.</div>
+      <span class="price">불고기 + 육회 한 상</span>
+      <div class="links" style="margin-top:8px"><a href="https://map.kakao.com/?q=언양기와집불고기" target="_blank" rel="noopener">위치</a></div>
+    </article>
+    <article class="card food-card">
+      <h4>봉계 한우 단지</h4>
+      <div class="where">울주군 두서면 · 봉계리</div>
+      <div class="menu">양념 불고기 + 냉면. 언양과 함께 한우 양대 발상지.</div>
+      <span class="price">집집마다 차이, 평균 2만원대</span>
+      <div class="links" style="margin-top:8px"><a href="https://map.kakao.com/?q=봉계 한우" target="_blank" rel="noopener">위치</a></div>
+    </article>
+    <article class="card food-card">
+      <h4>카페 AOP</h4>
+      <div class="where">울주군 서생 · 간절곶 · 오션뷰</div>
+      <div class="menu">초대형 카페. 실내/야외/루프탑. 원두 선택 가능. 베이커리 종류 많음.</div>
+      <span class="price">매일 10:00 ~ 21:00</span>
+      <div class="links" style="margin-top:8px"><a href="https://map.kakao.com/?q=카페 AOP 간절곶" target="_blank" rel="noopener">위치</a></div>
+    </article>
+    <article class="card food-card">
+      <h4>빵쌤 울산서생점</h4>
+      <div class="where">울주군 서생 · 간절곶 인근</div>
+      <div class="menu">베이커리 50여 종. 넓고 쾌적. 빵 포장해서 차에서 먹기 좋음.</div>
+      <span class="price">빵 4~7천원대</span>
+      <div class="links" style="margin-top:8px"><a href="https://map.kakao.com/?q=빵쌤 울산서생점" target="_blank" rel="noopener">위치</a></div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2>운전 부담을 줄이는 6가지</h2>
+  <div class="card">
+    <ol style="margin:0;padding-left:20px;color:var(--sub);font-size:14px;line-height:1.9">
+      <li><b style="color:var(--ink)">시내 진입은 한 번만.</b> 태화강 정원 같은 도심 명소는 Day 1 또는 Day 2 중 한 번만, 나머지는 외곽 위주.</li>
+      <li><b style="color:var(--ink)">주차장 진입 동선 미리 확인.</b> 카카오맵 로드뷰로 입구 사진 미리 보기.</li>
+      <li><b style="color:var(--ink)">야간 운전 피하기.</b> 18시 이후엔 숙소 인근으로 복귀.</li>
+      <li><b style="color:var(--ink)">엄마 화장실 휴식.</b> 한 코스 끝날 때마다 화장실 들르기. 간절곶/태화강/영남알프스 다 청결.</li>
+      <li><b style="color:var(--ink)">하이패스 단말기 확인.</b> 렌트카에 없으면 톨게이트 무인 정산 가능 여부 확인.</li>
+      <li><b style="color:var(--ink)">기름 만땅 반납.</b> 울산역 인근 주유소 미리 체크 (반납 30분 여유).</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <h2>출발 전 체크리스트</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3 style="margin:0 0 10px;font-size:15px">예약/확인</h3>
+      <ul class="checklist">
+        <li>KTX 왕복 좌석 확정 (5/22 도착, 5/23 15:00 이후 출발)</li>
+        <li>렌트카 예약 (자동변속, 보험 자차 포함)</li>
+        <li>숙소 체크인 시간, 주차 확보 확인</li>
+        <li>한우집 토요일 점심 전화 예약 (특히 한마당한우촌)</li>
+        <li>영남알프스 케이블카 운영 여부 전화 확인</li>
+        <li>일출 시각(약 05:20), 일몰(약 19:20) 체크</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="margin:0 0 10px;font-size:15px">짐과 준비물</h3>
+      <ul class="checklist">
+        <li>가벼운 운동화 (엄마 무릎 부담 적은 것)</li>
+        <li>얇은 외투 (저녁 해변 바람)</li>
+        <li>모자, 선글라스, 자외선 차단제</li>
+        <li>물병, 간단한 간식</li>
+        <li>상비약 (소화제, 진통제, 멀미약)</li>
+        <li>충전 케이블, 보조배터리</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>대안 동선</h2>
+  <details>
+    <summary>비가 오면? (실내 위주 전환)</summary>
+    <div class="body">
+      반구대 박물관 → 옹기마을 박물관 → 언양 한우 점심 → 울산시립미술관(중구) → 호텔 휴식 → 간단한 시내 저녁. Day 2는 영남알프스 대신 태화강 정원 안내센터와 인근 카페.
+    </div>
+  </details>
+  <details>
+    <summary>엄마가 더 쉬고 싶다고 하면?</summary>
+    <div class="body">
+      외고산 옹기마을과 작천정 빼고, 간절곶에서 카페 2~3시간 + 해안 데크만. 영남알프스도 둘레길 30분으로 단축. 호텔 라운지에서 시간 보내기.
+    </div>
+  </details>
+  <details>
+    <summary>딸이 인스타용 컷이 더 필요하면?</summary>
+    <div class="body">
+      카페 AOP 루프탑, 간절곶 등대, 강동 주상절리, 태화강 십리대숲. 옷은 단색 + 작은 가방이 사진 깔끔.
+    </div>
+  </details>
+  <details>
+    <summary>토요일 점심 한우집이 만석이면?</summary>
+    <div class="body">
+      봉계 단지로 이동(차 15분). 봉계는 집이 많아 대기 짧음. 또는 시내로 가서 백반/한정식.
+    </div>
+  </details>
+</section>
+
+<footer>
+  <div>울산 1박2일 대시보드 · 2026-05-22 작성</div>
+  <div class="src">
+    출처:
+    <a href="https://www.ulsan.go.kr/s/garden/main.ulsan" target="_blank">태화강 국가정원</a> ·
+    <a href="https://kr.trip.com/moments/poi-ganjeolgot-cape-65179284/" target="_blank">간절곶</a> ·
+    <a href="https://www.siksinhot.com/theme/magazine/11083" target="_blank">언양불고기 식신</a> ·
+    <a href="https://changgu.net/entry/%EC%9A%B8%EC%82%B0%EC%97%AD-KTX-%EB%A6%AC%EB%AC%B4%EC%A7%84%EB%B2%84%EC%8A%A4-%EC%8B%9C%EA%B0%84%ED%91%9C-%EB%B0%8F-%EC%9A%94%EA%B8%88-%EC%A0%95%EB%B3%B4" target="_blank">5002 리무진</a>
+  </div>
+</footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.tabs button').forEach(b => {
+    b.addEventListener('click', () => {
+      const tab = b.dataset.tab;
+      document.querySelectorAll('.tabs button').forEach(x => x.classList.remove('on'));
+      document.querySelectorAll('.tab-panel').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      document.getElementById(tab).classList.add('on');
+    });
+  });
+</script>
+</body>
+</html>
