@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사당역 맛집 5곳 비교</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        .restaurant {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .restaurant:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        .restaurant-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 5px solid #667eea;
+        }
+        .restaurant-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        .restaurant-info {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .restaurant-content {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+        .restaurant-text {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .restaurant-image {
+            background: #f0f0f0;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            color: #999;
+        }
+        .menu {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .review {
+            font-size: 0.95em;
+            color: #666;
+            border-left: 3px solid #e0e0e0;
+            padding-left: 12px;
+            line-height: 1.7;
+        }
+        .recommendation {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 4px solid #ffc107;
+            font-weight: 500;
+            color: #856404;
+        }
+        .price-range {
+            background: #e7f3ff;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: bold;
+            color: #0056b3;
+        }
+        .conclusion {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 2px solid #667eea;
+        }
+        .conclusion h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        .decision-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .decision-btn {
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .decision-btn:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+        .decision-btn.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        @media (max-width: 768px) {
+            .restaurant-content {
+                grid-template-columns: 1fr;
+            }
+            .decision-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>사당역 맛집 5곳 비교</h1>
+            <p>고등학교 친구들과의 토요일 점심 (6월 14일 오후 2시)</p>
+        </header>
+
+        <!-- 리에또 -->
+        <div class="restaurant">
+            <div class="restaurant-header">
+                <div class="restaurant-title">1️⃣ 가성비 최고: 리에또</div>
+                <div class="restaurant-info">위치: 사당역 도보 4분 | 3인 예상 비용: 42,000~80,000원<br>
+                <a href="https://naver.me/x?q=%EB%A6%AC%EC%97%90%EB%98%90+%EC%82%AC%EB%8B%B9%EC%97%AD&utm_source=jemcory_github&utm_medium=html_guide&utm_campaign=sadang_restaurants" target="_blank" style="color: #667eea; text-decoration: none;">📍 네이버지도</a></div>
+            </div>
+            <div class="restaurant-content">
+                <div class="restaurant-text">
+                    <div class="price-range">💰 3인 기준: 42,000 ~ 80,000원</div>
+                    <div class="menu">
+                        <strong>메뉴:</strong><br>
+                        • 런치 파스타 9,900원 (까르보나라/봉골레/아마트리치아나 등 7종)<br>
+                        • 런치 피자 11,900~14,900원<br>
+                        • 스테이크 19,900원<br>
+                        • 런치 A코스 13,900~14,900원 (스프/샐러드/메인/디저트/음료)
+                    </div>
+                    <div class="review">
+                        <strong>후기:</strong> 분위기와 재미 다 잡은 이탈리아 레스토랑, 식전빵이 푸짐하고 곱빼기 무료라 가성비 최고, 가격 대비 퀄리티가 뛰어남
+                    </div>
+                    <div class="recommendation">
+                        ◆ 추천: 예산이 괜찮으면서 가성비를 원한다면 최우선 선택
+                    </div>
+                </div>
+                <div class="restaurant-image">🍝 이탈리안 레스토랑 이미지</div>
+            </div>
+        </div>
+
+        <!-- 올리브에비뉴 -->
+        <div class="restaurant">
+            <div class="restaurant-header">
+                <div class="restaurant-title">2️⃣ 분위기 최강: 올리브에비뉴</div>
+                <div class="restaurant-info">위치: 사당역 도보 7~10분 | 3인 예상 비용: 85,000~120,000원<br>
+                <a href="https://naver.me/GvkXJhs4?utm_source=jemcory_github&utm_medium=html_guide&utm_campaign=sadang_restaurants" target="_blank" style="color: #667eea; text-decoration: none;">📍 네이버지도</a></div>
+            </div>
+            <div class="restaurant-content">
+                <div class="restaurant-text">
+                    <div class="price-range">💰 3인 기준: 85,000 ~ 120,000원</div>
+                    <div class="menu">
+                        <strong>메뉴:</strong><br>
+                        • 파스타 19,800~27,500원<br>
+                        • 피자 18,700~29,900원<br>
+                        • 리소토 25,300~35,000원<br>
+                        • 런치 코스 28,500~39,900원<br>
+                        (SK리더스뷰 6층에서 사당역 풍경 조망 가능)
+                    </div>
+                    <div class="review">
+                        <strong>후기:</strong> 고급스러운 호텔 레스토랑 분위기, 세련된 인테리어와 은은한 조명, 테이블 간격이 넉넉함, 사진 촍은 스팟
+                    </div>
+                    <div class="recommendation">
+                        ◆ 추천: 분위기를 중시하고 특별한 시간을 원한다면 이곳
+                    </div>
+                </div>
+                <div class="restaurant-image">🏢 SK리더스뷰 6층 고급 이탈리안</div>
+            </div>
+        </div>
+
+        <!-- 디저트문 -->
+        <div class="restaurant">
+            <div class="restaurant-header">
+                <div class="restaurant-title">3️⃣ 사진감성 1위: 디저트문</div>
+                <div class="restaurant-info">위치: 사당역 6번 출구 1분 | 3인 예상 비용: 25,000~35,000원<br>
+                <a href="https://map.naver.com/p/search/%EB%94%94%EC%A0%80%ED%8A%B8%EB%AC%B8%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github&utm_medium=html_guide&utm_campaign=sadang_restaurants" target="_blank" style="color: #667eea; text-decoration: none;">📍 네이버지도</a></div>
+            </div>
+            <div class="restaurant-content">
+                <div class="restaurant-text">
+                    <div class="price-range">💰 3인 기준: 25,000 ~ 35,000원</div>
+                    <div class="menu">
+                        <strong>메뉴:</strong><br>
+                        • 수제 케이크 6,000~8,000원<br>
+                        &nbsp;&nbsp;(레드벨벳/딸기/초콜릿)<br>
+                        • 음료 4,000~5,000원<br>
+                        • 카페지만 식사 가능
+                    </div>
+                    <div class="review">
+                        <strong>후기:</strong> 인생샷 명소, 통유리에서 자연광이 들어옴, 분위기 좋아 장시간 머물기 좋음, 공간이 넓어 웨이팅도 덜 답답함
+                    </div>
+                    <div class="recommendation">
+                        ◆ 추천: 사진을 중시하고 가성비도 챙기고 싶으면 이곳. 점심 후 디저트로 가기도 좋다
+                    </div>
+                </div>
+                <div class="restaurant-image">🎂 통유리 카페/베이커리</div>
+            </div>
+        </div>
+
+        <!-- 라시에스타 -->
+        <div class="restaurant">
+            <div class="restaurant-header">
+                <div class="restaurant-title">4️⃣ 고급스러운 선택: 라시에스타</div>
+                <div class="restaurant-info">위치: 사당역 도보 3분 | 3인 예상 비용: 45,000~60,000원<br>
+                <a href="https://map.naver.com/p/search/%EB%9D%BC%EC%8B%9C%EC%97%90%EC%8A%A4%ED%83%80%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github&utm_medium=html_guide&utm_campaign=sadang_restaurants" target="_blank" style="color: #667eea; text-decoration: none;">📍 네이버지도</a></div>
+            </div>
+            <div class="restaurant-content">
+                <div class="restaurant-text">
+                    <div class="price-range">💰 3인 기준: 45,000 ~ 60,000원</div>
+                    <div class="menu">
+                        <strong>메뉴:</strong><br>
+                        • 런치 파스타 8,800원<br>
+                        • 런치 A세트 15,000원 (수프/샐러드/파스타/후식)<br>
+                        • 런치 B세트 23,000원 (스테이크)<br>
+                        • 화덕피자 17,500원
+                    </div>
+                    <div class="review">
+                        <strong>후기:</strong> 무심한 듯 시크한 인테리어, 멋진 화덕이 있음, 데이트하기 좋은 분위기, 사당역 풍경을 조망할 수 있음
+                    </div>
+                    <div class="recommendation">
+                        ◆ 추천: 분위기와 가성비를 함께 원한다면. 고급스러운 이탈리안을 부담없이 즐길 수 있다
+                    </div>
+                </div>
+                <div class="restaurant-image">🍕 6층 양지빌딩 화덕 이탈리안</div>
+            </div>
+        </div>
+
+        <!-- 윤공 -->
+        <div class="restaurant">
+            <div class="restaurant-header">
+                <div class="restaurant-title">5️⃣ 균형잡힌 선택: 윤공</div>
+                <div class="restaurant-info">위치: 사당역 도보 5분 | 3인 예상 비용: 40,000~50,000원<br>
+                <a href="https://map.naver.com/p/search/%EC%9C%A4%EA%B3%B5%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github&utm_medium=html_guide&utm_campaign=sadang_restaurants" target="_blank" style="color: #667eea; text-decoration: none;">📍 네이버지도</a></div>
+            </div>
+            <div class="restaurant-content">
+                <div class="restaurant-text">
+                    <div class="price-range">💰 3인 기준: 40,000 ~ 50,000원</div>
+                    <div class="menu">
+                        <strong>메뉴:</strong><br>
+                        • 육회 파스타 22,000원<br>
+                        • 크림 수제비 18,000원<br>
+                        • 감자전<br>
+                        (퓨전한식: 유럽식 감성 + 한식)
+                    </div>
+                    <div class="review">
+                        <strong>후기:</strong> 쫀딕한 수제비와 바삭한 감자전, 다크한 분위기와 은은한 조명, 데이트/소개팅 추천, 웨이팅이 있을 정도로 인기
+                    </div>
+                    <div class="recommendation">
+                        ◆ 추천: 이 5곳 중에서 가장 무난한 선택. 분위기도 좋고 음식도 맛있고 가격도 괜찮다
+                    </div>
+                </div>
+                <div class="restaurant-image">🥢 퓨전한식 (수제비/감자전)</div>
+            </div>
+        </div>
+
+        <!-- 결론 -->
+        <div class="conclusion">
+            <h2>✓ 최종 결정</h2>
+            <p>결국 선택은 본인의 우선순위다. 다음 중 어디를 갈 예정인가요?</p>
+
+            <div class="decision-buttons">
+                <button class="decision-btn" onclick="selectRestaurant(this, 'rietto')">리에또</button>
+                <button class="decision-btn" onclick="selectRestaurant(this, 'olive')">올리브에비뉴</button>
+                <button class="decision-btn" onclick="selectRestaurant(this, 'dessert')">디저트문</button>
+                <button class="decision-btn" onclick="selectRestaurant(this, 'lasesta')">라시에스타</button>
+                <button class="decision-btn" onclick="selectRestaurant(this, 'yungong')">윤공</button>
+            </div>
+
+            <div id="selection" style="margin-top: 20px; text-align: center; font-size: 1.1em; font-weight: bold; color: #667eea; min-height: 30px;"></div>
+        </div>
+    </div>
+
+    <script>
+        function selectRestaurant(btn, name) {
+            document.querySelectorAll('.decision-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+
+            const names = {
+                'rietto': '리에또 (가성비 최고)',
+                'olive': '올리브에비뉴 (분위기 최강)',
+                'dessert': '디저트문 (사진감성 1위)',
+                'lasesta': '라시에스타 (고급스러운)',
+                'yungong': '윤공 (균형잡힌)'
+            };
+
+            document.getElementById('selection').textContent = '✓ 선택: ' + names[name];
+        }
+    </script>
+</body>
+</html>
