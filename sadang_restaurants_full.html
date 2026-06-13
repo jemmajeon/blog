@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사당역 맛집 완벽 가이드 - 13곳 종합 리뷰</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        header p {
+            opacity: 0.95;
+            font-size: 1.1em;
+        }
+        .category {
+            margin-bottom: 50px;
+        }
+        .category-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        .restaurant {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        .restaurant:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        .restaurant.closed {
+            opacity: 0.7;
+            background: #f5f5f5;
+        }
+        .restaurant-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-left: 5px solid #667eea;
+            position: relative;
+        }
+        .restaurant.closed .restaurant-header {
+            border-left-color: #dc3545;
+        }
+        .closed-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #dc3545;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        .restaurant-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        .restaurant.closed .restaurant-title {
+            color: #dc3545;
+        }
+        .restaurant-meta {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .restaurant-content {
+            padding: 25px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 25px;
+        }
+        .restaurant-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .detail-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        .detail-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        .detail-content {
+            font-size: 0.9em;
+            line-height: 1.7;
+            color: #555;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-name {
+            flex: 1;
+        }
+        .menu-price {
+            color: #667eea;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .price-range {
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+        }
+        .specialties {
+            background: #e7f3ff;
+            border-left-color: #0056b3;
+        }
+        .rating-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+        }
+        .rating-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .rating-row:last-child {
+            border-bottom: none;
+        }
+        .rating-label {
+            font-weight: bold;
+            color: #666;
+        }
+        .rating-value {
+            color: #667eea;
+            font-weight: bold;
+        }
+        .map-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+        .map-link:hover {
+            background: #764ba2;
+            transform: translateX(2px);
+        }
+        .recommendation {
+            background: #d4edda;
+            border-left: 3px solid #28a745;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .gut-feel {
+            background: white;
+            padding: 20px;
+            border-left: 5px solid #667eea;
+        }
+        .gut-feel-text {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #666;
+            background: white;
+            border-radius: 12px;
+            margin-top: 50px;
+        }
+        .footer p {
+            margin-bottom: 10px;
+        }
+        @media (max-width: 768px) {
+            .restaurant-content, .restaurant-meta {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>사당역 맛집 완벽 가이드</h1>
+            <p>✨ 가성비·분위기·사진감성을 모두 고려한 13곳 종합 리뷰</p>
+        </header>
+
+        <!-- 이탈리안 & 양식 -->
+        <div class="category">
+            <h2 class="category-title">🍝 이탈리안 & 양식</h2>
+
+            <!-- 리에또 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">1. 리에또 (가성비 최고)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 방배천로4안길 20</div>
+                        <div>⏰ 월-금 11:30-21:00 / 토-일 12:00-21:00</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 42,000~51,000원<br>
+                                중가: 60,000~72,000원<br>
+                                고가: 75,000~90,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">페퍼로니 파스타</span>
+                                    <span class="menu-price">12,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">알리오올리오</span>
+                                    <span class="menu-price">11,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">스테이크</span>
+                                    <span class="menu-price">19,900원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">리조또</span>
+                                    <span class="menu-price">13,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">식전빵</span>
+                                    <span class="menu-price">무료</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">일반 파스타집보다 저렴한 가격대. 가성비 최고. 식전빵 제공으로 만족도 높음. 소규모 단체 가능.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EB%A6%AC%EC%97%90%EB%98%90%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=rietto&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.4/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">가성비 최고</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">캐주얼</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">권장</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 올리브에비뉴 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">2. 올리브에비뉴 (분위기 최강)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 SK리더스뷰 6층 (방배동)</div>
+                        <div>⏰ 월-토 11:30-21:30 / 일 12:00-21:00</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 48,000~57,000원<br>
+                                중가: 66,000~81,000원<br>
+                                고가: 90,000~120,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">고르곤졸라 피자</span>
+                                    <span class="menu-price">25,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">까르보나라 파스타</span>
+                                    <span class="menu-price">23,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">스테이크</span>
+                                    <span class="menu-price">35,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">리조또</span>
+                                    <span class="menu-price">22,000원</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">고급 이탈리안. 분위기 좋은 데이트 장소. 창가 좋은 뷰. 여름철 에어컨 시원함.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%97%90%EB%B9%84%EB%89%B4%20%EC%9C%A0?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=olive_avenue&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.5/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">분위기 최강</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">고급스러움</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">필수</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 로코민트 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">3. 로코민트 (가성비+분위기)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 방배천로2안길 48</div>
+                        <div>⏰ 11:30-21:00 (B.T. 15:00-17:00)</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 39,000~45,000원<br>
+                                중가: 51,000~63,000원<br>
+                                고가: 70,000~85,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">까르보나라</span>
+                                    <span class="menu-price">13,500원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">크림리조또</span>
+                                    <span class="menu-price">12,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">파스타 전문메뉴</span>
+                                    <span class="menu-price">11,000원~</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">분위기·재미·가성비 모두 잡은 이탈리아 레스토랑. 매장이 협소해 웨이팅 가능. 데이트나 소규모 모임 좋음.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EB%A1%9C%EC%BD%94%EB%AF%BC%ED%8A%B8%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=locomint&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.4/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">균형잡힌</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">캐주얼</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">필수</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 라시에스타 (폐업) -->
+            <div class="restaurant closed">
+                <div class="restaurant-header">
+                    <div class="closed-badge">⛔ 폐업</div>
+                    <div class="restaurant-title">4. 라시에스타 (폐업됨)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 양지빌딩 6층 (사당역 10번 출구)</div>
+                        <div>⏰ [운영 중단]</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section">
+                            <div class="detail-title">⚠️ 알림</div>
+                            <div class="detail-content">
+                                2024년 기준 폐업으로 확인됨. 이전 메뉴와 가격 정보는 참고용입니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 윤공 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">5. 윤공 Korean Bistro (퓨전한식)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 사당로30길 158</div>
+                        <div>⏰ 월-일 영업 (시간 확인 권장)</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 42,000~51,000원<br>
+                                중가: 60,000~72,000원<br>
+                                고가: 80,000~100,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">육회 파스타</span>
+                                    <span class="menu-price">19,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">크림 수제비</span>
+                                    <span class="menu-price">16,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">감자전</span>
+                                    <span class="menu-price">11,000원</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">한식과 양식의 세련된 조화. 코리안 퓨전 다이닝. 술 한잔 하기 좋은 비스트로.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EC%9C%A4%EA%B3%B5%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=yungong&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.6/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">퓨전</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">모던 비스트로</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">권장</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 한식 -->
+        <div class="category">
+            <h2 class="category-title">🥘 한식 (찌개·구이)</h2>
+
+            <!-- 명돼지갈비 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">6. 명돼지갈비 (구이 전문)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 과천대로 931 (4번 출구)</div>
+                        <div>⏰ 월-토 12:00-21:40 / 일 휴무</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 45,000~50,000원<br>
+                                중가: 60,000~75,000원<br>
+                                고가: 80,000~95,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">돼지갈비</span>
+                                    <span class="menu-price">19,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">삼겹살</span>
+                                    <span class="menu-price">19,000원</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">찐 맛집 느낌. 돼지갈비가 부드러운 식감. 양념은 달지도 짜지도 않음. 무료 주차 가능.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EB%AA%85%EB%8F%BC%EC%A7%80%EA%B0%88%EB%B9%84%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=myungdwaeji_galbi&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.7/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">구이 전문</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">정통</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">필수</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 소담촌 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">7. 소담촌 (샤브샤브)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 동작구 사당동 일대</div>
+                        <div>⏰ 월-일 11:00-21:00</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 48,000~54,000원<br>
+                                중가: 63,000~75,000원<br>
+                                고가: 90,000~105,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">양지 샤브샤브</span>
+                                    <span class="menu-price">선택형</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">목심 샤브샤브</span>
+                                    <span class="menu-price">선택형</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">월남쌈</span>
+                                    <span class="menu-price">채소 풍부</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">여름철 시원한 분위기. 고기 선택 가능. 채소 풍부. 가족 외식 좋음.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EC%86%8C%EB%8B%B4%EC%B4%8C%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=sodamchon&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.8/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">여름 최강</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">가족 친화</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">권장</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 백채김치찌개 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">8. 백채김치찌개 (가성비 최강)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 사당역 인근</div>
+                        <div>⏰ 매일 영업 (시간 확인 권장)</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 30,000~36,000원<br>
+                                중가: 42,000~51,000원<br>
+                                고가: 60,000~75,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">김치찌개</span>
+                                    <span class="menu-price">가성비</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">된장찌개</span>
+                                    <span class="menu-price">가성비</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">가성비 좋은 한식. 아침 해장으로 인기. 여름철 시원한 물 제공.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EB%B0%B1%EC%B1%84%EA%B9%80%EC%B9%98%EC%B0%8C%EA%B0%9C%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=baekchae&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.7/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">초저가</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">대중식</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">필요 없음</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 일식 & 회 -->
+        <div class="category">
+            <h2 class="category-title">🍣 일식 & 회</h2>
+
+            <!-- 미소네 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">9. 미소네 (오마카세)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 동작대로7길 32</div>
+                        <div>⏰ 월-토 16:00-22:30 / 일 16:00-21:30</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 66,000원 (런치 3인)<br>
+                                중가: 99,000원 (디너 3인)<br>
+                                고가: 120,000~150,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">오마카세 (런치)</span>
+                                    <span class="menu-price">22,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">오마카세 (디너)</span>
+                                    <span class="menu-price">33,000원</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">편안한 분위기에서 푸짐한 스페셜 메뉴. 참치 부위 다양. 예약 필수.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EB%AF%B8%EC%86%8C%EB%84%A4%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=misone&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.5/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">오마카세</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">고급</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">필수</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 초와밥 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">10. 초와밥 (회식)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 동작대로5길 8</div>
+                        <div>⏰ 매일 영업 (시간 확인 권장)</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 45,000~54,000원<br>
+                                중가: 63,000~75,000원<br>
+                                고가: 85,000~105,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">초밥 세트</span>
+                                    <span class="menu-price">다양</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">생선회 조합</span>
+                                    <span class="menu-price">신선</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">퇴근 후 회식 인기. 신선한 재료. 접근성 우수.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EC%B4%88%EC%99%80%EB%B0%A5%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=chowabab&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.5/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">회식</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">캐주얼</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">권장</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 중식 & 야식 -->
+        <div class="category">
+            <h2 class="category-title">🥡 중식 & 야식</h2>
+
+            <!-- 바오로차이나 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">11. 바오로차이나 (중식당)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 사당역 근처</div>
+                        <div>⏰ 확인 권장</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 27,000~36,000원<br>
+                                중가: 45,000~60,000원<br>
+                                고가: 75,000~95,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">호두크림새우</span>
+                                    <span class="menu-price">38,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">고추유린기</span>
+                                    <span class="menu-price">36,000원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">짜장면</span>
+                                    <span class="menu-price">9,000원</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">핫플레이스. 탕수육 바삭. 내부 넓고 깔끔. 입소문 높음.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EB%B0%94%EC%98%A4%EB%A1%9C%EC%B0%A8%EC%9D%B4%EB%82%98%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=baoro&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.8/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">입소문</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">모던</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">권장</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 명인시골통닭 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">12. 명인시골통닭 (야식 추천)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 동작대로3길 6</div>
+                        <div>⏰ 매일 15:30-02:00</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 39,600~49,500원<br>
+                                중가: 55,800~75,000원<br>
+                                고가: 85,000~105,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">시골 통닭</span>
+                                    <span class="menu-price">19,800원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">닭죽 세트</span>
+                                    <span class="menu-price">27,800원</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">옛날식 통닭. 신선한 맛. 야식으로 인기. 포장 가능. 밤 2시까지 운영.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EB%AA%85%EC%9D%B8%EC%8B%9C%EA%B3%A8%ED%86%B5%EB%8B%AD%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=myungin_chicken&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.8/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">야식 최강</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">정통</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">가능</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 디저트문 -->
+            <div class="restaurant">
+                <div class="restaurant-header">
+                    <div class="restaurant-title">13. 디저트문 (24시 카페)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 사당역 11번 출구 바로 앞</div>
+                        <div>⏰ 24시간 운영</div>
+                    </div>
+                </div>
+                <div class="restaurant-content">
+                    <div class="restaurant-details">
+                        <div class="detail-section price-range">
+                            <div class="detail-title">💰 3인 예상 비용</div>
+                            <div class="detail-content">
+                                저가: 21,000~30,000원<br>
+                                중가: 36,000~45,000원<br>
+                                고가: 50,000~65,000원
+                            </div>
+                        </div>
+                        <div class="detail-section">
+                            <div class="detail-title">🍴 대표 메뉴</div>
+                            <div class="detail-content">
+                                <div class="menu-item">
+                                    <span class="menu-name">수제 브라우니 케이크</span>
+                                    <span class="menu-price">8,900원</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">바스크 치즈 케이크</span>
+                                    <span class="menu-price">수제</span>
+                                </div>
+                                <div class="menu-item">
+                                    <span class="menu-name">음료</span>
+                                    <span class="menu-price">다양</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-section specialties">
+                            <div class="detail-title">✨ 특징</div>
+                            <div class="detail-content">넓은 공간. 도서관 같은 인테리어. 야외 테라스. 24시 운영으로 야식 추천.</div>
+                        </div>
+                        <a href="https://map.naver.com/p/search/%EB%94%94%EC%A0%80%ED%8A%B8%EB%AC%B8%20%EC%82%AC%EB%8B%B9?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=dessertmun&utm_term=sadang_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    </div>
+                    <div class="rating-box">
+                        <div class="rating-row">
+                            <span class="rating-label">⭐ 평점</span>
+                            <span class="rating-value">4.3/5.0</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">📌 추천</span>
+                            <span class="rating-value">24시</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">🎯 분위기</span>
+                            <span class="rating-value">감성</span>
+                        </div>
+                        <div class="rating-row">
+                            <span class="rating-label">👥 예약</span>
+                            <span class="rating-value">필요 없음</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 결론 -->
+        <div class="gut-feel">
+            <h2 style="color: #667eea; margin-bottom: 15px;">✨ 최종 추천</h2>
+            <div class="gut-feel-text">
+                <strong>데이트:</strong> 올리브에비뉴, 로코민트, 윤공<br>
+                <strong>가성비:</strong> 리에또, 로코민트, 백채김치찌개, 바오로차이나<br>
+                <strong>야식:</strong> 명인시골통닭 (밤 2시), 디저트문 (24시)<br>
+                <strong>여름날씨:</strong> 소담촌 (시원함), 미소네 (에어컨)<br>
+                <strong>그룹/단체:</strong> 소담촌, 올리브에비뉴, 바오로차이나<br>
+                <strong>예약 필수:</strong> 로코민트, 미소네, 올리브에비뉴, 윤공
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>📌 참고:</strong> 영업시간·메뉴·가격은 정기적으로 변동될 수 있습니다.</p>
+            <p>방문 전 전화 확인을 권장합니다.</p>
+            <p style="margin-top: 20px; color: #999; font-size: 0.9em;">
+                이 가이드는 jemcory 블로그를 통해 공유되었습니다.
+                <br><strong>UTM 추적 중</strong> — 네이버지도 링크를 통한 방문을 추적하고 있습니다.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
