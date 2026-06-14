@@ -1,0 +1,14 @@
+[
+  {
+    "name": "🍽️ 사당역 맛집",
+    "file": "sadang_dashboard.html",
+    "description": "버티컬 탭 · 14곳 (이탈/한식/일식/중식/야식/후식)",
+    "status": "active"
+  },
+  {
+    "name": "🍽️ 강남역 맛집",
+    "file": "gangnam_dashboard.html",
+    "description": "고급 스테이크/한식/이탈리안 7곳",
+    "status": "active"
+  }
+]
