@@ -78,6 +78,12 @@ h1 em{color:var(--accent);font-style:normal;}
   border-radius:4px;background:#f1efe9;color:var(--muted);margin-top:4px;
 }
 .empty{padding:40px 0;color:var(--muted);font-size:15px;}
+/* Directory structure */
+.dir-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;font-size:13px;}
+.dir-card{padding:12px;border:1px solid var(--line);border-radius:6px;}
+.dir-card-title{font-weight:600;margin-bottom:8px;}
+.dir-card-text{color:var(--muted);line-height:1.6;}
+.dir-card-full{grid-column:1/-1;}
 /* Footer */
 footer{
   border-top:1px solid var(--line);padding:24px;text-align:center;
@@ -144,13 +150,39 @@ document.addEventListener('DOMContentLoaded', function(){
 </div>
 
 <div class="posts">
+  <div class="section-label">📂 저장소 구조</div>
+  <div class="dir-grid">
+    <div class="dir-card">
+      <div class="dir-card-title">🍽️ restaurant/</div>
+      <div class="dir-card-text">
+        📄 nakseongdae-complete.html<br>
+        식당 조사 대시보드
+      </div>
+    </div>
+    <div class="dir-card">
+      <div class="dir-card-title">✈️ travels/</div>
+      <div class="dir-card-text">
+        📂 ulsan-2026-05/<br>
+        여행 가이드
+      </div>
+    </div>
+    <div class="dir-card dir-card-full">
+      <div class="dir-card-title">📄 Main Files</div>
+      <div class="dir-card-text">
+        sadang_dashboard.html · gangnam_dashboard.html · index.html
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="posts">
   <div class="section-label">가이드 & 프로젝트</div>
 
   <div class="tab-container">
-    <button class="tab-btn active" data-filter="all">전체</button>
-    <button class="tab-btn" data-filter="restaurant">🍽️ 맛집</button>
-    <button class="tab-btn" data-filter="travel">✈️ 여행</button>
-    <button class="tab-btn" data-filter="wedding">💍 결혼</button>
+    <button type="button" class="tab-btn active" data-filter="all">전체</button>
+    <button type="button" class="tab-btn" data-filter="restaurant">🍽️ 맛집</button>
+    <button type="button" class="tab-btn" data-filter="travel">✈️ 여행</button>
+    <button type="button" class="tab-btn" data-filter="wedding">💍 결혼</button>
   </div>
 
   <div class="post-list" id="guideList">
