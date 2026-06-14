@@ -50,6 +50,18 @@ h1 em{color:var(--accent);font-style:normal;}
   font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
   font-weight:700;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--line);
 }
+/* Tabs */
+.tab-container{
+  display:flex;gap:12px;margin-bottom:32px;overflow-x:auto;padding-bottom:8px;
+  border-bottom:1px solid var(--line);
+}
+.tab-btn{
+  padding:8px 16px;border:none;background:transparent;color:var(--muted);
+  font-size:13px;font-weight:600;cursor:pointer;transition:color .2s,border-color .2s;
+  border-bottom:2px solid transparent;white-space:nowrap;
+}
+.tab-btn:hover{color:var(--ink);}
+.tab-btn.active{color:var(--ink);border-bottom-color:var(--accent);}
 .post-list{display:flex;flex-direction:column;gap:0;}
 .post-item{
   display:flex;align-items:baseline;justify-content:space-between;gap:16px;
@@ -58,6 +70,7 @@ h1 em{color:var(--accent);font-style:normal;}
 }
 .post-item:hover{opacity:.7;}
 .post-item:last-child{border-bottom:none;}
+.post-item.hidden{display:none;}
 .post-title{font-size:16px;font-weight:600;color:var(--ink);}
 .post-date{font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;}
 .post-tag{
@@ -96,6 +109,32 @@ footer a:hover{color:var(--ink);}
     if(a.dataset.to!=='blog') a.href=base+'to='+a.dataset.to+'&utm_source='+src+'&utm_medium=nav';
   });
 })();
+
+// 탭 필터 로직
+document.addEventListener('DOMContentLoaded', function(){
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var guideItems = document.querySelectorAll('#guideList .post-item');
+
+  tabBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var filter = this.dataset.filter;
+
+      // 탭 활성화
+      tabBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      // 아이템 필터
+      guideItems.forEach(function(item){
+        var category = item.dataset.category;
+        if(filter === 'all' || category === filter){
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+});
 </script>
 
 <div class="hero">
@@ -105,33 +144,46 @@ footer a:hover{color:var(--ink);}
 </div>
 
 <div class="posts">
-  <div class="section-label">특별 가이드</div>
-  <div class="post-list">
-    <a href="sadang_dashboard.html" class="post-item" style="border-bottom: 1px solid var(--line);">
+  <div class="section-label">가이드 & 프로젝트</div>
+
+  <div class="tab-container">
+    <button class="tab-btn active" data-filter="all">전체</button>
+    <button class="tab-btn" data-filter="restaurant">🍽️ 맛집</button>
+    <button class="tab-btn" data-filter="travel">✈️ 여행</button>
+    <button class="tab-btn" data-filter="wedding">💍 결혼</button>
+  </div>
+
+  <div class="post-list" id="guideList">
+    <a href="sadang_dashboard.html" class="post-item" data-category="restaurant" style="border-bottom: 1px solid var(--line);">
       <div>
         <div class="post-title">🍽️ 사당역 맛집 완벽 가이드</div>
         <div class="post-tag">버티컬 탭 + 14곳</div>
       </div>
     </a>
-    <a href="gangnam_dashboard.html" class="post-item" style="border-bottom: 1px solid var(--line);">
+    <a href="gangnam_dashboard.html" class="post-item" data-category="restaurant" style="border-bottom: 1px solid var(--line);">
       <div>
         <div class="post-title">🍽️ 강남역 저녁 맛집</div>
         <div class="post-tag">깔끔한 7곳</div>
       </div>
     </a>
-    <a href="restaurant/nakseongdae-complete.html" class="post-item">
+    <a href="restaurant/nakseongdae-complete.html" class="post-item" data-category="restaurant" style="border-bottom: 1px solid var(--line);">
       <div>
         <div class="post-title">🍽️ 낙성대/샤로수길 식당 완전 정보</div>
         <div class="post-tag">14곳 + 신뢰도 점수</div>
       </div>
     </a>
-  </div>
-</div>
-
-<div class="posts">
-  <div class="section-label">최근 글</div>
-  <div class="post-list" id="postList">
-    <div class="empty">아직 글이 없습니다. 곧 첫 글을 올릴게요.</div>
+    <a href="https://jemmajeon.github.io/wedding_2026/hawaii-trip-dashboard.html" class="post-item" data-category="travel" style="border-bottom: 1px solid var(--line);">
+      <div>
+        <div class="post-title">✈️ 하와이 여행 가이드</div>
+        <div class="post-tag">일정·숙박·음식</div>
+      </div>
+    </a>
+    <a href="https://jemmajeon.github.io/wedding_2026/wedding-dashboard.html" class="post-item" data-category="wedding">
+      <div>
+        <div class="post-title">💍 결혼 준비 체크리스트</div>
+        <div class="post-tag">호암교수회관 · 식순</div>
+      </div>
+    </a>
   </div>
 </div>
 
