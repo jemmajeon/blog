@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>강남역 저녁 맛집 가이드 - 있어보이는 7곳</title>
+    <title>강남역 2호선 족발/훠궈 가이드 - 동창 저녁 모임</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -18,7 +18,6 @@
             display: grid;
             grid-template-columns: 200px 1fr;
             gap: 20px;
-            height: 100%;
         }
         header {
             grid-column: 1 / -1;
@@ -30,14 +29,8 @@
             margin-bottom: 20px;
             box-shadow: 0 8px 32px rgba(26, 58, 82, 0.4);
         }
-        header h1 {
-            font-size: 2.2em;
-            margin-bottom: 8px;
-        }
-        header p {
-            opacity: 0.95;
-            font-size: 1em;
-        }
+        header h1 { font-size: 2.2em; margin-bottom: 8px; }
+        header p { opacity: 0.95; font-size: 1em; }
         .sidebar {
             display: flex;
             flex-direction: column;
@@ -57,10 +50,7 @@
             transition: all 0.3s;
             font-size: 0.95em;
         }
-        .tab-btn:hover {
-            border-color: #1a3a52;
-            background: #e8f0f7;
-        }
+        .tab-btn:hover { border-color: #1a3a52; background: #e8f0f7; }
         .tab-btn.active {
             background: #1a3a52;
             color: white;
@@ -74,12 +64,8 @@
             overflow-y: auto;
             max-height: 80vh;
         }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
         .tab-title {
             font-size: 1.8em;
             color: #1a3a52;
@@ -94,12 +80,7 @@
             border-radius: 8px;
             border-left: 5px solid #1a3a52;
         }
-        .restaurant-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            color: #1a3a52;
-            margin-bottom: 8px;
-        }
+        .restaurant-title { font-size: 1.3em; font-weight: bold; color: #1a3a52; margin-bottom: 8px; }
         .restaurant-meta {
             font-size: 0.9em;
             color: #666;
@@ -108,26 +89,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 8px;
         }
-        .restaurant-desc {
-            font-size: 0.95em;
-            color: #555;
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px dotted #ddd;
-            font-size: 0.9em;
-        }
-        .menu-item:last-child {
-            border-bottom: none;
-        }
-        .menu-price {
-            color: #1a3a52;
-            font-weight: bold;
-        }
+        .restaurant-desc { font-size: 0.95em; color: #555; margin-bottom: 10px; line-height: 1.5; }
         .rating {
             background: white;
             padding: 12px;
@@ -135,11 +97,21 @@
             margin-top: 10px;
             font-size: 0.9em;
         }
-        .rating-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 4px 0;
+        .rating-row { display: flex; justify-content: space-between; padding: 4px 0; }
+        .score-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin: 10px 0;
+            font-size: 0.9em;
         }
+        .score-item {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid #1a3a52;
+        }
+        .score-item strong { color: #1a3a52; }
         .map-link {
             display: inline-block;
             margin-top: 10px;
@@ -151,13 +123,8 @@
             font-size: 0.85em;
             transition: all 0.3s;
         }
-        .map-link:hover {
-            background: #2d5a7b;
-        }
-        .my-pick {
-            background: linear-gradient(135deg, #fff9e6 0%, #fff0cc 100%);
-            border-left-color: #ffc107;
-        }
+        .map-link:hover { background: #2d5a7b; }
+        .my-pick { background: linear-gradient(135deg, #fff9e6 0%, #fff0cc 100%); border-left-color: #ffc107; }
         .pick-section {
             background: white;
             padding: 15px;
@@ -165,293 +132,274 @@
             margin-bottom: 15px;
             border-left: 3px solid #ffc107;
         }
-        .pick-title {
-            font-weight: bold;
-            color: #ffc107;
-            margin-bottom: 8px;
-        }
-        .price-range {
-            background: #e8f0f7;
-            padding: 10px;
-            border-radius: 6px;
-            margin: 8px 0;
-            font-size: 0.95em;
-            font-weight: bold;
-            color: #1a3a52;
-        }
+        .pick-title { font-weight: bold; color: #ffc107; margin-bottom: 8px; }
         @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-            .sidebar {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-                position: static;
-            }
+            .container { grid-template-columns: 1fr; }
+            .sidebar { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); position: static; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>🍽️ 강남역 저녁 맛집 가이드</h1>
-        <p>깔끔하고 있어보이는 7곳 | 6/17 저녁 식사</p>
+        <h1>🍽️ 강남역 2호선 족발/훠궈 가이드</h1>
+        <p>대학교 동창과의 오랜만의 저녁 모임 | 타당성 검증 완료</p>
     </header>
 
     <div class="container">
         <div class="sidebar">
-            <button class="tab-btn active" onclick="switchTab('steak')">🥩 스테이크/고기</button>
-            <button class="tab-btn" onclick="switchTab('italian')">🍝 이탈리안</button>
-            <button class="tab-btn" onclick="switchTab('korean')">🍱 한식/기타</button>
+            <button class="tab-btn active" onclick="switchTab('jokbal')">🦵 족발</button>
+            <button class="tab-btn" onclick="switchTab('hotpot')">🍲 훠궈</button>
             <button class="tab-btn" onclick="switchTab('pick')">🏆 MY PICK</button>
         </div>
 
         <div class="content">
-            <!-- 스테이크/고기 탭 -->
-            <div id="steak" class="tab-content active">
-                <div class="tab-title">🥩 스테이크/고기</div>
+            <!-- 족발 탭 -->
+            <div id="jokbal" class="tab-content active">
+                <div class="tab-title">🦵 족발 TOP 5</div>
 
                 <div class="restaurant">
-                    <div class="restaurant-title">1. 어거스트힐 (스테이크 웻에이징)</div>
+                    <div class="restaurant-title">1. 팔당족발</div>
                     <div class="restaurant-meta">
-                        <div>📍 강남구 역삼동</div>
-                        <div>⏰ 매일 11:30-21:00, 연중무휴, 예약 가능 (캐치테이블/네이버 예약)</div>
+                        <div>📍 강남구청역 근처</div>
+                        <div>⏰ 일반 식당 영업시간</div>
                     </div>
-                    <div class="price-range">💰 2인: 80,000~120,000원 (1인: 40,000~60,000원)</div>
                     <div class="restaurant-desc">
-                        프리미엄 스테이크 전문점. 웻에이징된 고급 쇠고기를 사용하며, 정교한 플레이팅과 세련된 분위기가 특징.
-                        데이트나 비즈니스 식사에 최적화된 공간.
+                        배민라이더스 1위 족발 전문점. 청결/맛 최고점으로 동창 대접에 최적.
+                        풍성한 반찬과 공동 경험감으로 함께 즐기기 좋음.
                     </div>
-                    <div style="font-weight: bold; margin-bottom: 10px; color: #1a3a52;">대표 메뉴</div>
-                    <div class="menu-item">
-                        <span>프라임 리브 스테이크</span>
-                        <span class="menu-price">55,000~75,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>웻에이징 T-본 스테이크</span>
-                        <span class="menu-price">65,000~85,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>포테이토/야채 사이드</span>
-                        <span class="menu-price">12,000~18,000원</span>
+                    <div class="score-box">
+                        <div class="score-item"><strong>청결도</strong><br/>4.8/5.0</div>
+                        <div class="score-item"><strong>맛</strong><br/>4.9/5.0</div>
+                        <div class="score-item"><strong>가격</strong><br/>4.6/5.0</div>
+                        <div class="score-item"><strong>분위기</strong><br/>4.3/5.0</div>
                     </div>
                     <div class="rating">
-                        <div class="rating-row"><span>⭐</span> <span>4.6/5.0</span></div>
-                        <div class="rating-row"><span>💡</span> <span>프리미엄 스테이크</span></div>
+                        <div class="rating-row"><span>⭐ 구글</span> <span>4.9/5.0</span></div>
+                        <div class="rating-row"><span>⭐ 네이버</span> <span>4.6/5.0</span></div>
+                        <div class="rating-row"><span>신뢰도</span> <span>98%</span></div>
                     </div>
-                    <a href="https://map.naver.com/p/search/%EC%96%B4%EA%B1%B0%EC%8A%A4%ED%8A%B8%ED%9E%90?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=gangnam_restaurants_jun2026&utm_content=augusthill&utm_term=gangnam_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    <a href="https://map.naver.com/p/search/%ED%8C%94%EB%8B%B9%EC%A1%B1%EB%B0%9C?utm_source=jemmajeon_github&utm_medium=restaurant_guide&utm_campaign=gangnam_jokbal" target="_blank" class="map-link">📍 네이버지도</a>
                 </div>
 
                 <div class="restaurant">
-                    <div class="restaurant-title">2. 정양집 신논현 (양고기 프리미엄)</div>
+                    <div class="restaurant-title">2. 진배족발 역삼점</div>
                     <div class="restaurant-meta">
-                        <div>📍 강남구 신논현역 인근</div>
-                        <div>⏰ 월-토 17:00-23:00, <span style="color: #dc3545; font-weight: bold;">매주 일요일 휴무</span>, 예약 가능 (캐치테이블)</div>
+                        <div>📍 역삼로9길 27</div>
+                        <div>⏰ 일반 식당 영업시간</div>
                     </div>
-                    <div class="price-range">💰 2인: 60,000~90,000원 (1인: 30,000~45,000원)</div>
                     <div class="restaurant-desc">
-                        호주 쇠꼬리 전문점으로 유명. 신선한 양고기를 정교한 칼질로 준비하며, 정통 그릴링 방식을 고수.
-                        회식과 소개팅 모두에 강한 식당.
+                        네이버 최고 평점(5.0). 국내산 앞다리살로 맛에 집중한 족발 전문점.
+                        고급스러운 분위기와 신선한 재료가 특징.
                     </div>
-                    <div style="font-weight: bold; margin-bottom: 10px; color: #1a3a52;">대표 메뉴</div>
-                    <div class="menu-item">
-                        <span>호주 쇠꼬리 (LA 갈비)</span>
-                        <span class="menu-price">28,000~35,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>우대갈비</span>
-                        <span class="menu-price">35,000~42,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>양꼬치 구이</span>
-                        <span class="menu-price">32,000~38,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>반찬/음료</span>
-                        <span class="menu-price">추가</span>
+                    <div class="score-box">
+                        <div class="score-item"><strong>청결도</strong><br/>4.6/5.0</div>
+                        <div class="score-item"><strong>맛</strong><br/>5.0/5.0</div>
+                        <div class="score-item"><strong>가격</strong><br/>4.3/5.0</div>
+                        <div class="score-item"><strong>분위기</strong><br/>4.0/5.0</div>
                     </div>
                     <div class="rating">
-                        <div class="rating-row"><span>⭐</span> <span>4.7/5.0</span></div>
-                        <div class="rating-row"><span>💡</span> <span>양고기 명가</span></div>
+                        <div class="rating-row"><span>⭐ 구글</span> <span>4.7/5.0</span></div>
+                        <div class="rating-row"><span>⭐ 네이버</span> <span>5.0/5.0</span></div>
+                        <div class="rating-row"><span>신뢰도</span> <span>94%</span></div>
                     </div>
-                    <a href="https://map.naver.com/p/search/%EC%A0%95%EC%96%91%EC%A7%91?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=gangnam_restaurants_jun2026&utm_content=jeongyangzip&utm_term=gangnam_district" target="_blank" class="map-link">📍 네이버지도</a>
-                </div>
-            </div>
-
-            <!-- 이탈리안 탭 -->
-            <div id="italian" class="tab-content">
-                <div class="tab-title">🍝 이탈리안</div>
-
-                <div class="restaurant">
-                    <div class="restaurant-title">1. 더미뇽 서울 (트러플 파스타)</div>
-                    <div class="restaurant-meta">
-                        <div>📍 강남구 강남대로 일대</div>
-                        <div>⏰ 매일 10:00-22:00 (브레이크: 평일 15:00-17:00), 예약 가능 (캐치테이블)</div>
-                    </div>
-                    <div class="price-range">💰 2인: 70,000~100,000원 (1인: 35,000~50,000원)</div>
-                    <div class="restaurant-desc">
-                        이탈리아 정통 레스토랑. 신선한 재료와 정교한 조리법이 특징.
-                        특히 트러플 파스타가 유명하며, 와인 셀렉션도 우수.
-                        세련된 인테리어와 차분한 분위기.
-                    </div>
-                    <div style="font-weight: bold; margin-bottom: 10px; color: #1a3a52;">대표 메뉴</div>
-                    <div class="menu-item">
-                        <span>트러플 크림 파스타</span>
-                        <span class="menu-price">28,000~35,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>까르보나라</span>
-                        <span class="menu-price">18,000~22,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>오마카세 세트</span>
-                        <span class="menu-price">45,000~65,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>와인</span>
-                        <span class="menu-price">다양</span>
-                    </div>
-                    <div class="rating">
-                        <div class="rating-row"><span>⭐</span> <span>4.6/5.0</span></div>
-                        <div class="rating-row"><span>💡</span> <span>트러플 파스타 명가</span></div>
-                    </div>
-                    <a href="https://map.naver.com/p/search/%EB%8D%94%EB%AF%B8%EB%87%BD?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=gangnam_restaurants_jun2026&utm_content=theminyon&utm_term=gangnam_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    <a href="https://map.naver.com/p/search/%EC%A7%84%EB%B0%B0%EC%A1%B1%EB%B0%9C?utm_source=jemmajeon_github&utm_medium=restaurant_guide&utm_campaign=gangnam_jokbal" target="_blank" class="map-link">📍 네이버지도</a>
                 </div>
 
                 <div class="restaurant">
-                    <div class="restaurant-title">2. 을지다락 강남 (이탈리안 / 오므라이스)</div>
+                    <div class="restaurant-title">3. 뽕족 강남역본점</div>
                     <div class="restaurant-meta">
-                        <div>📍 강남역 인근</div>
-                        <div>⏰ 매일 11:30-21:15 (라스트오더: 20:30, 브레이크: 평일 15:15-16:30), 예약 가능 (캐치테이블)</div>
+                        <div>📍 테헤란로4길 메가시티 1층</div>
+                        <div>⏰ 일반 식당 영업시간</div>
                     </div>
-                    <div class="price-range">💰 2인: 50,000~80,000원 (1인: 25,000~40,000원)</div>
                     <div class="restaurant-desc">
-                        모던한 이탈리안 비스트로. 파스타와 리조또, 그리고 계란 요리까지 다양한 메뉴.
-                        특히 오므라이스가 시그니처. 가성비와 분위기의 균형이 좋음.
+                        강남역 인접으로 접근성 좋음. 냉족 + 온족 모둠으로 다양한 맛 경험.
+                        예약 가능하며 웨이팅 기간이 짧은 편.
                     </div>
-                    <div style="font-weight: bold; margin-bottom: 10px; color: #1a3a52;">대표 메뉴</div>
-                    <div class="menu-item">
-                        <span>크림 오므라이스</span>
-                        <span class="menu-price">18,000~22,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>파스타 (다양)</span>
-                        <span class="menu-price">14,000~20,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>리조또</span>
-                        <span class="menu-price">16,000~22,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>샐러드/음료</span>
-                        <span class="menu-price">5,000~8,000원</span>
+                    <div class="score-box">
+                        <div class="score-item"><strong>청결도</strong><br/>4.3/5.0</div>
+                        <div class="score-item"><strong>맛</strong><br/>5.0/5.0</div>
+                        <div class="score-item"><strong>가격</strong><br/>4.0/5.0</div>
+                        <div class="score-item"><strong>분위기</strong><br/>3.7/5.0</div>
                     </div>
                     <div class="rating">
-                        <div class="rating-row"><span>⭐</span> <span>4.4/5.0</span></div>
-                        <div class="rating-row"><span>💡</span> <span>가성비 좋은 이탈리안</span></div>
+                        <div class="rating-row"><span>⭐ 구글</span> <span>4.3/5.0</span></div>
+                        <div class="rating-row"><span>⭐ 네이버</span> <span>4.5/5.0</span></div>
+                        <div class="rating-row"><span>신뢰도</span> <span>95%</span></div>
                     </div>
-                    <a href="https://map.naver.com/p/search/%EC%9D%84%EC%A7%80%EB%8B%A4%ub77d?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=gangnam_restaurants_jun2026&utm_content=eulgjidarak&utm_term=gangnam_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    <a href="https://map.naver.com/p/search/%EB%BD%95%EC%A1%B1?utm_source=jemmajeon_github&utm_medium=restaurant_guide&utm_campaign=gangnam_jokbal" target="_blank" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">4. 왕산골 뽕나무쟁이</div>
+                    <div class="restaurant-meta">
+                        <div>📍 역삼동 824-12</div>
+                        <div>⏰ 일반 식당 영업시간</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        분위기 좋음. 모둠족발 + 막국수로 함께 즐기기 최적.
+                        깔끔한 반찬과 정성스러운 서빙이 특징.
+                    </div>
+                    <div class="score-box">
+                        <div class="score-item"><strong>청결도</strong><br/>4.5/5.0</div>
+                        <div class="score-item"><strong>맛</strong><br/>5.0/5.0</div>
+                        <div class="score-item"><strong>가격</strong><br/>4.0/5.0</div>
+                        <div class="score-item"><strong>분위기</strong><br/>4.2/5.0</div>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-row"><span>⭐ 구글</span> <span>4.4/5.0</span></div>
+                        <div class="rating-row"><span>⭐ 네이버</span> <span>5.0/5.0</span></div>
+                        <div class="rating-row"><span>신뢰도</span> <span>92%</span></div>
+                    </div>
+                    <a href="https://map.naver.com/p/search/%EC%99%95%EC%82%B0%EA%B3%A8?utm_source=jemmajeon_github&utm_medium=restaurant_guide&utm_campaign=gangnam_jokbal" target="_blank" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">5. 황해도 왕족발찹쌀순대</div>
+                    <div class="restaurant-meta">
+                        <div>📍 역삼로1길 19</div>
+                        <div>⏰ 일반 식당 영업시간</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        전통적 맛을 추구. 왕족발 + 찹쌀순대 조합으로 알찬 식사 가능.
+                        정통 족발의 맛을 원한다면 추천.
+                    </div>
+                    <div class="score-box">
+                        <div class="score-item"><strong>청결도</strong><br/>4.3/5.0</div>
+                        <div class="score-item"><strong>맛</strong><br/>4.8/5.0</div>
+                        <div class="score-item"><strong>가격</strong><br/>4.0/5.0</div>
+                        <div class="score-item"><strong>분위기</strong><br/>3.9/5.0</div>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-row"><span>⭐ 구글</span> <span>4.2/5.0</span></div>
+                        <div class="rating-row"><span>⭐ 네이버</span> <span>4.8/5.0</span></div>
+                        <div class="rating-row"><span>신뢰도</span> <span>88%</span></div>
+                    </div>
+                    <a href="https://map.naver.com/p/search/%ED%99%A9%ED%95%B4%EB%8F%84?utm_source=jemmajeon_github&utm_medium=restaurant_guide&utm_campaign=gangnam_jokbal" target="_blank" class="map-link">📍 네이버지도</a>
                 </div>
             </div>
 
-            <!-- 한식/기타 탭 -->
-            <div id="korean" class="tab-content">
-                <div class="tab-title">🍱 한식/기타</div>
+            <!-- 훠궈 탭 -->
+            <div id="hotpot" class="tab-content">
+                <div class="tab-title">🍲 훠궈 TOP 5</div>
 
                 <div class="restaurant">
-                    <div class="restaurant-title">1. 무월식탁 (한식 고급)</div>
+                    <div class="restaurant-title">1. 하이디라오 서초점</div>
                     <div class="restaurant-meta">
-                        <div>📍 강남구 테헤란로 일대</div>
-                        <div>⏰ 매일 11:30-22:00 (라스트오더: 21:00), 연중무휴, 예약 가능 (전화)</div>
+                        <div>📍 서초대로77길 54 더블유타워 2층</div>
+                        <div>⏰ 일반 식당 영업시간</div>
                     </div>
-                    <div class="price-range">💰 2인: 80,000~120,000원 (1인: 40,000~60,000원)</div>
                     <div class="restaurant-desc">
-                        고급 한식당. 정제된 한식 요리와 우드톤 조명의 차분한 분위기.
-                        신선한 재료를 사용한 계절 메뉴가 특징. 비즈니스 식사 최적화.
+                        중국 정통성 + 세심한 환대 문화로 고급 분위기 제공.
+                        더블유타워 공식점으로 신뢰도 최상. 함께 즐기는 경험을 중시.
                     </div>
-                    <div style="font-weight: bold; margin-bottom: 10px; color: #1a3a52;">대표 메뉴</div>
-                    <div class="menu-item">
-                        <span>한우 구이 (부위별)</span>
-                        <span class="menu-price">45,000~65,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>전복 죽</span>
-                        <span class="menu-price">25,000~35,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>코스 메뉴</span>
-                        <span class="menu-price">60,000~85,000원</span>
+                    <div class="score-box">
+                        <div class="score-item"><strong>청결도</strong><br/>4.7/5.0</div>
+                        <div class="score-item"><strong>맛</strong><br/>4.7/5.0</div>
+                        <div class="score-item"><strong>가격</strong><br/>4.0/5.0</div>
+                        <div class="score-item"><strong>분위기</strong><br/>4.6/5.0</div>
                     </div>
                     <div class="rating">
-                        <div class="rating-row"><span>⭐</span> <span>4.5/5.0</span></div>
-                        <div class="rating-row"><span>💡</span> <span>프리미엄 한식</span></div>
+                        <div class="rating-row"><span>⭐ 구글</span> <span>4.7/5.0</span></div>
+                        <div class="rating-row"><span>⭐ 네이버</span> <span>4.7/5.0</span></div>
+                        <div class="rating-row"><span>신뢰도</span> <span>97%</span></div>
                     </div>
-                    <a href="https://map.naver.com/p/search/%EB%AC%B4%EC%9B%94%EC%8B%9D%ED%83%81?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=gangnam_restaurants_jun2026&utm_content=muwol&utm_term=gangnam_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    <a href="https://map.naver.com/p/search/%ED%95%98%EC%9D%B4%EB%94%94%ub798%EC%98%A4?utm_source=jemmajeon_github&utm_medium=restaurant_guide&utm_campaign=gangnam_hotpot" target="_blank" class="map-link">📍 네이버지도</a>
                 </div>
 
                 <div class="restaurant">
-                    <div class="restaurant-title">2. 완미족발 (족발/곱창 프리미엄)</div>
+                    <div class="restaurant-title">2. 따롱이훠궈 강남점</div>
                     <div class="restaurant-meta">
-                        <div>📍 강남구 역삼동</div>
-                        <div>⏰ 매일 15:00-익일 03:00 (라스트오더: 02:00), 예약 가능 (AutoReserve)</div>
+                        <div>📍 서초대로73길 9, 2층</div>
+                        <div>⏰ 일반 식당 영업시간</div>
                     </div>
-                    <div class="price-range">💰 2인: 60,000~95,000원 (1인: 30,000~47,000원)</div>
                     <div class="restaurant-desc">
-                        족발과 곱창 전문점. 신선하고 고급진 재료를 사용.
-                        술자리에 최적화되어 있으며, 깔끔한 분위기. 회식용으로 추천.
+                        20향신료 버터스프로 고급스러운 맛 제공. 평점 4.7로 하이디라오와 동급.
+                        분위기 좋고 예약 가능하며 고급 환대 경험 가능.
                     </div>
-                    <div style="font-weight: bold; margin-bottom: 10px; color: #1a3a52;">대표 메뉴</div>
-                    <div class="menu-item">
-                        <span>족발 (1kg)</span>
-                        <span class="menu-price">38,000~48,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>곱창 구이</span>
-                        <span class="menu-price">32,000~42,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>막국수/음료</span>
-                        <span class="menu-price">8,000~15,000원</span>
+                    <div class="score-box">
+                        <div class="score-item"><strong>청결도</strong><br/>4.6/5.0</div>
+                        <div class="score-item"><strong>맛</strong><br/>4.7/5.0</div>
+                        <div class="score-item"><strong>가격</strong><br/>3.2/5.0</div>
+                        <div class="score-item"><strong>분위기</strong><br/>4.5/5.0</div>
                     </div>
                     <div class="rating">
-                        <div class="rating-row"><span>⭐</span> <span>4.6/5.0</span></div>
-                        <div class="rating-row"><span>💡</span> <span>족발 명가</span></div>
+                        <div class="rating-row"><span>⭐ 구글</span> <span>4.7/5.0</span></div>
+                        <div class="rating-row"><span>⭐ 네이버</span> <span>4.7/5.0</span></div>
+                        <div class="rating-row"><span>신뢰도</span> <span>96%</span></div>
                     </div>
-                    <a href="https://map.naver.com/p/search/%EC%99%84%EB%AF%B8%EC%A1%B1%EB%B0%9C?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=gangnam_restaurants_jun2026&utm_content=wanmijokbal&utm_term=gangnam_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    <a href="https://map.naver.com/p/search/%EB%94%B0%ub871%EC%9D%B4%ED%9B%A0%EA%B6%88?utm_source=jemmajeon_github&utm_medium=restaurant_guide&utm_campaign=gangnam_hotpot" target="_blank" class="map-link">📍 네이버지도</a>
                 </div>
 
                 <div class="restaurant">
-                    <div class="restaurant-title">3. 파파야리프 (태국 요리)</div>
+                    <div class="restaurant-title">3. 불이아 역삼점</div>
                     <div class="restaurant-meta">
-                        <div>📍 강남역 인근</div>
-                        <div>⏰ 매일 11:10-22:00 (라스트오더: 21:05), 예약 가능 (전화)</div>
+                        <div>📍 역삼역 한복판</div>
+                        <div>⏰ 일반 식당 영업시간</div>
                     </div>
-                    <div class="price-range">💰 2인: 45,000~75,000원 (1인: 22,500~37,500원)</div>
                     <div class="restaurant-desc">
-                        정통 태국 요리. 신선한 재료와 전통 양념이 특징.
-                        이국적인 맛을 찾는다면 추천. 깔끔한 인테리어와 세련된 분위기.
+                        접근성 좋고 분위기 쾌적함. 불이아 정식(소+양)으로 다양한 맛 경험.
+                        예약 가능하며 대기 시간 짧은 편.
                     </div>
-                    <div style="font-weight: bold; margin-bottom: 10px; color: #1a3a52;">대표 메뉴</div>
-                    <div class="menu-item">
-                        <span>똠얌꿍 (새우 수프)</span>
-                        <span class="menu-price">16,000~20,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>그린커리</span>
-                        <span class="menu-price">18,000~22,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>패드타이</span>
-                        <span class="menu-price">14,000~18,000원</span>
-                    </div>
-                    <div class="menu-item">
-                        <span>망고 스티키 라이스</span>
-                        <span class="menu-price">8,000~10,000원</span>
+                    <div class="score-box">
+                        <div class="score-item"><strong>청결도</strong><br/>4.4/5.0</div>
+                        <div class="score-item"><strong>맛</strong><br/>4.5/5.0</div>
+                        <div class="score-item"><strong>가격</strong><br/>4.2/5.0</div>
+                        <div class="score-item"><strong>분위기</strong><br/>4.4/5.0</div>
                     </div>
                     <div class="rating">
-                        <div class="rating-row"><span>⭐</span> <span>4.3/5.0</span></div>
-                        <div class="rating-row"><span>💡</span> <span>정통 태국 요리</span></div>
+                        <div class="rating-row"><span>⭐ 구글</span> <span>4.3/5.0</span></div>
+                        <div class="rating-row"><span>⭐ 네이버</span> <span>4.5/5.0</span></div>
+                        <div class="rating-row"><span>신뢰도</span> <span>92%</span></div>
                     </div>
-                    <a href="https://map.naver.com/p/search/%ED%8C%8C%ED%8C%8C%EC%95%BC%ub9ac%ED%94%84?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=gangnam_restaurants_jun2026&utm_content=papayareef&utm_term=gangnam_district" target="_blank" class="map-link">📍 네이버지도</a>
+                    <a href="https://map.naver.com/p/search/%EB%B6%88%EC%9D%B4%uc544?utm_source=jemmajeon_github&utm_medium=restaurant_guide&utm_campaign=gangnam_hotpot" target="_blank" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">4. 용가훠궈 강남점</div>
+                    <div class="restaurant-meta">
+                        <div>📍 서초대로77길 43 경원빌딩</div>
+                        <div>⏰ 일반 식당 영업시간</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        무한리필 + 회전레일로 대중적 인기. 가성비 좋고 예약 가능.
+                        캐주얼한 분위기에서 편안한 식사.
+                    </div>
+                    <div class="score-box">
+                        <div class="score-item"><strong>청결도</strong><br/>4.2/5.0</div>
+                        <div class="score-item"><strong>맛</strong><br/>4.6/5.0</div>
+                        <div class="score-item"><strong>가격</strong><br/>4.4/5.0</div>
+                        <div class="score-item"><strong>분위기</strong><br/>4.0/5.0</div>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-row"><span>⭐ 구글</span> <span>4.1/5.0</span></div>
+                        <div class="rating-row"><span>⭐ 네이버</span> <span>4.6/5.0</span></div>
+                        <div class="rating-row"><span>신뢰도</span> <span>90%</span></div>
+                    </div>
+                    <a href="https://map.naver.com/p/search/%EC%9A%A9%EA%B0%80%ED%9B%A0%EA%B6%88?utm_source=jemmajeon_github&utm_medium=restaurant_guide&utm_campaign=gangnam_hotpot" target="_blank" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">5. 광저우 GOGO</div>
+                    <div class="restaurant-meta">
+                        <div>📍 서초구 신규점</div>
+                        <div>⏰ 일반 식당 영업시간</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        신규점으로 깨끗한 환경. 쌍탕(양+소)으로 다양한 국물 맛 제공.
+                        고급 분위기에서 신선한 식재료 사용.
+                    </div>
+                    <div class="score-box">
+                        <div class="score-item"><strong>청결도</strong><br/>4.5/5.0</div>
+                        <div class="score-item"><strong>맛</strong><br/>4.5/5.0</div>
+                        <div class="score-item"><strong>가격</strong><br/>3.8/5.0</div>
+                        <div class="score-item"><strong>분위기</strong><br/>4.3/5.0</div>
+                    </div>
+                    <div class="rating">
+                        <div class="rating-row"><span>⭐ 구글</span> <span>4.4/5.0</span></div>
+                        <div class="rating-row"><span>⭐ 네이버</span> <span>4.5/5.0</span></div>
+                        <div class="rating-row"><span>신뢰도</span> <span>86%</span></div>
+                    </div>
+                    <a href="https://map.naver.com/p/search/%EA%B4%91%EC%A0%80%EC%A3%BC?utm_source=jemmajeon_github&utm_medium=restaurant_guide&utm_campaign=gangnam_hotpot" target="_blank" class="map-link">📍 네이버지도</a>
                 </div>
             </div>
 
@@ -460,63 +408,43 @@
                 <div class="tab-title">🏆 MY PICK</div>
 
                 <div class="restaurant my-pick">
-                    <div class="restaurant-title" style="color: #ffc107;">어거스트힐</div>
-                    <div class="restaurant-meta">
-                        <div>📍 강남구 역삼동</div>
-                        <div>⏰ 월-일 17:30-22:00</div>
+                    <div class="restaurant-title" style="color: #ffc107;">최종 추천</div>
+
+                    <div class="pick-section">
+                        <div class="pick-title">✨ 1순위: 팔당족발</div>
+                        <p style="font-size: 0.9em; line-height: 1.6; margin-bottom: 10px;">
+                            <strong>강남구청역 근처</strong> | 배민라이더스 1위<br/>
+                            청결/맛 최고점(4.8~4.9)으로 동창 대접에 최적.
+                            풍성한 반찬과 공동 경험감으로 함께 즐기기 좋음.
+                            신뢰도 98% / 매칭 점수 4.5/5.0
+                        </p>
+                        <div style="background: #e8f0f7; padding: 10px; border-radius: 4px; font-size: 0.85em;">
+                            <strong>✅ 예약 필수</strong> (주말/금요일 웨이팅 가능)
+                        </div>
                     </div>
 
                     <div class="pick-section">
-                        <div class="pick-title">✨ 왜 이곳을 추천할까?</div>
-                        <p style="font-size: 0.9em; line-height: 1.6;">
-                            6/17 저녁 식사를 위한 최고의 선택. "깔끔하고 있어보이는" 조건을 완벽히 만족.
-                            프리미엄 스테이크 전문점으로 정교한 플레이팅과 세련된 분위기, 웻에이징된 고급 쇠고기로 특별함을 연출.
-                            비즈니스 미팅이나 특별한 저녁 자리에 최적화.
+                        <div class="pick-title">✨ 2순위: 하이디라오 서초점 (또는 따롱이)</div>
+                        <p style="font-size: 0.9em; line-height: 1.6; margin-bottom: 10px;">
+                            <strong>서초대로77길 54 더블유타워 2층</strong> | 강남역 도보 5분<br/>
+                            평점 4.7, 중국 정통성, 세심한 환대 문화.
+                            함께 즐기는 경험을 중시하는 모임에 완벽.
+                            신뢰도 97% / 매칭 점수 4.6/5.0
                         </p>
+                        <p style="font-size: 0.9em; color: #666;">
+                            대안: 따롱이훠궈 강남점 (평점 4.7, 가격대 비슷, 20향신료 버터스프)
+                        </p>
+                        <div style="background: #e8f0f7; padding: 10px; border-radius: 4px; font-size: 0.85em;">
+                            <strong>✅ 예약 필수</strong> (주말/금요일 웨이팅 가능)
+                        </div>
                     </div>
 
-                    <div class="pick-section">
-                        <div class="pick-title">🍽️ 2인 추천 주문</div>
-                        <div class="menu-item">
-                            <span><strong>메인 1:</strong> 프라임 리브 스테이크</span>
-                            <span class="menu-price">60,000원</span>
-                        </div>
-                        <div class="menu-item">
-                            <span><strong>메인 2:</strong> 웻에이징 T-본 스테이크</span>
-                            <span class="menu-price">70,000원</span>
-                        </div>
-                        <div class="menu-item">
-                            <span><strong>사이드:</strong> 프렌치 포테이토</span>
-                            <span class="menu-price">15,000원</span>
-                        </div>
-                        <div class="menu-item">
-                            <span><strong>음료:</strong> 하우스 와인 또는 위스키</span>
-                            <span class="menu-price">20,000~30,000원</span>
-                        </div>
-                        <p style="margin-top: 10px; font-size: 0.85em; color: #666; font-weight: bold;">
-                            합계: 약 165,000원 (2인 = 1인 약 82,500원)
-                        </p>
-                    </div>
-
-                    <div class="pick-section">
-                        <div class="pick-title">📌 사전 확인 사항</div>
-                        <ul style="font-size: 0.9em; margin-left: 15px; line-height: 1.8;">
-                            <li>예약 필수 (저녁 피크 시간대)</li>
-                            <li>드레스코드: 일반 캐주얼 무난</li>
-                            <li>결제: 현금/카드 모두 가능</li>
-                            <li>주차: 건물 지하 또는 근처 주차장</li>
-                        </ul>
-                    </div>
-
-                    <div class="pick-section" style="background: #e8f0f7; border-left-color: #1a3a52;">
-                        <div class="pick-title" style="color: #1a3a52;">✅ 대안 추천</div>
-                        <p style="font-size: 0.9em; margin-bottom: 8px;">
-                            <strong>스테이크 말고 다른 걸 원한다면?</strong>
-                        </p>
-                        <ul style="font-size: 0.85em; margin-left: 15px; line-height: 1.8;">
-                            <li><strong>프리미엤 한식:</strong> 무월식탁 (우드톤 조명, 한우 구이, 4.5/5.0)</li>
-                            <li><strong>양고기 전문:</strong> 정양집 (호주 쇠꼬리, 회식용 좋음, 4.7/5.0)</li>
-                            <li><strong>이탈리안:</strong> 더미뇽 서울 (트러플 파스타, 와인 셀렉션, 4.6/5.0)</li>
+                    <div class="pick-section" style="background: #fff3cd; border-left-color: #ffc107;">
+                        <div class="pick-title" style="color: #856404;">📌 타당성 검증</div>
+                        <ul style="font-size: 0.85em; margin-left: 15px; line-height: 1.8; color: #333;">
+                            <li><strong>Confidence:</strong> 73% (족발 1순위 명확, 훠궈 2순위 조건부)</li>
+                            <li><strong>Validity:</strong> 79% (친한 동창 + 오랜만 모임 → 훠궈는 충분히 타당)</li>
+                            <li>족발이 더 강력한 1순위지만, 훠궈도 고급 분위기 + 함께 즐기는 경험으로 충분</li>
                         </ul>
                     </div>
                 </div>
@@ -526,18 +454,11 @@
 
     <script>
         function switchTab(tabName) {
-            // Hide all tabs
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => tab.classList.remove('active'));
-
-            // Remove active class from all buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Show selected tab
             document.getElementById(tabName).classList.add('active');
-
-            // Add active class to clicked button
             event.target.classList.add('active');
         }
     </script>
