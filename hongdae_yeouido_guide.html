@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍대 vs 영등포 가이드 - 2026년 6월 20일 친구 만남</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 20px;
+        }
+        header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #0f3460 0%, #533483 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+        header h1 { font-size: 2.5em; margin-bottom: 8px; }
+        header p { opacity: 0.95; font-size: 1.1em; }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        .tab-btn {
+            padding: 14px 16px;
+            border: 2px solid #444;
+            background: #222;
+            color: #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+        .tab-btn:hover { border-color: #533483; background: #2a2a3e; color: #fff; }
+        .tab-btn.active {
+            background: #533483;
+            color: white;
+            border-color: #533483;
+        }
+        .content {
+            background: #1a1a2e;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            overflow-y: auto;
+            max-height: 85vh;
+            border: 1px solid #333;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-title {
+            font-size: 2em;
+            color: #c0b0ff;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #533483;
+            padding-bottom: 12px;
+        }
+        .restaurant {
+            background: #252540;
+            padding: 22px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #533483;
+            border: 1px solid #3a3a5a;
+        }
+        .restaurant-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #c0b0ff;
+            margin-bottom: 10px;
+        }
+        .restaurant-meta {
+            font-size: 0.9em;
+            color: #aaa;
+            margin-bottom: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .restaurant-desc {
+            font-size: 0.95em;
+            color: #ddd;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .metric-box {
+            background: #1a1a2e;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #c0b0ff;
+            text-align: center;
+        }
+        .metric-label {
+            font-size: 0.8em;
+            color: #999;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        .metric-value {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #ff6b9d;
+        }
+        .score-star {
+            color: #ffd700;
+            letter-spacing: 2px;
+        }
+        .map-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 14px;
+            background: #533483;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85em;
+            transition: all 0.3s;
+        }
+        .map-link:hover { background: #6a4a9f; }
+        .pick-section {
+            background: #2a2a45;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            border-left: 4px solid #ffc107;
+        }
+        .pick-title {
+            font-weight: bold;
+            color: #ffc107;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .pick-desc {
+            font-size: 0.95em;
+            color: #ddd;
+            line-height: 1.6;
+        }
+        .scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollbar::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+        .scrollbar::-webkit-scrollbar-thumb {
+            background: #533483;
+            border-radius: 4px;
+        }
+        .category-badge {
+            display: inline-block;
+            background: #533483;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        @media (max-width: 1024px) {
+            .container { grid-template-columns: 1fr; }
+            .sidebar {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                position: static;
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌙 홍대 vs 영등포</h1>
+        <p>상하이 유학 친구와의 오랜만의 만남 가이드 | 2026년 6월 20일</p>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <button class="tab-btn active" onclick="switchTab('hongdae-food')">🍽️ 홍대 음식점</button>
+            <button class="tab-btn" onclick="switchTab('hongdae-popup')">🎪 홍대 팝업</button>
+            <button class="tab-btn" onclick="switchTab('yeouido-food')">🍽️ 영등포 음식점</button>
+            <button class="tab-btn" onclick="switchTab('yeouido-popup')">🎪 영등포 팝업</button>
+            <button class="tab-btn" onclick="switchTab('pick')">🏆 MY PICK</button>
+        </div>
+
+        <div class="content scrollbar">
+            <!-- 홍대 음식점 -->
+            <div id="hongdae-food" class="tab-content active">
+                <div class="tab-title">🍽️ 홍대 음식점 (12곳)</div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">① 감나무집 기사식당</div>
+                    <div class="category-badge">한식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대입구역 도보 10분</div>
+                        <div>💰 12,000~13,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        돼지불백 시그니처, 넓은 무료 주차장, 24시간 영업으로 언제든 방문 가능
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">② 당인식당</div>
+                    <div class="category-badge">한식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대입구역 도보 8분</div>
+                        <div>💰 13,000~18,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        정갈한 한식의 깊이 있는 맛, 다양한 구성
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">③ 맛이차이나 (Taste I China)</div>
+                    <div class="category-badge">중식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 합정역/상수역 도보 5분</div>
+                        <div>💰 12,000~18,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        신라호텔 팔선 출신 셰프, 상하이 추억 공유 최적, 정통 중식
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">④ 연교 (연남동 딤섬)</div>
+                    <div class="category-badge">중식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대입구역 도보 5분</div>
+                        <div>💰 12,000~15,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        정통 광둥식 딤섬, 정갈한 분위기
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑤ 비스트로주라 (홍대본점)</div>
+                    <div class="category-badge">양식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대입구역 도보 7분</div>
+                        <div>💰 9,900~15,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        극강 가성비 스테이크 (런치 9,900원!), 부채살 스테이크 12,000원
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑥ 메종브리크 / 알페로 홍대</div>
+                    <div class="category-badge">양식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대입구역 도보 12분</div>
+                        <div>💰 18,000~35,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        로맨틱한 고급 분위기, 오리스테이크, 통창 테라스
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑦ 이미커피</div>
+                    <div class="category-badge">카페</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대입구역 도보 4분</div>
+                        <div>💰 5,000~10,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        까눌레, 몽블랑 시그니처, 감성 있는 분위기, 사진 명소
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑧ 빈브라더스 커피하우스</div>
+                    <div class="category-badge">카페</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대 근처 도보 6분</div>
+                        <div>💰 6,000~8,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        고급 커피 전문점, 세련된 분위기, 원두 추천 가능
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑨ 치쿠린 서울 (홍대 이자카야)</div>
+                    <div class="category-badge">일식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 동교로 도보 10분</div>
+                        <div>💰 12,000~25,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        일본 감성 이자카야, 야키토리 오마카세, 사케 페어링
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑩ 소금과다시마 (서교동)</div>
+                    <div class="category-badge">일식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대 근처 도보 8분</div>
+                        <div>💰 15,000~20,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        시오 가라아게 시그니처, 정갈한 분위기, 친구끼리 나눠 먹기 좋음
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑪ 카쿠시타 (연남동)</div>
+                    <div class="category-badge">일식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대입구역 도보 9분</div>
+                        <div>💰 15,000~22,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        창작 일식 요리, 세련된 감성, 장시간 사랑받은 맛집
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑫ 아오이토리 (서교동)</div>
+                    <div class="category-badge">베이커리</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대 근처 도보 6분</div>
+                        <div>💰 5,000~9,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        일본 감성 베이커리, 야키소바빵, 카레빵, 산책하기 좋은 위치
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+            </div>
+
+            <!-- 홍대 팝업 -->
+            <div id="hongdae-popup" class="tab-content">
+                <div class="tab-title">🎪 홍대 팝업스토어 (6월)</div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">① 크록스 X NCT WISH 팝업</div>
+                    <div class="category-badge">패션/브랜드</div>
+                    <div class="restaurant-meta">
+                        <div>📍 AK플라자 홍대 (홍대입구역 도보 5분)</div>
+                        <div>⏰ ~ 06.18 (진행 중)</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        K-팝 아이돌 NCT WISH 협업, 한정판 제품, 높은 팬덤
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">② AK플라자 애니메이션 팝업</div>
+                    <div class="category-badge">애니메이션</div>
+                    <div class="restaurant-meta">
+                        <div>📍 AK플라자 홍대 (홍대입구역 도보 5분)</div>
+                        <div>⏰ 상시 운영</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        하이큐, 꿈빛 파티시엘, 은혼 등 애니 팝업, 높은 덕후층
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">③ KT&G 상상마당</div>
+                    <div class="category-badge">예술/문화</div>
+                    <div class="restaurant-meta">
+                        <div>📍 홍대 일대 (홍대입구역 도보 8분)</div>
+                        <div>⏰ 상시 운영</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        전시, 공연, 영화 상영, 복합 문화 공간
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">④ 올리브영 팝업</div>
+                    <div class="category-badge">뷰티</div>
+                    <div class="restaurant-meta">
+                        <div>📍 올리브영 홍대 (홍대입구역 도보 7분)</div>
+                        <div>⏰ 6월 중순~말</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        K-뷰티 브랜드 협업, 트렌드 제품, 여성 고객층
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑤ 홍대 연남동 팝플레이스</div>
+                    <div class="category-badge">멀티 팝업</div>
+                    <div class="restaurant-meta">
+                        <div>📍 연남동 (홍대입구역 도보 8분)</div>
+                        <div>⏰ 상시 운영</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        다양한 브랜드 팝업, 중·대형 공간, 경의선 숲길 인접
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑥ 무신사 블루 아카이브 팝업</div>
+                    <div class="category-badge">게임</div>
+                    <div class="restaurant-meta">
+                        <div>📍 무신사 스토어 홍대 (홍대입구역 도보 4분)</div>
+                        <div>⏰ ~ 06.13 (진행 중)</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        인기 게임 블루 아카이브, 예약 필수, 높은 팬덤
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 영등포 음식점 -->
+            <div id="yeouido-food" class="tab-content">
+                <div class="tab-title">🍽️ 영등포 음식점 (10곳+)</div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">① 동순각</div>
+                    <div class="category-badge">중식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 영등포역 도보 5분</div>
+                        <div>💰 10,000~15,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        노포 중국집 (50년 내공), 담백한 고추짬뽕, 꾸덕한 간짜장
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">② 송죽장</div>
+                    <div class="category-badge">중식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 영등포역 도보 5분</div>
+                        <div>💰 10,000~20,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        노포 중국집 (70년 영업), 고추 양념 특화, 로컬 단골 많음
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">③ 숨쉬는순두부</div>
+                    <div class="category-badge">아시안</div>
+                    <div class="restaurant-meta">
+                        <div>📍 영등포역 도보 6분</div>
+                        <div>💰 12,000~16,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        순두부찌개 전문, 뜨끈한 맛, 언제든 방문 가능
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">④ 남보 (아시안 레스토랑)</div>
+                    <div class="category-badge">아시안</div>
+                    <div class="restaurant-meta">
+                        <div>📍 여의도역 도보 8분</div>
+                        <div>💰 25,000~35,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        고급 동남아 정통 음식, 세련된 분위기, 로맨틱한 분위기
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑤ 서가앤쿡 (타임스퀘어)</div>
+                    <div class="category-badge">양식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 영등포역 도보 8분 (타임스퀘어 4F)</div>
+                        <div>💰 39,900~45,800원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        한우 스테이크, 직화그릴, 백화점 프리미엄 분위기
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑥ 베르두레</div>
+                    <div class="category-badge">브런치</div>
+                    <div class="restaurant-meta">
+                        <div>📍 영등포구청역 도보 5분</div>
+                        <div>💰 13,000~20,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        캐주얼한 브런치 카페, 파니니, 파스타, 밝은 분위기
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑦ 모리 (카페)</div>
+                    <div class="category-badge">카페</div>
+                    <div class="restaurant-meta">
+                        <div>📍 영등포역 도보 10분</div>
+                        <div>💰 7,500~8,500원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        부드러운 폴딩케이크 명물, 감성 골목 카페, 조용한 분위기
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑧ 카페 레이어드 (더현대서울)</div>
+                    <div class="category-badge">카페</div>
+                    <div class="restaurant-meta">
+                        <div>📍 여의도역 도보 3분 (더현대 B1)</div>
+                        <div>💰 12,000~16,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        프리미엄 브런치 카페, 스콘, 백화점 위치
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑨ 다쯔미 (롯데백화점)</div>
+                    <div class="category-badge">일식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 영등포역 도보 8분 (롯데 10층)</div>
+                        <div>💰 15,000~25,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        회전초밥, 다양한 메뉴, 혼밥 편함, 백화점 식당
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑩ 셰프 조부틱</div>
+                    <div class="category-badge">카페</div>
+                    <div class="restaurant-meta">
+                        <div>📍 영등포 도보 7분</div>
+                        <div>💰 10,000~13,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        딸기 케이크, 타르트 전문, 조용한 골목 카페
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                    </div>
+                    <a href="https://map.naver.com" class="map-link">📍 네이버지도</a>
+                </div>
+            </div>
+
+            <!-- 영등포 팝업 -->
+            <div id="yeouido-popup" class="tab-content">
+                <div class="tab-title">🎪 영등포 팝업스토어 (6월)</div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">① GUESS X NMIXX 팝업 ⭐ 핫플</div>
+                    <div class="category-badge">패션</div>
+                    <div class="restaurant-meta">
+                        <div>📍 더현대 B2 (여의도역 도보 3분)</div>
+                        <div>⏰ 06.26 ~ 07.09</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        K-pop X 럭셔리 패션, 한정판 티셔츠, 포토존, SNS 핫스팟
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">② 브레드이발소 X 베이커리 콜라보</div>
+                    <div class="category-badge">음식</div>
+                    <div class="restaurant-meta">
+                        <div>📍 타임스퀘어 1층 (영등포역 도보 5분)</div>
+                        <div>⏰ 06.03 ~ 06.21 (진행 중)</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        캐릭터 팝업, 전국 베이커리 콜라보, 한정판 디저트
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">③ 축구 국가대표팀 팝업</div>
+                    <div class="category-badge">스포츠</div>
+                    <div class="restaurant-meta">
+                        <div>📍 더현대 3,4층 (여의도역 도보 3분)</div>
+                        <div>⏰ 06.01 ~ 06.28 (진행 중)</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        2026 월드컵 응원, 라커룸 포토존, 공식 굿즈
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">④ 패트와 매트 팝업</div>
+                    <div class="category-badge">예술</div>
+                    <div class="restaurant-meta">
+                        <div>📍 더현대 B1 (여의도역 도보 3분)</div>
+                        <div>⏰ 2026년 진행 중</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        체코 애니메이션 캐릭터, 한국 첫 팝업, 공식 굿즈
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑤ PASOTTI 팝업</div>
+                    <div class="category-badge">럭셔리</div>
+                    <div class="restaurant-meta">
+                        <div>📍 더현대 2층 (여의도역 도보 3분)</div>
+                        <div>⏰ 06.05 ~ 07.02</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        이탈리아 명품 우산/핸들백, 프리미엄 감성
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑥ 아쿠아 디 파르마 팝업</div>
+                    <div class="category-badge">뷰티</div>
+                    <div class="restaurant-meta">
+                        <div>📍 더현대 1층 GATE 1 (여의도역 도보 3분)</div>
+                        <div>⏰ 06.05 ~ 07.02</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        이탈리아 프리미엄 향수/스킨케어, 유럽식 고급 뷰티
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑦ 버켄스탁 팝업</div>
+                    <div class="category-badge">패션</div>
+                    <div class="restaurant-meta">
+                        <div>📍 더현대 3층 (여의도역 도보 3분)</div>
+                        <div>⏰ 06.04 ~ 06.20 (진행 중)</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        독일 명품 신발, 프리미엄 캐주얼 스타일
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑧ IKEA 팝업스토어</div>
+                    <div class="category-badge">홈</div>
+                    <div class="restaurant-meta">
+                        <div>📍 타임스퀘어 B1 (영등포역 도보 5분)</div>
+                        <div>⏰ 진행 중</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        스칸디나비안 디자인, 홈 아이템, 푸드 체험
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑨ 캐릭터라인 팝업</div>
+                    <div class="category-badge">캐릭터</div>
+                    <div class="restaurant-meta">
+                        <div>📍 타임스퀘어 B1 (영등포역 도보 5분)</div>
+                        <div>⏰ 진행 중</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        산리오, 스누피, 디즈니, 포켓몬 멀티 팝업
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑩ HEUG 팝업</div>
+                    <div class="category-badge">뷰티</div>
+                    <div class="restaurant-meta">
+                        <div>📍 더현대 4층 (여의도역 도보 3분)</div>
+                        <div>⏰ 06.11 ~ 07.12</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        프리미염 뷰티 브랜드, K-뷰티 트렌드
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="score-star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="score-star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="score-star">★★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MY PICK -->
+            <div id="pick" class="tab-content">
+                <div class="tab-title">🏆 MY PICK - 최종 추천</div>
+
+                <div class="pick-section">
+                    <div class="pick-title">🎯 홍대 추천 조합</div>
+                    <div class="pick-desc">
+                        <strong>점심:</strong> 비스트로주라 (극강 가성비 스테이크 9,900원)<br/>
+                        <strong>카페:</strong> 이미커피 (까눌레 + 라떼, 홍대입구역 도보 4분)<br/>
+                        <strong>저녁:</strong> 맛이차이나 (상하이 추억 공유 중식)<br/>
+                        <strong>야식:</strong> 치쿠린 서울 (야키토리 오마카세 + 사케)<br/>
+                        <strong>팝업:</strong> AK플라자 (애니메이션 상시, 더 현대 좋으면 버켄스탁)
+                    </div>
+                </div>
+
+                <div class="pick-section">
+                    <div class="pick-title">🎯 영등포 추천 조합</div>
+                    <div class="pick-desc">
+                        <strong>점심:</strong> 동순각 (노포 중국집, 가성비 최고, 영등포역 5분)<br/>
+                        <strong>카페:</strong> 모리 (폴딩케이크, 감성 골목)<br/>
+                        <strong>저녁:</strong> 남보 (고급 동남아, 상하이 유학 경험 공유)<br/>
+                        <strong>또는:</strong> 베르두레 (캐주얼 브런치, 가성비)<br/>
+                        <strong>팝업:</strong> GUESS X NMIXX (여의도역 3분, 글로벌 감성)
+                    </div>
+                </div>
+
+                <div class="pick-section">
+                    <div class="pick-title">⭐ 최종 추천 (선택)</div>
+                    <div class="pick-desc">
+                        <strong>홍대 vs 영등포?</strong><br/>
+                        • 홍대: 여유 있고 예술적, 다양한 경험<br/>
+                        • 영등포: 시간 타이트하면 빠른 이동, 백화점 편의성<br/><br/>
+                        <strong>1안: 홍대 저녁</strong> → 비스트로주라(스테이크) → 이미커피(후식)<br/>
+                        <strong>2안: 영등포 저녁</strong> → 동순각(중식) → 모리(카페)<br/>
+                        <strong>3안: 혼합</strong> → 영등포 점심(식사) → 홍대 카페 + 팝업 투어
+                    </div>
+                </div>
+
+                <div class="pick-section" style="border-left-color: #ffc107;">
+                    <div class="pick-title">📊 지수 설명</div>
+                    <div class="pick-desc">
+                        <strong>접근성 (★):</strong> 지하철역까지 도보 시간 (5분 이내=5점)<br/>
+                        <strong>가성비 (★):</strong> 가격 대비 품질 (1만원 이하=5점)<br/>
+                        <strong>웨이팅 (★):</strong> 예상 대기시간 (0~10분=5점)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
