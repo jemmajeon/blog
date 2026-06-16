@@ -10,5 +10,17 @@
     "file": "gangnam_dashboard.html",
     "description": "고급 스테이크/한식/이탈리안 7곳",
     "status": "active"
+  },
+  {
+    "name": "🌙 홍대 vs 영등포",
+    "file": "hongdae_yeouido_guide.html",
+    "description": "홍대(음식 12곳+팝업 6곳) vs 영등포(음식 10곳+팝업 10곳) | 6월 20일",
+    "status": "active"
+  },
+  {
+    "name": "💼 가산디지털단지",
+    "file": "gasandigital_guide.html",
+    "description": "음식점 12곳(배부르게) + 팝업 2곳 | 6월 24일 직장동료 모임",
+    "status": "active"
   }
 ]
