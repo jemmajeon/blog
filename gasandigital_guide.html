@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가산디지털단지 가이드 - 2026년 6월 24일 직장동료 모임</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+        }
+        header {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #1a5276 0%, #2874a6 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        header h1 { font-size: 2.5em; margin-bottom: 8px; }
+        header p { opacity: 0.95; font-size: 1.1em; }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        .tab-btn {
+            padding: 12px 14px;
+            border: 2px solid #555;
+            background: #34495e;
+            color: #ecf0f1;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+        .tab-btn:hover { border-color: #2874a6; background: #2c3e50; }
+        .tab-btn.active {
+            background: #2874a6;
+            color: white;
+            border-color: #2874a6;
+        }
+        .content {
+            background: #ecf0f1;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            overflow-y: auto;
+            max-height: 85vh;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-title {
+            font-size: 2em;
+            color: #1a5276;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #2874a6;
+            padding-bottom: 12px;
+        }
+        .restaurant {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            border-left: 5px solid #2874a6;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .restaurant-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #1a5276;
+            margin-bottom: 8px;
+        }
+        .restaurant-meta {
+            font-size: 0.9em;
+            color: #555;
+            margin-bottom: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .restaurant-desc {
+            font-size: 0.95em;
+            color: #444;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 12px 0;
+        }
+        .metric-box {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #2874a6;
+            text-align: center;
+        }
+        .metric-label {
+            font-size: 0.8em;
+            color: #666;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+        .metric-value {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .category-badge {
+            display: inline-block;
+            background: #2874a6;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .pick-section {
+            background: #d6eaf8;
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border-left: 4px solid #2874a6;
+        }
+        .pick-title {
+            font-weight: bold;
+            color: #1a5276;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        .pick-desc {
+            font-size: 0.95em;
+            color: #333;
+            line-height: 1.6;
+        }
+        .star { color: #f39c12; }
+        @media (max-width: 1024px) {
+            .container { grid-template-columns: 1fr; }
+            .sidebar {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                position: static;
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🍽️ 가산디지털단지 가이드</h1>
+        <p>직장동료 3명 캐주얼 모임 | 2026년 6월 24일 수요일 | 배부르게 먹이자!</p>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <button class="tab-btn active" onclick="switchTab('food')">🍲 음식점</button>
+            <button class="tab-btn" onclick="switchTab('popup')">🎪 팝업</button>
+            <button class="tab-btn" onclick="switchTab('pick')">🏆 MY PICK</button>
+        </div>
+
+        <div class="content">
+            <!-- 음식점 탭 -->
+            <div id="food" class="tab-content active">
+                <div class="tab-title">🍲 가산디지털단지 음식점 (12곳)</div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">① 조마담칼국수 ⭐ 최강 가성비</div>
+                    <div class="category-badge">한식 (칼국수)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털단지역 7번 도보 3분</div>
+                        <div>💰 10,500~11,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        큰 그릇에 푸짐한 조개칼국수, 셀프바로 추가 양념 가능. 직장인 점심 전문점.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">② 의령메밀집</div>
+                    <div class="category-badge">한식 (메밀/칼국수)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털단지역 도보 5분</div>
+                        <div>💰 8,000~12,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        특허받은 메밀반죽, 정갈하고 깔끔한 분위기, 오픈 키친으로 신뢰감.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">③ 국수나무 가산DK점</div>
+                    <div class="category-badge">한식 (국수/돈까스)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털단지역 도보 5분</div>
+                        <div>💰 8,000~12,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        다양한 선택지 (면/밥), 밝고 깔끔한 식당, 메뉴 폭 넓음.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">④ 박가부대 가산대륭6차점</div>
+                    <div class="category-badge">한식 (부대찌개)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털단지 도보 8분</div>
+                        <div>💰 10,000~12,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        리필 서비스, 단체 손님 친화적, 따뜻한 국물 요리, 푸짐한 재료.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑤ 부대옥 가산직영점 (부대전골)</div>
+                    <div class="category-badge">한식 (부대전골)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털단지 도보 6분</div>
+                        <div>💰 10,000~14,500원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        다양한 햄, 우삼겹·등심 듬뿍, 2인 기준 29,000원. 캐주얼하고 친절.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑥ 찌바 (베트남 쌀국수)</div>
+                    <div class="category-badge">아시안</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털단지역 도보 12분</div>
+                        <div>💰 9,000~11,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        현지 요리사 운영, 진한 국물, 고기 푸짐, 해장에 최적, 베트남풍 캐주얼.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑦ 라복궁 (양꼬치) ⭐ 배부르게</div>
+                    <div class="category-badge">중식 (양꼬치)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산동 도보 10분</div>
+                        <div>💰 15,000~20,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        모듬한판 양고기 1kg + 마라샹궈, 넉넉한 중량, 함께 즐기는 분위기.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑧ 월래순교자관 (중국만두)</div>
+                    <div class="category-badge">중식 (만두)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털단지 도보 10분</div>
+                        <div>💰 8,000~12,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        군만두, 소룡포, 물만두 등 다양, 마파두부·라조기 등 다양한 중식.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑨ 오늘돈카츠</div>
+                    <div class="category-badge">양식 (돈까스)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털단지 도보 8분</div>
+                        <div>💰 12,000~14,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        큼직한 돈까스, 신선한 재료, 일식 정식당 분위기, 정성 있는 플레이팅.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑩ 지미존스 가산점</div>
+                    <div class="category-badge">양식 (샌드위치)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털단지 도보 5분</div>
+                        <div>💰 11,000~15,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        당일 구운 빵, 푸짐한 속재료, 빠른 식사 가능, 캐주얼 분위기.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑪ 민소푸 (카이센동)</div>
+                    <div class="category-badge">일식 (덮밥)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털단지역 9번 도보 7분</div>
+                        <div>💰 13,000~16,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        신선한 해산물, 정성 있는 도시락, 푸짐한 구성, 세련된 분위기.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">⑫ 가산물갈비&소불고기 (산더미) ⭐ 프리미엄</div>
+                    <div class="category-badge">한식 (물갈비)</div>
+                    <div class="restaurant-meta">
+                        <div>📍 가산디지털1로 128 (STX V TOWER 도보 5분)</div>
+                        <div>💰 17,000~20,000원 / 2인 38,000원</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        한약재 듬뿍, 대량의 고기, 고급스럽고 따뜻한 분위기. 방송 출연 유명점.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 팝업 탭 -->
+            <div id="popup" class="tab-content">
+                <div class="tab-title">🎪 팝업스토어 (6월)</div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">① SEGA POP-UP SHOP & 미니 뮤지엄</div>
+                    <div class="category-badge">게임/애니</div>
+                    <div class="restaurant-meta">
+                        <div>📍 마리오아울렛 1층 (가산역 근처)</div>
+                        <div>⏰ 진행 중</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        게임, 애니메이션, K-POP 관련 IP, 굿즈 판매, 체험형 공간, F&B 포함.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="restaurant">
+                    <div class="restaurant-title">② 현대아울렛 가산점 팝업존</div>
+                    <div class="category-badge">멀티</div>
+                    <div class="restaurant-meta">
+                        <div>📍 현대아울렛 가산점 1층 (가산역 근처)</div>
+                        <div>⏰ 상시 운영</div>
+                    </div>
+                    <div class="restaurant-desc">
+                        다양한 팝업스토어 운영, 트렌드 제품, 쇼핑 겸 체험 가능.
+                    </div>
+                    <div class="metrics">
+                        <div class="metric-box">
+                            <div class="metric-label">접근성</div>
+                            <div class="metric-value"><span class="star">★★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">가성비</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">웨이팅</div>
+                            <div class="metric-value"><span class="star">★★★★</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MY PICK 탭 -->
+            <div id="pick" class="tab-content">
+                <div class="tab-title">🏆 MY PICK - 최종 추천</div>
+
+                <div class="pick-section">
+                    <div class="pick-title">🎯 배부르게 먹이기 (메인 추천)</div>
+                    <div class="pick-desc">
+                        <strong>1안: 극강 가성비 + 배부르게</strong><br/>
+                        조마담칼국수 (10,500원, 푸짐) → 후식으로 카페<br/>
+                        → 가산역 도보 3분, 빠르고 배부름<br/><br/>
+
+                        <strong>2안: 고급 분위기 + 많은 양</strong><br/>
+                        가산물갈비&소불고기 (2인 38,000원)<br/>
+                        → 한약재 듬뿍, 고기 대량, 고급 분위기<br/>
+                        → 예약 필수<br/><br/>
+
+                        <strong>3안: 함께 즐기는 분위기</strong><br/>
+                        라복궁 양꼬치 (1kg + 마라샹궈)<br/>
+                        → 배부르게 먹고 함께 나눠 먹기<br/>
+                        → 캐주얼한 중국식 바비큐<br/><br/>
+
+                        <strong>4안: 다양성 + 가성비</strong><br/>
+                        박가부대 (리필 서비스) 또는 부대옥<br/>
+                        → 리필로 배부르게<br/>
+                        → 10~14,500원 대 가성비<br/>
+                    </div>
+                </div>
+
+                <div class="pick-section">
+                    <div class="pick-title">⭐ 최우선 추천 TOP 3</div>
+                    <div class="pick-desc">
+                        <strong>1순위: 조마담칼국수</strong><br/>
+                        ✓ 접근성 최고 (역 3분)<br/>
+                        ✓ 가성비 최고 (1만원대)<br/>
+                        ✓ 푸짐한 칼국수<br/>
+                        ✓ 예약 불필요 (드롭인 가능)<br/><br/>
+
+                        <strong>2순위: 박가부대 / 부대옥</strong><br/>
+                        ✓ 리필 서비스로 배부르게<br/>
+                        ✓ 단체 친화적<br/>
+                        ✓ 따뜻한 국물 분위기<br/>
+                        ✓ 예약 불필요<br/><br/>
+
+                        <strong>3순위: 라복궁 양꼬치</strong><br/>
+                        ✓ 함께 즐기는 분위기<br/>
+                        ✓ 배부르게 먹기 최적<br/>
+                        ✓ 캐주얼 분위기<br/>
+                        ✓ 예약 추천 (단체)<br/>
+                    </div>
+                </div>
+
+                <div class="pick-section">
+                    <div class="pick-title">📊 지수 설명</div>
+                    <div class="pick-desc">
+                        <strong>접근성 (★):</strong> 가산디지털단지역까지 도보 시간 (3분 이내=5점)<br/>
+                        <strong>가성비 (★):</strong> 가격 대비 양&품질 (1만원 이하=5점)<br/>
+                        <strong>웨이팅 (★):</strong> 예상 대기시간 (0~10분=5점)<br/><br/>
+
+                        <strong>배부르게 먹이기 우선순위:</strong><br/>
+                        1. 리필 서비스 (박가부대, 부대옥)<br/>
+                        2. 푸짐한 사이즈 (조마담, 라복궁)<br/>
+                        3. 많은 고기량 (물갈비, 양꼬치)<br/>
+                        4. 다양한 메뉴 (국수나무)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
