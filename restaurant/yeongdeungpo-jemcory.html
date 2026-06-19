@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="security-level" content="5">
+    <title>영등포 친구랑 놀기 — 타임스퀘어 쇼핑/카페/식사</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #fafaf8 0%, #ede9df 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #111;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(74, 144, 226, 0.3);
+        }
+        header h1 {
+            font-size: 2.4em;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        .section {
+            margin-bottom: 45px;
+        }
+        .section-title {
+            font-size: 1.6em;
+            color: #4a90e2;
+            margin-bottom: 24px;
+            border-bottom: 3px solid #4a90e2;
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4a90e2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        .card h3 {
+            font-size: 1.3em;
+            color: #111;
+            margin-bottom: 12px;
+        }
+        .info-row {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            color: #444;
+        }
+        .label {
+            font-weight: 600;
+            color: #4a90e2;
+        }
+        .desc {
+            line-height: 1.6;
+            color: #555;
+            margin-top: 12px;
+        }
+        .badge {
+            display: inline-block;
+            background: #eef4fb;
+            color: #4a90e2;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-top: 8px;
+        }
+        .highlight {
+            background: #eef4fb;
+            border-left: 4px solid #4a90e2;
+            padding: 16px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .timeline {
+            background: white;
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .time-badge {
+            background: #4a90e2;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            white-space: nowrap;
+            font-size: 0.9em;
+        }
+        .time-content {
+            flex: 1;
+        }
+        .time-content h4 {
+            color: #111;
+            margin-bottom: 4px;
+            font-size: 1em;
+        }
+        .time-content p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        .note {
+            background: #eef4fb;
+            border: 1px solid #d1e3f5;
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.6;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #888;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>영등포 청첩장 모임</h1>
+        <p>축하 자리, 맛있게</p>
+    </header>
+
+    <div class="section">
+        <h2 class="section-title">추천 식당 (축하 자리 용)</h2>
+        <p class="highlight">청첩장 모임, 맛있게 먹자. 모두 예약 필수</p>
+
+        <div class="card">
+            <h3>중식 고급 코스</h3>
+            <div class="info-row">
+                <span class="label">가격대</span>
+                <span>1인 약 5~7만원</span>
+            </div>
+            <div class="info-row">
+                <span class="label">특징</span>
+                <span>룸 가능, 코스 중심</span>
+            </div>
+            <div class="info-row">
+                <span class="label">추천</span>
+                <span>타임스퀘어 지하M6 식당가 근처</span>
+            </div>
+            <div class="desc">
+                여럿이 함께 앉아 천천히 즐길 수 있는 분위기. 축하 자리에 격식 있음. 룸 예약하면 사적인 대화도 가능.
+            </div>
+            <span class="badge">룸가능</span>
+            <span class="badge">코스</span>
+            <span class="badge">예약필수</span>
+        </div>
+
+        <div class="card">
+            <h3>참치 고급 코스</h3>
+            <div class="info-row">
+                <span class="label">가격대</span>
+                <span>1인 약 6~8만원</span>
+            </div>
+            <div class="info-row">
+                <span class="label">특징</span>
+                <span>신선한 참치, 정통 일식</span>
+            </div>
+            <div class="info-row">
+                <span class="label">분위기</span>
+                <span>고급스럽고 세련된</span>
+            </div>
+            <div class="desc">
+                친구들과 축하 자리하기 좋은 식당. 참치의 신선함과 셰프의 기술을 느낄 수 있음. 코스 예약 권장.
+            </div>
+            <span class="badge">일식</span>
+            <span class="badge">고급</span>
+            <span class="badge">코스</span>
+        </div>
+
+        <div class="card">
+            <h3>소고기 한우 코스</h3>
+            <div class="info-row">
+                <span class="label">가격대</span>
+                <span>1인 약 7~10만원</span>
+            </div>
+            <div class="info-row">
+                <span class="label">특징</span>
+                <span>한우 프리미엄, 룸 가능</span>
+            </div>
+            <div class="info-row">
+                <span class="label">추천</span>
+                <span>축하 자리 최고 선택</span>
+            </div>
+            <div class="desc">
+                청첩장 축하 자리에 가장 어울리는 선택. 분위기, 맛, 품질 모두 우수. 반드시 미리 예약하고 날짜 확인.
+            </div>
+            <span class="badge">프리미엄</span>
+            <span class="badge">한우</span>
+            <span class="badge">룸필수</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">식사 후 카페</h2>
+        <p class="highlight">식사 후 디저트나 커피로 마무리</p>
+
+        <div class="card">
+            <h3>카페 콜렉티보</h3>
+            <div class="info-row">
+                <span class="label">위치</span>
+                <span>타임스퀘어 내</span>
+            </div>
+            <div class="info-row">
+                <span class="label">분위기</span>
+                <span>감각적, 핫플</span>
+            </div>
+            <div class="desc">
+                식사 후 식후 커피. 근처 식당에서 나와 바로 들어갈 수 있음.
+            </div>
+            <span class="badge">편함</span>
+        </div>
+
+        <div class="card">
+            <h3>맨홀커피웨스턴책방</h3>
+            <div class="info-row">
+                <span class="label">컨셉</span>
+                <span>영국 감성 북카페</span>
+            </div>
+            <div class="info-row">
+                <span class="label">추천</span>
+                <span>고급 디저트, 스페셜티 커피</span>
+            </div>
+            <div class="desc">
+                축하 자리 후 여유로운 분위기에서 후식. 감성있는 공간에서 대화하기 좋음.
+            </div>
+            <span class="badge">감성</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">역 주변 정보</h2>
+        <p class="highlight">식사 전후 이동 및 대기</p>
+
+        <div class="card">
+            <h3>영등포역 주변 카페</h3>
+            <div class="info-row">
+                <span class="label">팁</span>
+                <span>일찍 도착했을 때 대기 장소</span>
+            </div>
+            <div class="desc">
+                친구들이 모이는 시간까지 역 근처 카페에서 시간 보내기. 편하게 앉아 있을 수 있는 곳들이 많음.
+            </div>
+            <span class="badge">대기용</span>
+        </div>
+
+        <div class="card">
+            <h3>타임스퀘어 주변</h3>
+            <div class="info-row">
+                <span class="label">주차</span>
+                <span>지하주차장 이용</span>
+            </div>
+            <div class="info-row">
+                <span class="label">엘리베이터</span>
+                <span>지하 M6 — 식당가 접근 수월</span>
+            </div>
+            <div class="desc">
+                자차로 온 경우 지하주차장 이용. 엘리베이터 위치 미리 확인하면 좋음.
+            </div>
+            <span class="badge">주차</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">추천 일정 (청첩장 축하 자리)</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time-badge">17:45</div>
+                <div class="time-content">
+                    <h4>영등포역 도착</h4>
+                    <p>식사 15분 전 도착. 주차장 또는 지하철 방면에 따라.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">18:00</div>
+                <div class="time-content">
+                    <h4>식당 입장</h4>
+                    <p>예약한 시간에 정확히. 룸 안내 받기.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">18:00~19:30</div>
+                <div class="time-content">
+                    <h4>축하 자리 식사</h4>
+                    <p>코스 요리로 충분히 즐기기. 1.5시간 정도.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">19:30~</div>
+                <div class="time-content">
+                    <h4>카페 이동</h4>
+                    <p>카페 콜렉티보 또는 맨홀커피. 식후 커피/디저트로 마무리.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="time-badge">20:30+</div>
+                <div class="time-content">
+                    <h4>헤어짐</h4>
+                    <p>새벽까지 자리하거나, 가볍게 마무리하고 귀가.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="note">
+            <strong>축하 자리 팁</strong><br>
+            • 반드시 2주 전에 예약하기 — 타임스퀘어 식당들은 성수기 대기 많음<br>
+            • 룸 또는 프라이빗 테이블 미리 요청 (축하 분위기)<br>
+            • 인원수 정확히 알려주기 (예약 후 변경 어려움)<br>
+            • 축사나 축의금 타이밍 미리 정해두기<br>
+            • 지하주차장 M6 엘리베이터 위치 확인 — 출입구와 식당 거리 단축
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>영등포 친구 나들이 가이드 | 2026년 6월</p>
+</footer>
+
+</body>
+</html>
