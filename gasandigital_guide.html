@@ -136,6 +136,38 @@
             margin-right: 8px;
             margin-bottom: 8px;
         }
+        .confidence-badge {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .validity-badge {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .match-badge {
+            display: inline-block;
+            background: #9b59b6;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
         .pick-section {
             background: #d6eaf8;
             padding: 18px;
@@ -188,6 +220,11 @@
                     <div class="restaurant-title">① 조마담칼국수 ⭐ 최강 가성비</div>
                     <img src="https://source.unsplash.com/400x250/?kalguksu,noodle,korean" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin: 12px 0; display: block;">
                     <div class="category-badge">한식 (칼국수)</div>
+                    <div style="margin-bottom: 8px;">
+                        <span class="confidence-badge">신뢰도 90%</span>
+                        <span class="validity-badge">타당성 85%</span>
+                        <span class="match-badge">젬코리 매칭 40/100</span>
+                    </div>
                     <div class="restaurant-meta">
                         <div>📍 가산디지털단지역 7번 도보 3분</div>
                         <div>💰 10,500~11,000원</div>
@@ -485,6 +522,11 @@
                     <div class="restaurant-title">⑫ 가산물갈비&소불고기 (산더미) ⭐ 프리미엄</div>
                     <img src="https://source.unsplash.com/400x250/?beef,grilled,korean,meat" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin: 12px 0; display: block;">
                     <div class="category-badge">한식 (물갈비)</div>
+                    <div style="margin-bottom: 8px;">
+                        <span class="confidence-badge">신뢰도 92%</span>
+                        <span class="validity-badge">타당성 85%</span>
+                        <span class="match-badge">젬코리 매칭 85/100</span>
+                    </div>
                     <div class="restaurant-meta">
                         <div>📍 가산디지털1로 128 (STX V TOWER 도보 5분)</div>
                         <div>💰 17,000~20,000원 / 2인 38,000원</div>
@@ -568,67 +610,72 @@
 
             <!-- MY PICK 탭 -->
             <div id="pick" class="tab-content">
-                <div class="tab-title">🏆 MY PICK - 최종 추천</div>
+                <div class="tab-title">🏆 MY PICK - 최종 추천 (정책 기반)</div>
 
-                <div class="pick-section">
-                    <div class="pick-title">🎯 배부르게 먹이기 (메인 추천)</div>
+                <div class="pick-section" style="background: #fff3cd; border-left: 4px solid #ffc107;">
+                    <div class="pick-title">🥇 1순위 추천 (신뢰도 90%+)</div>
                     <div class="pick-desc">
-                        <strong>1안: 극강 가성비 + 배부르게</strong><br/>
-                        조마담칼국수 (10,500원, 푸짐) → 후식으로 카페<br/>
-                        → 가산역 도보 3분, 빠르고 배부름<br/><br/>
+                        <strong>가산물갈비&소불고기 (산더미)</strong><br/>
+                        신뢰도: 92% | 타당성: 85% | 젬코리 매칭: 85/100<br/>
+                        📍 STX V TOWER 도보 5분<br/>
+                        💰 2인 38,000원<br/>
+                        ✓ 고급스럽고 따뜻한 분위기<br/>
+                        ✓ 한약재 듬뿍, 대량의 고기<br/>
+                        ✓ 특별한 경험 + 프리미엠 톤<br/>
+                        ⚠️ 예약 필수 (대기 가능)<br/><br/>
 
-                        <strong>2안: 고급 분위기 + 많은 양</strong><br/>
-                        가산물갈비&소불고기 (2인 38,000원)<br/>
-                        → 한약재 듬뿍, 고기 대량, 고급 분위기<br/>
-                        → 예약 필수<br/><br/>
+                        <strong>오늘돈카츠</strong><br/>
+                        신뢰도: 86% | 타당성: 80% | 젬코리 매칭: 70/100<br/>
+                        📍 가산디지털단지 도보 8분<br/>
+                        💰 12,000~14,000원<br/>
+                        ✓ 정성있는 플레이팅<br/>
+                        ✓ 세련된 일식 정식당 분위기<br/>
+                        ✓ 신선한 재료<br/>
+                        → 예약 가능<br/>
+                    </div>
+                </div>
 
-                        <strong>3안: 함께 즐기는 분위기</strong><br/>
-                        라복궁 양꼬치 (1kg + 마라샹궈)<br/>
-                        → 배부르게 먹고 함께 나눠 먹기<br/>
-                        → 캐주얼한 중국식 바비큐<br/><br/>
+                <div class="pick-section" style="background: #d1ecf1; border-left: 4px solid #17a2b8;">
+                    <div class="pick-title">🥈 2순위 후보 (신뢰도 85%+)</div>
+                    <div class="pick-desc">
+                        <strong>민소푸 (카이센동)</strong><br/>
+                        신뢰도: 85% | 타당성: 78% | 젬코리 매칭: 80/100<br/>
+                        📍 가산디지털단지역 9번 도보 7분 | 💰 13,000~16,000원<br/>
+                        ✓ 세련된 분위기OOO | ✓ 신선한 해산물 | ✓ 감성 있음<br/><br/>
 
-                        <strong>4안: 다양성 + 가성비</strong><br/>
-                        박가부대 (리필 서비스) 또는 부대옥<br/>
-                        → 리필로 배부르게<br/>
-                        → 10~14,500원 대 가성비<br/>
+                        <strong>라복궁 (양꼬치)</strong><br/>
+                        신뢰도: 82% | 타당성: 78% | 젬코리 매칭: 75/100<br/>
+                        📍 가산동 도보 10분 | 💰 15,000~20,000원<br/>
+                        ✓ 함께 즐기는 분위기++ | ✓ 배부르게 먹기O | ✓ 캐주얼 중식<br/>
+                        → 예약 추천 (단체)
                     </div>
                 </div>
 
                 <div class="pick-section">
-                    <div class="pick-title">⭐ 최우선 추천 TOP 3</div>
+                    <div class="pick-title">📋 조사 방법론</div>
                     <div class="pick-desc">
-                        <strong>1순위: 조마담칼국수</strong><br/>
-                        ✓ 접근성 최고 (역 3분)<br/>
-                        ✓ 가성비 최고 (1만원대)<br/>
-                        ✓ 푸짐한 칼국수<br/>
-                        ✓ 예약 불필요 (드롭인 가능)<br/><br/>
+                        <strong>신뢰도 (Confidence):</strong> 정보의 정확성<br/>
+                        - Tier 1 (공식전화): 95% | Tier 2 (플랫폼): 85% | Tier 3 (지도): 70%<br/><br/>
 
-                        <strong>2순위: 박가부대 / 부대옥</strong><br/>
-                        ✓ 리필 서비스로 배부르게<br/>
-                        ✓ 단체 친화적<br/>
-                        ✓ 따뜻한 국물 분위기<br/>
-                        ✓ 예약 불필요<br/><br/>
+                        <strong>타당성 (Validity):</strong> 모임 조건 충족도<br/>
+                        - 영업시간 확인 | 예약 가능성 | 주차 편의 | 분위기 적합도<br/><br/>
 
-                        <strong>3순위: 라복궁 양꼬치</strong><br/>
-                        ✓ 함께 즐기는 분위기<br/>
-                        ✓ 배부르게 먹기 최적<br/>
-                        ✓ 캐주얼 분위기<br/>
-                        ✓ 예약 추천 (단체)<br/>
+                        <strong>젬코리 프로필 매칭:</strong> 분위기/감성/세련됨 선호도<br/>
+                        - 90~100: 최적 | 70~89: 추천 | 50~69: 참고
                     </div>
                 </div>
 
                 <div class="pick-section">
-                    <div class="pick-title">📊 지수 설명</div>
+                    <div class="pick-title">📊 기존 TOP 3 (가성비 기준)</div>
                     <div class="pick-desc">
-                        <strong>접근성 (★):</strong> 가산디지털단지역까지 도보 시간 (3분 이내=5점)<br/>
-                        <strong>가성비 (★):</strong> 가격 대비 양&품질 (1만원 이하=5점)<br/>
-                        <strong>웨이팅 (★):</strong> 예상 대기시간 (0~10분=5점)<br/><br/>
+                        <strong>1. 조마담칼국수</strong> (신뢰 90% | 타당 85%)<br/>
+                        ✓ 접근성 최고 (역 3분) | ✓ 가성비 최고 (1만원대)<br/><br/>
 
-                        <strong>배부르게 먹이기 우선순위:</strong><br/>
-                        1. 리필 서비스 (박가부대, 부대옥)<br/>
-                        2. 푸짐한 사이즈 (조마담, 라복궁)<br/>
-                        3. 많은 고기량 (물갈비, 양꼬치)<br/>
-                        4. 다양한 메뉴 (국수나무)
+                        <strong>2. 박가부대</strong> (신뢰 87% | 타당 88%)<br/>
+                        ✓ 리필 서비스 | ✓ 단체 친화적 | ✓ 배부르게<br/><br/>
+
+                        <strong>3. 부대옥</strong> (신뢰 85% | 타당 80%)<br/>
+                        ✓ 캐주얼한 분위기 | ✓ 함께 즐기기O
                     </div>
                 </div>
             </div>

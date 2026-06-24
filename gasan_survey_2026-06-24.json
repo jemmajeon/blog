@@ -1,0 +1,524 @@
+{
+  "survey_meta": {
+    "region": "가산디지털단지",
+    "survey_date": "2026-06-24",
+    "purpose": "젬코리 직장동료 모임",
+    "group_size": 3,
+    "profile_type": "jemcory",
+    "profile_notes": "분위기/감성 선호, 사당/강남 인근"
+  },
+  "restaurants": [
+    {
+      "rank": 1,
+      "name": "조마담칼국수",
+      "category": "한식 (칼국수)",
+      "address": "가산디지털단지역 7번 도보 3분",
+      "price_per_person": "10,500-11,000원",
+      "menu_specialty": "조개칼국수 (큰 그릇, 푸짐함, 셀프바 양념)",
+      "business_hours": "평일: 11:00-20:00",
+      "break_time": "없음",
+      "last_order": "19:30",
+      "reservation": {
+        "status": "드롭인 가능",
+        "confidence_pct": 95,
+        "notes": "직장인 점심 전문점, 예약 불필요"
+      },
+      "parking": {
+        "available": true,
+        "type": "공영주차장",
+        "cost": "무료 또는 저비용"
+      },
+      "private_room": false,
+      "naver_rating": 4.1,
+      "google_rating": 4.0,
+      "foreign_friendly": 50,
+      "business_suitable": 30,
+      "metrics": {
+        "accessibility_stars": 5,
+        "value_stars": 5,
+        "waiting_stars": 3
+      },
+      "confidence_pct": 90,
+      "validity_pct": 85,
+      "profile_match_jemcory": {
+        "score": 40,
+        "notes": "분위기X, 가성비O, 접근성 최고"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "네이버맵 + 방문 후기"
+    },
+    {
+      "rank": 2,
+      "name": "의령메밀집",
+      "category": "한식 (메밀/칼국수)",
+      "address": "가산디지털단지역 도보 5분",
+      "price_per_person": "8,000-12,000원",
+      "menu_specialty": "특허받은 메밀반죽, 정갈하고 깔끔한 분위기, 오픈 키친",
+      "business_hours": "평일: 11:00-21:00",
+      "break_time": "없음",
+      "last_order": "20:30",
+      "reservation": {
+        "status": "예약 가능",
+        "confidence_pct": 85,
+        "notes": "웹 정보 기반"
+      },
+      "parking": {
+        "available": true,
+        "type": "건물주차장",
+        "cost": "유료"
+      },
+      "private_room": false,
+      "naver_rating": 4.0,
+      "google_rating": 3.9,
+      "foreign_friendly": 60,
+      "business_suitable": 50,
+      "metrics": {
+        "accessibility_stars": 4,
+        "value_stars": 4,
+        "waiting_stars": 2
+      },
+      "confidence_pct": 85,
+      "validity_pct": 78,
+      "profile_match_jemcory": {
+        "score": 55,
+        "notes": "깔끔한 분위기O, 정갈함O, 가성비O"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "다이닝코드 + 네이버맵"
+    },
+    {
+      "rank": 3,
+      "name": "국수나무 가산DK점",
+      "category": "한식 (국수/돈까스)",
+      "address": "가산디지털단지역 도보 5분",
+      "price_per_person": "8,000-12,000원",
+      "menu_specialty": "다양한 선택지 (면/밥), 밝고 깔끔함, 메뉴 폭 넓음",
+      "business_hours": "평일: 11:00-21:00",
+      "break_time": "없음",
+      "last_order": "20:30",
+      "reservation": {
+        "status": "드롭인 가능",
+        "confidence_pct": 90,
+        "notes": "다이닝코드 실시간 확인"
+      },
+      "parking": {
+        "available": true,
+        "type": "공영주차장",
+        "cost": "저비용"
+      },
+      "private_room": false,
+      "naver_rating": 4.1,
+      "google_rating": 4.0,
+      "foreign_friendly": 65,
+      "business_suitable": 55,
+      "metrics": {
+        "accessibility_stars": 5,
+        "value_stars": 5,
+        "waiting_stars": 2
+      },
+      "confidence_pct": 88,
+      "validity_pct": 82,
+      "profile_match_jemcory": {
+        "score": 50,
+        "notes": "밝고 깔끔한 분위기O, 선택지 많음O"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "다이닝코드 + 네이버맵"
+    },
+    {
+      "rank": 4,
+      "name": "박가부대 가산대륭6차점",
+      "category": "한식 (부대찌개)",
+      "address": "가산디지털단지 도보 8분",
+      "price_per_person": "10,000-12,000원",
+      "menu_specialty": "리필 서비스, 단체 친화, 따뜻한 국물, 푸짐한 재료",
+      "business_hours": "평일: 10:30-23:00",
+      "break_time": "없음",
+      "last_order": "22:30",
+      "reservation": {
+        "status": "드롭인 가능 (단체 예약 추천)",
+        "confidence_pct": 85,
+        "notes": "단체 손님 친화적"
+      },
+      "parking": {
+        "available": true,
+        "type": "건물주차장",
+        "cost": "무료"
+      },
+      "private_room": false,
+      "naver_rating": 4.2,
+      "google_rating": 4.1,
+      "foreign_friendly": 55,
+      "business_suitable": 60,
+      "metrics": {
+        "accessibility_stars": 4,
+        "value_stars": 5,
+        "waiting_stars": 3
+      },
+      "confidence_pct": 87,
+      "validity_pct": 88,
+      "profile_match_jemcory": {
+        "score": 60,
+        "notes": "리필로 배부르게O, 단체 분위기O, 캐주얼함O"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "다이닝코드 + 네이버맵 리뷰"
+    },
+    {
+      "rank": 5,
+      "name": "부대옥 가산직영점 (부대전골)",
+      "category": "한식 (부대전골)",
+      "address": "가산디지털단지 도보 6분",
+      "price_per_person": "10,000-14,500원",
+      "menu_specialty": "다양한 햄, 우삼겹·등심 듬뿍, 2인 기준 29,000원, 캐주얼하고 친절",
+      "business_hours": "평일: 11:00-23:00",
+      "break_time": "없음",
+      "last_order": "22:30",
+      "reservation": {
+        "status": "예약 가능",
+        "confidence_pct": 88,
+        "notes": "캐주얼한 분위기"
+      },
+      "parking": {
+        "available": true,
+        "type": "공영주차장",
+        "cost": "저비용"
+      },
+      "private_room": false,
+      "naver_rating": 4.0,
+      "google_rating": 3.9,
+      "foreign_friendly": 60,
+      "business_suitable": 65,
+      "metrics": {
+        "accessibility_stars": 4,
+        "value_stars": 4,
+        "waiting_stars": 2
+      },
+      "confidence_pct": 85,
+      "validity_pct": 80,
+      "profile_match_jemcory": {
+        "score": 65,
+        "notes": "캐주얼 분위기O, 함께 즐기는 감OOO, 고기 푸짐"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "다이닝코드 + 네이버맵"
+    },
+    {
+      "rank": 6,
+      "name": "찌바 (베트남 쌀국수)",
+      "category": "아시안",
+      "address": "가산디지털단지역 도보 12분",
+      "price_per_person": "9,000-11,000원",
+      "menu_specialty": "현지 요리사 운영, 진한 국물, 고기 푸짐, 해장 최적, 베트남풍 캐주얼",
+      "business_hours": "평일: 11:00-21:00",
+      "break_time": "없음",
+      "last_order": "20:30",
+      "reservation": {
+        "status": "드롭인 가능",
+        "confidence_pct": 80,
+        "notes": "캐주얼 식당"
+      },
+      "parking": {
+        "available": false,
+        "type": "근처 공영주차장",
+        "cost": "유료"
+      },
+      "private_room": false,
+      "naver_rating": 4.0,
+      "google_rating": 3.8,
+      "foreign_friendly": 75,
+      "business_suitable": 40,
+      "metrics": {
+        "accessibility_stars": 3,
+        "value_stars": 4,
+        "waiting_stars": 2
+      },
+      "confidence_pct": 80,
+      "validity_pct": 75,
+      "profile_match_jemcory": {
+        "score": 45,
+        "notes": "이국적 분위기O, 거리 상 접근성X"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "네이버맵 + 블로그 후기"
+    },
+    {
+      "rank": 7,
+      "name": "라복궁 (양꼬치)",
+      "category": "중식 (양꼬치)",
+      "address": "가산동 도보 10분",
+      "price_per_person": "15,000-20,000원",
+      "menu_specialty": "모듬한판 양고기 1kg + 마라샹궈, 넉넉한 중량, 함께 즐기는 분위기",
+      "business_hours": "평일: 11:00-22:00",
+      "break_time": "없음",
+      "last_order": "21:30",
+      "reservation": {
+        "status": "예약 추천",
+        "confidence_pct": 85,
+        "notes": "단체 예약 가능"
+      },
+      "parking": {
+        "available": true,
+        "type": "건물주차장",
+        "cost": "유료"
+      },
+      "private_room": false,
+      "naver_rating": 4.1,
+      "google_rating": 4.0,
+      "foreign_friendly": 65,
+      "business_suitable": 70,
+      "metrics": {
+        "accessibility_stars": 3,
+        "value_stars": 4,
+        "waiting_stars": 3
+      },
+      "confidence_pct": 82,
+      "validity_pct": 78,
+      "profile_match_jemcory": {
+        "score": 75,
+        "notes": "함께 즐기는 분위기++OO, 배부르게 먹기O, 캐주얼 중식"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "다이닝코드 + 네이버맵"
+    },
+    {
+      "rank": 8,
+      "name": "월래순교자관 (중국만두)",
+      "category": "중식 (만두)",
+      "address": "가산디지털단지 도보 10분",
+      "price_per_person": "8,000-12,000원",
+      "menu_specialty": "군만두, 소룡포, 물만두 등 다양, 마파두부·라조기 등 다양한 중식",
+      "business_hours": "평일: 11:00-21:00",
+      "break_time": "없음",
+      "last_order": "20:30",
+      "reservation": {
+        "status": "예약 가능",
+        "confidence_pct": 80,
+        "notes": "웹 정보 기반"
+      },
+      "parking": {
+        "available": true,
+        "type": "근처 주차",
+        "cost": "유료"
+      },
+      "private_room": false,
+      "naver_rating": 3.9,
+      "google_rating": 3.8,
+      "foreign_friendly": 55,
+      "business_suitable": 50,
+      "metrics": {
+        "accessibility_stars": 3,
+        "value_stars": 4,
+        "waiting_stars": 2
+      },
+      "confidence_pct": 78,
+      "validity_pct": 72,
+      "profile_match_jemcory": {
+        "score": 40,
+        "notes": "다양한 메뉴O, 분위기는 보통"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "다이닝코드 + 네이버맵"
+    },
+    {
+      "rank": 9,
+      "name": "오늘돈카츠",
+      "category": "양식 (돈까스)",
+      "address": "가산디지털단지 도보 8분",
+      "price_per_person": "12,000-14,000원",
+      "menu_specialty": "큼직한 돈까스, 신선한 재료, 일식 정식당 분위기, 정성 있는 플레이팅",
+      "business_hours": "평일: 11:00-21:00",
+      "break_time": "없음",
+      "last_order": "20:30",
+      "reservation": {
+        "status": "예약 가능",
+        "confidence_pct": 85,
+        "notes": "다이닝코드 실시간 확인"
+      },
+      "parking": {
+        "available": true,
+        "type": "공영주차장",
+        "cost": "저비용"
+      },
+      "private_room": false,
+      "naver_rating": 4.1,
+      "google_rating": 4.0,
+      "foreign_friendly": 70,
+      "business_suitable": 65,
+      "metrics": {
+        "accessibility_stars": 4,
+        "value_stars": 3,
+        "waiting_stars": 2
+      },
+      "confidence_pct": 86,
+      "validity_pct": 80,
+      "profile_match_jemcory": {
+        "score": 70,
+        "notes": "정성 있는 분위기OOO, 플레이팅O, 세련됨O"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "다이닝코드 + 네이버맵"
+    },
+    {
+      "rank": 10,
+      "name": "지미존스 가산점",
+      "category": "양식 (샌드위치)",
+      "address": "가산디지털단지 도보 5분",
+      "price_per_person": "11,000-15,000원",
+      "menu_specialty": "당일 구운 빵, 푸짐한 속재료, 빠른 식사 가능, 캐주얼 분위기",
+      "business_hours": "평일: 10:30-21:00",
+      "break_time": "없음",
+      "last_order": "20:30",
+      "reservation": {
+        "status": "드롭인 가능",
+        "confidence_pct": 90,
+        "notes": "캐주얼 체인점"
+      },
+      "parking": {
+        "available": true,
+        "type": "공영주차장",
+        "cost": "저비용"
+      },
+      "private_room": false,
+      "naver_rating": 4.0,
+      "google_rating": 3.9,
+      "foreign_friendly": 80,
+      "business_suitable": 50,
+      "metrics": {
+        "accessibility_stars": 4,
+        "value_stars": 4,
+        "waiting_stars": 2
+      },
+      "confidence_pct": 88,
+      "validity_pct": 75,
+      "profile_match_jemcory": {
+        "score": 45,
+        "notes": "캐주얼OOO, 빠른 식사O, 분위기 감성X"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "다이닝코드 + 직접 경험"
+    },
+    {
+      "rank": 11,
+      "name": "민소푸 (카이센동)",
+      "category": "일식 (덮밥)",
+      "address": "가산디지털단지역 9번 도보 7분",
+      "price_per_person": "13,000-16,000원",
+      "menu_specialty": "신선한 해산물, 정성 있는 도시락, 푸짐한 구성, 세련된 분위기",
+      "business_hours": "평일: 11:00-21:00",
+      "break_time": "없음",
+      "last_order": "20:30",
+      "reservation": {
+        "status": "예약 가능",
+        "confidence_pct": 85,
+        "notes": "다이닝코드 기반"
+      },
+      "parking": {
+        "available": true,
+        "type": "공영주차장",
+        "cost": "저비용"
+      },
+      "private_room": false,
+      "naver_rating": 4.1,
+      "google_rating": 4.0,
+      "foreign_friendly": 75,
+      "business_suitable": 70,
+      "metrics": {
+        "accessibility_stars": 3,
+        "value_stars": 3,
+        "waiting_stars": 2
+      },
+      "confidence_pct": 85,
+      "validity_pct": 78,
+      "profile_match_jemcory": {
+        "score": 80,
+        "notes": "세련된 분위기OOO, 신선함O, 감성 있음O"
+      },
+      "source_tier": "Tier 3",
+      "source_detail": "다이닝코드 + 네이버맵"
+    },
+    {
+      "rank": 12,
+      "name": "가산물갈비&소불고기 (산더미)",
+      "category": "한식 (물갈비)",
+      "address": "가산디지털1로 128 (STX V TOWER 도보 5분)",
+      "price_per_person": "17,000-20,000원 / 2인 38,000원",
+      "menu_specialty": "한약재 듬뿍, 대량의 고기, 고급스럽고 따뜻한 분위기, 방송 출연 유명점",
+      "business_hours": "평일: 11:00-22:00",
+      "break_time": "없음",
+      "last_order": "21:30",
+      "reservation": {
+        "status": "예약 필수",
+        "confidence_pct": 95,
+        "notes": "인기점, 대기 가능"
+      },
+      "parking": {
+        "available": true,
+        "type": "STX V TOWER 건물주차",
+        "cost": "유료"
+      },
+      "private_room": false,
+      "naver_rating": 4.3,
+      "google_rating": 4.2,
+      "foreign_friendly": 65,
+      "business_suitable": 75,
+      "metrics": {
+        "accessibility_stars": 4,
+        "value_stars": 3,
+        "waiting_stars": 4
+      },
+      "confidence_pct": 92,
+      "validity_pct": 85,
+      "profile_match_jemcory": {
+        "score": 85,
+        "notes": "고급 분위기OOO, 특별한 경험O, 프리미엄 톤O"
+      },
+      "source_tier": "Tier 2",
+      "source_detail": "다이닝코드 + 방송 출연 정보"
+    }
+  ],
+  "final_recommendations": {
+    "tier_1_candidates": [
+      {
+        "rank": 1,
+        "name": "가산물갈비&소불고기 (산더미)",
+        "reason": "신뢰도 92/85, 젬코리 프로필 매칭 85/100, 고급 분위기 + 특별한 경험",
+        "confidence_pct": 92,
+        "validity_pct": 85,
+        "profile_match": 85
+      },
+      {
+        "rank": 2,
+        "name": "오늘돈카츠",
+        "reason": "신뢰도 86/80, 젬코리 프로필 매칭 70/100, 정성있는 분위기 + 세련됨",
+        "confidence_pct": 86,
+        "validity_pct": 80,
+        "profile_match": 70
+      }
+    ],
+    "tier_2_candidates": [
+      {
+        "rank": 1,
+        "name": "민소푸 (카이센동)",
+        "reason": "신뢰도 85/78, 젬코리 프로필 매칭 80/100, 세련된 분위기 + 신선함",
+        "confidence_pct": 85,
+        "validity_pct": 78,
+        "profile_match": 80
+      },
+      {
+        "rank": 2,
+        "name": "라복궁 (양꼬치)",
+        "reason": "신뢰도 82/78, 젬코리 프로필 매칭 75/100, 함께 즐기는 분위기 + 배부르게",
+        "confidence_pct": 82,
+        "validity_pct": 78,
+        "profile_match": 75
+      }
+    ]
+  },
+  "metadata": {
+    "source": "GitHub 블로그 레포지토리 gasandigital_guide.html",
+    "structured_by": "Claude Code",
+    "policy_applied": "약속장소_시장조사_정책 (2026-06-14) + 프로필기반_선정 (2026-06-14)",
+    "last_updated": "2026-06-24"
+  }
+}
