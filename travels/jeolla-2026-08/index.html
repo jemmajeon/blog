@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>전라도 투어 | 2026-08-28 ~ 30</title>
+<style>
+  :root{
+    --bg:#f6f3ee; --paper:#fff; --ink:#1f2933; --sub:#4a5563; --muted:#8a8f9a;
+    --line:#e3ddd2; --navy:#1f3a5f; --rust:#a04a2e; --moss:#5c6f4a;
+    --gold:#b9851a; --sea:#356e89; --soft:#faf6ee;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:'Pretendard','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',system-ui,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--sea);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+
+  header.hero{background:linear-gradient(135deg,#1f3a5f 0%,#2d4a6e 45%,#4a6b52 100%);
+    color:#fff;border-radius:18px;padding:34px 30px;box-shadow:0 12px 28px rgba(31,58,95,.18)}
+  header.hero h1{margin:0 0 6px;font-size:31px;letter-spacing:-.5px;font-weight:800}
+  header.hero p{margin:0;color:#d8e2ee;font-size:15px}
+  header.hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;font-size:13.5px}
+  header.hero .meta div{background:rgba(255,255,255,.09);padding:8px 14px;border-radius:8px;
+    border:1px solid rgba(255,255,255,.14)}
+  header.hero .meta b{color:#fff;margin-right:6px}
+  header.hero .meta span{color:#cfd9e6}
+
+  section{margin-top:34px}
+  section h2{font-size:21px;letter-spacing:-.3px;margin:0 0 6px;padding-left:10px;border-left:4px solid var(--navy)}
+  section .lead{color:var(--sub);font-size:14px;margin:0 0 16px;padding-left:14px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media (max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+  /* ── 요약 ── */
+  .pills{display:flex;flex-wrap:wrap;gap:10px}
+  .pill{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:13.5px;color:var(--sub)}
+  .pill b{color:var(--ink);margin-right:6px}
+  .goal{margin-top:14px;background:#fdf1ec;border:1px solid #eccbbc;border-radius:10px;padding:12px 15px;font-size:14px;color:#6d2f18}
+  .goal b{color:var(--rust)}
+
+  /* ── 지도 ── */
+  .maplayout{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:start}
+  @media (max-width:960px){.maplayout{grid-template-columns:1fr}}
+  .mapbox{background:#eef4f5;border:1px solid var(--line);border-radius:14px;padding:8px;position:relative;overflow:hidden}
+  .mapbox svg{display:block;width:100%;height:auto;touch-action:none}
+  .prov{fill:#dfe7e3;stroke:#c3cec8;stroke-width:1.1}
+  .prov.gj{fill:#d3ddea;stroke:#a9bcd2}
+  .prov.jb{fill:#e9e6df;stroke:#d5d0c5}
+  .sea-label{fill:#9fb6bd;font-size:15px;font-style:italic;letter-spacing:2px}
+  .city-label{fill:#5c6672;font-size:14px;font-weight:700;paint-order:stroke;stroke:#eef4f5;stroke-width:4px}
+  .city-label.faint{fill:#a6b0b8;font-weight:600}
+  .route{fill:none;stroke-width:3;stroke-linecap:round;stroke-dasharray:9 7;opacity:.85}
+  .pin{cursor:pointer}
+  .pin circle{stroke:#fff;stroke-width:2;transition:r .12s}
+  .pin text{fill:#fff;font-size:10px;font-weight:800;text-anchor:middle;pointer-events:none}
+  .pin:hover circle{stroke:#1f2933}
+  .pin.dim{opacity:.18}
+  .pin.on circle{stroke:#1f2933;stroke-width:3}
+  .maptip{position:absolute;pointer-events:none;background:rgba(31,41,51,.95);color:#fff;
+    font-size:12.5px;padding:7px 10px;border-radius:8px;max-width:230px;opacity:0;transition:opacity .12s;z-index:5;line-height:1.45}
+  .maptip b{display:block;font-size:13px;margin-bottom:2px}
+  .mapctl{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}
+  .mapctl button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 13px;
+    font-size:12.5px;cursor:pointer;color:var(--sub);font-weight:600}
+  .mapctl button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px;font-size:12.5px;color:var(--sub)}
+  .legend span{display:flex;align-items:center;gap:5px}
+  .legend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .plist{max-height:560px;overflow-y:auto;padding-right:4px}
+  .prow{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:10px;cursor:pointer;border:1px solid transparent}
+  .prow:hover{background:var(--soft)}
+  .prow.on{background:#fff;border-color:var(--navy);box-shadow:0 2px 8px rgba(31,58,95,.08)}
+  .prow.hide{display:none}
+  .prow .num{flex:0 0 22px;height:22px;border-radius:50%;color:#fff;font-size:11px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .prow .nm{font-size:14px;font-weight:700;line-height:1.35}
+  .prow .ar{font-size:11.5px;color:var(--muted);margin-left:6px;font-weight:600}
+  .prow .on1{font-size:12.5px;color:var(--sub)}
+  .pdetail{margin-top:6px;font-size:12.5px;color:var(--sub);display:none}
+  .prow.on .pdetail{display:block}
+  .pdetail div{margin:2px 0}
+  .pdetail b{color:var(--ink)}
+  .pdetail a.nv{display:inline-block;margin-top:6px;font-size:11.5px;background:var(--soft);
+    border:1px solid var(--line);padding:4px 9px;border-radius:7px;color:var(--sub);font-weight:600}
+
+  /* ── 탭/타임라인 ── */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .tabs button{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 18px;
+    font-size:14px;cursor:pointer;color:var(--sub);font-weight:700}
+  .tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .tabs button.b.on{background:var(--rust);border-color:var(--rust)}
+  .panel{display:none}
+  .panel.on{display:block}
+  .daybar{display:flex;align-items:center;gap:10px;margin:22px 0 10px}
+  .daybar .dn{background:var(--navy);color:#fff;font-size:12px;font-weight:800;padding:4px 11px;border-radius:999px;letter-spacing:.4px}
+  .daybar.d2 .dn{background:var(--rust)}
+  .daybar.d3 .dn{background:var(--sea)}
+  .daybar .dt{font-size:15px;font-weight:800}
+  .daybar .ds{font-size:12.5px;color:var(--muted)}
+  .timeline{position:relative;padding-left:22px;margin-left:6px}
+  .timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .step{position:relative;padding:9px 0 12px}
+  .step::before{content:'';position:absolute;left:-21px;top:15px;width:11px;height:11px;border-radius:50%;
+    background:var(--navy);box-shadow:0 0 0 4px var(--bg)}
+  .step.d2::before{background:var(--rust)} .step.d3::before{background:var(--sea)}
+  .step.key::before{background:#fff;border:3px solid var(--rust);width:13px;height:13px;left:-22px}
+  .step .time{font-size:12.5px;color:var(--gold);font-weight:800;letter-spacing:.4px}
+  .step .title{font-size:15.5px;font-weight:700;margin:1px 0}
+  .step .desc{font-size:13.5px;color:var(--sub);margin:2px 0}
+  .step .tag{display:inline-block;font-size:11.5px;background:var(--soft);border:1px solid var(--line);
+    border-radius:6px;padding:2px 8px;margin:4px 5px 0 0;color:var(--sub)}
+  .step .tag.food{background:#fbf3df;border-color:#ead9a6;color:#8a6410}
+  .step .tag.sight{background:#e4eef3;border-color:#c0d7e2;color:var(--sea)}
+  .step .tag.drive{background:#ecf3e8;border-color:#cfe0c0;color:var(--moss)}
+  .step .tag.family{background:#fdf1ec;border-color:#eccbbc;color:var(--rust)}
+  .step .tag.opt{background:#fff;border-style:dashed}
+
+  .alert{background:#fff8e6;border:1px solid #e9d49a;color:#7a5a10;padding:11px 14px;border-radius:10px;font-size:13.5px;margin-top:12px}
+  .alert b{color:#5a4308}
+  .note{background:#eef4f5;border:1px solid #cfdfe3;color:#2e5561;padding:11px 14px;border-radius:10px;font-size:13.5px;margin-top:12px}
+
+  table.cmp{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.cmp th,table.cmp td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  table.cmp th{background:var(--soft);font-weight:800;color:var(--ink);font-size:13px}
+  table.cmp td.head{font-weight:700;background:#fafafa;white-space:nowrap}
+  table.cmp td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.cmp tr.total td{background:#f2efe8;font-weight:800}
+  .tblwrap{overflow-x:auto}
+
+  .checklist{list-style:none;padding:0;margin:0}
+  .checklist li{padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--sub)}
+  .checklist li:last-child{border-bottom:none}
+  .checklist li::before{content:'\2610';margin-right:10px;color:var(--navy);font-weight:700}
+  .checklist li b{color:var(--ink)}
+  .qlist{list-style:none;padding:0;margin:0;counter-reset:q}
+  .qlist li{padding:11px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--sub)}
+  .qlist li:last-child{border-bottom:none}
+  .qlist li::before{counter-increment:q;content:"Q" counter(q);margin-right:10px;color:var(--rust);font-weight:800;font-size:12.5px}
+  .qlist li b{color:var(--ink);display:block;margin-bottom:2px}
+
+  footer{margin-top:56px;text-align:center;color:var(--muted);font-size:12px;line-height:1.8}
+  footer a{color:var(--muted)}
+  .srcs{margin-top:10px;font-size:11.5px;color:var(--muted)}
+  .srcs a{margin:0 4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>전라도 투어 · 담양 · 광주 · 목포</h1>
+  <p>2026년 8월 28일(금) ~ 30일(일) &nbsp;|&nbsp; 서울 마곡 출발 &nbsp;|&nbsp; 차량 2대 · 4인</p>
+  <div class="meta">
+    <div><b>1호차</b><span>제마 + 형구오빠</span></div>
+    <div><b>2호차</b><span>엄마 + 아빠</span></div>
+    <div><b>1순위</b><span>담양 큰고모댁 · 할머니</span></div>
+    <div><b>2순위</b><span>광주 작은외삼촌 식사</span></div>
+    <div><b>일정안</b><span>A안 1박2일 / B안 2박3일</span></div>
+    <div><b>페이스</b><span>하루 2~3곳 · 많이 안 걷기</span></div>
+  </div>
+</header>
+
+<section>
+  <h2>한눈에 보기</h2>
+  <p class="lead">두 대가 따로 움직이니 <b>집합 지점과 시간</b>만 맞추면 나머지는 유연하게. 8월 말이라 낮 최고 30도 안팎 — 한낮(13~16시)은 실내·그늘·차 안 코스로 배치했어.</p>
+  <div class="card">
+    <div class="pills">
+      <div class="pill"><b>총 주행</b>A안 약 700km · B안 약 900km (2대 각각)</div>
+      <div class="pill"><b>마곡→담양</b>약 320km · 무정차 3시간 30분 안팎</div>
+      <div class="pill"><b>담양→광주</b>약 25km · 30분</div>
+      <div class="pill"><b>광주→나주</b>약 25km · 30분</div>
+      <div class="pill"><b>나주→목포</b>약 50km · 45분</div>
+      <div class="pill"><b>목포→마곡</b>약 400km · 4시간 30분</div>
+      <div class="pill"><b>예상 총비용</b>A안 60~75만 · B안 105~130만</div>
+    </div>
+    <div class="goal">
+      <b>이번 여행의 축</b> — 관광은 곁가지고, <b>할머니 뵙는 시간</b>과 <b>외갓집 식구들과의 식사</b>가 중심이야.
+      그래서 금요일 오후는 통째로 비워뒀고, 관광지는 “가는 길에 자연스럽게 들르는” 것들만 골랐어.
+      큰고모댁 · 외삼촌 일정이 정해지면 나머지는 여기서 빼고 더하면 돼.
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>지도</h2>
+  <p class="lead">핀을 누르면 오른쪽 목록에서 상세가 열려. 목록을 눌러도 지도에서 위치가 잡혀.</p>
+  <div class="mapctl">
+    <button data-f="all" class="on">전체</button>
+    <button data-f="family">★ 가족 일정</button>
+    <button data-f="sight">관광</button>
+    <button data-f="food">식당</button>
+    <button data-f="stay">숙소</button>
+    <span style="flex:1"></span>
+    <button data-r="A">A안 동선</button>
+    <button data-r="B" class="on">B안 동선</button>
+    <button data-z="fit" class="on">여행 권역</button>
+    <button data-z="all">전남 전체</button>
+  </div>
+  <div class="maplayout">
+    <div class="mapbox" id="mapbox">
+      <div class="maptip" id="maptip"></div>
+
+<svg viewBox="0 0 1000.0 982.2" preserveAspectRatio="xMidYMid meet" id="map" role="img" aria-label="전라남도·광주 여행 지도">
+<rect x="0" y="0" width="1000.0" height="982.2" fill="#eef4f5"/>
+<path class="prov jb" d="M908.7,-61.3L915.9,-54.8L918.1,-45.9L929.1,-57.7L934.3,-54.8L938.3,-42.5L949.2,-42.1L973.9,-32.5L979.6,-39.0L1002.4,-45.7L1012.6,-36.9L1012.2,-23.2L1020.4,-17.0L1026.4,6.2L1014.9,13.4L1017.3,20.4L1001.6,33.7L997.0,45.7L992.6,44.2L983.0,52.8L973.9,53.8L967.1,60.6L955.5,58.3L944.2,82.6L935.9,87.1L919.0,103.1L918.8,129.0L911.7,135.2L909.2,150.3L904.5,154.2L901.0,165.0L904.4,177.8L897.6,183.7L896.8,195.5L886.8,205.9L888.4,211.8L902.7,222.6L903.7,227.5L915.2,248.1L908.2,252.0L907.8,260.5L911.6,267.1L921.4,268.1L919.2,284.8L909.7,291.0L896.7,311.8L902.2,323.4L901.2,329.5L888.9,340.6L882.4,342.0L862.0,326.9L849.4,315.5L836.4,311.4L818.9,315.1L798.6,344.9L786.1,335.5L764.1,345.1L756.7,339.2L744.7,340.5L728.2,327.2L724.8,338.1L718.7,338.3L704.6,329.6L695.1,338.5L681.7,347.0L658.3,337.7L651.6,337.1L654.0,325.5L659.7,327.4L661.9,311.7L656.0,301.9L651.5,305.9L644.6,299.0L649.6,294.2L652.5,277.0L647.7,274.5L646.5,258.9L637.0,262.8L618.5,279.1L621.4,291.8L615.4,296.4L602.1,296.2L601.0,290.5L591.6,284.8L586.9,276.1L589.8,271.9L574.2,261.0L566.4,258.6L555.7,247.8L550.2,257.2L528.7,258.6L521.7,266.9L523.4,281.4L513.7,296.5L514.4,306.2L509.3,312.3L502.9,312.2L500.6,320.3L486.4,319.4L476.9,336.1L468.1,335.4L459.1,327.9L449.1,333.8L453.9,343.9L436.2,339.5L427.5,342.8L421.9,332.8L422.7,320.3L405.9,301.3L409.1,287.6L404.7,280.8L391.1,277.8L383.1,273.4L388.7,265.1L406.7,230.3L422.3,222.7L432.1,226.0L441.1,218.5L458.7,217.9L464.5,210.3L464.9,203.4L478.2,203.5L485.5,211.4L488.5,197.8L473.1,190.9L464.9,195.4L446.7,192.7L431.8,193.8L426.2,198.4L410.3,194.9L399.8,185.2L398.7,169.4L407.1,157.9L414.1,157.0L428.2,141.1L440.4,135.0L444.6,136.9L458.2,123.8L469.1,108.6L467.3,87.2L476.1,82.5L500.6,81.5L513.2,84.4L531.3,93.2L534.3,80.4L515.3,71.4L500.6,60.0L497.5,53.8L514.4,45.8L539.2,46.8L543.8,42.2L544.8,31.5L537.5,26.9L531.3,34.0L516.7,32.6L511.8,35.7L500.5,31.5L490.6,31.0L486.8,36.9L464.0,35.5L461.9,19.3L463.9,5.5L455.3,2.9L426.2,6.8L423.1,-9.6L443.7,-12.2L476.0,-13.8L486.3,-16.5L492.2,-24.6L511.9,-22.4L516.0,-25.4L522.1,-37.5L533.6,-41.8L548.8,-43.0L557.3,-49.9L572.0,-57.1L576.9,-73.6L576.2,-84.9L584.5,-99.7L598.0,-99.0L612.6,-108.0L627.1,-102.0L632.8,-104.2L641.6,-97.5L653.0,-100.6L658.0,-74.6L666.8,-66.3L689.5,-62.0L691.0,-71.1L704.7,-69.5L709.3,-75.0L718.1,-70.7L720.4,-78.3L738.4,-75.3L740.7,-84.9L750.2,-82.1L759.4,-85.0L764.5,-91.8L778.5,-94.3L785.7,-82.5L787.9,-72.5L788.4,-53.3L794.1,-43.2L805.8,-29.2L816.7,-39.0L824.7,-28.6L829.6,-16.4L834.9,-18.5L843.4,-13.3L851.3,-14.5L863.4,-20.8L866.2,-31.2L865.2,-42.5L888.5,-38.1L892.6,-31.6L900.1,-29.0L905.6,-46.6L900.4,-47.1L902.8,-60.4L908.7,-61.3Z"/>
+<path class="prov" d="M435.3,941.7L441.3,946.6L450.6,946.6L447.6,960.3L434.7,969.8L424.7,972.8L415.9,964.1L420.6,946.8L431.4,940.1L435.3,941.7Z"/>
+<path class="prov" d="M484.0,933.5L493.0,938.6L487.3,950.6L492.6,963.1L484.8,978.0L472.3,968.7L469.3,959.7L478.1,947.8L472.0,941.6L479.2,930.6L484.0,933.5Z"/>
+<path class="prov" d="M584.5,922.2L598.8,944.3L594.6,955.1L580.7,956.8L564.8,944.5L575.8,925.3L584.5,922.2Z"/>
+<path class="prov" d="M443.6,912.5L455.7,916.3L464.1,922.3L468.3,929.3L461.7,932.9L464.6,941.2L451.7,945.5L440.1,942.0L434.7,936.7L442.3,920.9L443.6,912.5Z"/>
+<path class="prov" d="M214.1,867.7L220.5,875.3L231.4,873.4L237.6,889.7L228.7,887.4L220.2,891.5L217.4,886.6L208.7,886.4L205.6,876.2L214.1,867.7Z"/>
+<path class="prov" d="M561.5,849.5L565.1,853.6L574.5,850.8L578.9,857.7L586.8,860.8L580.8,872.2L573.6,869.5L564.1,878.6L558.2,865.2L548.1,863.9L543.8,868.0L535.6,863.1L539.0,852.6L545.5,859.9L552.4,852.0L561.5,849.5Z"/>
+<path class="prov" d="M646.5,837.3L655.0,845.4L670.9,846.7L673.4,859.2L667.2,858.4L652.9,862.4L634.2,846.8L635.9,837.1L646.5,837.3Z"/>
+<path class="prov" d="M494.1,823.3L501.5,825.4L514.9,837.4L513.6,844.7L522.0,866.3L531.6,871.0L526.9,881.8L514.8,884.7L508.5,879.4L498.4,881.6L491.0,870.0L478.7,860.0L474.2,834.1L478.3,828.4L494.1,823.3Z"/>
+<path class="prov" d="M607.3,818.0L609.9,823.6L602.5,840.3L595.5,848.1L572.0,839.1L575.7,827.4L581.4,822.7L589.7,823.3L601.3,829.6L607.3,818.0Z"/>
+<path class="prov" d="M559.5,802.3L564.4,809.3L573.2,829.9L560.1,833.4L540.6,835.0L532.7,849.0L529.3,845.9L533.4,834.4L524.9,831.8L528.6,821.4L539.3,806.9L544.9,807.8L559.5,802.3Z"/>
+<path class="prov" d="M832.8,786.5L849.8,791.6L851.6,788.2L864.8,799.0L864.0,809.1L845.6,818.3L844.9,807.1L833.6,803.3L828.9,795.4L832.8,786.5Z"/>
+<path class="prov" d="M728.3,775.2L733.5,784.9L723.9,807.4L713.4,808.5L704.3,805.9L694.5,809.1L685.6,807.9L674.0,789.4L685.6,777.1L690.8,785.6L699.6,782.7L713.2,774.4L718.0,777.8L728.3,775.2Z"/>
+<path class="prov" d="M830.7,747.3L839.6,752.1L832.0,766.0L844.9,767.2L849.6,774.3L840.7,780.3L828.0,782.8L824.5,773.3L830.7,770.1L825.7,762.4L820.1,761.4L830.7,747.3Z"/>
+<path class="prov" d="M953.6,743.5L960.4,743.6L962.8,752.9L970.7,761.4L977.8,775.1L966.8,778.2L965.0,773.7L946.8,763.1L941.6,750.8L953.6,743.5Z"/>
+<path class="prov" d="M305.6,724.1L328.7,733.8L330.1,743.8L343.3,747.0L362.7,769.1L358.1,789.5L352.3,794.8L355.4,801.9L343.2,816.3L333.3,821.8L323.8,819.9L320.3,827.5L311.9,826.0L310.7,835.9L302.5,836.0L284.0,846.8L271.9,849.7L255.1,846.0L255.0,838.2L246.3,834.6L243.9,827.2L235.2,814.8L240.9,802.6L259.6,784.4L271.5,779.7L274.0,770.6L282.5,767.5L294.5,752.8L307.4,752.0L310.0,745.9L301.3,734.8L305.6,724.1Z"/>
+<path class="prov" d="M226.3,699.7L232.7,711.1L241.4,715.3L244.8,724.0L238.3,732.3L241.0,742.3L233.7,742.6L231.3,749.6L217.5,756.0L216.5,736.7L224.7,738.9L231.5,730.0L223.8,713.4L217.3,713.9L217.9,703.1L226.3,699.7Z"/>
+<path class="prov" d="M217.7,686.9L218.8,696.8L212.8,710.5L221.1,717.0L224.8,727.1L220.3,735.6L204.7,737.6L201.3,715.7L200.8,701.8L208.8,699.4L208.8,693.5L217.7,686.9Z"/>
+<path class="prov" d="M260.6,679.1L276.7,685.3L279.5,701.3L266.9,709.9L252.2,707.8L243.5,693.7L247.6,684.2L260.6,679.1Z"/>
+<path class="prov" d="M-46.0,665.1L-35.9,668.8L-43.5,675.6L-44.8,685.0L-52.4,687.3L-51.2,695.2L-58.0,698.0L-58.4,706.5L-67.4,703.4L-71.1,695.5L-65.2,677.5L-58.7,666.1L-46.0,665.1Z"/>
+<path class="prov" d="M956.9,647.4L973.1,656.2L975.4,664.3L968.9,675.2L977.0,686.2L979.4,702.3L975.8,712.7L981.8,723.6L972.9,726.2L957.4,722.3L940.2,706.2L946.4,698.7L945.9,688.8L956.6,681.2L961.0,671.0L960.9,658.7L956.9,647.4Z"/>
+<path class="prov" d="M182.8,649.4L186.2,654.0L202.9,659.8L200.2,673.6L191.3,676.9L188.3,684.5L181.8,688.5L159.8,677.4L159.6,659.9L171.3,658.1L179.5,645.4L182.8,649.4Z"/>
+<path class="prov" d="M231.8,623.4L238.6,627.4L250.4,625.1L256.7,634.3L267.4,634.4L280.7,648.4L281.9,655.0L271.7,665.0L259.8,672.6L248.7,674.5L243.9,667.4L228.7,661.0L225.9,656.3L228.2,640.4L231.3,637.2L226.0,627.1L231.8,623.4Z"/>
+<path class="prov" d="M195.2,609.7L195.9,633.5L186.6,637.5L171.1,637.4L175.2,647.2L171.5,653.9L161.2,657.6L150.5,651.4L148.1,630.7L156.8,624.7L168.9,624.8L182.2,616.7L185.2,610.5L195.2,609.7Z"/>
+<path class="prov" d="M270.6,610.5L272.6,632.3L255.5,632.2L250.2,623.1L239.8,624.1L239.9,616.2L254.3,612.4L264.6,599.9L270.6,610.5Z"/>
+<path class="prov" d="M246.4,568.1L256.5,572.3L262.2,588.1L246.2,598.5L248.9,610.8L240.3,613.9L236.9,606.4L221.9,585.9L232.2,580.6L241.3,585.1L246.4,568.1Z"/>
+<path class="prov" d="M325.4,547.4L331.9,554.3L342.6,554.2L345.7,562.0L338.0,564.3L337.6,579.7L351.6,578.2L358.0,587.1L352.0,604.5L340.7,602.3L344.1,591.7L341.9,586.5L316.8,582.6L307.4,590.9L295.5,585.8L301.8,580.8L311.4,580.7L319.0,576.3L327.9,562.6L318.5,553.6L325.4,547.4Z"/>
+<path class="prov" d="M223.8,540.2L236.5,546.8L241.8,558.6L238.2,572.2L233.6,578.4L218.4,583.9L195.3,577.7L191.9,571.2L202.4,551.9L210.1,554.1L214.0,548.8L221.8,548.4L223.8,540.2Z"/>
+<path class="prov" d="M951.8,534.1L952.4,542.1L964.1,542.2L972.6,550.9L972.4,566.4L962.1,562.7L961.4,555.9L937.6,552.5L946.4,533.5L951.8,534.1Z"/>
+<path class="prov" d="M254.6,491.6L263.6,492.0L271.3,498.3L278.1,513.2L272.4,534.7L265.2,539.0L250.2,532.1L255.3,523.3L254.4,505.3L246.9,508.4L239.1,505.3L246.7,495.9L254.6,491.6Z"/>
+<path class="prov" d="M266.9,429.8L259.7,433.1L252.2,444.3L249.1,454.7L248.1,473.5L236.0,478.4L228.1,474.3L217.4,473.6L214.6,460.7L217.6,451.6L233.4,446.8L247.8,430.1L266.9,429.8Z"/>
+<path class="prov" d="M882.4,342.0L890.4,363.6L896.6,367.0L900.2,380.1L901.6,406.2L933.6,437.1L933.4,451.3L943.9,462.7L952.0,464.6L953.2,473.1L965.6,479.2L967.0,490.4L973.6,496.9L969.5,512.3L963.8,517.7L962.0,524.1L948.0,530.8L935.8,542.6L931.7,551.1L909.6,566.4L899.8,550.6L888.2,549.0L898.4,563.2L887.7,572.5L896.9,586.0L910.9,596.1L919.0,588.6L922.7,592.6L935.1,580.7L950.5,583.2L962.7,577.8L968.3,580.5L966.2,605.5L959.9,620.4L955.4,624.9L959.3,631.6L957.4,646.2L937.5,654.5L927.8,643.7L917.4,635.9L909.4,657.4L902.7,664.6L902.4,672.1L909.7,694.1L901.1,697.4L887.7,690.9L879.2,695.3L871.1,685.2L870.8,671.1L877.8,650.4L883.0,647.7L887.9,634.7L883.3,632.5L873.6,608.6L859.0,607.0L865.4,595.3L858.6,585.7L855.0,570.7L849.8,572.6L836.8,588.4L805.6,598.9L814.0,606.2L803.1,614.1L799.5,623.4L805.8,629.4L804.1,635.2L793.7,643.3L801.2,659.3L827.9,668.0L826.8,680.5L839.0,680.2L837.4,689.4L843.1,690.7L851.4,722.7L842.9,729.9L829.8,727.1L824.7,730.8L810.3,723.7L802.7,728.4L808.6,739.2L819.8,743.8L815.3,755.0L805.7,769.3L796.1,770.2L795.0,779.1L774.9,785.6L778.6,800.5L771.3,802.6L756.2,783.8L747.7,781.0L754.4,772.9L743.1,761.4L722.4,760.6L715.9,754.3L704.9,759.8L690.4,759.0L684.8,756.2L680.1,746.6L680.6,740.0L694.1,726.9L705.9,720.8L706.3,704.1L718.2,692.9L721.6,703.2L730.3,695.3L732.5,676.1L740.3,659.9L752.4,655.0L755.8,666.3L752.9,679.7L768.2,683.8L769.4,674.8L776.4,660.9L772.2,637.7L763.3,639.0L758.6,649.1L749.0,643.7L745.0,648.4L735.0,629.5L722.4,645.4L717.5,662.2L709.8,669.5L692.6,668.5L687.0,664.0L678.0,677.6L661.2,685.1L654.7,696.1L628.9,710.7L635.3,715.6L628.4,721.6L623.8,734.2L626.1,750.3L619.3,748.7L613.4,755.1L619.7,762.7L615.0,770.6L621.2,778.3L611.5,787.4L603.9,799.2L599.0,796.7L577.7,794.5L582.3,809.4L566.2,799.7L552.9,798.8L540.1,789.3L540.9,777.6L538.5,764.7L540.6,754.5L541.3,734.4L532.1,716.8L529.5,737.9L530.7,742.4L526.6,757.7L526.1,774.8L518.6,777.8L521.8,786.5L512.9,800.6L500.0,803.5L492.7,810.7L480.1,813.2L465.2,823.6L466.4,846.8L458.9,852.9L458.9,864.9L451.4,867.3L439.0,866.4L433.4,876.1L421.5,878.7L419.2,867.6L425.6,859.6L422.5,845.4L405.7,846.6L405.7,834.4L411.8,830.3L409.7,822.8L421.2,817.0L417.4,810.4L409.3,806.2L403.7,810.5L395.7,798.3L399.7,791.7L394.6,783.9L401.5,767.8L396.6,754.5L384.5,748.0L383.6,742.2L371.1,748.1L361.7,738.2L354.1,739.2L341.8,732.7L333.2,736.2L329.5,723.4L317.8,720.3L320.6,702.6L314.0,700.6L310.7,686.7L307.4,684.4L308.7,668.4L315.7,659.0L315.8,650.1L320.9,634.2L327.0,632.3L342.3,645.0L349.0,663.6L344.4,668.0L345.3,679.1L356.8,697.2L360.3,708.8L385.5,723.6L382.8,711.2L359.1,695.2L352.3,677.8L346.1,672.7L356.6,665.9L365.4,648.8L355.9,645.1L361.9,637.3L361.4,629.8L391.8,621.1L388.5,612.5L371.0,621.1L356.8,622.3L353.8,616.7L357.5,605.1L365.3,592.6L373.5,584.6L368.1,575.4L371.1,569.6L365.9,564.4L372.4,553.0L366.8,548.5L364.8,534.2L367.8,526.3L361.3,521.3L355.9,544.3L345.7,551.4L340.0,548.5L336.2,536.0L324.7,524.5L329.7,513.2L341.3,521.5L352.6,513.1L346.2,504.7L365.8,492.7L362.3,481.0L349.4,485.4L346.1,468.6L339.1,459.0L327.3,480.7L323.1,474.4L309.6,477.8L315.7,486.0L307.8,499.3L295.1,493.6L298.8,482.5L293.3,475.3L277.2,475.4L266.6,470.5L269.1,450.9L279.4,446.1L297.7,453.7L303.2,447.6L308.4,430.6L314.8,428.5L337.8,434.8L346.5,425.9L346.3,444.7L342.2,457.3L356.5,468.1L369.0,465.3L373.5,472.2L370.0,488.5L388.4,476.4L393.1,467.2L387.9,461.3L396.6,457.2L390.4,449.9L379.0,448.9L371.8,434.1L354.1,417.3L344.5,403.8L330.0,411.4L325.9,385.3L331.8,370.8L337.4,371.9L337.1,353.1L352.4,352.4L360.8,343.7L361.0,331.3L369.5,309.9L373.0,288.6L379.9,278.5L391.1,277.8L404.7,280.8L409.1,287.6L405.9,301.3L422.7,320.3L421.9,332.8L427.5,342.8L436.2,339.5L453.9,343.9L449.1,333.8L459.1,327.9L468.1,335.4L476.9,336.1L486.4,319.4L500.6,320.3L502.9,312.2L509.3,312.3L514.4,306.2L513.7,296.5L523.4,281.4L521.7,266.9L528.7,258.6L550.2,257.2L555.7,247.8L566.4,258.6L574.2,261.0L589.8,271.9L586.9,276.1L591.6,284.8L601.0,290.5L602.1,296.2L615.4,296.4L621.4,291.8L618.5,279.1L637.0,262.8L646.5,258.9L647.7,274.5L652.5,277.0L649.6,294.2L644.6,299.0L651.5,305.9L656.0,301.9L661.9,311.7L659.7,327.4L654.0,325.5L651.6,337.1L658.3,337.7L681.7,347.0L695.1,338.5L704.6,329.6L718.7,338.3L724.8,338.1L728.2,327.2L744.7,340.5L756.7,339.2L764.1,345.1L786.1,335.5L798.6,344.9L818.9,315.1L836.4,311.4L849.4,315.5L862.0,326.9L882.4,342.0ZM591.0,368.5L583.4,374.9L576.6,373.2L561.4,383.8L546.9,389.8L525.0,381.6L528.7,371.0L516.7,372.3L509.5,385.5L508.6,393.4L502.0,395.7L495.2,391.8L491.3,403.2L483.4,404.2L488.3,416.1L480.9,418.6L479.8,442.0L491.4,449.8L495.2,446.6L518.4,449.3L527.9,457.7L535.0,477.8L542.3,473.5L552.6,478.1L568.6,464.5L575.6,466.6L597.5,458.1L601.9,466.5L610.4,467.2L616.9,458.5L625.9,456.0L635.3,440.0L634.8,423.8L640.4,417.2L632.1,406.3L620.7,407.0L602.0,378.3L601.3,372.5L591.0,368.5ZM380.4,644.3L369.6,644.5L365.4,654.8L393.4,662.0L392.7,672.0L401.5,687.0L404.9,676.0L411.4,683.6L432.5,689.3L431.0,674.9L426.3,661.5L413.4,646.6L401.4,644.9L396.3,649.7L385.8,648.9L380.4,644.3Z"/>
+<path class="prov gj" d="M591.0,368.5L601.3,372.5L602.0,378.3L620.7,407.0L632.1,406.3L640.4,417.2L634.8,423.8L635.3,440.0L625.9,456.0L616.9,458.5L610.4,467.2L601.9,466.5L597.5,458.1L575.6,466.6L568.6,464.5L552.6,478.1L542.3,473.5L535.0,477.8L527.9,457.7L518.4,449.3L495.2,446.6L491.4,449.8L479.8,442.0L480.9,418.6L488.3,416.1L483.4,404.2L491.3,403.2L495.2,391.8L502.0,395.7L508.6,393.4L509.5,385.5L516.7,372.3L528.7,371.0L525.0,381.6L546.9,389.8L561.4,383.8L576.6,373.2L583.4,374.9L591.0,368.5Z"/>
+<text class="sea-label" x="190" y="430">서해</text>
+<text class="sea-label" x="520" y="890">다도해</text>
+<text class="city-label faint" x="700" y="150">전라북도</text>
+<text class="city-label" x="672" y="318">담양</text>
+<text class="city-label" x="520" y="400">광주</text>
+<text class="city-label" x="448" y="492">나주</text>
+<text class="city-label" x="300" y="596">목포</text>
+<text class="city-label faint" x="852" y="540">순천</text>
+<text class="city-label faint" x="545" y="600">영암</text>
+<g id="fromseoul"><path d="M578,262 L626,314" stroke="#8a9aa8" stroke-width="2.5" stroke-dasharray="9 7" fill="none" marker-end="url(#arw)"/><text x="438" y="256" fill="#6d7c89" font-size="13" font-weight="700">서울 마곡 ↑ 약 320km · 3시간 30분</text></g>
+<defs><marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a9aa8"/></marker></defs>
+<g id="routes"></g><g id="links"></g><g id="pins"></g>
+</svg>
+      <div class="legend">
+        <span><i style="background:#a04a2e"></i>가족 일정</span>
+        <span><i style="background:#356e89"></i>관광</span>
+        <span><i style="background:#b9851a"></i>식당</span>
+        <span><i style="background:#5c6f4a"></i>숙소</span>
+        <span style="color:#8a8f9a">· 점선 = 이동 동선</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="plist" id="plist"></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>일정</h2>
+  <p class="lead">A안은 “할머니 + 외삼촌”만 확실히 하고 빠르게 돌아오는 안, B안은 목포까지 붙여 알차게 보는 안. 금요일(Day 1)은 두 안이 똑같아.</p>
+  <div class="tabs">
+    <button data-t="A" class="on">A안 · 1박 2일 (8/28~29)</button>
+    <button data-t="B" class="b">B안 · 2박 3일 (8/28~30)</button>
+  </div>
+
+  <!-- ── A안 ── -->
+  <div class="panel on" id="tab-A">
+    <div class="card">
+      <div class="daybar"><span class="dn">DAY 1</span><span class="dt">8/28 (금) · 마곡 → 담양 → 광주</span><span class="ds">주행 약 350km</span></div>
+      <div class="timeline">
+        <div class="step"><div class="time">06:30</div><div class="title">마곡 출발 (2대 동시)</div>
+          <div class="desc">금요일 아침 서울 탈출 + 휴가철 끝물 정체를 피하려면 7시 전 출발이 안전해. 두 차 모두 카톡 “위치 공유” 켜두고 출발.</div>
+          <span class="tag drive">서해안 → 서천공주 → 논산천안 → 호남</span><span class="tag">약 320km</span></div>
+        <div class="step"><div class="time">08:40</div><div class="title">휴게소 1회 정차 (25분)</div>
+          <div class="desc">화성휴게소 또는 정안알밤휴게소. 부모님 차가 앞서 가시게 하고 우리가 뒤따라가면 속도 맞추기 편해.</div>
+          <span class="tag drive">2대 집합 지점 #1</span></div>
+        <div class="step key"><div class="time">10:30~11:00</div><div class="title">담양 도착 · 큰고모댁</div>
+          <div class="desc"><b>이번 여행의 본편.</b> 할머니 뵙고 어른들 인사. 3시간 정도 넉넉히 잡아뒀어 — 더 계셔도 뒤 일정은 다 뺄 수 있게 짰음.</div>
+          <span class="tag family">★ 1순위</span><span class="tag">3시간 확보</span></div>
+        <div class="step"><div class="time">13:30</div><div class="title">점심 — 큰고모댁 또는 담양 떡갈비</div>
+          <div class="desc">큰고모댁에서 상 차려주시면 그대로. 밖에서 먹게 되면 <b>덕인관</b>(룸 있음·어른 모시기 좋음) 또는 <b>창평 신식당</b>(노포·수요일 휴무라 금요일은 OK).</div>
+          <span class="tag food">덕인관 1인 3만원대</span><span class="tag food">신식당 1인 2만원대</span></div>
+        <div class="step"><div class="time">15:30</div><div class="title">메타세쿼이아 가로수길</div>
+          <div class="desc">완전 평지에 그늘 터널이라 8월 오후에도 걸을 만해. 40분이면 충분. 체력 남으면 바로 옆 <b>관방제림 + 국수거리</b>까지 이어붙이면 되고, 대나무 보고 싶으면 <b>죽녹원</b>으로 바꿔도 돼.</div>
+          <span class="tag sight">성인 2,000원</span><span class="tag sight opt">대체: 죽녹원 3,000원</span></div>
+        <div class="step"><div class="time">17:00</div><div class="title">광주로 이동 (30분)</div>
+          <span class="tag drive">담양 → 광주 약 25km</span></div>
+        <div class="step key"><div class="time">18:00</div><div class="title">작은외삼촌과 저녁</div>
+          <div class="desc"><b>2순위 일정.</b> 장소는 외삼촌 편하신 곳이 우선. 우리가 정하게 되면 상무지구 쪽이 주차·룸 다 편해 — <b>명가원</b>(한정식·예약제), <b>대광식당</b>(육전), <b>영미오리탕</b>(광주에서만 먹는 메뉴) 중 택1.</div>
+          <span class="tag family">★ 2순위</span><span class="tag food">금요일 저녁 → 예약 필수</span></div>
+        <div class="step"><div class="time">20:30</div><div class="title">사직공원 전망타워 야경 <span style="color:#8a8f9a;font-weight:400;font-size:13px">(선택)</span></div>
+          <div class="desc">무료 · 엘리베이터 있음 · 30분. 부모님 피곤하시면 바로 숙소로.</div>
+          <span class="tag sight opt">선택</span></div>
+        <div class="step"><div class="time">21:00</div><div class="title">숙소 체크인</div>
+          <div class="desc">광주 상무지구 호텔 2룸(주차 편함) 또는 담양 펜션 한 채. 저녁 자리가 광주면 광주 숙박이 야간운전 없어서 편해.</div>
+          <span class="tag">2룸 or 독채</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="daybar d2"><span class="dn">DAY 2</span><span class="dt">8/29 (토) · 광주 → 마곡</span><span class="ds">주행 약 350km</span></div>
+      <div class="timeline">
+        <div class="step d2"><div class="time">08:30</div><div class="title">조식 · 체크아웃</div></div>
+        <div class="step d2"><div class="time">09:30</div><div class="title">양림동 근대역사거리 + 펭귄마을</div>
+          <div class="desc">선교사 사택, 근대 한옥, 골목 벽화. 무료고 1시간이면 돌아. 아침이라 덜 더운 시간대에 배치했어. 부모님 세대가 특히 좋아하는 동네야.</div>
+          <span class="tag sight">무료 · 1시간</span></div>
+        <div class="step d2"><div class="time">11:30</div><div class="title">점심 — 광주 마지막 한 끼</div>
+          <div class="desc"><b>대광식당</b> 육전 / <b>영미오리탕</b> 들깨오리탕 중 전날 안 먹은 쪽으로. 귀가길에 <b>궁전제과</b> 들러 빵 사가면 어른들 선물까지 해결.</div>
+          <span class="tag food">1인 2~3만원</span></div>
+        <div class="step d2"><div class="time">13:00</div><div class="title">출발 → 마곡</div>
+          <div class="desc">토요일 오후 상행이라 정체는 덜해. 휴게소 1회 포함 4시간 30분 예상.</div>
+          <span class="tag drive">17:30~18:00 도착</span></div>
+      </div>
+      <div class="note"><b>Day 2 대안</b> — 광주 대신 <b>담양을 한 번 더</b>: 오전에 죽녹원(전날 메타길만 봤으면) 또는 소쇄원 보고 국수거리에서 점심 후 상경. 혹은 <b>나주 경유</b>: 하얀집 곰탕(13,000원) + 금성관 30분 보고 올라오면 “전남 한 곳 더” 챙길 수 있어.</div>
+    </div>
+  </div>
+
+  <!-- ── B안 ── -->
+  <div class="panel" id="tab-B">
+    <div class="card">
+      <div class="daybar"><span class="dn">DAY 1</span><span class="dt">8/28 (금) · 마곡 → 담양 → 광주</span><span class="ds">A안 Day 1과 동일</span></div>
+      <div class="note" style="margin-top:0">금요일은 A안과 <b>완전히 같아</b>. 마곡 06:30 출발 → 큰고모댁 11:00 → 담양 산책 → 외삼촌 저녁 18:00 → 숙박.
+        다만 B안은 다음 날 나주·목포로 내려가니까 숙소를 <b>광주 남쪽(상무·서구)</b>에 잡는 게 동선상 유리해.</div>
+      <div class="tabs" style="margin:14px 0 0"><button type="button" onclick="document.querySelector('[data-t=A]').click();window.scrollTo({top:document.querySelector('#tab-A').offsetTop-40,behavior:'smooth'})">Day 1 상세는 A안 탭에서 보기 →</button></div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="daybar d2"><span class="dn">DAY 2</span><span class="dt">8/29 (토) · 광주 → 나주 → 목포</span><span class="ds">주행 약 90km · 이동 부담 제일 적은 날</span></div>
+      <div class="timeline">
+        <div class="step d2"><div class="time">08:30</div><div class="title">조식 · 체크아웃</div></div>
+        <div class="step d2"><div class="time">09:30</div><div class="title">담양 or 광주 한 곳 더 <span style="color:#8a8f9a;font-weight:400;font-size:13px">(택1)</span></div>
+          <div class="desc"><b>담양 죽녹원</b>(전날 메타길만 봤다면) / <b>소쇄원</b>(어른들 취향 정통 정원) / <b>양림동 근대역사거리</b>(광주에 묵었다면 도보권). 아침 시간대라 어느 쪽이든 덜 더워.</div>
+          <span class="tag sight">1시간 · 한 곳만</span></div>
+        <div class="step d2"><div class="time">11:15</div><div class="title">나주로 이동 (30분)</div><span class="tag drive">광주 → 나주 25km</span></div>
+        <div class="step d2"><div class="time">12:00</div><div class="title">점심 — 나주곰탕 하얀집</div>
+          <div class="desc">1910년 창업, 4대째. 곰탕 13,000원 / 수육곰탕 15,000원으로 <b>가격도 착하고 어른들 입에도 무난</b>해. 08:00~20:00, 수요일 휴무라 토요일은 영업.</div>
+          <span class="tag food">4인 5~6만원</span><span class="tag sight">식후 금성관 도보 10분</span></div>
+        <div class="step d2"><div class="time">14:00</div><div class="title">목포로 이동 (45분)</div><span class="tag drive">나주 → 목포 50km</span></div>
+        <div class="step d2"><div class="time">15:00</div><div class="title">목포 숙소 체크인 · 휴식</div>
+          <div class="desc">하루 중 제일 더운 시간(15~16시)을 <b>일부러 숙소 휴식</b>에 배치했어. 부모님 낮잠 한숨 주무시고 움직이면 저녁까지 컨디션이 남아.</div>
+          <span class="tag">더위 회피 구간</span></div>
+        <div class="step d2"><div class="time">16:30</div><div class="title">목포해상케이블카</div>
+          <div class="desc">3.23km 국내 최장. <b>앉아서 유달산 + 다도해 + 목포대교를 다 보는</b> 코스라 부모님 페이스에 딱 맞아. 왕복만 하면 40분, 고하도에 내려서 전망대까지 걸으면 2시간.</div>
+          <span class="tag sight">왕복 성인 2만원대 · 크리스탈 3만원대</span><span class="tag sight">주말 대기 → 온라인 예매</span></div>
+        <div class="step d2"><div class="time">18:30</div><div class="title">저녁 — 목포 민어 (제철!)</div>
+          <div class="desc"><b>8월은 민어 최성수기.</b> 영란횟집이 전국구인데 성수기 예약 필수야. 회가 부담스러우면 민어전·병어찜·갈치조림 같은 익힌 메뉴도 되고, 아예 낙지연포탕이나 백반집으로 틀어도 좋아.</div>
+          <span class="tag food">4인 12~18만원</span><span class="tag food opt">대안: 낙지연포탕 · 백반</span></div>
+        <div class="step d2"><div class="time">20:00</div><div class="title">평화광장 · 춤추는 바다분수</div>
+          <div class="desc">숙소를 평화광장 쪽에 잡으면 걸어서 끝. 무료, 밤바다 산책.</div>
+          <span class="tag sight">무료 · 분수 시간 당일 확인</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="daybar d3"><span class="dn">DAY 3</span><span class="dt">8/30 (일) · 목포 → 마곡</span><span class="ds">주행 약 400km</span></div>
+      <div class="timeline">
+        <div class="step d3"><div class="time">08:30</div><div class="title">조식 · 체크아웃</div></div>
+        <div class="step d3"><div class="time">09:30</div><div class="title">갓바위 & 해상보행교</div>
+          <div class="desc">천연기념물 갓바위를 데크 위에서 정면으로 봐. <b>완전 평지 데크라 이번 여행에서 제일 편한 산책</b>이고 무료야. 바로 옆 <b>목포자연사박물관</b>이 실내라 더우면 거기로 피신.</div>
+          <span class="tag sight">무료 · 40분</span><span class="tag sight opt">자연사박물관 3,000원 안팎</span></div>
+        <div class="step d3"><div class="time">11:30</div><div class="title">점심 — 목포 마지막 한 끼</div>
+          <div class="desc">백반 또는 낙지. 근대역사거리를 못 봤으면 이 시간에 붙여서 <b>구 일본영사관 + 역사관 1·2관</b>(통합 2,000원 안팎, 1시간)을 넣어도 돼.</div>
+          <span class="tag food">1인 1~2만원</span></div>
+        <div class="step d3"><div class="time">13:00</div><div class="title">출발 → 마곡</div>
+          <div class="desc">일요일 상행이라 오후 늦게 출발하면 정체를 그대로 맞아. <b>13시 출발이 마지노선</b>이고, 15시 넘어가면 6시간까지 각오해야 해.</div>
+          <span class="tag drive">17:30~18:30 도착</span></div>
+      </div>
+      <div class="alert"><b>일요일 귀가 주의</b> — 목포에서 서울은 400km, 무정차 4시간 30분이야. 형구오빠랑 나는 교대 운전이 되지만 <b>아빠는 혼자 운전하셔야 하니</b> 휴게소를 2번(정읍·여산 / 정안알밤) 넉넉히 잡고, 우리가 뒤에서 따라가는 편대로 가는 걸 추천해.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>숙소</h2>
+  <p class="lead">엄마아빠랑 같이 묵는 게 조건이라 “한 채 통째로(펜션)” vs “방 2개(호텔)” 두 갈래로 정리했어. 8월 마지막 주말이라 <b>성수기 요금 + 빠른 마감</b>이니 이번 주 안에 잡는 게 좋아.</p>
+  <div class="tblwrap"><div class="card">
+  <table class="cmp">
+    <tr><th>안</th><th>형태</th><th>어디</th><th>1박 예상</th><th>좋은 점</th><th>걸리는 점</th></tr>
+    <tr><td class="head">A안 1박</td><td>호텔 2룸</td><td>광주 상무지구<br><span style="color:#8a8f9a;font-size:12px">홀리데이인 광주 등</span></td><td class="num">24~36만<br><span style="color:#8a8f9a;font-size:12px">(12~18만 × 2룸)</span></td><td>외삼촌 저녁 자리(상무)와 도보권 → <b>야간운전 0</b>. 주차 편하고 조식 있음</td><td>가족끼리 모여 앉을 거실이 없음</td></tr>
+    <tr><td class="head">A안 1박</td><td>펜션 독채</td><td>담양 죽녹원 권역</td><td class="num">15~25만<br><span style="color:#8a8f9a;font-size:12px">(한 채)</span></td><td><b>제일 저렴</b>. 방 2~3개 + 거실, 다 같이 앉아 얘기 가능. 큰고모댁 근처</td><td>광주 저녁 후 30분 야간운전. 조식 없음</td></tr>
+    <tr><td class="head">B안 1박차</td><td>호텔 2룸</td><td>광주 서구/상무</td><td class="num">24~36만</td><td>다음 날 나주·목포로 내려가는 동선에 유리</td><td>—</td></tr>
+    <tr><td class="head">B안 2박차</td><td>호텔 2룸</td><td>목포 평화광장<br><span style="color:#8a8f9a;font-size:12px">샹그리아비치호텔 등</span></td><td class="num">20~32만<br><span style="color:#8a8f9a;font-size:12px">(10~16만 × 2룸)</span></td><td>분수쇼·밤바다 <b>걸어서</b>. 갓바위 차로 5분</td><td>기준인원 초과 시 1인 2만원 추가되는 곳 있음</td></tr>
+    <tr><td class="head">B안 2박차</td><td>호텔 2룸</td><td>목포 유달산<br><span style="color:#8a8f9a;font-size:12px">신안비치호텔 등</span></td><td class="num">18~30만</td><td>근대역사거리·케이블카 북항 근접, 목포대교 조망</td><td>평화광장 밤 코스는 차로 이동</td></tr>
+  </table>
+  </div></div>
+  <div class="alert"><b>내 추천</b> — A안이면 <b>담양 펜션 독채</b>(비용 최소 + 다 같이 있는 시간이 이번 여행의 목적이니까), B안이면 <b>광주 호텔 2룸 → 목포 평화광장 호텔 2룸</b>. 다만 금요일 저녁 술이 곁들여지는 자리면 A안도 광주 호텔이 안전해.</div>
+</section>
+
+<section>
+  <h2>예상 비용</h2>
+  <p class="lead">4인 · 차 2대 기준. 유류비는 연비 12km/L · 휘발유 1,700원/L로 계산했고, 숙박·식사는 성수기 상단을 잡았어. <b>표시된 금액은 추정</b>이라 예약할 때 실제가로 갱신하면 돼.</p>
+  <div class="tblwrap"><div class="card">
+  <table class="cmp">
+    <tr><th>항목</th><th>A안 · 1박 2일</th><th class="num">금액</th><th>B안 · 2박 3일</th><th class="num">금액</th></tr>
+    <tr><td class="head">유류비</td><td>왕복 약 700km × 2대</td><td class="num">약 200,000</td><td>왕복 약 900km × 2대</td><td class="num">약 255,000</td></tr>
+    <tr><td class="head">통행료</td><td>왕복 × 2대</td><td class="num">약 80,000</td><td>왕복 × 2대</td><td class="num">약 85,000</td></tr>
+    <tr><td class="head">숙박</td><td>1박 (펜션 독채 ~ 호텔 2룸)</td><td class="num">150,000~360,000</td><td>2박 (광주 + 목포, 2룸씩)</td><td class="num">440,000~680,000</td></tr>
+    <tr><td class="head">식사</td><td>3끼 (외삼촌 저녁 포함)</td><td class="num">150,000~250,000</td><td>6끼 (민어·곰탕 포함)</td><td class="num">300,000~450,000</td></tr>
+    <tr><td class="head">입장료·체험</td><td>메타길/죽녹원 등</td><td class="num">약 10,000</td><td>+ 케이블카 4인 · 박물관</td><td class="num">100,000~140,000</td></tr>
+    <tr><td class="head">간식·커피·선물</td><td>휴게소·궁전제과 등</td><td class="num">약 50,000</td><td>—</td><td class="num">약 80,000</td></tr>
+    <tr class="total"><td class="head">합계</td><td>—</td><td class="num">640,000~950,000</td><td>—</td><td class="num">1,260,000~1,690,000</td></tr>
+  </table>
+  </div></div>
+  <div class="note"><b>비용 줄이는 법 3가지</b><br>
+  ① <b>숙소를 펜션 독채로</b> — 2룸 호텔 대비 1박에 10~15만원 절약, B안이면 20~30만원 차이.<br>
+  ② <b>차 1대로 합치기</b> — 4명이 한 차로 가면 유류비·통행료가 절반(A안 14만, B안 17만 절약). 다만 두 집이 따로 움직이는 자유는 없어져.<br>
+  ③ <b>민어 대신 곰탕·백반</b> — 목포 민어회 한 끼(12~18만)를 낙지연포탕이나 백반(4~6만)으로 바꾸면 10만원 이상 빠져. 대신 8월 민어는 1년 중 지금이 제철이라 아깝긴 해.</div>
+</section>
+
+<section>
+  <h2>예약 · 준비 체크리스트</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div style="font-weight:800;margin-bottom:8px">지금 바로 (D-4, 이번 주)</div>
+      <ul class="checklist">
+        <li><b>큰고모께 전화</b> — 도착 시간, 점심 상 차리시는지, 주차 가능한지</li>
+        <li><b>작은외삼촌께 전화</b> — 금요일 저녁 가능하신지, 인원, 식당은 어디로</li>
+        <li><b>숙소 예약</b> — 8월 마지막 주말이라 제일 급함. 2룸이면 같은 층 요청</li>
+        <li><b>A안/B안 확정</b> — 형구오빠 · 부모님 일요일 일정 확인</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div style="font-weight:800;margin-bottom:8px">D-1 ~ 당일</div>
+      <ul class="checklist">
+        <li><b>식당 예약</b> — 금요일 저녁(광주), B안이면 토요일 민어집. 룸 가능한지 확인</li>
+        <li><b>케이블카 온라인 예매</b> (B안) — 주말 현장 대기 김</li>
+        <li><b>차량 점검</b> — 타이어 공기압, 워셔액, 하이패스 잔액 · 두 대 다</li>
+        <li><b>카톡 위치 공유</b> 켜기 · 휴게소 집합 지점 미리 합의</li>
+        <li>할머니 선물 · 어른들 드릴 것 · 아이스박스(장거리 음료)</li>
+        <li>양산 / 부채 / 모자 — 8월 말 낮 30도 안팎</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>내가 아직 모르는 것 (확인해줘)</h2>
+  <p class="lead">아래만 정해지면 일정이 확 단단해져. 답 주는 대로 이 페이지 갱신할게.</p>
+  <div class="card">
+    <ul class="qlist">
+      <li><b>할머니는 큰고모댁에 계셔?</b> 아니면 요양원·병원 등 따로 찾아뵙는 거야? 뵙는 시간대 제약이 있으면 하루 전체 배치가 달라져.</li>
+      <li><b>큰고모댁 정확한 위치 (담양 어디쯤)</b>와 도착 희망 시간. 담양읍이냐 창평이냐에 따라 점심 식당이 바뀌어.</li>
+      <li><b>점심은 큰고모댁에서 먹는 걸로 보면 될까?</b> 밖에서 먹는다면 어른들 모시고 갈 거니까 덕인관 룸을 미리 잡을게.</li>
+      <li><b>작은외삼촌 자리는 몇 명이야?</b> (외숙모·사촌들도 오시는지) 인원에 따라 식당이 완전히 달라져. 그리고 <b>우리가 모시는 자리인지</b>도 알려줘 — 예산에 반영할게.</li>
+      <li><b>총 예산 상한이 얼마쯤이야?</b> 지금은 A안 65~95만 / B안 126~169만으로 잡혀 있는데, 상한을 주면 숙소·식당 등급을 거기 맞춰 다시 짤게.</li>
+      <li><b>숙소는 펜션 한 채 vs 호텔 방 2개</b> 중 부모님이 어느 쪽을 편해하실까? 한 채면 저렴한데 화장실을 나눠 써야 해.</li>
+      <li><b>어른들 회 드셔?</b> 목포 민어가 지금 제철인데 호불호가 갈리면 낙지·백반으로 바꿔 짤게.</li>
+      <li><b>일요일 저녁까지 써도 되는 일정이야?</b> (B안이면 마곡 도착이 18시쯤) 월요일 출근 부담 있으면 A안이 맞아.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>일부러 뺀 곳들</h2>
+  <div class="card">
+    <div class="grid-3">
+      <div><b>순천만 국가정원 · 여수</b><div style="font-size:13px;color:#4a5563;margin-top:4px">담양·광주에서 동쪽으로 1시간 30분 더. 목포와 정반대 방향이라 둘 다 넣으면 하루가 통째로 이동이 돼. 여기 넣을 거면 목포를 빼야 해.</div></div>
+      <div><b>보성 녹차밭</b><div style="font-size:13px;color:#4a5563;margin-top:4px">광주에서 1시간 20분. 계단 오르막이 꽤 있어서 “많이 안 걷기” 조건과 안 맞아.</div></div>
+      <div><b>무등산 등산</b><div style="font-size:13px;color:#4a5563;margin-top:4px">8월 말 낮 30도에 부모님 모시고 오르막은 무리. 증심사 입구까지만이면 가능한데 우선순위에서 밀렸어.</div></div>
+      <div><b>영산포 홍어의거리</b><div style="font-size:13px;color:#4a5563;margin-top:4px">나주 코스에 붙일 수 있는데 홍어는 호불호가 워낙 갈려서 기본안엔 안 넣었어. 어른들이 좋아하시면 곰탕 대신 넣을게.</div></div>
+      <div><b>담양 소쇄원</b><div style="font-size:13px;color:#4a5563;margin-top:4px">뺀 건 아니고 <b>선택</b>으로 돌렸어. 담양읍에서 차로 20분 더 들어가고 돌계단이 조금 있어서, 시간 여유 있을 때만.</div></div>
+      <div><b>1913송정역시장</b><div style="font-size:13px;color:#4a5563;margin-top:4px">광주 서쪽 끝이라 담양·상무 동선에서 벗어나. 귀가 전 마지막 코스로 넣으면 딱 맞긴 해.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  전라도 투어 · 2026.08.28~30 · 마곡 출발 · 차량 2대<br>
+  요금·영업시간은 조사 시점(2026-08-24) 기준 <b>추정치 포함</b> — 예약 전 각 시설에 확인 필요<br>
+  <div class="srcs">
+    참고 ·
+    <a href="https://www.diningcode.com/profile.php?rid=5xX9qiAjOoKu" target="_blank" rel="noopener">다이닝코드</a>·
+    <a href="https://www.siksinhot.com/" target="_blank" rel="noopener">식신</a>·
+    <a href="https://korean.visitkorea.or.kr/" target="_blank" rel="noopener">대한민국 구석구석</a>·
+    <a href="http://www.mmcablecar.com/" target="_blank" rel="noopener">목포해상케이블카</a>·
+    <a href="http://www.hayanjib.com/" target="_blank" rel="noopener">나주곰탕 하얀집</a>·
+    <a href="https://www.mokpo.go.kr/tour" target="_blank" rel="noopener">목포문화관광</a>·
+    <a href="https://tour.gwangju.go.kr/" target="_blank" rel="noopener">광주광역시 관광</a>
+    <br>지도 경계 데이터 · <a href="https://github.com/southkorea/southkorea-maps" target="_blank" rel="noopener">southkorea-maps (통계청 2013 행정경계)</a>
+  </div>
+</footer>
+</div>
+
+
+<script>
+const PINS = [{"id": "gomo", "name": "큰고모댁 · 할머니", "cat": "family", "area": "담양", "lat": 35.333, "lon": 127.01, "x": 634.8, "y": 327.6, "one": "이번 여행 1순위. 담양읍 반룡길", "det": {"주소": "전남 담양군 담양읍 반룡길 37-63", "가는 길": "고창담양고속도로 담양IC → 담양공고 교차로 → 반룡길 약 1.6km", "시간": "금 11:00~14:00 (약 3시간)", "핀 위치": "⚠ 반룡리 일대 추정 좌표 — 아래 네이버지도 링크로 정확 위치 확인해줘", "비고": "할머니가 여기 계신지 / 점심상 차리시는지 미리 여쭤보기", "주차": "확인 필요"}}, {"id": "juknok", "name": "죽녹원", "cat": "sight", "area": "담양", "lat": 35.3243, "lon": 126.9917, "x": 626.8, "y": 332.2, "one": "31만㎡ 대나무숲. 담양의 상징", "det": {"입장료": "성인 3,000원", "소요": "1~1.5시간", "주차": "전용 주차장 (성수기 오전 혼잡)", "난이도": "완만한 오르막 있음 · 짧은 코스 선택 가능"}}, {"id": "meta", "name": "메타세쿼이아 가로수길", "cat": "sight", "area": "담양", "lat": 35.3199, "lon": 126.9683, "x": 616.7, "y": 334.5, "one": "8.5km 가로수 터널. 평지 산책", "det": {"입장료": "성인 2,000원 · 청소년 1,000원", "운영": "하절기(5~8월) 09:00~19:00", "소요": "40분~1시간", "난이도": "완전 평지 ★부모님 최적"}}, {"id": "kwanbang", "name": "관방제림", "cat": "sight", "area": "담양", "lat": 35.3235, "lon": 126.9853, "x": 624.0, "y": 332.6, "one": "300년 된 제방 숲길. 무료·평지", "det": {"입장료": "무료", "소요": "30분", "비고": "죽녹원·국수거리와 도보 연결"}}, {"id": "guksu", "name": "담양 국수거리", "cat": "food", "area": "담양", "lat": 35.3232, "lon": 126.9866, "x": 624.6, "y": 332.8, "one": "관방제림 옆 노포 국수 골목", "det": {"메뉴": "멸치국수·비빔국수·약계란", "가격대": "1인 6,000~9,000원", "비고": "가볍게 요기할 때. 야외 평상"}}, {"id": "metapro", "name": "메타프로방스", "cat": "sight", "area": "담양", "lat": 35.3245, "lon": 126.9752, "x": 619.7, "y": 332.1, "one": "유럽풍 상가·카페 단지", "det": {"입장료": "무료(개방형)", "소요": "40분", "비고": "카페·아이스크림. 더울 때 실내 피신용"}}, {"id": "soswae", "name": "소쇄원", "cat": "sight", "area": "담양", "lat": 35.2085, "lon": 126.9766, "x": 620.3, "y": 393.7, "one": "조선 최고의 민간 정원. 어른들이 좋아함", "det": {"입장료": "성인 2,000원", "소요": "40분", "비고": "가사문학면. 담양읍에서 차로 20분", "난이도": "돌계단 조금"}}, {"id": "changpyeong", "name": "창평 슬로시티 삼지내마을", "cat": "sight", "area": "담양", "lat": 35.2181, "lon": 126.949, "x": 608.3, "y": 388.6, "one": "돌담길 한옥마을. 한적함", "det": {"입장료": "무료", "소요": "40분", "비고": "창평 떡갈비집들과 같은 동네"}}, {"id": "sinsik", "name": "신식당 (창평)", "cat": "food", "area": "담양", "lat": 35.2185, "lon": 126.9497, "x": 608.6, "y": 388.4, "one": "담양 떡갈비 대표 노포", "det": {"메뉴": "떡갈비 정식·대통밥", "영업": "11:30~20:00 · 수요일 휴무", "가격대": "1인 2만원대", "주차": "넓음", "경고": "8/28은 금요일 → 영업일 OK"}}, {"id": "deokin", "name": "덕인관", "cat": "food", "area": "담양", "lat": 35.3172, "lon": 126.9899, "x": 626.0, "y": 336.0, "one": "1963년 개업. 룸 있어 가족 모임용", "det": {"메뉴": "한우 떡갈비 정식", "특징": "룸 구조 · 담양IC 인근 · 주차 넓음", "가격대": "1인 3만원대 (담양 내 高)", "비고": "어른 모시고 갈 때 1순위"}}, {"id": "samchon", "name": "작은외삼촌 식사 자리", "cat": "family", "area": "광주", "lat": 35.1533, "lon": 126.848, "x": 564.3, "y": 423.0, "one": "이번 여행 1순위. 장소는 외삼촌 편의 우선", "det": {"시간": "금 18:00~20:30 제안", "비고": "식당은 외삼촌께 여쭤보고 확정 · 아래 후보 중 택1", "예약": "금요일 저녁이라 예약 필수"}}, {"id": "myungga", "name": "명가원 (상무)", "cat": "food", "area": "광주", "lat": 35.156, "lon": 126.848, "x": 564.3, "y": 421.5, "one": "상무지구 전통 한정식. 가족모임 전문", "det": {"메뉴": "한정식 코스", "특징": "예약제 · 상견례/가족모임용 룸", "가격대": "1인 3~5만원", "비고": "어른 모시는 자리 1순위"}}, {"id": "daegwang", "name": "대광식당 (상무)", "cat": "food", "area": "광주", "lat": 35.1543, "lon": 126.8497, "x": 565.1, "y": 422.5, "one": "광주 3대 육전. 눈앞에서 부쳐줌", "det": {"메뉴": "육전·전 모둠", "특징": "주차장 넓고 깔끔", "가격대": "1인 2~3만원", "비고": "광주 로컬 색 확실 + 부담 적음"}}, {"id": "youngmi", "name": "영미오리탕 상무점", "cat": "food", "area": "광주", "lat": 35.154, "lon": 126.8455, "x": 563.3, "y": 422.6, "one": "광주 시그니처 = 들깨 오리탕", "det": {"영업": "11:00~21:40", "주차": "무료 90분", "가격대": "1인 2만원 안팎", "비고": "광주에서만 먹을 수 있는 메뉴"}}, {"id": "acc", "name": "국립아시아문화전당 (ACC)", "cat": "sight", "area": "광주", "lat": 35.1465, "lon": 126.9199, "x": 595.6, "y": 426.6, "one": "대형 복합문화공간. 실내·에어컨", "det": {"입장료": "상설 무료 / 기획전 유료", "소요": "1~1.5시간", "비고": "더위 피하기 좋음 · 주차 유료"}}, {"id": "yangnim", "name": "양림동 펭귄마을 & 근대역사거리", "cat": "sight", "area": "광주", "lat": 35.1372, "lon": 126.9134, "x": 592.8, "y": 431.5, "one": "선교사 사택·근대가옥·공예골목", "det": {"입장료": "무료", "소요": "1~1.5시간", "난이도": "평지 위주, 골목 경사 조금", "비고": "부모님 세대가 특히 좋아하는 코스"}}, {"id": "sajik", "name": "사직공원 전망타워", "cat": "sight", "area": "광주", "lat": 35.14, "lon": 126.9109, "x": 591.7, "y": 430.0, "one": "광주 야경 원톱. 무등산까지 조망", "det": {"입장료": "무료", "소요": "30분", "비고": "엘리베이터 있음 · 양림동에서 차로 5분", "추천": "저녁 식사 후 야경"}}, {"id": "gungjeon", "name": "궁전제과", "cat": "food", "area": "광주", "lat": 35.1497, "lon": 126.9143, "x": 593.2, "y": 424.9, "one": "1980년 개업. 광주 대표 빵집", "det": {"메뉴": "공룡알빵·나비파이", "비고": "올라가는 길 간식 · 어른 선물용"}}, {"id": "songjeong", "name": "1913송정역시장", "cat": "food", "area": "광주", "lat": 35.1367, "lon": 126.7913, "x": 539.7, "y": 431.8, "one": "리모델링 전통시장 + 송정떡갈비 골목", "det": {"소요": "1시간", "비고": "광주송정역 앞 · 귀가길 KTX 아닌 자차라도 동선 무난", "가격대": "떡갈비 1인 1.5~2만원"}}, {"id": "jeungsim", "name": "무등산 증심사", "cat": "sight", "area": "광주", "lat": 35.1249, "lon": 126.9702, "x": 617.5, "y": 438.1, "one": "무등산 자락 사찰. 숲길 산책", "det": {"입장료": "무료", "소요": "1시간", "난이도": "오르막 있음 → 부모님 페이스면 선택", "비고": "8월 말 더위엔 아침에만"}}, {"id": "hayan", "name": "나주곰탕 하얀집", "cat": "food", "area": "나주", "lat": 35.0298, "lon": 126.7125, "x": 505.4, "y": 488.6, "one": "1910년 창업. 나주곰탕 원조 명가", "det": {"주소": "나주시 금성관길 6-1", "영업": "08:00~20:00 · 수요일 휴무", "가격": "곰탕 13,000원 · 수육곰탕 15,000원", "비고": "광주↔목포 이동 중간 점심으로 최적"}}, {"id": "geumseong", "name": "나주 금성관 · 목사내아", "cat": "sight", "area": "나주", "lat": 35.0305, "lon": 126.7137, "x": 506.0, "y": 488.2, "one": "조선 관아 건축. 하얀집 바로 옆", "det": {"입장료": "무료~소액", "소요": "30분", "비고": "밥 먹고 소화 겸 도보 10분"}}, {"id": "hongeo", "name": "영산포 홍어의거리", "cat": "food", "area": "나주", "lat": 34.9987, "lon": 126.72, "x": 508.7, "y": 505.1, "one": "홍어삼합의 본진", "det": {"메뉴": "홍어정식·삼합", "비고": "호불호 강함 → 어른들 취향 확인 후", "가격대": "1인 3~4만원"}}, {"id": "cable", "name": "목포해상케이블카 (북항스테이션)", "cat": "sight", "area": "목포", "lat": 34.8036, "lon": 126.3556, "x": 350.3, "y": 608.6, "one": "3.23km 국내 최장. 유달산+바다+고하도", "det": {"소요": "왕복 약 40분 (내려서 걸으면 2시간)", "운영": "09:00~20:00 (계절별 조정)", "요금": "일반 왕복 성인 2만원대 · 크리스탈 3만원대 → 공식 홈페이지 확인", "비고": "061-244-2600 · 주말 대기 → 온라인 예매 권장", "난이도": "앉아서 이동 ★부모님 최적"}}, {"id": "goha", "name": "고하도 전망대", "cat": "sight", "area": "목포", "lat": 34.7737, "lon": 126.366, "x": 354.8, "y": 624.5, "one": "케이블카 건너편 섬. 목포대교 조망", "det": {"비고": "케이블카 왕복권으로 연결 · 데크길", "소요": "1시간"}}, {"id": "yudal", "name": "유달산 노적봉·조각공원", "cat": "sight", "area": "목포", "lat": 34.7862, "lon": 126.3721, "x": 357.4, "y": 617.9, "one": "목포 시내 조망. 차로 중턱까지", "det": {"입장료": "무료", "비고": "1등바위까지는 등산 → 노적봉·이순신동상까지만", "소요": "40분"}}, {"id": "geundae", "name": "목포 근대역사거리 (역사관 1·2관)", "cat": "sight", "area": "목포", "lat": 34.7857, "lon": 126.3811, "x": 361.3, "y": 618.1, "one": "구 일본영사관·동양척식주식회사", "det": {"입장료": "통합 2,000원 안팎", "소요": "1~1.5시간", "난이도": "평지 골목 · 그늘 적음 → 오전/늦은 오후"}}, {"id": "youngran", "name": "영란횟집", "cat": "food", "area": "목포", "lat": 34.7856, "lon": 126.3838, "x": 362.5, "y": 618.2, "one": "전국구 민어 전문. 8월이 민어 제철", "det": {"메뉴": "민어회·민어전·민어초무침", "가격": "민어회(중) 25,000원 · 어코스(2인) 100,000원 수준", "비고": "성수기 예약 필수 · 4인이면 10~15만원 예상"}}, {"id": "gatbawi", "name": "갓바위 & 해상보행교", "cat": "sight", "area": "목포", "lat": 34.7838, "lon": 126.4054, "x": 371.9, "y": 619.2, "one": "천연기념물 바위. 데크로 정면 조망", "det": {"입장료": "무료", "운영": "하절기 05:00~24:00 (해상보행교)", "소요": "40분", "난이도": "완전 평지 데크 ★부모님 최적", "추천": "해질녘"}}, {"id": "natural", "name": "목포자연사박물관 · 어린이바다과학관", "cat": "sight", "area": "목포", "lat": 34.7838, "lon": 126.403, "x": 370.9, "y": 619.2, "one": "갓바위 문화타운. 실내·에어컨", "det": {"소요": "1시간", "비고": "박물관·해양유산연구소·문예역사관이 도보 5분 내 밀집", "입장료": "3,000원 안팎"}}, {"id": "peace", "name": "평화광장 · 춤추는 바다분수", "cat": "sight", "area": "목포", "lat": 34.7867, "lon": 126.421, "x": 378.7, "y": 617.6, "one": "야간 분수쇼. 목포 밤 산책 1순위", "det": {"입장료": "무료", "비고": "분수 가동 시간 계절별 상이 → 당일 확인", "소요": "1시간"}}, {"id": "stay_gj", "name": "홀리데이인 광주 (상무)", "cat": "stay", "area": "광주", "lat": 35.1526, "lon": 126.8447, "x": 562.9, "y": 423.4, "one": "B안 1박차 · A안 1박 후보", "det": {"위치": "김대중컨벤션센터 앞 · 상무지구", "형태": "호텔 2룸", "가격대": "1박 12~18만원/룸 (성수기·주말 변동)", "장점": "주차 편함 · 외삼촌 식사자리(상무)와 도보권"}}, {"id": "stay_dy", "name": "담양 펜션 (죽녹원 권역)", "cat": "stay", "area": "담양", "lat": 35.328, "lon": 126.98, "x": 621.7, "y": 330.2, "one": "온 가족 한 채 · 바베큐 가능", "det": {"형태": "방 2~3개 독채 펜션", "가격대": "1박 15~25만원 (성수기 주말)", "장점": "큰고모댁과 가까움 · 다 같이 모여 앉을 수 있음", "단점": "광주 저녁 자리 후 30분 야간 운전"}}, {"id": "stay_mp", "name": "샹그리아비치호텔 (평화광장)", "cat": "stay", "area": "목포", "lat": 34.7885, "lon": 126.4198, "x": 378.2, "y": 616.7, "one": "B안 2박차 · 바다뷰", "det": {"위치": "평화광장 바로 앞", "가격대": "1박 10~16만원/룸", "장점": "분수쇼·야경 도보 · 갓바위 차로 5분"}}, {"id": "stay_mp2", "name": "신안비치호텔 (유달산)", "cat": "stay", "area": "목포", "lat": 34.794, "lon": 126.3745, "x": 358.5, "y": 613.7, "one": "B안 2박차 대안 · 근대역사거리 근접", "det": {"위치": "유달산 아래 · 목포대교 조망", "가격대": "1박 9~15만원/룸", "비고": "기준인원 초과 시 1인 20,000원 추가"}}];
+const CATC = {family:'#a04a2e', sight:'#356e89', food:'#b9851a', stay:'#5c6f4a'};
+const CATN = {family:'가족 일정', sight:'관광', food:'식당', stay:'숙소'};
+const ROUTES = {
+  A: ['gomo','meta','samchon','yangnim'],
+  B: ['gomo','meta','samchon','hayan','cable','gatbawi']
+};
+const ROUTEC = {A:'#1f3a5f', B:'#a04a2e'};
+const svg = document.getElementById('map');
+const gPins = document.getElementById('pins');
+const gLinks = document.getElementById('links');
+const gRoutes = document.getElementById('routes');
+const list = document.getElementById('plist');
+const tip = document.getElementById('maptip');
+const box = document.getElementById('mapbox');
+const NS = 'http://www.w3.org/2000/svg';
+const byId = {};
+let sel = null, filt = 'all';
+
+function nv(q){ return 'https://map.naver.com/p/search/' + encodeURIComponent(q); }
+
+// ── 핀 겹침 해소 (앵커=실좌표, 표시위치=반발력으로 분산) ──
+const RAD = PINS.map(p => p.cat==='family' ? 11 : 8.5);
+const pos = PINS.map((p,i) => ({x: p.x + Math.cos(i*2.399)*0.6, y: p.y + Math.sin(i*2.399)*0.6}));
+for (let it=0; it<400; it++){
+  for (let i=0;i<pos.length;i++){
+    for (let j=i+1;j<pos.length;j++){
+      const dx = pos[j].x-pos[i].x, dy = pos[j].y-pos[i].y;
+      const d = Math.hypot(dx,dy) || 0.001;
+      const min = RAD[i]+RAD[j]+2.5;
+      if (d < min){
+        const f = (min-d)/d*0.5;
+        pos[i].x -= dx*f; pos[i].y -= dy*f;
+        pos[j].x += dx*f; pos[j].y += dy*f;
+      }
+    }
+  }
+  for (let i=0;i<pos.length;i++){        // 앵커로 다시 끌어당기기
+    pos[i].x += (PINS[i].x-pos[i].x)*0.06;
+    pos[i].y += (PINS[i].y-pos[i].y)*0.06;
+  }
+}
+PINS.forEach((p,i)=>{ p.px = +pos[i].x.toFixed(1); p.py = +pos[i].y.toFixed(1); });
+
+PINS.forEach((p,i)=>{
+  p.n = i+1; byId[p.id] = p;
+
+  // 실제 위치 점 + 연결선
+  if (Math.hypot(p.px-p.x, p.py-p.y) > 2){
+    const ln = document.createElementNS(NS,'line');
+    ln.setAttribute('x1',p.x); ln.setAttribute('y1',p.y);
+    ln.setAttribute('x2',p.px); ln.setAttribute('y2',p.py);
+    ln.setAttribute('stroke','#8d9aa4'); ln.setAttribute('stroke-width','1');
+    gLinks.appendChild(ln);
+    const dot = document.createElementNS(NS,'circle');
+    dot.setAttribute('cx',p.x); dot.setAttribute('cy',p.y); dot.setAttribute('r',1.8);
+    dot.setAttribute('fill','#5c6672');
+    gLinks.appendChild(dot);
+  }
+
+  const g = document.createElementNS(NS,'g');
+  g.setAttribute('class','pin'); g.dataset.id = p.id; g.dataset.cat = p.cat;
+  const c = document.createElementNS(NS,'circle');
+  c.setAttribute('cx',p.px); c.setAttribute('cy',p.py);
+  c.setAttribute('r', RAD[i]);
+  c.setAttribute('fill', CATC[p.cat]);
+  const t = document.createElementNS(NS,'text');
+  t.setAttribute('x',p.px); t.setAttribute('y',p.py+3.4); t.textContent = p.n;
+  g.appendChild(c); g.appendChild(t); gPins.appendChild(g);
+
+  const row = document.createElement('div');
+  row.className = 'prow'; row.dataset.id = p.id; row.dataset.cat = p.cat;
+  let det = '';
+  for (const k in p.det) det += '<div><b>'+k+'</b> · '+p.det[k]+'</div>';
+  const q = (p.det && p.det['주소']) ? p.det['주소'] : p.name.replace(/\s*\(.*?\)\s*/g,' ').trim();
+  row.innerHTML =
+    '<div class="num" style="background:'+CATC[p.cat]+'">'+p.n+'</div>'+
+    '<div style="flex:1"><div class="nm">'+p.name+'<span class="ar">'+p.area+' · '+CATN[p.cat]+'</span></div>'+
+    '<div class="on1">'+p.one+'</div>'+
+    '<div class="pdetail">'+det+'<a class="nv" href="'+nv(q)+'" target="_blank" rel="noopener">네이버지도에서 열기 ↗</a></div></div>';
+  list.appendChild(row);
+
+  g.addEventListener('click', ()=>select(p.id, true));
+  row.addEventListener('click', ()=>select(p.id, false));
+  g.addEventListener('mousemove', e=>{
+    const r = box.getBoundingClientRect();
+    tip.innerHTML = '<b>'+p.n+'. '+p.name+'</b>'+p.one;
+    tip.style.opacity = 1;
+    let x = e.clientX - r.left + 14, y = e.clientY - r.top + 14;
+    if (x > r.width - 244) x = r.width - 244;
+    tip.style.left = x+'px'; tip.style.top = y+'px';
+  });
+  g.addEventListener('mouseleave', ()=>{ tip.style.opacity = 0; });
+});
+
+function select(id, fromMap){
+  if (sel === id){ sel = null; } else { sel = id; }
+  document.querySelectorAll('.pin').forEach(el=>el.classList.toggle('on', el.dataset.id===sel));
+  document.querySelectorAll('.prow').forEach(el=>{
+    const on = el.dataset.id===sel;
+    el.classList.toggle('on', on);
+    if (on && fromMap) el.scrollIntoView({block:'nearest', behavior:'smooth'});
+  });
+}
+
+function drawRoute(key){
+  gRoutes.innerHTML = '';
+  if (!key) return;
+  const pts = ROUTES[key].map(id=>byId[id]).filter(Boolean);
+  const d = 'M' + pts.map(p=>(p.px||p.x)+','+(p.py||p.y)).join('L');
+  const path = document.createElementNS(NS,'path');
+  path.setAttribute('class','route'); path.setAttribute('d', d);
+  path.setAttribute('stroke', ROUTEC[key]);
+  gRoutes.appendChild(path);
+}
+
+function applyFilter(f){
+  filt = f;
+  document.querySelectorAll('.pin').forEach(el=>
+    el.classList.toggle('dim', f!=='all' && el.dataset.cat!==f));
+  document.querySelectorAll('.prow').forEach(el=>
+    el.classList.toggle('hide', f!=='all' && el.dataset.cat!==f));
+}
+
+// 컨트롤
+document.querySelectorAll('.mapctl button[data-f]').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('.mapctl button[data-f]').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); applyFilter(b.dataset.f);
+  });
+});
+let route = 'B';
+document.querySelectorAll('.mapctl button[data-r]').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    const same = b.classList.contains('on');
+    document.querySelectorAll('.mapctl button[data-r]').forEach(x=>x.classList.remove('on'));
+    if (same){ route = null; drawRoute(null); return; }
+    b.classList.add('on'); route = b.dataset.r; drawRoute(route);
+  });
+});
+drawRoute('B');
+
+// 여행권역으로 확대 (핀 바운딩 박스)
+(function fit(){
+  const xs = PINS.map(p=>p.px), ys = PINS.map(p=>p.py);
+  const pad = 95;
+  const x0 = Math.min(...xs)-pad, x1 = Math.max(...xs)+pad;
+  const y0 = Math.min(...ys)-pad, y1 = Math.max(...ys)+pad;
+  svg.dataset.fit = [x0,y0,x1-x0,y1-y0].join(' ');
+  svg.dataset.full = [0,0,1000.0,982.2].join(' ');
+  svg.setAttribute('viewBox', svg.dataset.fit);
+})();
+document.querySelectorAll('.mapctl button[data-z]').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('.mapctl button[data-z]').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    svg.setAttribute('viewBox', b.dataset.z==='all' ? svg.dataset.full : svg.dataset.fit);
+  });
+});
+
+// 일정 탭
+document.querySelectorAll('.tabs button[data-t]').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    document.querySelectorAll('.tabs button[data-t]').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+    document.getElementById('tab-'+b.dataset.t).classList.add('on');
+    const rb = document.querySelector('.mapctl button[data-r="'+b.dataset.t+'"]');
+    if (rb && !rb.classList.contains('on')) rb.click();
+  });
+});
+</script>
+</body>
+</html>
