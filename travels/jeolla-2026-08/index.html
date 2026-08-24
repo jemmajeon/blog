@@ -132,6 +132,13 @@
   table.cmp tr.total td{background:#f2efe8;font-weight:800}
   .tblwrap{overflow-x:auto}
 
+  .parking-yes{color:var(--moss);font-weight:700}
+  .parking-no{color:var(--rust);font-weight:700}
+  .btnrow{display:flex;gap:9px;flex-wrap:wrap}
+  .btnrow a{font-size:13px;font-weight:700;background:var(--soft);border:1px solid var(--line);
+    padding:9px 15px;border-radius:9px;color:var(--navy);text-decoration:none;transition:all .15s}
+  .btnrow a:hover{background:var(--navy);color:#fff;border-color:var(--navy);text-decoration:none}
+  .btnrow a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
   .checklist{list-style:none;padding:0;margin:0}
   .checklist li{padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--sub)}
   .checklist li:last-child{border-bottom:none}
@@ -448,6 +455,77 @@
     · 8월 마지막 주말이라 <b>성수기 요금 + 빠른 마감</b>. 표시 가격은 조사 시점 기준이라 실제 8/28 날짜로 조회하면 올라갈 수 있어<br>
     · 조식 포함가와 불포함가를 비교해봐 — 라마다는 성인 29,700원이라 4명이면 12만원이 붙어. 아침은 밖에서 먹는 게 쌀 수도 있어<br>
     · 결제 전에 <b>무료 취소 가능 기한</b> 확인 (A안/B안이 아직 안 정해졌으니 목포는 특히)</div>
+</section>
+
+<section>
+  <h2>에어비앤비 검토</h2>
+  <p class="lead">알아봤는데 <b>결론부터: 지금 일정 구조에서는 호텔이 유리해.</b> 다만 에어비앤비가 이기는 조건이 딱 하나 있고, 그게 일정까지 바꿀 만한 거라 같이 정리했어.</p>
+
+  <div class="alert"><b>먼저 — 실제 매물은 못 뽑았어.</b> 내가 지금 있는 환경에서 에어비앤비 사이트 접근이 막혀 있어서, <b>8/28 날짜의 실제 매물·가격·잔여 여부는 확인 못 했어.</b>
+    아래는 시세와 구조를 놓고 한 판단이고, 실제 매물은 맨 아래 검색 링크로 네가 직접 봐야 해. 표시된 금액은 추정이야.</div>
+
+  <div class="card" style="margin-top:16px;border-top:3px solid var(--navy)">
+    <div style="font-weight:800;font-size:16px;margin-bottom:10px">왜 1박이면 호텔이 나은가 — <b style="color:var(--rust)">청소비 때문</b></div>
+    <div style="font-size:14px;color:var(--sub);line-height:1.75">
+      에어비앤비는 <b>청소비(보통 3~5만원)가 숙박일수와 무관하게 한 번 붙어.</b> 1박만 묵으면 그 3~5만이 하룻밤에 통째로 얹혀서, 표시 요금이 싸 보여도 총액은 호텔과 비슷해져.
+      게다가 <b>조식이 없어서</b> 4명이 아침을 밖에서 먹으면 3~4만원이 또 나가. 결국 남는 차액이 1~8만원 수준이라 —
+      장거리 운전하고 온 밤에 <b>주차 확실하고 조식 나오는 호텔</b>을 포기할 만한 금액이 아니야.
+    </div>
+    <div class="tblwrap" style="margin-top:14px"><table class="cmp">
+      <tr><th>광주 1박만 (현재 일정)</th><th class="num">총액 추정</th><th>비고</th></tr>
+      <tr><td class="head">에어비앤비 방2개 독채</td><td class="num">약 18~22만원</td><td>1박 요금 8~15만 + 청소비 3~5만 + 서비스 수수료. <b>조식 없음</b> (+3~4만)</td></tr>
+      <tr><td class="head">홀리데이인 2룸</td><td class="num">22~30만원</td><td>주차·조식·수영장 포함, 셀프체크인 걱정 없음</td></tr>
+      <tr class="total"><td class="head">차이</td><td class="num">약 1~8만원</td><td>조식까지 계산하면 사실상 비슷</td></tr>
+    </table></div>
+  </div>
+
+  <div class="card" style="margin-top:16px;border-top:3px solid var(--moss)">
+    <div style="font-weight:800;font-size:16px;margin-bottom:10px">에어비앤비가 이기는 유일한 경우 — <b style="color:var(--moss)">광주에서 2박 붙박이</b></div>
+    <div style="font-size:14px;color:var(--sub);line-height:1.75">
+      청소비가 한 번뿐이라 <b>2박부터 단가가 확 떨어져.</b> 그런데 그러려면 목포에서 안 자고 <b>토요일에 목포를 당일치기로 다녀와야 해.</b>
+      이걸 <b>B-2안</b>이라고 부를게. 계산해보니 생각보다 셈이 좋아.
+    </div>
+    <div class="tblwrap" style="margin-top:14px"><table class="cmp">
+      <tr><th></th><th>B안 (광주 1박 + 목포 1박)</th><th>B-2안 (광주 2박 붙박이)</th></tr>
+      <tr><td class="head">숙박비</td><td>호텔 2곳 = <b>42~62만원</b></td><td>에어비앤비 2박 = <b>약 30~38만원</b><br><span style="font-size:12px;color:#8a8f9a">(1박 12만×2 + 청소비 4만 + 수수료)</span></td></tr>
+      <tr><td class="head">짐</td><td>토요일 아침에 한 번 다시 쌈</td><td class="parking-yes">한 번 풀고 끝</td></tr>
+      <tr><td class="head">일요일 귀가</td><td>목포 → 마곡 400km · 4시간 30분</td><td class="parking-yes">광주 → 마곡 330km · <b>1시간 짧아짐</b></td></tr>
+      <tr><td class="head">토요일 밤</td><td class="parking-yes">목포 평화광장 분수쇼·밤바다 도보</td><td class="parking-no">목포 20:00 출발 → 광주 21:00 도착<br><b>1시간 야간운전</b> · 목포 밤 코스 포기</td></tr>
+      <tr><td class="head">주방</td><td>없음</td><td class="parking-yes">아침 간단히 해결 가능</td></tr>
+      <tr class="total"><td class="head">한 줄 평</td><td>목포를 제대로 봄</td><td>돈·체력 아끼고 목포는 낮만</td></tr>
+    </table></div>
+    <div class="note" style="margin-top:12px"><b>내 판단</b> — 숙박비 20만 아끼는 것보다 <b>일요일 귀가가 1시간 짧아지는 게 더 큰 이득</b>이야. 아빠가 혼자 운전하시니까.
+      다만 8월 목포 밤바다·분수쇼를 통째로 버리는 거라, <b>“목포를 보러 가는 것”이 목적이면 B안, “가족 보러 가는 김에 목포도”면 B-2안</b>이야.
+      우리 여행 목적을 생각하면 <b>B-2안도 충분히 말이 돼.</b></div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div style="font-weight:800;margin-bottom:8px">예약 전에 반드시 확인할 것 — <b style="color:var(--rust)">1번이 제일 중요</b></div>
+    <ul class="checklist">
+      <li><b style="color:var(--rust)">주차 2대 가능한지 호스트에게 직접 물어보기</b> — 이게 최대 리스크야. 아파트·빌라는 <b>방문차량이 1대만 등록되는 곳이 많아.</b> 숙소 설명에 "주차 가능"이라고만 써 있으면 무조건 몇 대인지 메시지로 확인해</li>
+      <li><b>엘리베이터 유무</b> — 3층 빌라 계단에 부모님 짐 들고 올라가는 건 별로야</li>
+      <li><b>침대 구성</b> — "방 2개"라도 침대가 더블 1 + 매트리스 바닥일 수 있어. 침대 2개인지 확인</li>
+      <li><b>셀프 체크인 가능 여부</b> — 외가 저녁이 20:30에 끝나니 늦은 체크인이 돼. 이건 오히려 호텔보다 에어비앤비가 편할 수 있어</li>
+      <li><b>화장실 개수</b> — 4명이 아침에 동시에 준비하려면 2개가 편해</li>
+      <li><b>총액으로 비교</b> — 표시 요금만 보지 말고 청소비·수수료 다 붙은 최종 결제액으로 호텔과 비교해</li>
+      <li><b>후기 개수</b> — 후기 20개 미만이면 이번 같은 자리(부모님 동반)엔 피하는 게 안전해</li>
+    </ul>
+    <div class="note" style="margin-top:12px"><b>합법성은 이제 걱정 안 해도 돼</b> — 에어비앤비가 2025년 10월 16일부터 영업신고 의무화를 전면 시행했고,
+      미신고 숙소는 <b>2026년 1월 1일 이후 숙박 예약을 아예 못 받아.</b> 그러니까 지금 8/28 날짜로 예약이 되는 숙소는 영업신고를 마친 곳이야.
+      예전처럼 불법 숙소 걸릴 걱정은 사실상 없어졌어.</div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div style="font-weight:800;margin-bottom:8px">바로 검색해보기</div>
+    <div style="font-size:13.5px;color:var(--sub);margin-bottom:10px">광주광역시 · 성인 4명 · 침실 2개 이상 · 집 전체 · 무료주차 필터를 미리 걸어뒀어.</div>
+    <div class="btnrow">
+      <a href="https://www.airbnb.co.kr/s/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C/homes?refinement_paths%5B%5D=%2Fhomes&checkin=2026-08-28&checkout=2026-08-29&adults=4&min_bedrooms=2&room_types%5B%5D=Entire%20home/apt&amenities%5B%5D=9" target="_blank" rel="noopener" class="on">에어비앤비 · 8/28~8/29 (1박) ↗</a>
+      <a href="https://www.airbnb.co.kr/s/%EA%B4%91%EC%A3%BC%EA%B4%91%EC%97%AD%EC%8B%9C/homes?refinement_paths%5B%5D=%2Fhomes&checkin=2026-08-28&checkout=2026-08-30&adults=4&min_bedrooms=2&room_types%5B%5D=Entire%20home/apt&amenities%5B%5D=9" target="_blank" rel="noopener">에어비앤비 · 8/28~8/30 (2박, B-2안) ↗</a>
+      <a href="https://www.yeogi.com/domestic-accommodations?keyword=%EA%B4%91%EC%A3%BC" target="_blank" rel="noopener">여기어때 · 광주 ↗</a>
+      <a href="https://nol.yanolja.com/search/%EA%B4%91%EC%A3%BC" target="_blank" rel="noopener">야놀자 · 광주 ↗</a>
+    </div>
+    <div style="font-size:13px;color:var(--muted);margin-top:10px">검색해서 괜찮은 매물 찾으면 링크 보내줘 — 주차·침대·후기 보고 호텔이랑 비교해줄게.</div>
+  </div>
 </section>
 
 <section>
