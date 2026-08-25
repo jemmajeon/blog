@@ -57,6 +57,20 @@
     display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
   .zoomctl button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
   .zoomctl button.wide{width:34px;font-size:11px;font-weight:700}
+  #kakaoMap{width:100%;height:600px;border-radius:10px;display:none;background:#eef4f5}
+  .mapbox:fullscreen #kakaoMap{height:100vh;border-radius:0}
+  .kpin{position:relative;width:26px;height:26px;border-radius:50%;border:2px solid #fff;
+    color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 2px 6px rgba(0,0,0,.3);cursor:pointer;font-family:'Pretendard','Noto Sans KR',system-ui,sans-serif}
+  .kpin.fam{width:32px;height:32px;font-size:12px;border-width:3px}
+  .kpin.on{outline:3px solid #1f2933;outline-offset:1px}
+  .kpin.hide{display:none}
+  .kbubble{background:#1f2933;color:#fff;font-size:12.5px;line-height:1.45;padding:8px 11px;border-radius:8px;
+    max-width:230px;font-family:'Pretendard','Noto Sans KR',system-ui,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+  .kbubble b{display:block;font-size:13px;margin-bottom:2px}
+  .kbubble a{color:#9fd0e4;font-size:11.5px;display:inline-block;margin-top:5px}
+  .mapfail{display:none;position:absolute;left:50%;top:14px;transform:translateX(-50%);z-index:7;
+    background:#fff8e6;border:1px solid #e9d49a;color:#7a5a10;font-size:12px;padding:6px 12px;border-radius:8px}
   .maphint{position:absolute;left:12px;top:12px;z-index:6;background:rgba(255,255,255,.9);
     border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-size:11.5px;color:var(--muted)}
   .prov{fill:#dfe7e3;stroke:#c3cec8;stroke-width:1.1}
@@ -213,23 +227,30 @@
   <h2>지도</h2>
   <p class="lead">핀을 누르면 오른쪽 목록에서 상세가 열려. 목록을 눌러도 지도에서 위치가 잡혀.</p>
   <div class="mapctl">
+    <button data-m="kakao" class="on">🗺 카카오맵</button>
+    <button data-m="svg">간략 지도</button>
+    <span style="flex:1"></span>
+    <button data-r="A">A안 동선</button>
+    <button data-r="B" class="on">B안 동선</button>
+    <button data-r="C">C안 동선</button>
+    <button data-r="D">D안 동선</button>
+  </div>
+  <div class="mapctl">
     <button data-f="all" class="on">전체</button>
     <button data-f="family">★ 가족 일정</button>
     <button data-f="sight">관광</button>
     <button data-f="food">식당</button>
     <button data-f="stay">숙소</button>
     <span style="flex:1"></span>
-    <button data-r="A">A안 동선</button>
-    <button data-r="B" class="on">B안 동선</button>
-    <button data-r="C">C안 동선</button>
-    <button data-r="D">D안 동선</button>
-    <button data-z="fit" class="on">여행 권역</button>
-    <button data-z="all">전남 전체</button>
+    <button data-z="fit" class="on svgonly">여행 권역</button>
+    <button data-z="all" class="svgonly">전남 전체</button>
   </div>
   <div class="maplayout">
     <div class="mapbox" id="mapbox">
+      <div id="kakaoMap"></div>
+      <div class="mapfail" id="mapfail">카카오맵을 불러오지 못했어 — 간략 지도로 보여줄게</div>
       <div class="maptip" id="maptip"></div>
-      <div class="maphint">휠 확대 · 드래그 이동</div>
+      <div class="maphint svgonly">휠 확대 · 드래그 이동</div>
       <div class="zoomctl">
         <button type="button" id="zin" title="확대">+</button>
         <button type="button" id="zout" title="축소">−</button>
@@ -1025,6 +1046,7 @@ const box = document.getElementById('mapbox');
 const NS = 'http://www.w3.org/2000/svg';
 const byId = {};
 let sel = null, filt = 'all';
+let kmap = null, kOverlays = {}, kRoute = null, kBubble = null, kakaoReady = false, mapMode = 'svg';
 
 function nv(q){ return 'https://map.naver.com/p/search/' + encodeURIComponent(q); }
 
@@ -1105,6 +1127,7 @@ PINS.forEach((p,i)=>{
 function select(id, fromMap){
   if (sel === id){ sel = null; } else { sel = id; if (!fromMap && byId[id]) focusPin(byId[id]); }
   document.querySelectorAll('.pin').forEach(el=>el.classList.toggle('on', el.dataset.id===sel));
+  for (const k in kOverlays) kOverlays[k].classList.toggle('on', k===sel);
   document.querySelectorAll('.prow').forEach(el=>{
     const on = el.dataset.id===sel;
     el.classList.toggle('on', on);
@@ -1112,7 +1135,7 @@ function select(id, fromMap){
   });
 }
 
-function drawRoute(key){
+let drawRoute = function(key){
   gRoutes.innerHTML = '';
   if (!key) return;
   const pts = ROUTES[key].map(id=>byId[id]).filter(Boolean);
@@ -1121,7 +1144,9 @@ function drawRoute(key){
   path.setAttribute('class','route'); path.setAttribute('d', d);
   path.setAttribute('stroke', ROUTEC[key]);
   gRoutes.appendChild(path);
-}
+};
+const _drawRoute = drawRoute;
+drawRoute = function(key){ _drawRoute(key); if (mapMode==='kakao' && kakaoReady) kDrawRoute(key); };
 
 function applyFilter(f){
   filt = f;
@@ -1130,6 +1155,7 @@ function applyFilter(f){
     el.classList.toggle('dim', !hit(el.dataset.cat)));
   document.querySelectorAll('.prow').forEach(el=>
     el.classList.toggle('hide', !hit(el.dataset.cat)));
+  if (mapMode==='kakao' && kakaoReady) kApplyFilter();
 }
 
 // 컨트롤
@@ -1230,9 +1256,111 @@ document.getElementById('zfull').addEventListener('click', ()=>{
 
 // 핀/목록 선택 시 그 지점으로 부드럽게 확대
 function focusPin(p){
+  if (mapMode==='kakao' && kakaoReady){
+    kmap.setLevel(6); kmap.panTo(new kakao.maps.LatLng(p.lat, p.lon)); kOpenBubble(p); return;
+  }
   const w = Math.max(MIN_W, Math.min(vb.w, 150));
   setVB({x: p.px - w/2, y: p.py - (w*vb.h/vb.w)/2, w: w, h: w*vb.h/vb.w});
 }
+
+// ── 카카오맵 ────────────────────────────────────────
+const KAKAO_KEY = 'c68af225f1ca75dc0e69bf0bf99ae95c';
+const kbox = document.getElementById('kakaoMap');
+const kfail = document.getElementById('mapfail');
+
+function showSvgOnly(reason){
+  mapMode = 'svg';
+  kbox.style.display = 'none';
+  svg.style.display = 'block';
+  document.querySelectorAll('.svgonly').forEach(e=>e.style.display='');
+  document.querySelector('.zoomctl').style.display = '';
+  document.querySelectorAll('.mapctl button[data-m]').forEach(b=>b.classList.toggle('on', b.dataset.m==='svg'));
+  if (reason) { kfail.textContent = reason; kfail.style.display = 'block'; }
+  drawRoute(route);
+}
+function showKakao(){
+  if (!kakaoReady) return showSvgOnly();
+  mapMode = 'kakao';
+  kfail.style.display = 'none';
+  kbox.style.display = 'block';
+  svg.style.display = 'none';
+  document.querySelectorAll('.svgonly').forEach(e=>e.style.display='none');
+  document.querySelector('.zoomctl').style.display = 'none';
+  document.querySelectorAll('.mapctl button[data-m]').forEach(b=>b.classList.toggle('on', b.dataset.m==='kakao'));
+  kakao.maps.event.trigger(kmap, 'resize');
+  kFit();
+  kApplyFilter();
+  kDrawRoute(route);
+}
+function kFit(){
+  const bounds = new kakao.maps.LatLngBounds();
+  PINS.forEach(p=>bounds.extend(new kakao.maps.LatLng(p.lat, p.lon)));
+  kmap.setBounds(bounds, 40, 40, 40, 40);
+}
+function kClearBubble(){ if (kBubble) { kBubble.setMap(null); kBubble = null; } }
+function kOpenBubble(p){
+  kClearBubble();
+  const q = (p.det && p.det['주소']) ? p.det['주소'] : p.name.replace(/\s*\(.*?\)\s*/g,' ').trim();
+  const el = document.createElement('div');
+  el.className = 'kbubble';
+  el.innerHTML = '<b>'+p.n+'. '+p.name+'</b>'+p.one+
+    '<br><a href="https://map.kakao.com/link/to/'+encodeURIComponent(q)+','+p.lat+','+p.lon+'" target="_blank" rel="noopener">카카오맵 길찾기 ↗</a>'+
+    ' <a href="'+nv(q)+'" target="_blank" rel="noopener">네이버 ↗</a>';
+  kBubble = new kakao.maps.CustomOverlay({
+    position: new kakao.maps.LatLng(p.lat, p.lon), content: el, yAnchor: 1.6, zIndex: 10 });
+  kBubble.setMap(kmap);
+}
+function kApplyFilter(){
+  const hit = c => filt==='all' || c===filt || (filt==='family' && FAM[c]);
+  PINS.forEach(p=>{
+    const el = kOverlays[p.id];
+    if (el) el.classList.toggle('hide', !hit(p.cat));
+  });
+}
+function kDrawRoute(key){
+  if (kRoute) { kRoute.setMap(null); kRoute = null; }
+  if (!key || !kmap) return;
+  const path = ROUTES[key].map(id=>byId[id]).filter(Boolean)
+                          .map(p=>new kakao.maps.LatLng(p.lat, p.lon));
+  if (path.length < 2) return;
+  kRoute = new kakao.maps.Polyline({ path, strokeWeight:4, strokeColor:ROUTEC[key],
+    strokeOpacity:0.85, strokeStyle:'shortdash' });
+  kRoute.setMap(kmap);
+}
+function initKakao(){
+  kmap = new kakao.maps.Map(kbox, {
+    center: new kakao.maps.LatLng(35.05, 126.75), level: 11 });
+  kmap.addControl(new kakao.maps.ZoomControl(), kakao.maps.ControlPosition.RIGHT);
+  kmap.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
+  PINS.forEach(p=>{
+    const el = document.createElement('div');
+    el.className = 'kpin' + (FAM[p.cat] ? ' fam' : '');
+    el.style.background = CATC[p.cat];
+    el.textContent = p.n;
+    el.title = p.n + '. ' + p.name;
+    el.addEventListener('click', e=>{ e.stopPropagation(); select(p.id, true); kOpenBubble(p); });
+    kOverlays[p.id] = el;
+    new kakao.maps.CustomOverlay({ position:new kakao.maps.LatLng(p.lat,p.lon), content:el, zIndex: FAM[p.cat]?5:3 }).setMap(kmap);
+  });
+  kakao.maps.event.addListener(kmap, 'click', kClearBubble);
+  kakaoReady = true;
+  showKakao();
+}
+(function loadKakao(){
+  const sc = document.createElement('script');
+  sc.async = true;
+  sc.src = 'https://dapi.kakao.com/v2/maps/sdk.js?appkey=' + KAKAO_KEY + '&autoload=false';
+  sc.onerror = ()=>showSvgOnly('카카오맵을 불러오지 못했어 — 간략 지도로 보여줄게');
+  sc.onload = ()=>{
+    if (!window.kakao || !kakao.maps) return showSvgOnly('카카오맵 SDK 응답이 이상해 — 간략 지도로 보여줄게');
+    kakao.maps.load(initKakao);
+  };
+  document.head.appendChild(sc);
+  setTimeout(()=>{ if (!kakaoReady) showSvgOnly('카카오맵 응답이 없어 — 간략 지도로 보여줄게 (도메인 등록 확인 필요)'); }, 7000);
+})();
+document.querySelectorAll('.mapctl button[data-m]').forEach(b=>{
+  b.addEventListener('click', ()=>{ b.dataset.m==='kakao' ? showKakao() : showSvgOnly(); });
+});
 
 // 일정 탭
 document.querySelectorAll('.tabs button[data-t]').forEach(b=>{
