@@ -47,7 +47,18 @@
   .maplayout{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;align-items:start}
   @media (max-width:960px){.maplayout{grid-template-columns:1fr}}
   .mapbox{background:#eef4f5;border:1px solid var(--line);border-radius:14px;padding:8px;position:relative;overflow:hidden}
-  .mapbox svg{display:block;width:100%;height:auto;touch-action:none}
+  .mapbox svg{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+  .mapbox svg.dragging{cursor:grabbing}
+  .mapbox:fullscreen{background:#eef4f5;padding:0;display:flex;align-items:center;justify-content:center;border-radius:0}
+  .mapbox:fullscreen svg{width:100vw;height:100vh;max-height:100vh}
+  .zoomctl{position:absolute;right:12px;top:12px;display:flex;flex-direction:column;gap:6px;z-index:6}
+  .zoomctl button{width:34px;height:34px;border:1px solid var(--line);background:rgba(255,255,255,.94);
+    border-radius:8px;font-size:16px;font-weight:800;color:var(--sub);cursor:pointer;line-height:1;
+    display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .zoomctl button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .zoomctl button.wide{width:34px;font-size:11px;font-weight:700}
+  .maphint{position:absolute;left:12px;top:12px;z-index:6;background:rgba(255,255,255,.9);
+    border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-size:11.5px;color:var(--muted)}
   .prov{fill:#dfe7e3;stroke:#c3cec8;stroke-width:1.1}
   .prov.gj{fill:#d3ddea;stroke:#a9bcd2}
   .prov.jb{fill:#e9e6df;stroke:#d5d0c5}
@@ -95,6 +106,7 @@
   .tabs button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
   .tabs button.b.on{background:var(--rust);border-color:var(--rust)}
   .tabs button.c.on{background:var(--moss);border-color:var(--moss)}
+  .tabs button.d.on{background:var(--sea);border-color:var(--sea)}
   .panel{display:none}
   .panel.on{display:block}
   .daybar{display:flex;align-items:center;gap:10px;margin:22px 0 10px}
@@ -169,7 +181,7 @@
     <div><b>2호차</b><span>엄마 + 아빠</span></div>
     <div><b>친가 · 담양</b><span>큰고모댁 · 할머니 (금 점심)</span></div>
     <div><b>외가 · 광주</b><span>작은외삼촌 · 6명 (금 저녁)</span></div>
-    <div><b>일정안</b><span>A안 1박2일 · B안 2박3일 · C안 1박2일(관광 2곳)</span></div>
+    <div><b>일정안</b><span>A·C·D안 1박2일 / B안 2박3일 — 네 가지</span></div>
     <div><b>페이스</b><span>하루 2~3곳 · 많이 안 걷기</span></div>
   </div>
 </header>
@@ -179,13 +191,13 @@
   <p class="lead">두 대가 따로 움직이니 <b>집합 지점과 시간</b>만 맞추면 나머지는 유연하게. 8월 말이라 낮 최고 30도 안팎 — 한낮(13~16시)은 실내·그늘·차 안 코스로 배치했어.</p>
   <div class="card">
     <div class="pills">
-      <div class="pill"><b>총 주행</b>A·C안 약 700km · B안 약 900km (2대 각각)</div>
+      <div class="pill"><b>총 주행</b>A·C 700km · D 820km · B 900km (2대 각각)</div>
       <div class="pill"><b>마곡→담양</b>약 320km · 무정차 3시간 30분 안팎</div>
       <div class="pill"><b>담양→광주</b>약 25km · 30분</div>
       <div class="pill"><b>광주→나주</b>약 25km · 30분</div>
       <div class="pill"><b>나주→목포</b>약 50km · 45분</div>
       <div class="pill"><b>목포→마곡</b>약 400km · 4시간 30분</div>
-      <div class="pill"><b>예상 총비용</b>A안 99~130만 · B안 149~205만 · <b style="color:#5c6f4a">C안 84~115만</b></div>
+      <div class="pill"><b>예상 총비용</b>A 99~130만 · B 149~205만 · <b style="color:#5c6f4a">C 84~115만</b> · D 101~158만</div>
     </div>
     <div class="goal">
       <b>이번 여행의 축은 서로 다른 두 집이야.</b><br>
@@ -210,12 +222,20 @@
     <button data-r="A">A안 동선</button>
     <button data-r="B" class="on">B안 동선</button>
     <button data-r="C">C안 동선</button>
+    <button data-r="D">D안 동선</button>
     <button data-z="fit" class="on">여행 권역</button>
     <button data-z="all">전남 전체</button>
   </div>
   <div class="maplayout">
     <div class="mapbox" id="mapbox">
       <div class="maptip" id="maptip"></div>
+      <div class="maphint">휠 확대 · 드래그 이동</div>
+      <div class="zoomctl">
+        <button type="button" id="zin" title="확대">+</button>
+        <button type="button" id="zout" title="축소">−</button>
+        <button type="button" id="zreset" class="wide" title="처음으로">⟲</button>
+        <button type="button" id="zfull" class="wide" title="전체화면">⛶</button>
+      </div>
 
 <svg viewBox="0 0 1000.0 982.2" preserveAspectRatio="xMidYMid meet" id="map" role="img" aria-label="전라남도·광주 여행 지도">
 <rect x="0" y="0" width="1000.0" height="982.2" fill="#eef4f5"/>
@@ -283,10 +303,32 @@
 <section>
   <h2>일정</h2>
   <p class="lead">A안은 “할머니 + 외삼촌”만 확실히 하고 빠르게 돌아오는 안, B안은 목포까지 붙여 알차게 보는 안. A·B는 금요일(Day 1)이 똑같아.<br><b>C안은 완전히 다른 안</b> — <b>1박 2일</b>에 <b>첫날 동선을 광주 → 담양으로 뒤집고 담양에서 자는</b> 구성이야. <b>관광은 하루 최대 2곳, 전체 2곳.</b> 목포는 안 가.</p>
+  <div class="tblwrap"><div class="card" style="margin-bottom:18px;border-top:3px solid var(--navy)">
+    <div style="font-weight:800;font-size:16px;margin-bottom:10px">네 안 한눈에 비교</div>
+    <table class="cmp">
+      <tr><th></th><th style="color:var(--navy)">A안</th><th style="color:var(--rust)">B안</th><th style="color:var(--moss)">C안</th><th style="color:var(--sea)">D안</th></tr>
+      <tr><td class="head">기간</td><td>1박 2일</td><td><b>2박 3일</b></td><td>1박 2일</td><td>1박 2일</td></tr>
+      <tr><td class="head">동선</td><td>담양 → 광주 → 귀가</td><td>담양 → 광주 → 나주 → 목포 → 귀가</td><td><b>광주 → 담양</b> → 귀가</td><td><b>목포</b> → 광주 → 담양 → 귀가</td></tr>
+      <tr><td class="head">숙박</td><td>광주 1박</td><td>광주 + 목포 2박</td><td>담양 1박</td><td>목포 1박</td></tr>
+      <tr><td class="head" style="color:#a04a2e">친가 (할머니)</td><td>금 오전~점심</td><td>금 오전~점심</td><td class="parking-yes">금 오후~저녁<br><b>+ 토 낮 재방문</b></td><td class="parking-no">토 오후<br><b>여행 맨 끝</b></td></tr>
+      <tr><td class="head" style="color:#7d4b6d">외가 (6명)</td><td>금 저녁</td><td>금 저녁</td><td>금 점심</td><td>토 점심</td></tr>
+      <tr><td class="head">관광</td><td>1~2곳</td><td>5~6곳</td><td class="parking-yes"><b>2곳</b> (둘 다 도보)</td><td>2~3곳 (목포 집중)</td></tr>
+      <tr><td class="head">목포</td><td class="parking-no">✗ 안 감</td><td class="parking-yes">○ 토 오후~일 오전</td><td class="parking-no">✗ 안 감</td><td class="parking-yes">◎ <b>금요일 온종일</b></td></tr>
+      <tr><td class="head">총 주행 (1대)</td><td>약 700km</td><td>약 900km</td><td class="parking-yes">약 700km</td><td>약 820km</td></tr>
+      <tr><td class="head">야간운전</td><td class="parking-yes">없음</td><td class="parking-yes">없음</td><td class="parking-yes">없음</td><td class="parking-yes">없음</td></tr>
+      <tr class="total"><td class="head">예상 비용</td><td>99~130만</td><td>149~205만</td><td><b>84~115만</b></td><td>115~155만</td></tr>
+      <tr><td class="head">이럴 때 골라</td><td>가족만 확실히 뵙고 빨리 복귀</td><td>기왕 내려간 거 다 보고 오기</td><td>제일 저렴·여유 · <b>할머니 두 번</b></td><td><b>목포를 제대로</b> 보되 1박만</td></tr>
+      <tr><td class="head">최대 약점</td><td class="parking-no">관광이 거의 없음</td><td class="parking-no">비용·이동 최대</td><td class="parking-no">목포 완전 포기</td><td class="parking-no">1순위(할머니)가 맨 끝<br>+ 귀가 압박</td></tr>
+    </table>
+    <div class="note" style="margin-top:12px"><b>한 줄 요약</b> — 가족이 목적이면 <b>C안</b>, 목포까지 제대로 보려면 <b>B안</b>,
+      목포는 보고 싶은데 1박뿐이면 <b>D안</b>, 관광 없이 단출하게면 <b>A안</b>.</div>
+  </div></div>
+
   <div class="tabs">
     <button data-t="A" class="on">A안 · 1박 2일 (8/28~29)</button>
     <button data-t="B" class="b">B안 · 2박 3일 (8/28~30)</button>
     <button data-t="C" class="c">C안 · 1박 2일 <span style="font-weight:400">(관광 2곳 · 광주→담양)</span></button>
+    <button data-t="D" class="d">D안 · 1박 2일 <span style="font-weight:400">(목포 먼저)</span></button>
   </div>
 
   <!-- ── A안 ── -->
@@ -503,6 +545,109 @@
       <div class="note" style="margin-top:12px"><b>세 안 비교</b> — A안 99~130만 / B안 149~205만 / <b>C안 84~115만.</b>
         <b>C안이 제일 싸.</b> 이유는 ① 1박이라 숙박·식사가 한 번씩 덜 들고, ② 담양 숙소 조식이 무료고, ③ 케이블카 같은 유료 관광이 없어서야.
         <b>“가족 보는 게 목적이고 비용은 아끼고 싶다”면 C안이 정답에 가장 가까워.</b> 대신 목포는 통째로 포기하는 거야.</div>
+    </div>
+  </div>
+  <!-- ── D안 ── -->
+  <div class="panel" id="tab-D">
+    <div class="card" style="border-top:3px solid var(--sea)">
+      <div style="font-weight:800;font-size:17px;margin-bottom:10px">D안 = <b style="color:var(--sea)">1박 2일 · 목포 먼저 · 서울 → 목포 → 광주 → 담양 → 귀가</b></div>
+      <div style="font-size:14px;color:var(--sub);line-height:1.8">
+        <b>B안을 거꾸로 뒤집은 안이야.</b> 첫날 서울에서 목포로 바로 내려가 <b>목포를 온종일 쓰고</b>,
+        둘째 날 올라오면서 광주(외가)·담양(친가)을 훑는 구조.<br>
+        <b>좋은 점 두 가지</b> — ① <b>목포를 반나절이 아니라 오후+저녁+밤까지 통째로</b> 쓸 수 있어. B안에서 목포는 토요일 오후 반나절뿐이야.
+        ② <b>마지막 날 출발지가 담양(320km)</b>이라 목포(400km)에서 올라오는 B안보다 <b>귀가가 1시간 짧아.</b>
+      </div>
+      <div class="alert"><b>⚠ 그런데 구조적 약점이 하나 있어 — 이게 꽤 커</b><br>
+        <b>이번 여행의 1순위인 할머니 뵙는 시간이 여행 맨 끝에 놓여.</b> 그것도 <b>“이제 서울 올라가야 하는데” 하는 압박</b> 속에서.
+        토요일 오후에 담양에 앉아 있는데 시계를 보게 되는 구조야.<br>
+        A·B·C안은 전부 <b>친가를 첫날 앞쪽에 배치</b>해서 늘어져도 뒤가 안 밀리게 짰는데, D안은 그게 안 돼.
+        <b>가족이 목적인 이번 여행에서 이건 가볍게 볼 단점이 아니야.</b></div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="daybar d3"><span class="dn">DAY 1</span><span class="dt">8/28 (금) · 마곡 → 목포</span><span class="ds">주행 약 400km · 목포 온종일</span></div>
+      <div class="timeline">
+        <div class="step d3"><div class="time">06:00</div><div class="title">마곡 출발 (2대)</div>
+          <div class="desc">목포는 담양보다 80km 더 머니까 <b>A·B·C안보다 30분 일찍</b> 나서는 게 좋아.
+            서해안고속도로로 쭉 내려가는 길이라 호남선보다 정체는 덜해.</div>
+          <span class="tag drive">약 400km · 무정차 4시간 30분</span></div>
+        <div class="step d3"><div class="time">08:30</div><div class="title">휴게소 1회 (25분)</div>
+          <span class="tag drive">행담도 또는 서해안 휴게소</span></div>
+        <div class="step d3"><div class="time">11:30</div><div class="title">목포 도착 · 점심</div>
+          <div class="desc"><b>8월은 민어 최성수기.</b> 첫날 점심으로 <b>영란횟집</b>(민어회 중 25,000원)을 쓰면 저녁이 자유로워져.
+            부담스러우면 백반이나 낙지연포탕으로.</div>
+          <span class="tag food">4인 8~18만</span></div>
+        <div class="step d3"><div class="time">13:30</div><div class="title">숙소 체크인 · 휴식</div>
+          <div class="desc">샹그리아비치호텔(평화광장 앞) 기준. 4시간 반 운전하고 온 직후라 <b>제일 더운 시간을 방에서 보내는 게 맞아.</b></div>
+          <span class="tag">더위 회피 구간</span></div>
+        <div class="step d3"><div class="time">15:30</div><div class="title"><b style="color:var(--sea)">관광 ①</b> 목포해상케이블카</div>
+          <div class="desc">3.23km 국내 최장. <b>앉아서</b> 유달산·다도해·목포대교를 다 봐. 왕복 40분,
+            <b>시간 여유가 있으니 고하도에 내려서 전망대까지 걸어도 돼</b>(2시간). B안에서는 못 하는 여유야.</div>
+          <span class="tag sight">일반 왕복 성인 2만원대</span><span class="tag sight">앉아서 이동</span></div>
+        <div class="step d3"><div class="time">17:30</div><div class="title"><b style="color:var(--sea)">관광 ②</b> 갓바위 & 해상보행교</div>
+          <div class="desc">완전 평지 데크, 무료, 40분. <b>해질녘에 보면 제일 예뻐.</b> 하절기 해상보행교 05:00~24:00.
+            바로 옆 목포자연사박물관은 시간 남을 때만.</div>
+          <span class="tag sight">무료 · 40분 · 완전 평지</span><span class="tag sight">해질녘 추천</span></div>
+        <div class="step d3"><div class="time">19:00</div><div class="title">저녁 · 평화광장 밤 산책</div>
+          <div class="desc">숙소 앞 먹자골목에서 저녁 먹고 <b>춤추는 바다분수</b>까지 걸어서.
+            <b>D안에서만 목포의 밤을 온전히 써.</b> 분수 가동 시간은 계절별로 다르니 당일 확인.</div>
+          <span class="tag food">4인 6~10만</span><span class="tag sight">무료</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="daybar d2"><span class="dn">DAY 2</span><span class="dt">8/29 (토) · 목포 → 광주 → 담양 → 마곡</span><span class="ds">주행 약 420km · 가족 2건이 몰린 날</span></div>
+      <div class="timeline">
+        <div class="step d2"><div class="time">08:00</div><div class="title">조식 · 체크아웃</div>
+          <div class="desc"><b>오늘은 시간이 빡빡해.</b> 목포에서 더 볼 게 있어도 여기서 끊는 게 맞아.</div></div>
+        <div class="step d2"><div class="time">09:00</div><div class="title">광주로 이동 (1시간)</div>
+          <span class="tag drive">목포 → 광주 약 75km</span></div>
+        <div class="step d2"><div class="time">10:15</div><div class="title">광주 도착 · 잠깐 정비</div>
+          <div class="desc">점심 자리 전 여유. 시간이 남으면 <b>양림동 근대역사거리</b>(무료·평지·1시간)를 넣을 수 있지만,
+            뒤가 밀리면 담양이 짧아지니 <b>과감히 빼는 걸 추천해.</b></div>
+          <span class="tag sight opt">선택: 양림동 (뒤가 밀릴 위험)</span></div>
+        <div class="step d2 key"><div class="time">11:30~13:30</div><div class="title">작은외삼촌과 점심 — <b style="color:#7d4b6d">외가</b></div>
+          <div class="desc"><b>본편 ①.</b> 6명. 담양 일정이 뒤에 있으니 <b>2시간으로 끊어야 해.</b>
+            후보: 명가원 / 대광식당 / 영미오리탕 / 소촌옥.</div>
+          <span class="tag family" style="background:#f3ecf1;border-color:#dcc4d5;color:#7d4b6d">★ 외가 · 6명</span><span class="tag">2시간 엄수</span></div>
+        <div class="step d2"><div class="time">14:00</div><div class="title">담양으로 이동 (30분)</div>
+          <span class="tag drive">광주 → 담양 약 25km</span></div>
+        <div class="step d2 key"><div class="time">14:30~17:30</div><div class="title">담양 큰고모댁 · 할머니 — <b style="color:#a04a2e">친가</b></div>
+          <div class="desc"><b>본편 ②.</b> 3시간. 큰고모댁에서 <b>이른 저녁</b>을 겸하거나, 근처 <b>덕인관</b>에서 저녁을 먹고 출발하는 방법도 있어
+            (그럼 출발이 19:00, 도착이 23:00이 돼).<br>
+            <b>⚠ 여기가 D안의 급소야</b> — 뒤에 320km가 기다리고 있어서 마음이 급해져.</div>
+          <span class="tag family">★ 친가 · 담양읍 반룡길</span><span class="tag" style="background:#f7ece4;border-color:#e6cdb8;color:#a04a2e">시간 압박 구간</span></div>
+        <div class="step d2"><div class="time">17:30</div><div class="title">출발 → 마곡</div>
+          <div class="desc">토요일 저녁 상행. 휴게소 1회 포함 <b>4시간 예상 → 21:30 전후 도착.</b>
+            담양에서 저녁까지 먹고 19:00에 나서면 <b>23:00 도착</b>이야. 아빠 혼자 운전하시는 걸 감안하면
+            <b>17:30 출발이 마지노선</b>이라고 봐.</div>
+          <span class="tag drive">약 320km · 21:30 전후 도착</span></div>
+      </div>
+      <div class="alert"><b>D안을 고른다면 이것만은 지켜</b><br>
+        · <b>외가 점심 2시간 엄수</b> — 여기가 늘어지면 할머니 뵙는 시간이 그대로 깎여<br>
+        · <b>광주 관광(양림동 등)은 넣지 마</b> — 넣는 순간 담양이 1시간짜리가 돼<br>
+        · <b>담양에서 저녁까지 드실 거면 귀가가 23시</b>인 걸 부모님께 미리 말씀드려. 아니면 큰고모댁에서 이른 저녁으로<br>
+        · 목포 관광을 첫날 다 끝내는 게 전제야 — 둘째 날 아침에 뭘 더 보려고 하면 전체가 무너져</div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div style="font-weight:800;margin-bottom:10px">D안 예상 비용 <span style="font-size:13px;color:#8a8f9a;font-weight:600">(4인 · 차 2대 · 1박 2일)</span></div>
+      <div class="tblwrap"><table class="cmp">
+        <tr><th>항목</th><th>내용</th><th class="num">금액</th></tr>
+        <tr><td class="head">유류비</td><td>왕복 약 820km × 2대</td><td class="num">약 232,000</td></tr>
+        <tr><td class="head">통행료</td><td>왕복 × 2대</td><td class="num">약 85,000</td></tr>
+        <tr><td class="head">숙박</td><td>목포 1박 · 2룸</td><td class="num">200,000~320,000</td></tr>
+        <tr><td class="head">금 점심·저녁</td><td>목포 민어 + 저녁 4인</td><td class="num">140,000~280,000</td></tr>
+        <tr><td class="head" style="color:#7d4b6d">외가 점심 (6인)</td><td>한정식 / 육전 / 오리탕</td><td class="num">150,000~250,000</td></tr>
+        <tr><td class="head" style="color:#a04a2e">친가 (7인)</td><td>덕인관 저녁 또는 큰고모댁</td><td class="num">0~160,000</td></tr>
+        <tr><td class="head">입장료</td><td>케이블카 4인 (갓바위 무료)</td><td class="num">약 100,000</td></tr>
+        <tr><td class="head">어른들 선물</td><td>친가·외가 두 세트</td><td class="num">100,000~150,000</td></tr>
+        <tr class="total"><td class="head">합계</td><td>—</td><td class="num">1,010,000~1,580,000</td></tr>
+      </table></div>
+      <div class="note" style="margin-top:12px"><b>주목할 점 — D안은 1박인데 비용이 2박(B안)에 가까워.</b>
+        1박을 줄여서 아낀 건 숙박비 하나뿐이고, <b>주행 820km · 목포 관광 · 가족 식사 2건은 그대로</b>거든.
+        <b>“1박이니까 싸겠지”가 성립하지 않는 안</b>이라는 걸 알고 골라야 해.
+        같은 1박이면 C안이 84~115만원이라 <b>30~40만원 싸.</b></div>
     </div>
   </div>
 </section>
@@ -866,9 +1011,10 @@ const FAM = {chin:1, oe:1};
 const ROUTES = {
   A: ['gomo','meta','samchon','yangnim'],
   B: ['gomo','meta','samchon','hayan','cable','gatbawi'],
-  C: ['samchon','gomo','meta','juknok']
+  C: ['samchon','gomo','meta','juknok'],
+  D: ['cable','gatbawi','samchon','gomo']
 };
-const ROUTEC = {A:'#1f3a5f', B:'#a04a2e', C:'#5c6f4a'};
+const ROUTEC = {A:'#1f3a5f', B:'#a04a2e', C:'#5c6f4a', D:'#356e89'};
 const svg = document.getElementById('map');
 const gPins = document.getElementById('pins');
 const gLinks = document.getElementById('links');
@@ -957,7 +1103,7 @@ PINS.forEach((p,i)=>{
 });
 
 function select(id, fromMap){
-  if (sel === id){ sel = null; } else { sel = id; }
+  if (sel === id){ sel = null; } else { sel = id; if (!fromMap && byId[id]) focusPin(byId[id]); }
   document.querySelectorAll('.pin').forEach(el=>el.classList.toggle('on', el.dataset.id===sel));
   document.querySelectorAll('.prow').forEach(el=>{
     const on = el.dataset.id===sel;
@@ -1018,9 +1164,75 @@ document.querySelectorAll('.mapctl button[data-z]').forEach(b=>{
   b.addEventListener('click', ()=>{
     document.querySelectorAll('.mapctl button[data-z]').forEach(x=>x.classList.remove('on'));
     b.classList.add('on');
-    svg.setAttribute('viewBox', b.dataset.z==='all' ? svg.dataset.full : svg.dataset.fit);
+    setVB(parseVB(b.dataset.z==='all' ? svg.dataset.full : svg.dataset.fit));
   });
 });
+
+// ── 지도 확대 / 이동 ──────────────────────────────────
+const _fullVB = parseVB(svg.dataset.full);
+const MAP_W = _fullVB.w, MAP_H = _fullVB.h;
+const MIN_W = 60;                       // 최대 확대
+const MAX_W = MAP_W * 1.05;             // 최대 축소
+let vb = parseVB(svg.getAttribute('viewBox'));
+
+function parseVB(str){ const a = str.trim().split(/[\s,]+/).map(Number); return {x:a[0],y:a[1],w:a[2],h:a[3]}; }
+function setVB(n){
+  const ratio = vb.h / vb.w;
+  n.w = Math.min(MAX_W, Math.max(MIN_W, n.w));
+  n.h = n.w * ratio;
+  // 지도 밖으로 너무 나가지 않게
+  const pad = n.w * 0.6;
+  n.x = Math.min(MAP_W + pad - n.w, Math.max(-pad, n.x));
+  n.y = Math.min(MAP_H + pad - n.h, Math.max(-pad, n.y));
+  vb = n;
+  svg.setAttribute('viewBox', [n.x, n.y, n.w, n.h].map(v=>Math.round(v*10)/10).join(' '));
+}
+function zoomAt(factor, cx, cy){
+  const nw = vb.w * factor, nh = vb.h * factor;
+  setVB({x: cx - (cx - vb.x) * (nw / vb.w), y: cy - (cy - vb.y) * (nh / vb.h), w: nw, h: nh});
+}
+function svgPoint(evt){
+  const r = svg.getBoundingClientRect();
+  return { x: vb.x + (evt.clientX - r.left) / r.width  * vb.w,
+           y: vb.y + (evt.clientY - r.top)  / r.height * vb.h };
+}
+svg.addEventListener('wheel', e=>{
+  e.preventDefault();
+  const p = svgPoint(e);
+  zoomAt(e.deltaY > 0 ? 1.18 : 1/1.18, p.x, p.y);
+}, {passive:false});
+
+let drag = null;
+svg.addEventListener('pointerdown', e=>{
+  if (e.target.closest('.pin')) return;          // 핀 클릭은 그대로
+  drag = {x:e.clientX, y:e.clientY, vx:vb.x, vy:vb.y};
+  svg.classList.add('dragging'); svg.setPointerCapture(e.pointerId);
+});
+svg.addEventListener('pointermove', e=>{
+  if (!drag) return;
+  const r = svg.getBoundingClientRect();
+  setVB({x: drag.vx - (e.clientX - drag.x) / r.width  * vb.w,
+         y: drag.vy - (e.clientY - drag.y) / r.height * vb.h, w: vb.w, h: vb.h});
+});
+['pointerup','pointercancel','pointerleave'].forEach(ev=>
+  svg.addEventListener(ev, ()=>{ drag = null; svg.classList.remove('dragging'); }));
+
+document.getElementById('zin').addEventListener('click', ()=>zoomAt(1/1.35, vb.x+vb.w/2, vb.y+vb.h/2));
+document.getElementById('zout').addEventListener('click', ()=>zoomAt(1.35, vb.x+vb.w/2, vb.y+vb.h/2));
+document.getElementById('zreset').addEventListener('click', ()=>{
+  document.querySelectorAll('.mapctl button[data-z]').forEach(x=>x.classList.toggle('on', x.dataset.z==='fit'));
+  setVB(parseVB(svg.dataset.fit));
+});
+document.getElementById('zfull').addEventListener('click', ()=>{
+  if (document.fullscreenElement) document.exitFullscreen();
+  else if (box.requestFullscreen) box.requestFullscreen();
+});
+
+// 핀/목록 선택 시 그 지점으로 부드럽게 확대
+function focusPin(p){
+  const w = Math.max(MIN_W, Math.min(vb.w, 150));
+  setVB({x: p.px - w/2, y: p.py - (w*vb.h/vb.w)/2, w: w, h: w*vb.h/vb.w});
+}
 
 // 일정 탭
 document.querySelectorAll('.tabs button[data-t]').forEach(b=>{
