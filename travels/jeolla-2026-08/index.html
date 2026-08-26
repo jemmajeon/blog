@@ -1284,9 +1284,8 @@ function showSvgOnly(reason){
 function initOsm(){
   obox.style.display = 'block';
   omap = L.map(obox, {scrollWheelZoom:true}).setView([35.05,126.75], 9);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    maxZoom: 19, subdomains:'abcd',
-    attribution: '&copy; OpenStreetMap &copy; CARTO' }).addTo(omap);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19, attribution: '&copy; OpenStreetMap' }).addTo(omap);
   PINS.forEach(p=>{
     const html = '<div class="kpin'+(FAM[p.cat]?' fam':'')+'" style="background:'+CATC[p.cat]+'">'+p.n+'</div>';
     const size = FAM[p.cat] ? 32 : 26;
