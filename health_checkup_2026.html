@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>카페24 임직원검진 비교</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+
+
+<style>
+*{margin:0;padding:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+.backlink{
+  display:inline-block; margin:26px 0 0; font-size:13px; font-weight:600;
+  color:var(--muted); text-decoration:none; border-bottom:1px solid transparent;
+}
+.backlink:hover{color:var(--ink); border-bottom-color:var(--line-2)}
+</style>
+<style>
+:root{
+  --paper:#f1f5f4; --surface:#ffffff; --surface-2:#e7eeec; --sunk:#dde6e4;
+  --ink:#111b19; --ink-2:#3b4a47; --muted:#6b7c78; --line:#d2dcda; --line-2:#bcc9c6;
+  --accent:#0c6a5c; --accent-ink:#0c6a5c; --accent-soft:#d6e9e5;
+  --gold:#7f5c0c; --gold-soft:#f0e5c6;
+  --alert:#9c3628; --alert-soft:#f2dbd6;
+  --slate:#3b5870;
+  --shadow:0 1px 2px rgba(17,27,25,.06), 0 8px 24px -12px rgba(17,27,25,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0d1413; --surface:#151f1d; --surface-2:#1d2927; --sunk:#111a19;
+    --ink:#e7efed; --ink-2:#b0c0bc; --muted:#7c8e8a; --line:#293735; --line-2:#384845;
+    --accent:#4ec1a9; --accent-ink:#6fd0ba; --accent-soft:#14322d;
+    --gold:#d4ad55; --gold-soft:#31280f;
+    --alert:#e28573; --alert-soft:#38201b;
+    --slate:#8fb0c8;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0d1413; --surface:#151f1d; --surface-2:#1d2927; --sunk:#111a19;
+  --ink:#e7efed; --ink-2:#b0c0bc; --muted:#7c8e8a; --line:#293735; --line-2:#384845;
+  --accent:#4ec1a9; --accent-ink:#6fd0ba; --accent-soft:#14322d;
+  --gold:#d4ad55; --gold-soft:#31280f;
+  --alert:#e28573; --alert-soft:#38201b;
+  --slate:#8fb0c8;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1120px; margin:0 auto; padding:0 20px 96px}
+h1,h2,h3{font-family:"Gothic A1","IBM Plex Sans KR",sans-serif; text-wrap:balance; margin:0}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
+
+/* ---------- masthead ---------- */
+.mast{padding:56px 0 34px; border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent-ink); font-weight:600; margin-bottom:14px;
+}
+.mast h1{font-size:clamp(30px,5.2vw,46px); font-weight:900; letter-spacing:-.02em; line-height:1.15}
+.mast p.lede{margin:16px 0 0; max-width:62ch; color:var(--ink-2); font-size:16px}
+.facts{display:flex; flex-wrap:wrap; gap:0; margin-top:30px; border:1px solid var(--line); border-radius:3px; overflow:hidden; background:var(--surface)}
+.fact{flex:1 1 150px; padding:14px 18px; border-right:1px solid var(--line)}
+.fact:last-child{border-right:0}
+.fact dt{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600}
+.fact dd{margin:4px 0 0; font-size:19px; font-weight:600; letter-spacing:-.01em}
+.fact dd .u{font-size:13px; font-weight:500; color:var(--muted); margin-left:2px}
+
+/* ---------- sections ---------- */
+section{margin-top:56px}
+.shead{display:flex; align-items:baseline; gap:14px; margin-bottom:8px; flex-wrap:wrap}
+.shead h2{font-size:23px; font-weight:800; letter-spacing:-.015em}
+.shead .tag{font-size:12px; color:var(--muted); font-weight:500}
+.snote{color:var(--ink-2); max-width:66ch; margin:0 0 22px}
+
+/* ---------- verdict ---------- */
+.pick{
+  background:var(--surface); border:1px solid var(--line); border-top:3px solid var(--accent);
+  border-radius:3px; box-shadow:var(--shadow); overflow:hidden;
+}
+.pick-top{padding:22px 24px 20px; border-bottom:1px solid var(--line); display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start; justify-content:space-between}
+.pick-name{font-family:"Gothic A1",sans-serif; font-size:26px; font-weight:800; letter-spacing:-.02em; line-height:1.25}
+.pick-name span{display:block; font-family:"IBM Plex Sans KR",sans-serif; font-size:13.5px; font-weight:500; color:var(--muted); letter-spacing:0; margin-top:5px}
+.pick-price{text-align:right; flex-shrink:0}
+.pick-price .n{font-family:"IBM Plex Mono",monospace; font-size:30px; font-weight:600; letter-spacing:-.02em; color:var(--accent-ink)}
+.pick-price .c{display:block; font-size:11.5px; color:var(--muted); letter-spacing:.06em; text-transform:uppercase; font-weight:600}
+.slots{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:0}
+.slot{padding:18px 24px; border-right:1px solid var(--line); border-bottom:1px solid var(--line)}
+.slot:last-child{border-right:0}
+.slot .k{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600; margin-bottom:7px}
+.slot .v{font-weight:600; font-size:15.5px; line-height:1.45}
+.slot .v em{display:block; font-style:normal; font-weight:400; font-size:13px; color:var(--ink-2); margin-top:4px}
+.pick-foot{padding:16px 24px; background:var(--surface-2); font-size:13.5px; color:var(--ink-2)}
+.pick-foot strong{color:var(--ink); font-weight:600}
+
+/* ---------- table ---------- */
+.tscroll{overflow-x:auto; border:1px solid var(--line); border-radius:3px; background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; min-width:860px; font-size:13.5px}
+thead th{
+  position:sticky; top:0; z-index:2; background:var(--surface-2); color:var(--ink);
+  text-align:left; font-weight:600; font-size:11px; letter-spacing:.09em; text-transform:uppercase;
+  padding:11px 12px; border-bottom:1px solid var(--line-2); white-space:nowrap;
+}
+tbody td{padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr.grp td{
+  background:var(--sunk); font-family:"Gothic A1",sans-serif; font-weight:800; font-size:12px;
+  letter-spacing:.09em; color:var(--muted); text-transform:uppercase; padding:9px 12px;
+}
+tbody tr.hi{background:var(--accent-soft)}
+tbody tr.dim td:not(.nm){opacity:.62}
+td.nm{font-weight:600; min-width:150px}
+td.nm small{display:block; font-weight:400; color:var(--muted); font-size:11.5px; letter-spacing:0; margin-top:2px}
+td.num{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; color:var(--ink-2); white-space:nowrap}
+td.fit{min-width:250px; color:var(--ink-2); line-height:1.5}
+td.fit b{color:var(--ink); font-weight:600}
+
+.chip{
+  display:inline-block; font-size:11.5px; font-weight:600; padding:2px 8px; border-radius:2px;
+  white-space:nowrap; letter-spacing:.01em;
+}
+.c-yes{background:var(--accent-soft); color:var(--accent-ink)}
+.c-cond{background:var(--gold-soft); color:var(--gold)}
+.c-no{background:var(--alert-soft); color:var(--alert)}
+.rank{
+  display:inline-block; width:20px; height:20px; line-height:20px; text-align:center; border-radius:50%;
+  font-family:"IBM Plex Mono",monospace; font-size:11px; font-weight:600;
+  background:var(--accent); color:var(--paper); margin-right:7px; flex-shrink:0;
+}
+:root[data-theme="dark"] .rank, :root:not([data-theme="light"]) .rank{color:#0d1413}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .rank{color:#ffffff}}
+
+.legend{display:flex; gap:16px; flex-wrap:wrap; margin:14px 0 0; font-size:12.5px; color:var(--muted)}
+.legend span b{font-weight:600}
+
+/* ---------- compare ---------- */
+.vs{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:3px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow)}
+.vs>div{padding:22px 24px}
+.vs>div:first-child{border-right:1px solid var(--line)}
+.vs h3{font-size:17px; font-weight:800; letter-spacing:-.01em}
+.vs .sub{font-size:12.5px; color:var(--muted); margin:4px 0 14px}
+.vs ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:7px; font-size:14px}
+.vs li{display:flex; gap:9px; align-items:baseline}
+.vs li::before{content:"—"; color:var(--line-2); flex-shrink:0}
+.vs li.plus::before{content:"+"; color:var(--accent-ink); font-weight:700}
+.vs li.minus::before{content:"−"; color:var(--alert); font-weight:700}
+.vs .tot{margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-family:"IBM Plex Mono",monospace; font-size:22px; font-weight:600; letter-spacing:-.02em}
+@media (max-width:640px){
+  .vs{grid-template-columns:1fr}
+  .vs>div:first-child{border-right:0; border-bottom:1px solid var(--line)}
+}
+
+/* ---------- checklist ---------- */
+.checks{display:flex; flex-direction:column; gap:0; border:1px solid var(--line); border-radius:3px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow)}
+.check{display:flex; gap:16px; padding:16px 20px; border-bottom:1px solid var(--line); align-items:flex-start}
+.check:last-child{border-bottom:0}
+.check .q{font-weight:600; flex:1 1 auto; min-width:0}
+.check .q em{display:block; font-style:normal; font-weight:400; font-size:13.5px; color:var(--ink-2); margin-top:3px}
+.check .who{flex:0 0 auto; font-size:11px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; color:var(--muted); padding-top:3px; white-space:nowrap}
+
+/* ---------- callout ---------- */
+.warn{
+  margin-top:22px; padding:16px 20px; border-left:3px solid var(--gold);
+  background:var(--gold-soft); border-radius:0 3px 3px 0; font-size:14px; color:var(--ink);
+}
+.warn b{font-weight:700}
+footer{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted)}
+a{color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow">2026 카페24 임직원 건강검진 제안서 · 84p 정리</div>
+  <h1>같은 30만원, 다른 검진</h1>
+  <p class="lede">전 기관 동일가 30만원. 그런데 어떤 곳은 큰 검사를 1개 주고, 어떤 곳은 4개를 준다. 39개 프로그램을 전부 대조해 두 프로필 — <b>63세 비흡연 남성</b>과 <b>30대 후반–40대 초반 여성</b> — 기준으로 정리했다.</p>
+  <dl class="facts">
+    <div class="fact"><dt>가격</dt><dd class="mono">30<span class="u">만원 단일가</span></dd></div>
+    <div class="fact"><dt>검진기관</dt><dd class="mono">36<span class="u">곳 · 39개 프로그램</span></dd></div>
+    <div class="fact"><dt>지역</dt><dd>서울 16 · 경기인천 20</dd></div>
+    <div class="fact"><dt>기본검사</dt><dd class="mono">66–113<span class="u">종 (기관차)</span></dd></div>
+  </dl>
+</header>
+
+<section>
+  <div class="shead"><h2>추천</h2><span class="tag">63세 · 남 · 비흡연 · 대장내시경 미수검 기준</span></div>
+  <p class="snote">이 프로필에 필요한 큰 검사는 <b>수면대장내시경 · 뇌MRA · 심장</b> 세 가지. 39개 프로그램 중 <b>셋을 동시에 주는 곳은 한 곳뿐</b>이다.</p>
+
+  <div class="pick">
+    <div class="pick-top">
+      <div class="pick-name">서울안강병원<span>서울 서초구 효령로 331 · 3호선 남부터미널역 2번출구 도보 4분</span></div>
+      <div class="pick-price"><span class="c">임직원가</span><span class="n">30만원</span></div>
+    </div>
+    <div class="slots">
+      <div class="slot"><div class="k">소화기 · 선택1</div><div class="v">위내시경 (수면)<em>수면비 무료</em></div></div>
+      <div class="slot"><div class="k">선택 A · 택2</div><div class="v">심장MDCT + 골밀도<em>또는 복부MDCT · 폐기능 · 닥터눈CVD</em></div></div>
+      <div class="slot"><div class="k">선택 B · 택1</div><div class="v">대장수면내시경<em>대장 전용 슬롯 — 경쟁 없음</em></div></div>
+      <div class="slot"><div class="k">선택 C · 택1</div><div class="v">뇌MRA<em>또는 뇌MRI · 심장초음파 · 경동맥MRA</em></div></div>
+      <div class="slot"><div class="k">공통 초음파</div><div class="v">4종 전부<em>상복부 · 갑상선 · 경동맥 · 전립선</em></div></div>
+      <div class="slot"><div class="k">기본검사</div><div class="v">94종<em>공단검진 + 혈액 · 소변</em></div></div>
+    </div>
+    <div class="pick-foot"><strong>왜 여기인가</strong> — 대장내시경이 B 슬롯을 독점하고 있어서 A·C 슬롯과 경쟁하지 않는다. 다른 기관은 대장내시경이 MRI·CT와 같은 칸에 묶여 있어 하나를 포기해야 한다. <strong>주의</strong> — 수면대장내시경은 70세 이상 불가. 63세면 가능하지만 이 조건으로 받을 수 있는 기간이 길지 않다.</div>
+  </div>
+
+  <div class="warn"><b>차선책</b> — 서초 접근이 어렵다면: <b>다인병원(수원 장안구)</b>은 MRI 전용 슬롯 + 택3에 대장내시경이 있어 <b>대장 + 뇌MRA + 경동맥 + 전립선초음파</b>가 가능하다(97종, 심장 항목은 없음). <b>광주웰니스(경기광주)</b>는 A 택3으로 <b>대장 + 관상동맥석회화CT + 심장초음파</b>까지 되지만 기본검사가 72종으로 얕다.</div>
+</section>
+
+<section>
+  <div class="shead"><h2>다른 프로필이라면</h2><span class="tag">30대 후반–40대 초반 · 여성</span></div>
+  <p class="snote">필요한 검사가 정반대로 바뀐다. <b>대장내시경은 45–50세부터라 아직 이르고</b>, 심혈관 위험도 낮아 심장CT·MRI 슬롯이 통째로 낭비된다. 대신 <b>유방초음파 · 자궁(골반)초음파 · HPV · 갑상선초음파</b> 네 가지를 몇 개나 확보하느냐가 전부다. 한국 여성은 치밀유방 비율이 높아 유방촬영만으로는 민감도가 떨어지므로 초음파가 실질적으로 중요하다.</p>
+
+  <div class="pick">
+    <div class="pick-top">
+      <div class="pick-name">삼모라인내과 검진센터<span>서울 관악구 · 여성 4대 항목을 모두 확보하는 유일한 구성</span></div>
+      <div class="pick-price"><span class="c">임직원가</span><span class="n">30만원</span></div>
+    </div>
+    <div class="slots">
+      <div class="slot"><div class="k">소화기 · 택1</div><div class="v">위내시경 (수면)<em>수면비 무료 · 기본 슬롯이라 선택칸을 안 먹는다</em></div></div>
+      <div class="slot"><div class="k">선택 A · 택2</div><div class="v">유방초음파 + HPV 정밀<em>인유두종바이러스 정밀검사</em></div></div>
+      <div class="slot"><div class="k">선택 B · 택3</div><div class="v">자궁 + 갑상선 + 경동맥<em>초음파 슬롯이 3개</em></div></div>
+      <div class="slot"><div class="k">기본 제공</div><div class="v">상복부초음파 · 골밀도<em>기본검사 87종</em></div></div>
+    </div>
+    <div class="pick-foot"><strong>왜 여기인가</strong> — 유방초음파와 HPV가 같은 A칸에 있는데 <strong>택2라 둘 다 가져갈 수 있고</strong>, 자궁·갑상선은 별도 B칸(택3)에서 해결된다. 위내시경까지 선택칸 밖이라 낭비되는 슬롯이 없다.</div>
+  </div>
+
+  <div class="tscroll" style="margin-top:22px">
+  <table>
+    <thead>
+      <tr><th>대안</th><th>기본</th><th>확보 가능한 여성 항목</th><th>메모</th></tr>
+    </thead>
+    <tbody>
+      <tr class="hi">
+        <td class="nm"><span class="rank">1</span>삼모라인내과<small>서울 관악</small></td>
+        <td class="num">87종</td>
+        <td class="fit"><b>유방초음파 · HPV정밀 · 자궁 · 갑상선</b> + 경동맥 + 수면위내시경</td>
+        <td class="fit">4개 전부 확보. 낭비 슬롯 없음</td>
+      </tr>
+      <tr>
+        <td class="nm"><span class="rank">2</span>GC녹십자헬스케어<small>서울 을지로·강남·서울숲</small></td>
+        <td class="num">73종</td>
+        <td class="fit"><b>유방초음파 · 자궁경부암바이러스 · 자궁 · 갑상선</b> + 수면위내시경</td>
+        <td class="fit"><b>여성 특화 옵션이 가장 촘촘</b> — 유방암 AI 더블체크, ROMA(난소암 위험도), ST2도 A칸에 있다. 다만 위내시경이 B 택3을 한 칸 먹고 기본검사가 73종으로 얕다</td>
+      </tr>
+      <tr>
+        <td class="nm"><span class="rank">3</span>부천우리병원<small>경기 부천소사</small></td>
+        <td class="num">93종</td>
+        <td class="fit"><b>유방초음파 · HPV · 자궁</b> (갑상선은 자궁과 경쟁)</td>
+        <td class="fit">B 택2로 유방+HPV, A 택1로 자궁초음파. 기본검사 93종</td>
+      </tr>
+      <tr>
+        <td class="nm">강남웰니스병원<small>서울 언주로</small></td>
+        <td class="num">89종</td>
+        <td class="fit"><b>유방초음파 · HPV</b> + 자궁초음파(기본) + CA125 난소암표지자 + 비타민D</td>
+        <td class="fit">자궁초음파와 CA125가 기본이라 A 택2를 유방+HPV에 온전히 쓴다. 갑상선은 포기</td>
+      </tr>
+      <tr>
+        <td class="nm">다인병원<small>경기 수원장안</small></td>
+        <td class="num">97종</td>
+        <td class="fit"><b>유방X선 기본 제공</b> + 유방초음파 · 갑상선 · 경동맥(B 택3)</td>
+        <td class="fit"><b>30대 후반에게 결정적</b> — 유방촬영이 공단 대상 아닌 나이인데 여기는 기본 제공이라 촬영+초음파를 함께 받는다. HPV는 없음</td>
+      </tr>
+      <tr>
+        <td class="nm">한신메디피아<small>서울 서초</small></td>
+        <td class="num">97종</td>
+        <td class="fit">유방초음파(A) + <b>AMH 난소기능 또는 ROMA</b>(B) + 여성호르몬정밀(D) + 자궁초음파(기본)</td>
+        <td class="fit">선택 그룹이 4개라 항목 수 최다. <b>임신 계획이 있으면 AMH가 여기에만 있다</b>. HPV는 없음</td>
+      </tr>
+      <tr>
+        <td class="nm">뉴고려병원 <em>A형</em><small>경기 김포</small></td>
+        <td class="num">94종</td>
+        <td class="fit">A 택3 — <b>HPV + 액상자궁경부세포진 + 경질초음파</b></td>
+        <td class="fit"><b>자궁경부 특화로는 최강</b>이지만 유방초음파가 A형에 없다(B형에만). 자궁경부 쪽만 집중할 때</td>
+      </tr>
+      <tr>
+        <td class="nm">아폴로검진센터<small>경기 판교</small></td>
+        <td class="num">102종</td>
+        <td class="fit">유방초음파(C) + 자궁·갑상선·골밀도(기본)</td>
+        <td class="fit">기본검사 102종. <b>A칸에 슈링크 200샷, C칸에 아쿠아필·보톡스·점빼기</b> — 미용 시술이 들어간 유일한 축이다. HPV는 없음</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">서울안강병원<small>서울 서초</small></td>
+        <td class="num">94종</td>
+        <td class="fit">유방초음파 + 여성호르몬(A 택2) + 자궁초음파(기본)</td>
+        <td class="fit"><b>63세 남성에게는 1위였지만 여기서는 밀린다</b> — 대장 전용 B칸과 MRI·심장 C칸이 이 나이엔 통째로 낭비된다</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="warn"><b>이 나이대에서 꼭 확인할 것</b> — 유방촬영·자궁경부암검사를 <b>"공단대상자만"으로 제한한 기관이 여럿</b>이다(DMC, 파인메디, 래피젠 등). 유방촬영 국가검진은 만 40세부터라 30대 후반이면 대상이 아니고, 그런 기관에서는 촬영을 못 받는다. 예약 전에 "공단 대상이 아니어도 유방촬영이 되는지"를 반드시 물어볼 것.</div>
+</section>
+
+<section>
+  <div class="shead"><h2>전체 39개 프로그램</h2><span class="tag">63세 남성 기준 · 대장내시경 · MRI · 심장 동시 가능 여부로 정렬</span></div>
+  <p class="snote">같은 30만원이라도 선택 그룹이 몇 개인지, 그 안에서 무엇과 무엇이 경쟁하는지가 실질 가치를 결정한다. 아래는 <b>63세 남성이 실제로 챙길 수 있는 조합</b>으로 정리한 것이다.</p>
+
+  <div class="tscroll">
+  <table>
+    <thead>
+      <tr>
+        <th>기관</th><th>기본</th><th>대장내시경</th><th>뇌 MRI/MRA</th><th>심장</th><th>63세 남성 최적 조합</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="grp"><td colspan="6">3종 모두 동시 가능</td></tr>
+      <tr class="hi">
+        <td class="nm"><span class="rank">1</span>서울안강병원<small>서울 서초</small></td>
+        <td class="num">94종</td>
+        <td><span class="chip c-yes">전용 슬롯</span></td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-yes">심장MDCT</span></td>
+        <td class="fit"><b>대장 + 뇌MRA + 심장MDCT + A항목 1개</b> · 공통초음파 4종 · 수면비 무료</td>
+      </tr>
+
+      <tr class="grp"><td colspan="6">대장 + 심장 동시 (MRI 없음)</td></tr>
+      <tr>
+        <td class="nm"><span class="rank">2</span>세란병원<small>서울 독립문</small></td>
+        <td class="num">113종</td>
+        <td><span class="chip c-cond">+5만원</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">관상동맥CT</span></td>
+        <td class="fit"><b>대장 + 관상동맥석회화CT</b>(A 택2) · <b>기본검사 113종으로 전 기관 최다</b> · AI 심부전예측 등 특화</td>
+      </tr>
+      <tr>
+        <td class="nm"><span class="rank">3</span>아폴로검진센터<small>경기 판교</small></td>
+        <td class="num">102종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-cond">대장과 경쟁</span></td>
+        <td><span class="chip c-yes">관상동맥CT</span></td>
+        <td class="fit"><b>대장 + 관상동맥석회화CT + 경동맥초음파</b> · 기본 초음파 4종 + 골밀도 · 수면비 무료</td>
+      </tr>
+      <tr>
+        <td class="nm"><span class="rank">4</span>광주웰니스<small>경기 광주</small></td>
+        <td class="num">72종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">CT+초음파</span></td>
+        <td class="fit"><b>A 택3 — 대장 + 관상동맥석회화CT + 심장초음파</b> · 선택 폭 최대이나 기본검사 72종으로 얕음</td>
+      </tr>
+      <tr>
+        <td class="nm">삼모라인내과<small>서울 관악</small></td>
+        <td class="num">87종</td>
+        <td><span class="chip c-yes">수면비 무료</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">심장초음파</span></td>
+        <td class="fit">대장 + <b>B택3: 심장초음파 + 경동맥 + 전립선</b> · 초음파 슬롯이 3개라 알차다</td>
+      </tr>
+      <tr>
+        <td class="nm">메디플라워<small>서울 서초</small></td>
+        <td class="num">96종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-cond">대장과 경쟁</span></td>
+        <td><span class="chip c-yes">관상동맥MDCT</span></td>
+        <td class="fit">대장 + 관상동맥MDCT · <b>기본 초음파 5종</b>(경동맥·상복부·전립선·자궁·갑상선) 전부 제공</td>
+      </tr>
+      <tr>
+        <td class="nm">강남웰니스병원<small>서울 언주로</small></td>
+        <td class="num">89종</td>
+        <td><span class="chip c-yes">수면비 무료</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">관상동맥CT</span></td>
+        <td class="fit">A 택2 — 대장 + 관상동맥석회화CT · 종양표지자 3종 + 비타민D 기본</td>
+      </tr>
+      <tr>
+        <td class="nm">DMC종합검진센터<small>서울 상암</small></td>
+        <td class="num">91종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">관상동맥CT</span></td>
+        <td class="fit">대장(A) + 관상동맥석회화CT(B) + 초음파 2종(C) · 유방·골밀도·자궁은 공단대상자만</td>
+      </tr>
+      <tr>
+        <td class="nm">한신메디피아<small>서울 서초</small></td>
+        <td class="num">97종</td>
+        <td><span class="chip c-cond">+5만원</span></td>
+        <td><span class="chip c-cond">대장과 경쟁</span></td>
+        <td><span class="chip c-yes">심장초음파</span></td>
+        <td class="fit">대장(A) + 심장초음파(B) + C + D · <b>선택 그룹 4개로 항목 수 최다</b> · 수면 69세 이하만</td>
+      </tr>
+      <tr>
+        <td class="nm">평택메디케어 <em>종합형</em><small>경기 평택</small></td>
+        <td class="num">86종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-no">MR형 별도</span></td>
+        <td><span class="chip c-yes">칼슘스코어CT</span></td>
+        <td class="fit">대장(A) + <b>B택2: 심장칼슘스코어링CT + 경동맥초음파·동맥경화</b></td>
+      </tr>
+      <tr>
+        <td class="nm">필립메디컬센터<small>서울 영등포 / 분당서현</small></td>
+        <td class="num">101종</td>
+        <td><span class="chip c-yes">A형</span></td>
+        <td><span class="chip c-cond">B형 택일</span></td>
+        <td><span class="chip c-yes">심장CT</span></td>
+        <td class="fit">A형 택2 — 대장 + 심장CT · <b>A형/B형 택일이라 MRI와 병행 불가</b></td>
+      </tr>
+      <tr>
+        <td class="nm">우리베스트내과<small>서울 수유</small></td>
+        <td class="num">93종</td>
+        <td><span class="chip c-yes">수면비 포함</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">심장초음파</span></td>
+        <td class="fit">A 택2 — 대장 + 심장초음파 · 기본 초음파 4종 + 종양표지자</td>
+      </tr>
+      <tr>
+        <td class="nm">신사우리베스트<small>서울 신사동</small></td>
+        <td class="num">89종</td>
+        <td><span class="chip c-yes">수면비 포함</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">심장초음파</span></td>
+        <td class="fit">A 택2 — 대장 + 심장초음파 · 초음파 5종 + 암표지자 5종 기본 · 오라팡 변경 시 4만원</td>
+      </tr>
+      <tr>
+        <td class="nm">인천우리베스트<small>인천 가정동</small></td>
+        <td class="num">96종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">심장초음파</span></td>
+        <td class="fit">A 택2 — 대장 + 심장초음파 · 수면위내시경 기본 제공 · 초음파 4종</td>
+      </tr>
+      <tr>
+        <td class="nm">서울베스트내과<small>서울 신당</small></td>
+        <td class="num">76종</td>
+        <td><span class="chip c-yes">수면비 무료</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">심장초음파</span></td>
+        <td class="fit">C 택2 — 대장 + 심장초음파 · 단 A에서 수면위내시경 선택 시 종양표지자 포기</td>
+      </tr>
+      <tr>
+        <td class="nm">부천우리병원<small>경기 부천소사</small></td>
+        <td class="num">93종</td>
+        <td><span class="chip c-yes">수면비 무료</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">심장칼슘CT</span></td>
+        <td class="fit">B 택2 — 대장 + 심장칼슘수치CT · A에서 초음파 1개 추가</td>
+      </tr>
+      <tr>
+        <td class="nm">뉴고려병원 <em>B형</em><small>경기 김포</small></td>
+        <td class="num">94종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">칼슘스코어CT</span></td>
+        <td class="fit">A: 심장MDCT + B: 대장 · <b>유전자 20종 + 종양표지자 5종이 기본 제공</b></td>
+      </tr>
+      <tr>
+        <td class="nm">파인메디내과<small>경기 안산단원</small></td>
+        <td class="num">82종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">심장초음파</span></td>
+        <td class="fit">택2(대장 + 심장초음파) + <b>택3 초음파</b>(경동맥·전립선·상복부) · 영양수액 포함</td>
+      </tr>
+      <tr>
+        <td class="nm">수원휴내과<small>경기 영통</small></td>
+        <td class="num">86종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">심장초음파</span></td>
+        <td class="fit">A 택2(대장 + 심장초음파) + B 택2 초음파 · 수면위내시경 기본</td>
+      </tr>
+      <tr>
+        <td class="nm">곧바로병원 <em>종합형</em><small>인천</small></td>
+        <td class="num">95종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-no">MR형 별도</span></td>
+        <td><span class="chip c-yes">심장초음파</span></td>
+        <td class="fit">A 택2 — 대장 + 심장초음파 · B에서 경동맥·전립선 1개</td>
+      </tr>
+      <tr>
+        <td class="nm">IMC강남의원<small>서울 신사동</small></td>
+        <td class="num">66종</td>
+        <td><span class="chip c-yes">수면비 무료</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">심장초음파</span></td>
+        <td class="fit">B 택2 — 대장 + 심장초음파 · <b>기본검사 66종으로 전 기관 최소</b></td>
+      </tr>
+
+      <tr class="grp"><td colspan="6">대장 + MRI 동시 (심장 없음)</td></tr>
+      <tr>
+        <td class="nm">다인병원<small>경기 수원장안</small></td>
+        <td class="num">97종</td>
+        <td><span class="chip c-yes">B택3 포함</span></td>
+        <td><span class="chip c-yes">전용 슬롯</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td class="fit"><b>A: 뇌MRA + B택3: 대장 + 경동맥 + 전립선</b> · MRI가 전용 슬롯이라 대장과 경쟁 안 함</td>
+      </tr>
+      <tr>
+        <td class="nm">곧바로병원 <em>MR형</em><small>인천</small></td>
+        <td class="num">95종</td>
+        <td><span class="chip c-yes">B에서 선택</span></td>
+        <td><span class="chip c-yes">전용 슬롯</span></td>
+        <td><span class="chip c-cond">대장과 경쟁</span></td>
+        <td class="fit">A: 뇌MRA + B: 대장 · 큰 검사 2개까지만 · 관절·자궁·전립선 Screening MRI도 선택 가능</td>
+      </tr>
+      <tr>
+        <td class="nm">평택메디케어 <em>MR형</em><small>경기 평택</small></td>
+        <td class="num">86종</td>
+        <td><span class="chip c-yes">B에서 선택</span></td>
+        <td><span class="chip c-yes">전용 슬롯</span></td>
+        <td><span class="chip c-cond">대장과 경쟁</span></td>
+        <td class="fit">A: 뇌MRA + B: 대장 · 큰 검사 2개까지만</td>
+      </tr>
+
+      <tr class="grp"><td colspan="6">선택 그룹이 좁아 큰 검사 1개만</td></tr>
+      <tr class="dim">
+        <td class="nm">다온건강검진센터<small>서울 문정</small></td>
+        <td class="num">86종</td>
+        <td><span class="chip c-cond">A 택1</span></td>
+        <td><span class="chip c-cond">A 택1</span></td>
+        <td><span class="chip c-cond">A 택1</span></td>
+        <td class="fit">셋이 한 칸에서 경쟁 · <b>심장정밀(관상동맥CT+심초+Troponin+CK-MB) 4종 묶음</b>은 단일 선택으로는 가성비 최고</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">래피젠헬스케어<small>서울 금천</small></td>
+        <td class="num">89종</td>
+        <td><span class="chip c-cond">A 택1</span></td>
+        <td><span class="chip c-cond">A 택1</span></td>
+        <td><span class="chip c-cond">A 택1</span></td>
+        <td class="fit">셋이 한 칸에서 경쟁 · 수면내시경 70세 이상 불가</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">그레이스병원<small>경기 일산</small></td>
+        <td class="num">86종</td>
+        <td><span class="chip c-cond">+5만원</span></td>
+        <td><span class="chip c-cond">A 택1</span></td>
+        <td><span class="chip c-cond">A 택1</span></td>
+        <td class="fit">A 택1 · B 택2 초음파 · 8월말까지 초음파 1개 추가 프로모션</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">분당차병원<small>경기 야탑</small></td>
+        <td class="num">73종</td>
+        <td><span class="chip c-cond">+5만원</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-cond">A 택1</span></td>
+        <td class="fit">A 택1만 · <b>위 수면비 3만 + 대장 수면비 5만 별도</b> — 이 문서에서 수면비가 가장 비싸다</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">한국건강관리협회<small>전국 16개 지부</small></td>
+        <td class="num">69종</td>
+        <td><span class="chip c-cond">대장형 + 수면 5만</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-cond">종합형만</span></td>
+        <td class="fit"><b>종합형·대장형 택일</b> — 대장형은 대장내시경 + 초음파 1개로 끝. 지방 거주자용 선택지</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">메디피움 동탄<small>경기 동탄</small></td>
+        <td class="num">81종</td>
+        <td><span class="chip c-cond">대장형만</span></td>
+        <td><span class="chip c-cond">종합형만</span></td>
+        <td><span class="chip c-cond">종합형만</span></td>
+        <td class="fit">대장형·종합형 택일 — 대장을 고르면 MRI·심장 전부 포기</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">안양중화병원<small>경기 만안</small></td>
+        <td class="num">93종</td>
+        <td><span class="chip c-yes">가능</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td class="fit">A형 택2 — 대장 + CT 1개 · 심장 항목이 아예 없음</td>
+      </tr>
+
+      <tr class="grp"><td colspan="6">대장내시경 자체가 없음 — 이 프로필에서는 제외</td></tr>
+      <tr class="dim">
+        <td class="nm">GC녹십자헬스케어<small>서울 을지로·강남·서울숲</small></td>
+        <td class="num">73종</td>
+        <td><span class="chip c-no">M2PK만</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">초음파+CT</span></td>
+        <td class="fit">A 택2 + B 택3으로 항목 수는 많다 · <b>심장 특화로는 최상</b>이나 대장내시경 부재가 결정적</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">뉴고려병원 <em>A형</em><small>경기 김포</small></td>
+        <td class="num">94종</td>
+        <td><span class="chip c-no">B형에만</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">칼슘스코어CT</span></td>
+        <td class="fit">선택A 택3으로 폭은 넓으나 대장내시경은 B형에만 · 유전자 20종 기본</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">나은병원<small>인천 검단</small></td>
+        <td class="num">98종</td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">심장MDCT</span></td>
+        <td class="fit">기본검사 98종은 상위권이나 대장내시경 부재</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">동탄시티병원<small>경기 동탄</small></td>
+        <td class="num">67종</td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-yes">A 택1</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td class="fit">뇌MRI·MRA만 필요한 경우의 단순 선택지</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">메디피움 판교·분당<small>경기 판교·분당</small></td>
+        <td class="num">72종</td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-cond">A 택1</span></td>
+        <td class="fit">선택 그룹이 A 택1 하나뿐 · 이 문서에서 구성이 가장 얕다</td>
+      </tr>
+      <tr class="dim">
+        <td class="nm">양병원<small>경기 남양주</small></td>
+        <td class="num">72종</td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td><span class="chip c-no">없음</span></td>
+        <td class="fit"><b>위 수면비 8만원 별도</b> · 치과 스케일링 등 생활 항목 위주</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="legend">
+    <span><b class="chip c-yes">초록</b> 별도 부담 없이 가능</span>
+    <span><b class="chip c-cond">노랑</b> 추가금 또는 다른 항목과 경쟁</span>
+    <span><b class="chip c-no">빨강</b> 해당 없음</span>
+  </div>
+</section>
+
+<section>
+  <div class="shead"><h2>아크포레 KMI와 비교</h2><span class="tag">같은 사람, 같은 목적</span></div>
+  <p class="snote">두 선택지 모두 공단검진 위에 얹는 구조라 기본 뼈대는 같다. 갈리는 건 큰 검사를 몇 개 주느냐다.</p>
+  <div class="vs">
+    <div>
+      <h3>아크포레 KMI</h3>
+      <p class="sub">30만 + 서비스이용료 3만</p>
+      <ul>
+        <li>수면 위내시경</li>
+        <li class="plus">수면 대장내시경 <span style="color:var(--muted)">(특수선택 A)</span></li>
+        <li class="plus">뇌MRI·MRA <span style="color:var(--muted)">(특수선택 B)</span></li>
+        <li>초음파 택3 — 갑상선·경동맥·전립선</li>
+        <li>복부초음파 · 종양표지자 · 체성분 · 골밀도 · 식권</li>
+        <li class="minus">심장 항목 없음 <span style="color:var(--muted)">(A에서 대장과 경쟁)</span></li>
+      </ul>
+      <div class="tot">33만원</div>
+    </div>
+    <div>
+      <h3>카페24 · 안강병원</h3>
+      <p class="sub">임직원가 30만</p>
+      <ul>
+        <li>수면 위내시경</li>
+        <li class="plus">수면 대장내시경 <span style="color:var(--muted)">(전용 슬롯)</span></li>
+        <li class="plus">뇌MRA <span style="color:var(--muted)">(선택 C)</span></li>
+        <li class="plus">심장MDCT + A항목 1개 <span style="color:var(--muted)">(선택 A 택2)</span></li>
+        <li>초음파 4종 — 상복부·갑상선·경동맥·전립선</li>
+        <li>기본검사 94종 · 수면비 무료</li>
+      </ul>
+      <div class="tot">30만원</div>
+    </div>
+  </div>
+  <div class="warn"><b>결론</b> — 카페24 쪽이 <b>3만원 싸면서 심장MDCT와 선택항목 하나를 더 준다</b>. 앞서 아크포레 33만원을 KMI 골드(80만원)의 85% 구성으로 평가했는데, 카페24 안강병원은 그 구성에 심장까지 채우고도 더 싸다. 단 <b>KMI는 이 제안서에 없다</b> — 목록의 한국건강관리협회(메디체크)는 KMI와 다른 기관이다. KMI 센터에서 받고 싶다면 아크포레 쪽을 써야 한다.</div>
+</section>
+
+<section>
+  <div class="shead"><h2>예약 전 확인할 것</h2></div>
+  <div class="checks">
+    <div class="check"><div class="q">임직원 본인 외 가족도 이 가격이 적용되는가<em>검진 대상자가 임직원 본인이 아니라면 가족 확대 적용 범위와 조건을 먼저 확인해야 한다. 여기서 막히면 나머지는 의미가 없다.</em></div><div class="who">인사팀</div></div>
+    <div class="check"><div class="q">안강병원 선택A의 심장MDCT가 조영제를 쓰는가<em>다른 기관은 조영 CT에 10~15만원 본인부담을 명시했는데 안강병원은 표기가 없다. 관상동맥 칼슘스코어라면 조영제 없이 진행되고 추가금도 없다.</em></div><div class="who">검진센터</div></div>
+    <div class="check"><div class="q">올해 공단검진 대상자인가<em>모든 프로그램이 "공단검진 + 혈액·소변 기본검사 OO종"이라 공단검진 위에 얹는 구조다. 대상자가 아니면 기본 항목이 일부 빠진다.</em></div><div class="who">본인 확인</div></div>
+    <div class="check"><div class="q">수면비가 위·대장 모두 무료인가<em>안강병원은 "수면비 무료"로만 적혀 있다. 세란병원·한신메디피아처럼 대장내시경에만 5만원이 붙는 곳이 있어 확인이 필요하다.</em></div><div class="who">검진센터</div></div>
+    <div class="check"><div class="q">장정결제를 알약(오라팡)으로 바꿀 수 있는가<em>63세에 가루약은 부담이 크다. 신사우리베스트는 4만원, 분당차병원은 3만원 추가로 변경 가능하다고 명시했다. 안강병원은 표기가 없으니 물어볼 것.</em></div><div class="who">검진센터</div></div>
+  </div>
+  <div class="warn"><b>문서 말미 고지</b> — "검진센터의 사정에 따라 제안 후 항목의 변경이 생길 수 있습니다." 예약 시점에 실제 구성을 다시 확인하는 게 안전하다.</div>
+</section>
+
+<footer>
+  2026 카페24 임직원 건강검진 제안서(84p) 기준 · 30만원 프로그램 전량 대조 · 검진기관 소개 페이지(3–20p, 39–61p)에는 프로그램 정보 없음<br>
+  기본검사 종수·연령제한·추가금은 제안서 표기를 그대로 옮긴 것이며, 실제 적용은 각 검진센터 예약 시 확인이 필요하다.<br>
+  <a class="backlink" href="./">← jemmajeon 블로그</a>
+</footer>
+
+</div>
+
+</body>
+</html>
