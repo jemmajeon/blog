@@ -5,16 +5,16 @@
 ## 현재 상태 (있는 그대로)
 - 설계 `design_v5.md`(= v5.3): 독립 공격 4라운드·16기 → **FATAL 1 · MAJOR ~14 → ≤ 80**. 다섯 버전 연속. **더 고치지 말 것** — 두 라운드가 반대 처방을 낸 조항이 있고(R31), 재작성이 점수를 올린 적이 없다.
 - `validate_gates.py`: **미채택**(L13이 공허한 부록 E 행을 통과시킴). **CI는 빨간 것이 정상이다.** 초록으로 만들려고 기대값이나 린터를 느슨하게 하면 그것이 E23의 재발이다.
-- `ERROR_LEDGER.md`: 저자(Claude) 오류 30건. 분모는 관측 불가.
+- `policy/ERROR_LEDGER.md`: 저자(Claude) 오류 30건. 분모는 관측 불가.
 - 공격 발견 ~70건 중 **Claude가 독립 재현한 것은 6건뿐**. 나머지는 에이전트 보고를 인용 대조만 했다.
 
 ## 로컬에서만 할 수 있는 것 (우선순위 순)
 
 ### 1. Gemini를 R22의 "독립 실행 경로"로 쓴다 — 가장 가치 있음
 이 세션에서 못 한 것. 같은 모델 계열(Claude)의 에이전트끼리 검증한 결과는 상관된 오류를 공유한다.
-Gemini CLI에 줄 것: `R11_findings.md`~`R14_findings.md`의 발견 각각에 대해 **`design_v5.md` 원문을 열고 인용이 실존하는지, 실패 시나리오가 성립하는지** 판정하게 한다. 특히:
+Gemini CLI에 줄 것: `findings/R11_findings.md`~`findings/R14_findings.md`의 발견 각각에 대해 **`design_v5.md` 원문을 열고 인용이 실존하는지, 실패 시나리오가 성립하는지** 판정하게 한다. 특히:
 - Claude가 재현하지 않은 ~60건 → 참/거짓/판정불가 3분류
-- `ERROR_LEDGER.md` 30건 → "이것이 실제로 오류였는가" 재판정 (Claude가 자기에게 과하게 또는 덜 엄격했을 수 있다)
+- `policy/ERROR_LEDGER.md` 30건 → "이것이 실제로 오류였는가" 재판정 (Claude가 자기에게 과하게 또는 덜 엄격했을 수 있다)
 - 결과는 새 파일 `GEMINI_REVERIFY.md`로. **Gemini의 판정도 인용 없는 항목은 폐기**(S3 규칙 동일).
 
 ### 2. `paper_lint.py`를 실제 코퍼스에 돌린다
@@ -44,4 +44,4 @@ cd research/paper-validity && python3 validate_gates.py   # 미채택이 나와�
 cat HANDOFF.md PROTOCOL.md
 ```
 ## 첫 프롬프트 (Gemini CLI)
-> `research/paper-validity/design_v5.md`를 읽어라. 그 다음 `R14_findings.md`의 발견 각각에 대해, 인용된 문장이 design_v5.md에 실제로 있는지 확인하고, 실패 시나리오가 그 문장에서 성립하는지 참/거짓/판정불가로 판정하라. 인용이 없는 발견은 "인용 없음"으로 표시하고 판정하지 마라. 결과를 표로.
+> `research/paper-validity/design_v5.md`를 읽어라. 그 다음 `findings/R14_findings.md`의 발견 각각에 대해, 인용된 문장이 design_v5.md에 실제로 있는지 확인하고, 실패 시나리오가 그 문장에서 성립하는지 참/거짓/판정불가로 판정하라. 인용이 없는 발견은 "인용 없음"으로 표시하고 판정하지 마라. 결과를 표로.

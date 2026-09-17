@@ -4,6 +4,19 @@ Nature 논문 1편의 논리구조를 적대적으로 감사하고, 그 감사�
 적용하는 과정에서 나온 **재사용 가능한 게이트 집합**이다. 어떤 논문에도 붙는다.
 `design_v*.md`는 방법을 시험한 시험체이며 산출물이 아니다.
 
+## 디렉토리 구조
+```
+research/paper-validity/
+├─ README.md · HANDOFF.md · PROTOCOL.md      ← 여기서 시작
+├─ policy/     REVISION_POLICY(R1–R33, REG-001–014) · R0 루브릭 · DEFENSE_STRATEGY · ERROR_LEDGER(30건)
+├─ findings/   S4 원논문 감사 · R11–R14 공격 결과 · R15 의무 추적표 · 위원회 브리프 · 초기 수정 대장
+├─ gates/      build_manuscript · manuscript_gate · cite_gate · contrast_expand
+├─ design_v1…v5.3.md · design_lint.py · rule_check.py · obligation_diff.py · paper_lint.py · validate_gates.py
+├─ fixtures/   R23 기지정상·기지결함 픽스처 (l13_vacuous_row.md는 현재 L13이 놓치는 결함)
+└─ history/    COMMITS.md · (트랜스크립트·에이전트 기록은 비공개 저장소 결정 전까지 보류)
+```
+코드·설계·픽스처는 최상위에 그대로 둔다 — 린터·CI가 상대경로로 참조한다.
+
 ## 빠른 실행
 
 ```bash
@@ -36,17 +49,17 @@ CI가 매 푸시마다 R23 조건을 재확인한다 → `.github/workflows/pape
 | 파일 | 내용 |
 |---|---|
 | `PROTOCOL.md` | **단계별 하네스** — S0–S4 감사, B0–B6 반론 설계, C1–C3 자기 감사. 다음 논문에 그대로 적용 |
-| `ERROR_LEDGER.md` | **저자 자신의 거짓·과대 진술 16건 전수 대장**과 기계검출 가능성 |
-| `DEFENSE_STRATEGY.md` | 3층 방어(기계·선언·자원)와 공격 유형의 층별 배정 실측 |
-| `REVISION_POLICY.md` | 규칙 R1–R26, 회귀 대장 REG-001–008 (수정이 원래보다 나빠진 사례) |
-| `S4_final_report.md` | 대상 논문 감사 결과 (확정 FATAL 3건, 축자 인용 포함) |
+| `policy/ERROR_LEDGER.md` | **저자 자신의 거짓·과대 진술 16건 전수 대장**과 기계검출 가능성 |
+| `policy/DEFENSE_STRATEGY.md` | 3층 방어(기계·선언·자원)와 공격 유형의 층별 배정 실측 |
+| `policy/REVISION_POLICY.md` | 규칙 R1–R26, 회귀 대장 REG-001–008 (수정이 원래보다 나빠진 사례) |
+| `findings/S4_final_report.md` | 대상 논문 감사 결과 (확정 FATAL 3건, 축자 인용 포함) |
 
 ## 실측된 것 (추정이 아님)
 
 - 논리구조 공격의 **58%가 기계층** — 두 독립 측정(n=19, n=12)에서 동일
 - 저자 자신의 오류 **16건 중 15건이 기계 게이트 사정권**
 - **선언층 적중률 8%** — 사전 등록만으로는 닫히지 않는다 (추정 ~100%는 반증됨)
-- 재작성 반복은 점수를 올리지 않았다. 실측 궤적(FATAL/MAJOR): v1 1/18 · v2 0/11 · v3 0/11 · v4 1/11 · v5.0 2/12 · v5.1 1/12 · v5.2 2/14 · **v5.3 1/14** (`R14_findings.md`). 최저 라운드 채택 → **v5 계열 확정 ≤ 80**
+- 재작성 반복은 점수를 올리지 않았다. 실측 궤적(FATAL/MAJOR): v1 1/18 · v2 0/11 · v3 0/11 · v4 1/11 · v5.0 2/12 · v5.1 1/12 · v5.2 2/14 · **v5.3 1/14** (`findings/R14_findings.md`). 최저 라운드 채택 → **v5 계열 확정 ≤ 80**
 - 처방을 쓰거나 따르는 과정에서 난 오류가 25건 중 12건(48%). 연속 두 라운드가 반대 처방을 낸 조항은 동결한다(R31)
 - 게이트가 거짓말한 횟수 4회(E11·E17·E23·E30). L13은 3회 구현 모두 항진명제 → **R9는 산문 린트로 기계화 불가**(R32). L13은 릴리스 게이트에서 제외, 미검증 표기
 - 게이트 구축 구간에서 오류가 가장 많이 났다 (16건 중 6건 = 38%).
