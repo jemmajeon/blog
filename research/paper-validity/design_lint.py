@@ -116,11 +116,12 @@ def lint(path):
         c_cur = count_claims(text)
         # R27: 기준선은 직전 R15 준수 버전. 명시 인자(--baseline vN)로만 바꾼다.
         base_n = int(mine.group(1)) - 1
+        base_tag = None
         for a in sys.argv:
             if a.startswith('--baseline=v'):
-                base_n = int(a.split('=v')[1])
-                W.append(f"R27 적용: L11 기준선을 v{base_n}로 명시 지정 (직전 R15 준수 버전)")
-        prev = os.path.join(here, f'design_v{base_n}.md')
+                base_tag = a.split('=v')[1]
+                W.append(f"R27 적용: L11 기준선을 v{base_tag}로 명시 지정 (직전 R15 준수 버전)")
+        prev = os.path.join(here, f'design_v{base_tag or base_n}.md')
         if os.path.exists(prev):
             c_prev = count_claims(open(prev, encoding='utf-8').read())
             if c_cur > c_prev:
@@ -143,13 +144,28 @@ def lint(path):
             E.append(f"L12 [§1] 판정 분기가 상호배타적이 아님 (R16, REG-008): "
                      f"CI=({L:+.3f},{U:+.3f}) 등 {len(bad)}개 지점에서 '지지'와 '반증'이 동시 발화")
 
-    # --- L13 / R9 : 임계 셀(*.max, *.min, *.lo)이 걸린 술어에는 통과 확률 산출 진술이 있어야 한다 ---
-    thr = set(re.findall(r'`([\w.]+\.(?:max|min|lo))`', text))
-    for c in sorted(thr):
-        ctx = [m.start() for m in re.finditer(re.escape('`'+c+'`'), text)]
-        ok = any(re.search(r'(통과 확률|산출·등록|PW-2가 산출|적격 기준|도출|입력 셀|최소값|최소 \(n, k\)|상한|이상으로 등록|서로소|이하다|이하)', text[max(0,i-260):i+260]) for i in ctx)
-        if not ok:
-            E.append(f"L13 임계 셀 `{c}` 가 걸린 술어에 통과 확률 산출 진술 없음 (R9)")
+    # --- L13 / R9 : 임계 셀 → 부록 E 작동특성 등록표 대조 (E23 교정: 문구 화이트리스트 폐기) ---
+    # 임계 셀 = 비교 연산자(≥ ≤ > < 이상 이하 미만 초과 넘으면 도달) 60자 이내에 나타나는 셀. 이름 접미사로 판정하지 않는다(R3).
+    CMP = r'(≥|≤|>|<|이상|이하|미만|초과|넘으면|도달)'
+    thr = set()
+    for m in re.finditer(r'`([\w.]+)`', text.split('## 부록 B')[0]):
+        win = text[max(0, m.start()-60):m.end()+60]
+        if re.search(CMP, win): thr.add(m.group(1))
+    if '## 부록 B' in text:
+        cellsB_ = set(re.findall(r'`([\w.]+)`', text.split('## 부록 B')[1].split('## 부록 C')[0]))
+        thr &= cellsB_
+    appE = text.split('## 부록 E')[1] if '## 부록 E' in text else ''
+    regE = {}
+    for line in appE.splitlines():
+        m = re.match(r'^\|([^|]*)\|([^|]*)\|([^|]*)\|', line)
+        if not m: continue
+        for c in re.findall(r'`([\w.]+)`', m.group(1)):
+            regE[c] = m.group(3)
+    for c in sorted(thr - set(regE)):
+        E.append(f"L13 임계 셀 `{c}` 가 비교 연산자에 쓰였으나 부록 E(작동특성 등록표)에 행이 없음 (R9)")
+    for c, basis in sorted(regE.items()):
+        if not re.search(r'PW-2|부록 D|적격 기준|결정적 문법|셀 정의', basis):
+            E.append(f"L13 부록 E `{c}` 행에 산출 근거 없음 (R9)")
     # --- L14 : 고아 셀 — 부록 B에 있으나 본문이 소비하지 않음 ---
     if '## 부록 B' in text:
         body, rest = text.split('## 부록 B', 1)

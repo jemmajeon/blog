@@ -68,6 +68,16 @@ expect('v4 의미론 실패 검출', 'v4     의미론 위반' in rc.stdout and 
 expect('v5.0 라벨 오류 검출 (E17이 놓친 것)', '3825' in rc.stdout, True)
 expect('v5.1 의미론 통과', 'v5.1   의미론 위반     0건' in rc.stdout, True)
 
+print("\n[5] design_lint L13 (R9 기계화) — E23 교정 검증")
+import shutil
+shutil.copy('fixtures/l13_defect.md', 'design_v99.md')
+rl = subprocess.run([sys.executable, 'design_lint.py', 'design_v99.md'], capture_output=True, text=True)
+os.remove('design_v99.md')
+expect('기지결함 픽스처(통과 확률 미계산 게이트) 차단', rl.returncode, 1)
+expect('L13 위반 2건 검출', rl.stdout.count('L13 임계 셀'), 2)
+rv = subprocess.run([sys.executable, 'design_lint.py', 'design_v5.md', '--baseline=v5.1', '--prev=design_v5.2.md'], capture_output=True, text=True)
+expect('v5.3 (부록 E 보유) L13 통과', 'L13' in rv.stdout, False)
+
 print("\n" + "=" * 46)
 if FAILS:
     print(f"판정: 게이트 세트 **미채택** — {len(FAILS)}개 기대값 불일치")
