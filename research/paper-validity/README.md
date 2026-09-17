@@ -14,7 +14,8 @@ python3 gates/manuscript_gate.py --audit <원고.md>    # 규율 밖 원고 (이
 python3 gates/cite_gate.py <citations.json> <출처루트>
 python3 rule_check.py                # 판정규칙 배타성
 python3 paper_lint.py <원고.md>       # 배수/범주수/불확실성 단위
-python3 design_lint.py design_v4.md  # 설계문서 린트 L1–L12
+python3 design_lint.py design_v5.md --baseline=v3   # 설계문서 린트 L1–L12 (R27 기준선 명시)
+python3 obligation_diff.py design_v4.md design_v5.md  # R15 의무 추적 후보
 ```
 
 CI가 매 푸시마다 R23 조건을 재확인한다 → `.github/workflows/paper-validity-gates.yml`
@@ -34,6 +35,7 @@ CI가 매 푸시마다 R23 조건을 재확인한다 → `.github/workflows/pape
 
 | 파일 | 내용 |
 |---|---|
+| `PROTOCOL.md` | **단계별 하네스** — S0–S4 감사, B0–B6 반론 설계, C1–C3 자기 감사. 다음 논문에 그대로 적용 |
 | `ERROR_LEDGER.md` | **저자 자신의 거짓·과대 진술 16건 전수 대장**과 기계검출 가능성 |
 | `DEFENSE_STRATEGY.md` | 3층 방어(기계·선언·자원)와 공격 유형의 층별 배정 실측 |
 | `REVISION_POLICY.md` | 규칙 R1–R26, 회귀 대장 REG-001–008 (수정이 원래보다 나빠진 사례) |
@@ -44,7 +46,7 @@ CI가 매 푸시마다 R23 조건을 재확인한다 → `.github/workflows/pape
 - 논리구조 공격의 **58%가 기계층** — 두 독립 측정(n=19, n=12)에서 동일
 - 저자 자신의 오류 **16건 중 15건이 기계 게이트 사정권**
 - **선언층 적중률 8%** — 사전 등록만으로는 닫히지 않는다 (추정 ~100%는 반증됨)
-- 재작성 반복은 점수를 올리지 않았다: **82 → 82 → 80**
+- 재작성 반복은 점수를 올리지 않았다: **82 → 82 → 80** (v5는 독립 공격 후에만 실측 — R14)
 - 게이트 구축 구간에서 오류가 가장 많이 났다 (16건 중 6건 = 38%).
   그중 2건은 게이트/하네스 자신이 잡았고, 4건은 사람 눈이 잡았다.
 
