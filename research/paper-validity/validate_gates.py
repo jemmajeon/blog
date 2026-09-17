@@ -77,6 +77,13 @@ expect('기지결함 픽스처(통과 확률 미계산 게이트) 차단', rl.re
 expect('L13 위반 2건 검출', rl.stdout.count('L13 임계 셀'), 2)
 rv = subprocess.run([sys.executable, 'design_lint.py', 'design_v5.md', '--baseline=v5.1', '--prev=design_v5.2.md'], capture_output=True, text=True)
 expect('v5.3 (부록 E 보유) L13 통과', 'L13' in rv.stdout, False)
+expect('L15 prev 파일 실존 (E27: 조용한 no-op 금지)', 'L15 직전 버전 파일 없음' in rv.stdout, False)
+# E26: 공허한 부록 E 행 픽스처. 현 L13은 이것을 통과시킨다 — 기대값은 '차단'이며, 실패는 R23 미충족을 뜻한다.
+shutil.copy('fixtures/l13_vacuous_row.md', 'design_v98.md')
+rz = subprocess.run([sys.executable, 'design_lint.py', 'design_v98.md'], capture_output=True, text=True)
+os.remove('design_v98.md')
+# L13 자체가 잡아야 한다. 다른 규칙(L15 등)의 부수효과로 차단되는 것은 통과가 아니다 (E30: 거짓 PASS).
+expect('공허한 부록 E 행("셀 정의"만)을 L13이 차단', 'L13' in rz.stdout, True)
 
 print("\n" + "=" * 46)
 if FAILS:

@@ -181,6 +181,8 @@ def lint(path):
         prevp = os.path.join(here, f'design_v{int(mine.group(1))-1}.md')
         for a in sys.argv:
             if a.startswith('--prev='): prevp = a.split('=',1)[1]
+        if not os.path.exists(prevp):
+            E.append(f"L15 직전 버전 파일 없음: {os.path.basename(prevp)} — 기술용어 소실 검사 불가 (조용한 no-op 금지, E27)")
         if os.path.exists(prevp):
             TERMS = re.compile(r'\b(BCa|양측|단측|백분위|정지규칙|SESOI|Fréchet|κ|ICC|CR2|Satterthwaite|wild|interleav\w*|해시|매니페스트|시드)\b')
             lost = set(TERMS.findall(open(prevp, encoding='utf-8').read())) - set(TERMS.findall(text))
