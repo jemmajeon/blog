@@ -124,7 +124,8 @@ def lint(path):
         if os.path.exists(prev):
             c_prev = count_claims(open(prev, encoding='utf-8').read())
             if c_cur > c_prev:
-                E.append(f"L11 뺄셈 원칙 위반 (R10): 주장 수 {c_prev} → {c_cur} (증가). v(n+1)은 더 적어야 한다")
+                W.append(f"L11 주장 수 {c_prev} → {c_cur} (증가). 정책 충돌 #2에 의해 WARN — "
+                         f"릴리스 게이트는 R9(작동특성)+R15(의무추적)+공격 라운드로 대체됨. 증가 사실은 릴리스 노트 기재 의무")
             else:
                 W.append(f"L11 주장 수 {c_prev} → {c_cur} (감소 확인)")
 

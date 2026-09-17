@@ -61,8 +61,12 @@ for cls in ['C3-PARAPHRASE', 'C4-FABRICATED', 'C5-UNVERIFIABLE', 'C6-TOOSHORT']:
 print("\n[4] rule_check (R16) — 판정규칙 배타성")
 import subprocess
 rc = subprocess.run([sys.executable, 'rule_check.py'], capture_output=True, text=True)
-expect('v4 §1 중첩 검출 (실패해야 정상)', rc.returncode, 1)
-expect('중첩 지점 보고 존재', '동시 발화' in rc.stdout or '중첩' in rc.stdout, True)
+# 기대값 변경 기록(R23): rule_check가 3개 규칙(v4/v5.0/v5.1)을 한 번에 검사하도록 재작성됨(E17 교정).
+# 이전 기대 'returncode==1'은 v4 단독 검사 기준이었다. 새 기대는 패턴 전체.
+expect('rule_check 종료코드(기대 패턴 충족)', rc.returncode, 0)
+expect('v4 의미론 실패 검출', 'v4     의미론 위반' in rc.stdout and '실패' in rc.stdout.split('v4 ')[1].split('\n')[0], True)
+expect('v5.0 라벨 오류 검출 (E17이 놓친 것)', '3825' in rc.stdout, True)
+expect('v5.1 의미론 통과', 'v5.1   의미론 위반     0건' in rc.stdout, True)
 
 print("\n" + "=" * 46)
 if FAILS:
