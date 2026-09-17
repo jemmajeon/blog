@@ -143,6 +143,34 @@ def lint(path):
             E.append(f"L12 [§1] 판정 분기가 상호배타적이 아님 (R16, REG-008): "
                      f"CI=({L:+.3f},{U:+.3f}) 등 {len(bad)}개 지점에서 '지지'와 '반증'이 동시 발화")
 
+    # --- L13 / R9 : 임계 셀(*.max, *.min, *.lo)이 걸린 술어에는 통과 확률 산출 진술이 있어야 한다 ---
+    thr = set(re.findall(r'`([\w.]+\.(?:max|min|lo))`', text))
+    for c in sorted(thr):
+        ctx = [m.start() for m in re.finditer(re.escape('`'+c+'`'), text)]
+        ok = any(re.search(r'(통과 확률|산출·등록|PW-2가 산출|적격 기준|도출|입력 셀|최소값|최소 \(n, k\)|상한|이상으로 등록|서로소|이하다|이하)', text[max(0,i-260):i+260]) for i in ctx)
+        if not ok:
+            E.append(f"L13 임계 셀 `{c}` 가 걸린 술어에 통과 확률 산출 진술 없음 (R9)")
+    # --- L14 : 고아 셀 — 부록 B에 있으나 본문이 소비하지 않음 ---
+    if '## 부록 B' in text:
+        body, rest = text.split('## 부록 B', 1)
+        appB = rest.split('## 부록 C')[0]
+        cellsB = set(re.findall(r'`([\w.]+)`', appB))
+        used  = set(re.findall(r'`([\w.]+)`', body))
+        for c in sorted(cellsB - used):
+            E.append(f"L14 고아 셀 `{c}` — 부록 B에 등록됐으나 본문 어디에서도 소비되지 않음")
+        for c in sorted(x for x in used - cellsB if '.' in x and not x.endswith('.py')):
+            E.append(f"L14 미등록 셀 `{c}` — 본문이 참조하나 부록 B에 없음")
+    # --- L15 / R15 : 기술용어 토큰 소실 (E20: 유사도 diff가 '(양측)'·'BCa' 삭제를 놓침) ---
+    if mine:
+        prevp = os.path.join(here, f'design_v{int(mine.group(1))-1}.md')
+        for a in sys.argv:
+            if a.startswith('--prev='): prevp = a.split('=',1)[1]
+        if os.path.exists(prevp):
+            TERMS = re.compile(r'\b(BCa|양측|단측|백분위|정지규칙|SESOI|Fréchet|κ|ICC|CR2|Satterthwaite|wild|interleav\w*|해시|매니페스트|시드)\b')
+            lost = set(TERMS.findall(open(prevp, encoding='utf-8').read())) - set(TERMS.findall(text))
+            for w in sorted(lost):
+                W.append(f"L15 기술용어 '{w}' 가 {os.path.basename(prevp)} 에 있었으나 현 버전에 없음 — R15 (a)/(b)/(c) 판정 필요")
+
     return E, W
 
 if __name__ == '__main__':

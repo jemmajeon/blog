@@ -23,11 +23,16 @@ def v5_0_rule(L, U):                       # v5 초판 (R11-A F1 대상)
     return '비결정'
 def v5_0_H1(delta): return delta > 0       # H1은 여전히 "높다"
 
-def v5_1_rule(L, U):                       # v5 개정: H1 = Δ ≥ δ (SESOI)
+def v5_1_rule(L, U):                       # v5.1: H1 = Δ ≥ δ
     if U < D: return '반증'
     if L > D: return '지지'
     return '비결정'
 def v5_1_H1(delta): return delta >= D
+def v5_2_rule(L, U):                       # v5.2: H1 = Δ > δ, 경계는 귀무
+    if U <= D: return '반증'
+    if L > D: return '지지'
+    return '비결정'
+def v5_2_H1(delta): return delta > D
 
 # ── 검사 ─────────────────────────────────────────────────────────────
 def check(name, rule, H1):
@@ -46,5 +51,6 @@ print(f"격자 CI 수 {sum(1 for L,U in itertools.product(G,G) if L<=U)}  (δ={D
 r4  = check('v4',   v4_rule,   v4_H1)
 r50 = check('v5.0', v5_0_rule, v5_0_H1)
 r51 = check('v5.1', v5_1_rule, v5_1_H1)
-print("기대: v4 실패(중첩·라벨) / v5.0 실패(라벨, E17이 놓친 것) / v5.1 통과")
-sys.exit(0 if (not r4 and not r50 and r51) else 1)
+r52 = check('v5.2', v5_2_rule, v5_2_H1)
+print("기대: v4 실패 / v5.0 실패(E17이 놓친 것) / v5.1 통과 / v5.2 통과")
+sys.exit(0 if (not r4 and not r50 and r51 and r52) else 1)
