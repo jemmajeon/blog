@@ -114,7 +114,13 @@ def lint(path):
     mine = re.match(r'design_v(\d+)\.md', os.path.basename(path))
     if mine:
         c_cur = count_claims(text)
-        prev = os.path.join(here, f'design_v{int(mine.group(1))-1}.md')
+        # R27: 기준선은 직전 R15 준수 버전. 명시 인자(--baseline vN)로만 바꾼다.
+        base_n = int(mine.group(1)) - 1
+        for a in sys.argv:
+            if a.startswith('--baseline=v'):
+                base_n = int(a.split('=v')[1])
+                W.append(f"R27 적용: L11 기준선을 v{base_n}로 명시 지정 (직전 R15 준수 버전)")
+        prev = os.path.join(here, f'design_v{base_n}.md')
         if os.path.exists(prev):
             c_prev = count_claims(open(prev, encoding='utf-8').read())
             if c_cur > c_prev:
