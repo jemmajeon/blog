@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+"""R23 게이트 교정 하네스.
+
+R23: 게이트는 ①기지결함 코퍼스에서 모든 기지결함을 검출하고
+     ②기지정상 구간에서 0건을 산출하는 것을 확인하기 전에는 채택하지 않는다.
+     "작성했다"는 "작동한다"가 아니다.
+
+근거: 이 세션에서 저자가 R18–R22를 작성한 직후, 자기 게이트가
+      오음성 1종(E11)·오양성 1종(E12)을 냈다. 게이트를 만드는 행위도 오류의 대상이다.
+
+기대값은 아래에 **명시**한다. 게이트를 고쳐 기대값을 맞추는 것은 허용되지만,
+기대값을 고쳐 게이트를 맞추는 것은 금지한다 (R7 자기채점 금지의 연장).
+"""
+import sys, os, json
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'gates'))
+HERE = os.path.dirname(os.path.abspath(__file__))
+os.chdir(HERE)
+
+import manuscript_gate as MG
+import cite_gate as CG
+import build_manuscript as BM
+
+FAILS = []
+def expect(name, got, want):
+    ok = got == want
+    print(f"  {'PASS' if ok else 'FAIL'}  {name}: {got}" + ('' if ok else f"  (기대 {want})"))
+    if not ok: FAILS.append(name)
+
+print("=== R23 게이트 교정 하네스 ===\n")
+
+print("[0] 파이프라인 순서 — 게이트는 템플릿이 아니라 **빌드 산출물**에 돌린다")
+print("    (산출방법 태그는 레지스트리가 소유하고 빌드가 주입하므로,")
+print("     템플릿을 게이트하면 R21이 오양성을 낸다 — 이 하네스가 그것을 잡았다)")
+built, berrs = BM.build('fixtures/clean_manuscript.md', 'fixtures/registry.json',
+                        'fixtures/_built_clean.md')
+expect('빌드 오류', len(berrs), 0)
+
+print("\n[1] manuscript_gate — 기지정상 코퍼스 (빌드 산출물)")
+r = MG.gate('fixtures/_built_clean.md', 'strict')
+expect('R19 오양성', len(r['derived']), 0)
+expect('R21 오양성', len(r['untagged']), 0)
+
+print("\n[1b] manuscript_gate R18 — 템플릿 단계 (맨 숫자 금지는 집필 제약이다)")
+r = MG.gate('fixtures/clean_manuscript.md', 'strict')
+expect('R18 오양성', len(r['bare']), 0)
+
+print("\n[2] manuscript_gate — 기지결함 코퍼스 (결함 10건 의도적 삽입)")
+r = MG.gate('fixtures/defect_manuscript.md', 'strict')
+expect('R18 맨 숫자 검출', len(r['bare']), 6)      # 0.71 380 0.61 0.1426 34x 15x
+expect('R19 파생량 검출', len(r['derived']), 2)     # 34x cheaper, 15x faster
+expect('R21 태그누락 검출', len(r['untagged']), 2)  # 보수적, 상한
+
+print("\n[3] cite_gate (R20) — 기지답 인용 레지스트리")
+oks, errs = CG.check('fixtures/citations.json', 'fixtures')
+expect('참 인용 통과', sorted(oks), ['C1-TRUE', 'C2-TRUE'])
+expect('거짓 인용 검출 수', len(errs), 4)
+ids = [e.split(']')[0].lstrip('[') for e in errs]
+for cls in ['C3-PARAPHRASE', 'C4-FABRICATED', 'C5-UNVERIFIABLE', 'C6-TOOSHORT']:
+    expect(f'{cls} 검출', cls in ids, True)
+
+print("\n[4] rule_check (R16) — 판정규칙 배타성")
+import subprocess
+rc = subprocess.run([sys.executable, 'rule_check.py'], capture_output=True, text=True)
+expect('v4 §1 중첩 검출 (실패해야 정상)', rc.returncode, 1)
+expect('중첩 지점 보고 존재', '동시 발화' in rc.stdout or '중첩' in rc.stdout, True)
+
+print("\n" + "=" * 46)
+if FAILS:
+    print(f"판정: 게이트 세트 **미채택** — {len(FAILS)}개 기대값 불일치")
+    for f in FAILS: print(f"   · {f}")
+    sys.exit(1)
+print("판정: 게이트 세트 R23 충족 — 채택 가능")
+print("한계: 기대값은 픽스처에 대한 것이다. 실제 원고의 미지 결함을 잡는다는 보장이 아니다.")

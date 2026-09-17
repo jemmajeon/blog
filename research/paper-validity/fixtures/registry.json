@@ -1,0 +1,62 @@
+{
+  "values": {
+    "acc.A": {
+      "v": 0.742,
+      "fmt": ".3f"
+    },
+    "acc.B": {
+      "v": 0.711,
+      "fmt": ".3f"
+    },
+    "diff.ci": {
+      "v": "[0.004, 0.058]",
+      "method": ""
+    },
+    "delta": {
+      "v": 0.05,
+      "fmt": ".2f"
+    },
+    "corpus.n": {
+      "v": 592,
+      "fmt": "d"
+    },
+    "power.worst": {
+      "v": 0.61,
+      "fmt": ".2f",
+      "method": "[Fréchet]"
+    },
+    "fwer.ub": {
+      "v": 0.1426,
+      "fmt": ".4f",
+      "method": "[독립]"
+    },
+    "cost.new": {
+      "v": 0.2,
+      "fmt": ".2f"
+    },
+    "cost.old": {
+      "v": 0.38,
+      "fmt": ".2f"
+    }
+  },
+  "derived": {
+    "diff.point": {
+      "proc": "delta",
+      "of": [
+        "acc.A",
+        "acc.B"
+      ],
+      "fmt": ".3f",
+      "method": ""
+    },
+    "speed.ratio": {
+      "proc": "ratio",
+      "of": [
+        "cost.old",
+        "cost.new"
+      ],
+      "fmt": ".2f",
+      "method": "[계산]"
+    }
+  }
+}

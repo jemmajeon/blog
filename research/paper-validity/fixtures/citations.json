@@ -1,0 +1,44 @@
+[
+  {
+    "id": "C1-TRUE",
+    "claim": "대상 논문은 논문을 AI 에이전트로 변환하는 자동 프레임워크를 제시한다",
+    "quote": "Paper2Agent, an automated framework that converts research papers into AI agents",
+    "source": "source_excerpt.md",
+    "locator": "Abstract"
+  },
+  {
+    "id": "C2-TRUE",
+    "claim": "대상 논문은 연구 산출물을 수동적 인공물에서 능동적 시스템으로 전환한다고 주장한다",
+    "quote": "transforms research output from passive artifacts into active systems that accelerate use and discovery",
+    "source": "source_excerpt.md",
+    "locator": "Discussion"
+  },
+  {
+    "id": "C3-PARAPHRASE",
+    "claim": "개작을 축자 인용으로 제출한 사례 — 잡혀야 한다",
+    "quote": "Paper2Agent, an automated framework that converts research papers into autonomous scientific collaborators",
+    "source": "source_excerpt.md",
+    "locator": "Abstract"
+  },
+  {
+    "id": "C4-FABRICATED",
+    "claim": "존재하지 않는 문장을 인용한 사례 — 잡혀야 한다",
+    "quote": "We found that registration and schema layers were individually necessary and jointly sufficient for tool discovery",
+    "source": "source_excerpt.md",
+    "locator": "Results"
+  },
+  {
+    "id": "C5-UNVERIFIABLE",
+    "claim": "대조 불가 출처를 인용한 사례 — 통과시키면 안 된다",
+    "quote": "Rules are preferable to standards when the governed conduct is frequent, because the cost of specifying content in advance is amortized",
+    "source": "kaplow_1992.pdf",
+    "locator": "Duke L.J. 42:557, p.563"
+  },
+  {
+    "id": "C6-TOOSHORT",
+    "claim": "대조가 무의미한 짧은 인용",
+    "quote": "AI agents",
+    "source": "source_excerpt.md",
+    "locator": "Abstract"
+  }
+]
