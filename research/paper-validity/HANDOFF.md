@@ -1,6 +1,10 @@
 # 인수인계 — 로컬 PC(VS Code Claude Code + Gemini CLI)로 이어받기
 
-브랜치: `claude/fervent-hypatia-kuzrkp` · 디렉토리: `research/paper-validity/` · 마지막 커밋 시점 상태는 아래 그대로다.
+## 저장소 두 곳
+- **비공개(전체)**: `https://github.com/jemmajeon/paper-validity-private` — main. 코드·정책·설계·발견 + `history/`(세션 트랜스크립트 9.1MB, 에이전트 기록 54개, 스크래치패드). **로컬 작업은 여기서.**
+- **공개(문서·코드만)**: `jemmajeon/blog` 브랜치 `claude/fervent-hypatia-kuzrkp` 하위 `research/paper-validity/`. 트랜스크립트 없음. 두 곳의 코드 커밋 계보는 동일(`git subtree split`).
+
+마지막 커밋 시점 상태는 아래 그대로다.
 
 ## 현재 상태 (있는 그대로)
 - 설계 `design_v5.md`(= v5.3): 독립 공격 4라운드·16기 → **FATAL 1 · MAJOR ~14 → ≤ 80**. 다섯 버전 연속. **더 고치지 말 것** — 두 라운드가 반대 처방을 낸 조항이 있고(R31), 재작성이 점수를 올린 적이 없다.
