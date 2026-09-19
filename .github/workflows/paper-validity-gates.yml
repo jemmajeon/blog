@@ -11,6 +11,10 @@ on:
     paths: ['research/paper-validity/**']
   workflow_dispatch:
 
+concurrency:
+  group: paper-validity-gates-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   gates:
     runs-on: ubuntu-latest
@@ -26,17 +30,45 @@ jobs:
       - name: 설계문서 린트 (v4는 §1 FATAL로 실패해야 정상)
         run: |
           cd research/paper-validity
-          if python3 design_lint.py design_v4.md; then
+          # R33: 기대값은 **그 규칙의 출력**에 건다. 종료코드만 보면
+          # 린터가 다른 이유로 죽어도(임포트 오류·문법 오류) 음성 시험이
+          # 통과한다 — E30 과 같은 거짓 PASS 다.
+          OUT=$(python3 design_lint.py design_v4.md 2>&1) && RC=0 || RC=$?
+          echo "$OUT"
+          if [ "$RC" -eq 0 ]; then
             echo "::error::design_v4.md 가 통과했다 — L12(§1 판정 배타성)가 죽었다"
             exit 1
           fi
-          echo "v4 예상대로 차단됨 (REG-008)"
+          if ! echo "$OUT" | grep -q "L12 \[§1\] 판정 분기가 상호배타적이 아님"; then
+            echo "::error::v4 가 차단되긴 했으나 L12 때문이 아니다 — 부수효과 차단(거짓 PASS, R33)"
+            exit 1
+          fi
+          echo "v4 예상대로 L12 로 차단됨 (REG-008)"
 
       - name: 인용 게이트 — 픽스처는 실패해야 정상
         run: |
           cd research/paper-validity
-          if python3 gates/cite_gate.py fixtures/citations.json fixtures; then
+          OUT=$(python3 gates/cite_gate.py fixtures/citations.json fixtures 2>&1) && RC=0 || RC=$?
+          echo "$OUT"
+          if [ "$RC" -eq 0 ]; then
             echo "::error::거짓 인용 4건이 통과했다 — R20 게이트가 죽었다"
             exit 1
           fi
-          echo "거짓 인용 예상대로 차단됨"
+          # 결함 4종이 각각 잡혔는지 본다. 종료코드 하나로는 1건만 잡고
+          # 3건을 놓쳐도 통과한다 (R23: 기지결함 전부를 검출해야 채택).
+          MISS=""
+          for ID in C3-PARAPHRASE C4-FABRICATED C5-UNVERIFIABLE C6-TOOSHORT; do
+            echo "$OUT" | grep -q "\[$ID\]" || MISS="$MISS $ID"
+          done
+          if [ -n "$MISS" ]; then
+            echo "::error::검출되지 않은 기지결함:$MISS"
+            exit 1
+          fi
+          # 참 인용이 오양성으로 잡히면 게이트를 못 쓴다.
+          for ID in C1-TRUE C2-TRUE; do
+            if echo "$OUT" | grep -q "\[ERROR\].*\[$ID\]"; then
+              echo "::error::참 인용 $ID 가 오양성으로 잡혔다"
+              exit 1
+            fi
+          done
+          echo "거짓 인용 4종 전부 차단, 참 인용 2종 통과"
