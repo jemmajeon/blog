@@ -25,7 +25,6 @@
     { "path": "travels/",    "label": "여행 일정" },
     { "path": "life/",       "label": "생활 정보" },
     { "path": "go/",         "label": "UTM 링크 릴레이 — 경로 고정" },
-    { "path": "data/",       "label": "원본 조사 데이터" },
     { "path": "archive/",    "label": "구버전 보관" }
   ]
 }

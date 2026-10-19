@@ -27,10 +27,12 @@ posts.json        글 목록의 단일 진실 소스
 restaurant/       맛집 가이드
 travels/          여행 일정 (날짜별 폴더)
 life/             생활 정보
-data/             원본 조사 데이터 (JSON)
 archive/          구버전 보관
 go/               UTM 링크 릴레이
 ```
+
+조사 데이터(JSON)는 별도 폴더로 빼지 않고 **해당 주제 폴더 안**에 둔다.
+`restaurant/gangnam-line2-jemcory.json` 처럼.
 
 ## 건드리면 안 되는 것
 
