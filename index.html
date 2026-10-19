@@ -100,7 +100,7 @@ footer a:hover{color:var(--ink);}
     <a class="nav-logo" href="/blog/?utm_source=blog&utm_medium=nav&utm_campaign=home">jemmajeon</a>
     <div class="nav-links">
       <a class="nav-link on" href="/blog/" data-to="blog">블로그</a>
-      <a class="nav-link" href="sadang_dashboard.html" data-to="guides">맛집</a>
+      <a class="nav-link" href="restaurant/sadang.html">맛집</a>
       <a class="nav-link" href="https://jemmajeon.github.io/travel-2026/" data-to="hawaii">하와이</a>
     </div>
   </div>
@@ -115,27 +115,66 @@ footer a:hover{color:var(--ink);}
   });
 })();
 
-// 탭 필터 로직
-document.addEventListener('DOMContentLoaded', function(){
-  var tabBtns = document.querySelectorAll('.tab-btn');
-  var guideItems = document.querySelectorAll('#guideList .post-item');
+// 목록·탭·저장소 구조는 posts.json 하나에서 렌더링한다.
+// 글을 추가할 때 이 파일(index.html)이 아니라 posts.json 만 고치면 된다.
+document.addEventListener('DOMContentLoaded', async function(){
+  var listEl = document.getElementById('guideList');
+  var tabEl  = document.getElementById('tabs');
+  var dirEl  = document.getElementById('dirGrid');
+  var data;
 
-  tabBtns.forEach(function(btn){
+  try {
+    var res = await fetch('./posts.json?_=' + Date.now(), { cache: 'no-store' });
+    if(!res.ok) throw new Error(res.status);
+    data = await res.json();
+  } catch (e) {
+    listEl.innerHTML = '<div class="empty">목록을 불러오지 못했습니다. ' +
+      '<a href="https://github.com/jemmajeon/blog">저장소에서 보기</a></div>';
+    return;
+  }
+
+  var posts = (data.posts || []).filter(function(p){ return p.listed !== false; });
+  posts.sort(function(a,b){ return (b.date || '').localeCompare(a.date || ''); });
+
+  var used = {};
+  posts.forEach(function(p){ used[p.category] = true; });
+  var cats = (data.categories || []).filter(function(c){ return used[c.key]; });
+
+  // 탭
+  tabEl.innerHTML = '<button type="button" class="tab-btn active" data-filter="all">전체</button>' +
+    cats.map(function(c){
+      return '<button type="button" class="tab-btn" data-filter="' + c.key + '">' + c.label + '</button>';
+    }).join('');
+
+  // 목록
+  listEl.innerHTML = posts.map(function(p){
+    var ext = p.external ? ' target="_blank" rel="noopener"' : '';
+    return '<a href="' + p.file + '" class="post-item" data-category="' + p.category + '"' + ext + '>' +
+             '<div>' +
+               '<div class="post-title">' + p.title + (p.external ? ' ↗' : '') + '</div>' +
+               (p.tag ? '<div class="post-tag">' + p.tag + '</div>' : '') +
+             '</div>' +
+             '<div class="post-date">' + (p.date || '') + '</div>' +
+           '</a>';
+  }).join('');
+
+  // 저장소 구조 — 폴더별 글 수를 posts.json 에서 계산
+  dirEl.innerHTML = (data.folders || []).map(function(f){
+    var n = posts.filter(function(p){ return !p.external && p.file.indexOf(f.path) === 0; }).length;
+    return '<div class="dir-card">' +
+             '<div class="dir-card-title">' + f.path + '</div>' +
+             '<div class="dir-card-text">' + f.label + (n ? ' · ' + n + '개' : '') + '</div>' +
+           '</div>';
+  }).join('');
+
+  // 탭 필터
+  tabEl.querySelectorAll('.tab-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var filter = this.dataset.filter;
-
-      // 탭 활성화
-      tabBtns.forEach(function(b){ b.classList.remove('active'); });
+      var filter = btn.dataset.filter;
+      tabEl.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
       btn.classList.add('active');
-
-      // 아이템 필터
-      guideItems.forEach(function(item){
-        var category = item.dataset.category;
-        if(filter === 'all' || category === filter){
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
+      listEl.querySelectorAll('.post-item').forEach(function(item){
+        item.classList.toggle('hidden', filter !== 'all' && item.dataset.category !== filter);
       });
     });
   });
@@ -150,90 +189,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
 <div class="posts">
   <div class="section-label">📂 저장소 구조</div>
-  <div class="dir-grid">
-    <div class="dir-card">
-      <div class="dir-card-title">🍽️ restaurant/</div>
-      <div class="dir-card-text">
-        📄 nakseongdae-complete.html<br>
-        식당 조사 대시보드
-      </div>
-    </div>
-    <div class="dir-card">
-      <div class="dir-card-title">✈️ travels/</div>
-      <div class="dir-card-text">
-        📂 ulsan-2026-05/<br>
-        여행 가이드
-      </div>
-    </div>
-    <div class="dir-card">
-      <div class="dir-card-title">🍽️ 가산디지털단지</div>
-      <div class="dir-card-text">
-        📄 gasandigital_dashboard.html<br>
-        식당 12곳 + 청첩장 모임
-      </div>
-    </div>
-    <div class="dir-card dir-card-full">
-      <div class="dir-card-title">📄 Main Files</div>
-      <div class="dir-card-text">
-        sadang_dashboard.html · gangnam_dashboard.html · gasandigital_dashboard.html · index.html
-      </div>
-    </div>
-  </div>
+  <div class="dir-grid" id="dirGrid"></div>
 </div>
 
 <div class="posts">
-  <div class="section-label">가이드 & 프로젝트</div>
-
-  <div class="tab-container">
-    <button type="button" class="tab-btn active" data-filter="all">전체</button>
-    <button type="button" class="tab-btn" data-filter="restaurant">🍽️ 맛집</button>
-    <button type="button" class="tab-btn" data-filter="travel">✈️ 여행</button>
-  </div>
-
-  <div class="post-list" id="guideList">
-    <a href="sadang_dashboard.html" class="post-item" data-category="restaurant" style="border-bottom: 1px solid var(--line);">
-      <div>
-        <div class="post-title">🍽️ 사당역 맛집 완벽 가이드</div>
-        <div class="post-tag">버티컬 탭 + 14곳</div>
-      </div>
-    </a>
-    <a href="gangnam_dashboard.html" class="post-item" data-category="restaurant" style="border-bottom: 1px solid var(--line);">
-      <div>
-        <div class="post-title">🍽️ 강남역 저녁 맛집</div>
-        <div class="post-tag">깔끔한 7곳</div>
-      </div>
-    </a>
-    <a href="restaurant/nakseongdae-complete.html" class="post-item" data-category="restaurant" style="border-bottom: 1px solid var(--line);">
-      <div>
-        <div class="post-title">🍽️ 낙성대/샤로수길 식당 완전 정보</div>
-        <div class="post-tag">14곳 + 신뢰도 점수</div>
-      </div>
-    </a>
-    <a href="restaurant/seongsu-jemcory.html" class="post-item" data-category="restaurant" style="border-bottom: 1px solid var(--line);">
-      <div>
-        <div class="post-title">☕ 성수동 15시 나들이 가이드</div>
-        <div class="post-tag">카페 + 팝업스토어 탐방</div>
-      </div>
-    </a>
-    <a href="restaurant/yeongdeungpo-jemcory.html" class="post-item" data-category="restaurant" style="border-bottom: 1px solid var(--line);">
-      <div>
-        <div class="post-title">🍽️ 영등포 청첩장 모임 가이드</div>
-        <div class="post-tag">축하 자리, 고급 식당</div>
-      </div>
-    </a>
-    <a href="gasandigital_dashboard.html" class="post-item" data-category="restaurant" style="border-bottom: 1px solid var(--line);">
-      <div>
-        <div class="post-title">🍽️ 가산디지털단지 청첩장 모임 가이드</div>
-        <div class="post-tag">식당 12곳 · 젬코리 프로필 기반</div>
-      </div>
-    </a>
-    <a href="https://jemmajeon.github.io/travel-2026/" class="post-item" data-category="travel" style="border-bottom: 1px solid var(--line);">
-      <div>
-        <div class="post-title">✈️ 하와이 여행 가이드</div>
-        <div class="post-tag">일정·숙박·음식</div>
-      </div>
-    </a>
-  </div>
+  <div class="section-label">가이드 &amp; 프로젝트</div>
+  <div class="tab-container" id="tabs"></div>
+  <div class="post-list" id="guideList"></div>
+  <noscript>
+    <div class="empty">목록을 보려면 자바스크립트가 필요합니다.
+      <a href="https://github.com/jemmajeon/blog">저장소에서 보기</a></div>
+  </noscript>
 </div>
 
 <footer>
