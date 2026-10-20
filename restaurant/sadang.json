@@ -1,0 +1,564 @@
+{
+ "title": "사당역 맛집 완벽 가이드",
+ "subtitle": "이탈리안부터 야식·후식까지 15곳, 3인 기준 가격 정리",
+ "kind": "모임",
+ "date": "2026-06-16",
+ "area": "사당역",
+ "source": "매장 정보·평점 조사 (2026.06 기준)",
+ "summary": [
+  "3인 기준 예산을 식당마다 적어 둠",
+  "분위기는 올리브에비뉴, 가성비는 리에또",
+  "야식은 명인시골통닭(02:00까지), 후식은 24시 디저트문",
+  "최종 추천은 윤공 Korean Bistro (MY PICK)"
+ ],
+ "sections": [
+  {
+   "id": "italian",
+   "title": "🍝 이탈리안",
+   "type": "places",
+   "places": [
+    {
+     "name": "리에또",
+     "kind": "가성비 최고",
+     "address": "방배천로4안길 20",
+     "hours": "평일 11:30-21:00 / 주말 12:00-21:00 (브레이크: 평일 15:10-17:10, 주말 15:30-17:00)",
+     "price": "3인: 42,000~90,000원",
+     "menu": [
+      [
+       "페퍼로니 파스타",
+       "12,000원"
+      ],
+      [
+       "알리오올리오",
+       "11,000원"
+      ],
+      [
+       "스테이크",
+       "19,900원"
+      ],
+      [
+       "리조또",
+       "13,000원"
+      ]
+     ],
+     "rating": "4.4/5.0",
+     "notes": [
+      [
+       "한줄",
+       "가성비 최강"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EB%A6%AC%EC%97%90%EB%98%90?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=rietto&utm_term=sadang_district"
+      }
+     ]
+    },
+    {
+     "name": "올리브에비뉴",
+     "kind": "분위기 최강",
+     "address": "SK리더스뷰 6층",
+     "hours": "화-금 11:30-21:45 / 월·토 11:30-21:30 / 일 12:00-21:30",
+     "price": "3인: 48,000~120,000원",
+     "menu": [
+      [
+       "고르곤졸라 피자",
+       "25,000원"
+      ],
+      [
+       "까르보나라 파스타",
+       "23,000원"
+      ],
+      [
+       "스테이크",
+       "35,000원"
+      ]
+     ],
+     "rating": "4.5/5.0",
+     "notes": [
+      [
+       "한줄",
+       "분위기 최강"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EC%98%AC%EB%A6%AC%EB%B8%8C%EC%97%90%EB%B9%84%EB%89%B4?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=olive_avenue&utm_term=sadang_district"
+      }
+     ]
+    },
+    {
+     "name": "로코민트",
+     "kind": "가성비+분위기",
+     "address": "방배천로2안길 48",
+     "hours": "매일 11:30-21:00 (브레이크: 평일 14:30-17:00, 토·공휴일 15:00-17:00) · 휴무: 매주 일요일 + 둘째·넷째 월요일",
+     "price": "3인: 39,000~85,000원",
+     "menu": [
+      [
+       "까르보나라",
+       "13,500원"
+      ],
+      [
+       "크림리조또",
+       "12,000원"
+      ]
+     ],
+     "rating": "4.4/5.0",
+     "notes": [
+      [
+       "한줄",
+       "균형잡힌"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EB%A1%9C%EC%BD%94%EB%AF%BC%ED%8A%B8?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=locomint&utm_term=sadang_district"
+      }
+     ]
+    },
+    {
+     "name": "라시에스타",
+     "kind": "폐업",
+     "tags": [
+      "폐업"
+     ],
+     "address": "양지빌딩 6층",
+     "hours": "[운영 중단]",
+     "notes": [
+      [
+       "확인",
+       "2024년 기준 폐업으로 확인됨"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "korean",
+   "title": "🥘 한식/구이",
+   "type": "places",
+   "places": [
+    {
+     "name": "명돼지갈비",
+     "kind": "구이 전문",
+     "address": "과천대로 931 (4번 출구)",
+     "hours": "월-토 12:00-21:40 (브레이크: 14:00-16:00), 일 휴무",
+     "price": "3인: 45,000~95,000원",
+     "menu": [
+      [
+       "돼지갈비",
+       "19,000원"
+      ],
+      [
+       "삼겹살",
+       "19,000원"
+      ]
+     ],
+     "rating": "4.7/5.0",
+     "notes": [
+      [
+       "한줄",
+       "구이 전문"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EB%AA%85%EB%8F%BC%EC%A7%80%EA%B0%88%EB%B9%84?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=myungdwaeji&utm_term=sadang_district"
+      }
+     ]
+    },
+    {
+     "name": "소담촌",
+     "kind": "샤브샤브",
+     "address": "동작대로 43 5층",
+     "hours": "매일 11:00-21:00 (라스트오더: 20:00), 연중무휴",
+     "price": "3인: 48,000~105,000원",
+     "menu": [
+      [
+       "양지 샤브샤브",
+       "선택형"
+      ],
+      [
+       "목심 샤브샤브",
+       "선택형"
+      ]
+     ],
+     "rating": "4.8/5.0",
+     "notes": [
+      [
+       "한줄",
+       "여름 최강"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EC%86%8C%EB%8B%B4%EC%B4%8C?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=sodamchon&utm_term=sadang_district"
+      }
+     ]
+    },
+    {
+     "name": "백채김치찌개",
+     "kind": "⚠️ 사당역 지점 미확인",
+     "tags": [
+      "지점 미확인"
+     ],
+     "address": "사당역 인근 (네이버지도 직접 확인 권장)",
+     "price": "3인: 30,000~75,000원",
+     "menu": [
+      [
+       "김치찌개",
+       "가성비"
+      ],
+      [
+       "된장찌개",
+       "가성비"
+      ]
+     ],
+     "rating": "4.7/5.0",
+     "notes": [
+      [
+       "주의",
+       "2026년 6월 기준 사당역 지점 운영 여부 미확인"
+      ],
+      [
+       "확인된 정보",
+       "남성역점 월~토 11:00~22:00, 일 휴무"
+      ],
+      [
+       "방문 전",
+       "반드시 전화로 확인하세요"
+      ],
+      [
+       "한줄",
+       "초저가"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EB%B0%B1%EC%B1%84%EA%B9%80%EC%B9%98%EC%B0%8C%EA%B0%9C?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=baekchae&utm_term=sadang_district"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "japanese",
+   "title": "🍣 일식",
+   "type": "places",
+   "places": [
+    {
+     "name": "미소네",
+     "kind": "오마카세",
+     "address": "동작대로7길 32 (사당역 10번 출구)",
+     "hours": "월-토 16:00-22:30, 일 16:00-21:30",
+     "price": "3인: 66,000~150,000원",
+     "menu": [
+      [
+       "오마카세 런치",
+       "22,000원"
+      ],
+      [
+       "오마카세 디너",
+       "33,000원"
+      ]
+     ],
+     "rating": "4.5/5.0",
+     "notes": [
+      [
+       "한줄",
+       "오마카세"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EB%AF%B8%EC%86%8C%EB%84%A4?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=misone&utm_term=sadang_district"
+      }
+     ]
+    },
+    {
+     "name": "초와밥",
+     "kind": "회식",
+     "address": "동작대로5길 8",
+     "hours": "매일 11:30-22:30 (브레이크: 평일 14:30-16:30), 매주 일요일 휴무",
+     "price": "3인: 45,000~105,000원",
+     "menu": [
+      [
+       "초밥 세트",
+       "다양"
+      ],
+      [
+       "생선회 조합",
+       "신선"
+      ]
+     ],
+     "rating": "4.5/5.0",
+     "notes": [
+      [
+       "한줄",
+       "회식"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EC%B4%88%EC%99%80%EB%B0%A5?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=chowabab&utm_term=sadang_district"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chinese",
+   "title": "🥡 중식/야식",
+   "type": "places",
+   "places": [
+    {
+     "name": "바오로차이나",
+     "kind": "중식당",
+     "address": "방배천로 12-9 2층",
+     "hours": "매일 11:00-21:30 (라스트오더: 20:20, 브레이크: 14:20-16:00)",
+     "price": "3인: 27,000~95,000원",
+     "menu": [
+      [
+       "호두크림새우",
+       "38,000원"
+      ],
+      [
+       "고추유린기",
+       "36,000원"
+      ],
+      [
+       "짜장면",
+       "9,000원"
+      ]
+     ],
+     "rating": "4.8/5.0",
+     "notes": [
+      [
+       "한줄",
+       "입소문"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EB%B0%94%EC%98%A4%EB%A1%9C%EC%B0%A8%EC%9D%B4%EB%82%98?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=baoro&utm_term=sadang_district"
+      }
+     ]
+    },
+    {
+     "name": "명인시골통닭",
+     "kind": "야식 추천",
+     "address": "동작대로3길 6 1층",
+     "hours": "매일 15:30-02:00 (라스트오더: 00:50, 브레이크 없음)",
+     "price": "3인: 39,600~105,000원",
+     "menu": [
+      [
+       "시골 통닭",
+       "19,800원"
+      ],
+      [
+       "닭죽 세트",
+       "27,800원"
+      ]
+     ],
+     "rating": "4.8/5.0",
+     "notes": [
+      [
+       "한줄",
+       "야식 최강"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EB%AA%85%EC%9D%B8%EC%8B%9C%EA%B3%A8%ED%86%B5%EB%8B%AD?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=myungin_chicken&utm_term=sadang_district"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dessert",
+   "title": "☕ 후식",
+   "type": "places",
+   "places": [
+    {
+     "name": "디저트문",
+     "kind": "24시 카페",
+     "address": "사당역 6번 출구 도보 1분",
+     "hours": "24시간 연중무휴 (주말 13:00-18:00 2시간 이용제한)",
+     "price": "3인: 21,000~65,000원",
+     "menu": [
+      [
+       "수제 브라우니 케이크",
+       "8,900원"
+      ],
+      [
+       "바스크 치즈 케이크",
+       "수제"
+      ]
+     ],
+     "rating": "4.3/5.0",
+     "notes": [
+      [
+       "한줄",
+       "24시"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EB%94%94%EC%A0%80%ED%8A%B8%EB%AC%B8?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=dessertmun&utm_term=sadang_district"
+      }
+     ]
+    },
+    {
+     "name": "오쎄",
+     "kind": "스콘 감성 카페",
+     "address": "방배천로4안길 32 (1, 2층)",
+     "hours": "매일 11:00-23:00 (라스트오더: 22:00), 추석 당일 외 연중",
+     "price": "3인: 15,000~25,000원",
+     "menu": [
+      [
+       "초콜릿 스콘 (돌스콘)",
+       "3,500~5,000원"
+      ],
+      [
+       "식물 디저트 세트",
+       "다양"
+      ]
+     ],
+     "rating": "4.3/5.0",
+     "notes": [
+      [
+       "한줄",
+       "식물 감성"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/v5/search/%EC%98%A4%EC%8E%A0%20%EC%82%AC%EB%8B%B9%EC%97%AD?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=osse&utm_term=sadang_district"
+      }
+     ]
+    },
+    {
+     "name": "율목커피",
+     "kind": "모던 감성",
+     "address": "방배천로8길 26",
+     "hours": "매일 10:00-22:00, 격주 수요일 휴무",
+     "price": "3인: 15,000~30,000원",
+     "menu": [
+      [
+       "푸딩",
+       "5,000~8,000원"
+      ],
+      [
+       "창작 에이드",
+       "5,000~8,000원"
+      ]
+     ],
+     "rating": "4.6/5.0",
+     "notes": [
+      [
+       "한줄",
+       "모던 감성"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/v5/search/%EC%9C%A8%EB%AA%A9%EC%BB%A4%ED%94%BC?utm_source=jemcory_github_blog&utm_medium=restaurant_guide&utm_campaign=sadang_restaurants_jun2026&utm_content=yulmok&utm_term=sadang_district"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pick",
+   "title": "🏆 MY PICK",
+   "type": "places",
+   "intro": "한식과 양식의 세련된 조화. 코리안 퓨전 다이닝. 술 한잔 하기 좋은 비스트로 분위기. 평점 4.6/5.0 — 이 5곳 중에서 가장 무난한 선택이면서도 특별함 있음.",
+   "places": [
+    {
+     "name": "윤공 Korean Bistro",
+     "kind": "코리안 퓨전 비스트로",
+     "tags": [
+      "MY PICK",
+      "예약 필수 (금~일)"
+     ],
+     "address": "사당로30길 158 (사당역 10번 출구)",
+     "hours": "월-목 15:30-22:00 / 금토일 13:00-22:00 · 라스트오더 22:00",
+     "price": "3인 추천 주문 합계 약 68,000원 (음료 제외) = 인당 약 23,000원",
+     "rating": "4.6/5.0",
+     "menu": [
+      [
+       "추천 메인 1: 육회 파스타",
+       "19,000원"
+      ],
+      [
+       "추천 메인 2: 크림 수제비",
+       "18,000원"
+      ],
+      [
+       "추천 메인 3: 닭구이",
+       "16,000원"
+      ],
+      [
+       "추천 사이드: 감자전",
+       "11,000원"
+      ],
+      [
+       "추천 마무리: 동치미 소면",
+       "4,000원"
+      ],
+      [
+       "육회",
+       "22,000원"
+      ],
+      [
+       "봉골레 술찜",
+       "18,000원"
+      ],
+      [
+       "윤공 라구 파스타 (된장 라구)",
+       "17,000원"
+      ]
+     ],
+     "notes": [
+      [
+       "음료",
+       "소주 · 하우스 와인 (적/백) · 생맥주 (세부 음료 메뉴/가격은 방문 전 전화 또는 인스타그램 확인 권장)"
+      ],
+      [
+       "예약",
+       "네이버 예약 / 캐치테이블 · 전화 확인 권장 (인스타: @yoon_gong_sadang)"
+      ],
+      [
+       "주의",
+       "주차 불가 (근처 공영주차장 확인) · 인기가 많아 예약 필수 (금~일)"
+      ]
+     ],
+     "links": [
+      {
+       "label": "네이버 예약",
+       "url": "https://booking.naver.com/booking/6/bizes/542429"
+      },
+      {
+       "label": "네이버지도",
+       "url": "https://map.naver.com/p/search/%EC%9C%A4%EA%B3%B5%20%EC%82%AC%EB%8B%B9"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
