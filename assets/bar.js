@@ -13,4 +13,11 @@
     '<nav class="bar" aria-label="블로그"><a class="b" href="' + base + '">← jemmajeon <span class="s">블로그</span></a><span class="sp"></span>' +
     '<a href="' + base + '">안내서</a><a href="' + base + 'log/">기록</a></nav>';
   document.body.insertBefore(host, document.body.firstChild);
+  // 자체 디자인 글에도 같은 추적(GA4 + /assets/track.js)을 붙인다
+  if (typeof window.gtag !== "function") {
+    window.dataLayer = window.dataLayer || []; window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date()); window.gtag("config", "G-LTC8L11Y7J", {site_section: "blog"});
+    var g = document.createElement("script"); g.async = true; g.src = "https://www.googletagmanager.com/gtag/js?id=G-LTC8L11Y7J"; document.head.appendChild(g);
+  }
+  if (!window.jjTrack) { var t = document.createElement("script"); t.src = "/assets/track.js"; document.head.appendChild(t); }
 })();

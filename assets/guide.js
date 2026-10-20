@@ -34,13 +34,13 @@
     }
     var links = el("div", "links");
     var ls = (p.links && p.links.length) ? p.links : [{label: "네이버지도", url: mapLink(p, area)}];
-    ls.forEach(function (l) { var a = el("a", "btn", "↗ " + l.label); a.href = l.url; a.target = "_blank"; a.rel = "noopener"; links.append(a); });
+    ls.forEach(function (l) { var a = el("a", "btn", "↗ " + l.label); a.href = l.url; a.target = "_blank"; a.rel = "noopener"; a.setAttribute("data-place", p.name.slice(0, 60)); links.append(a); });
     c.append(links);
     return c;
   }
 
   function section(s, g) {
-    var sec = el("section", "g-sec"); sec.id = s.id;
+    var sec = el("section", "g-sec"); sec.id = s.id; sec.setAttribute("data-zone", "sec-" + s.id);
     sec.append(el("h2", null, s.title));
     if (s.intro) sec.append(el("p", "intro", s.intro));
     if (s.type === "places") { var w = el("div", "places"); (s.places || []).forEach(function (p, i) { w.append(place(p, i, g.area)); }); sec.append(w); }
@@ -63,6 +63,7 @@
 
   function render(g) {
     document.title = g.title + " — jemmajeon 블로그";
+    if (window.jjTrack) window.jjTrack("view_guide", {guide: (src.match(/([\w-]+)\.json/) || [])[1] || src, guide_kind: g.kind || "", guide_area: g.area || ""});
     var past = g.date && g.date < today();
     var hero = el("header", "g-hero");
     var back = el("a", "back", "← 안내서 목록"); back.href = base; hero.append(back);

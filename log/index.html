@@ -8,9 +8,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="stylesheet" href="../assets/site.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LTC8L11Y7J"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LTC8L11Y7J');</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LTC8L11Y7J',{site_section:'blog'});</script>
 </head>
-<body>
+<body data-page="log-list">
 <header class="topbar"><div class="wrap"><a class="brand" href="../">jemmajeon<span>블로그</span></a><nav class="tabs" aria-label="블로그"><a href="../">안내서</a><a href="./" aria-current="page">기록</a></nav></div></header>
 <main class="wrap">
   <section class="home-hero">
@@ -21,6 +21,7 @@
   <div id="list" class="loglist"><p class="empty">불러오는 중…</p></div>
   <footer class="site"><span>© jemmajeon</span><span><a href="https://jemmajeon.github.io/">홈</a></span></footer>
 </main>
+<script src="/assets/track.js"></script>
 <script>
 (function () {
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
