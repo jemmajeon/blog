@@ -1,18 +1,120 @@
 {
   "_comment": "블로그 목록의 단일 진실 소스. section=guide 는 안내서 탭, section=log 는 기록 탭에 나온다. 안내서 본문은 각 .json(형식: assets/GUIDE_SCHEMA.md), 기록 본문은 log/<slug>.md.",
   "updated": "2026-10-20",
-  "kinds": ["모임", "나들이", "여행"],
+  "kinds": [
+    "모임",
+    "나들이",
+    "여행"
+  ],
   "posts": [
-    { "section": "guide", "title": "사당역 맛집 가이드",          "file": "restaurant/sadang.html",               "tag": "이탈리안부터 후식까지 종류별 정리",    "kind": "모임",   "area": "사당",            "date": "2026-06-16" },
-    { "section": "guide", "title": "강남역 2호선 저녁 모임",        "file": "restaurant/gangnam.html",              "tag": "족발 · 훠궈, 동창 저녁 자리",          "kind": "모임",   "area": "강남",            "date": "2026-06-16" },
-    { "section": "guide", "title": "가산디지털단지 청첩장 모임",     "file": "restaurant/gasandigital.html",         "tag": "룸·코스 식당, 2차 카페, 추천 코스",     "kind": "모임",   "area": "가산디지털단지",   "date": "2026-07-01" },
-    { "section": "guide", "title": "홍대 vs 영등포",               "file": "restaurant/hongdae-yeongdeungpo.html", "tag": "음식과 팝업을 두 동네로 비교",          "kind": "모임",   "area": "홍대 · 영등포",    "date": "2026-06-20" },
-    { "section": "guide", "title": "낙성대 · 샤로수길 식당",        "file": "restaurant/nakseongdae-complete.html", "tag": "식당별 신뢰도 점수까지",               "kind": "모임",   "area": "낙성대 · 샤로수길", "date": "2026-06-15" },
-    { "section": "guide", "title": "성수동 15시 나들이",            "file": "restaurant/seongsu-jemcory.html",      "tag": "카페와 팝업스토어",                    "kind": "나들이", "area": "성수",            "date": "2026-06-19" },
-    { "section": "guide", "title": "영등포 타임스퀘어",             "file": "restaurant/yeongdeungpo-jemcory.html", "tag": "쇼핑 · 카페 · 식사",                   "kind": "나들이", "area": "영등포",          "date": "2026-06-19" },
-    { "section": "guide", "title": "전라도 투어",                  "file": "travels/jeolla-2026-08/",              "tag": "담양 · 광주 · 목포 2박 3일",            "kind": "여행",   "area": "전남",            "date": "2026-08-28" },
-    { "section": "guide", "title": "울산 1박 2일",                 "file": "travels/ulsan-2026-05/",               "tag": "5/22–23",                             "kind": "여행",   "area": "울산",            "date": "2026-05-22" },
-    { "section": "guide", "title": "하와이 여행 가이드",            "file": "https://jemmajeon.github.io/travel-2026/", "tag": "일정 · 숙박 · 음식",               "kind": "여행",   "area": "하와이",          "date": "2026-10-04", "external": true },
-    { "section": "guide", "title": "2026 건강검진 비교",            "file": "life/health-checkup-2026.html",        "tag": "검진기관 39곳",                        "kind": "생활",   "area": "",                "date": "2026-10-19", "listed": false, "note": "공개 레포라 목록에서 제외 (noindex)" }
+    {
+      "section": "guide",
+      "title": "사당역 맛집 가이드",
+      "file": "restaurant/sadang.html",
+      "tag": "이탈리안부터 후식까지 종류별 정리",
+      "kind": "모임",
+      "area": "사당",
+      "date": "2026-06-16",
+      "count": 15
+    },
+    {
+      "section": "guide",
+      "title": "강남역 2호선 저녁 모임",
+      "file": "restaurant/gangnam.html",
+      "tag": "족발 · 훠궈, 동창 저녁 자리",
+      "kind": "모임",
+      "area": "강남",
+      "date": "2026-06-16",
+      "count": 19
+    },
+    {
+      "section": "guide",
+      "title": "가산디지털단지 청첩장 모임",
+      "file": "restaurant/gasandigital.html",
+      "tag": "룸·코스 식당, 2차 카페, 추천 코스",
+      "kind": "모임",
+      "area": "가산디지털단지",
+      "date": "2026-07-01",
+      "count": 6
+    },
+    {
+      "section": "guide",
+      "title": "홍대 vs 영등포",
+      "file": "restaurant/hongdae-yeongdeungpo.html",
+      "tag": "음식과 팝업을 두 동네로 비교",
+      "kind": "모임",
+      "area": "홍대 · 영등포",
+      "date": "2026-06-20",
+      "count": 38
+    },
+    {
+      "section": "guide",
+      "title": "낙성대 · 샤로수길 식당",
+      "file": "restaurant/nakseongdae-complete.html",
+      "tag": "식당별 신뢰도 점수까지",
+      "kind": "모임",
+      "area": "낙성대 · 샤로수길",
+      "date": "2026-06-15",
+      "count": 14
+    },
+    {
+      "section": "guide",
+      "title": "성수동 15시 나들이",
+      "file": "restaurant/seongsu-jemcory.html",
+      "tag": "카페와 팝업스토어",
+      "kind": "나들이",
+      "area": "성수",
+      "date": "2026-06-19",
+      "count": 6
+    },
+    {
+      "section": "guide",
+      "title": "영등포 청첩장 모임",
+      "file": "restaurant/yeongdeungpo-jemcory.html",
+      "tag": "쇼핑 · 카페 · 식사",
+      "kind": "모임",
+      "area": "영등포",
+      "date": "2026-06-19",
+      "count": 7
+    },
+    {
+      "section": "guide",
+      "title": "전라도 투어",
+      "file": "travels/jeolla-2026-08/",
+      "tag": "담양 · 광주 · 목포 2박 3일",
+      "kind": "여행",
+      "area": "전남",
+      "date": "2026-08-28"
+    },
+    {
+      "section": "guide",
+      "title": "울산 1박 2일",
+      "file": "travels/ulsan-2026-05/",
+      "tag": "5/22–23",
+      "kind": "여행",
+      "area": "울산",
+      "date": "2026-05-22"
+    },
+    {
+      "section": "guide",
+      "title": "하와이 여행 가이드",
+      "file": "https://jemmajeon.github.io/travel-2026/",
+      "tag": "일정 · 숙박 · 음식",
+      "kind": "여행",
+      "area": "하와이",
+      "date": "2026-10-04",
+      "external": true
+    },
+    {
+      "section": "guide",
+      "title": "2026 건강검진 비교",
+      "file": "life/health-checkup-2026.html",
+      "tag": "검진기관 39곳",
+      "kind": "생활",
+      "area": "",
+      "date": "2026-10-19",
+      "listed": false,
+      "note": "공개 레포라 목록에서 제외 (noindex)"
+    }
   ]
 }
