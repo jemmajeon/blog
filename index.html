@@ -2,209 +2,73 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>jemmajeon — 블로그</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
-<!-- GA4 -->
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>jemmajeon 블로그 — 안내서</title>
+<meta name="description" content="친구·가족과 만날 장소를 조사해 링크 하나로 나누는 모임·여행 안내서와 기록.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="./assets/site.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LTC8L11Y7J"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LTC8L11Y7J');</script>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#fafaf8;--surface:#fff;--ink:#111;--ink-2:#444;--muted:#888;
-  --line:#e8e6e1;--primary:#1a1a2e;--accent:#e8602c;
-  --radius:10px;
-}
-body{
-  background:var(--bg);color:var(--ink);
-  font-family:"Pretendard Variable",Pretendard,system-ui,sans-serif;
-  font-size:16px;line-height:1.7;min-height:100vh;
-}
-/* Nav */
-nav{
-  border-bottom:1px solid var(--line);background:rgba(250,250,248,.95);
-  backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;
-}
-.nav-inner{max-width:760px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
-.nav-logo{font-weight:800;font-size:15px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;padding:14px 0;}
-.nav-links{display:flex;gap:0;}
-.nav-link{
-  font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;
-  padding:14px 14px;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;
-}
-.nav-link:hover{color:var(--ink);}
-.nav-link.on{color:var(--ink);border-bottom-color:var(--accent);}
-/* Hero */
-.hero{
-  max-width:760px;margin:0 auto;padding:80px 24px 60px;
-}
-.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:16px;}
-h1{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px;}
-h1 em{color:var(--accent);font-style:normal;}
-.hero-desc{font-size:17px;color:var(--ink-2);max-width:520px;line-height:1.7;}
-/* Posts */
-.posts{max-width:760px;margin:0 auto;padding:0 24px 96px;}
-.section-label{
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-  font-weight:700;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--line);
-}
-/* Tabs */
-.tab-container{
-  display:flex;gap:12px;margin-bottom:32px;overflow-x:auto;padding-bottom:8px;
-  border-bottom:1px solid var(--line);
-}
-.tab-btn{
-  padding:8px 16px;border:none;background:transparent;color:var(--muted);
-  font-size:13px;font-weight:600;cursor:pointer;transition:color .2s,border-color .2s;
-  border-bottom:2px solid transparent;white-space:nowrap;
-}
-.tab-btn:hover{color:var(--ink);}
-.tab-btn.active{color:var(--ink);border-bottom-color:var(--accent);}
-.post-list{display:flex;flex-direction:column;gap:0;}
-.post-item{
-  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
-  padding:16px 0;border-bottom:1px solid var(--line);text-decoration:none;
-  color:inherit;transition:opacity .15s;
-}
-.post-item:hover{opacity:.7;}
-.post-item:last-child{border-bottom:none;}
-.post-item.hidden{display:none;}
-.post-title{font-size:16px;font-weight:600;color:var(--ink);}
-.post-date{font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;}
-.post-tag{
-  display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;
-  border-radius:4px;background:#f1efe9;color:var(--muted);margin-top:4px;
-}
-.empty{padding:40px 0;color:var(--muted);font-size:15px;}
-/* Directory structure */
-.dir-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;font-size:13px;}
-.dir-card{padding:12px;border:1px solid var(--line);border-radius:6px;}
-.dir-card-title{font-weight:600;margin-bottom:8px;}
-.dir-card-text{color:var(--muted);line-height:1.6;}
-.dir-card-full{grid-column:1/-1;}
-/* Footer */
-footer{
-  border-top:1px solid var(--line);padding:24px;text-align:center;
-  font-size:12px;color:var(--muted);
-}
-footer a{color:var(--muted);text-decoration:none;}
-footer a:hover{color:var(--ink);}
-</style>
 </head>
 <body>
+<header class="topbar"><div class="wrap"><a class="brand" href="./">jemmajeon<span>블로그</span></a><nav class="tabs" aria-label="블로그"><a href="./" aria-current="page">안내서</a><a href="./log/">기록</a></nav></div></header>
+<main class="wrap">
+  <section class="home-hero">
+    <div class="eyebrow">JEMMAJEON · 안내서</div>
+    <h1>같이 갈 곳을 미리 <em>조사해 두는</em> 안내서</h1>
+    <p>모임·나들이·여행 전에 장소를 조사해서 링크 하나로 나눕니다. 다녀온 뒤의 이야기는 <a href="./log/">기록</a>에 씁니다.</p>
+  </section>
 
-<nav>
-  <div class="nav-inner">
-    <a class="nav-logo" href="/blog/?utm_source=blog&utm_medium=nav&utm_campaign=home">jemmajeon</a>
-    <div class="nav-links">
-      <a class="nav-link on" href="/blog/" data-to="blog">블로그</a>
-      <a class="nav-link" href="restaurant/sadang.html">맛집</a>
-      <a class="nav-link" href="https://jemmajeon.github.io/travel-2026/" data-to="hawaii">하와이</a>
-    </div>
-  </div>
-</nav>
+  <div class="filters" role="group" aria-label="종류" id="filters"></div>
+  <div id="list"><p class="empty">불러오는 중…</p></div>
+
+  <footer class="site"><span>© jemmajeon</span><span><a href="https://jemmajeon.github.io/">홈</a> · 가격·영업시간은 조사 당시 기준</span></footer>
+</main>
 <script>
-(function(){
-  if(!location.hostname.includes('github.io'))return;
-  var src='blog';
-  var base='https://jemmajeon.github.io/blog/go/?';
-  document.querySelectorAll('a[data-to]').forEach(function(a){
-    if(a.dataset.to!=='blog') a.href=base+'to='+a.dataset.to+'&utm_source='+src+'&utm_medium=nav';
-  });
-})();
+(function () {
+  var state = {kind: "전체", data: null};
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function today() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function fmt(s) { var d = new Date(s + "T00:00:00"); return d.getFullYear() + "." + String(d.getMonth() + 1).padStart(2, "0") + "." + String(d.getDate()).padStart(2, "0") + " " + "일월화수목금토"[d.getDay()]; }
 
-// 목록·탭·저장소 구조는 posts.json 하나에서 렌더링한다.
-// 글을 추가할 때 이 파일(index.html)이 아니라 posts.json 만 고치면 된다.
-document.addEventListener('DOMContentLoaded', async function(){
-  var listEl = document.getElementById('guideList');
-  var tabEl  = document.getElementById('tabs');
-  var dirEl  = document.getElementById('dirGrid');
-  var data;
-
-  try {
-    var res = await fetch('./posts.json?_=' + Date.now(), { cache: 'no-store' });
-    if(!res.ok) throw new Error(res.status);
-    data = await res.json();
-  } catch (e) {
-    listEl.innerHTML = '<div class="empty">목록을 불러오지 못했습니다. ' +
-      '<a href="https://github.com/jemmajeon/blog">저장소에서 보기</a></div>';
-    return;
+  function card(p, past) {
+    var a = el("a", "card gcard" + (past ? " is-past" : ""));
+    a.href = p.file; if (p.external) { a.target = "_blank"; a.rel = "noopener"; }
+    var top = el("div", "top"); top.append(el("span", "chip accent", p.kind || "안내"), el("span", "date", fmt(p.date))); a.append(top);
+    a.append(el("h3", null, p.title + (p.external ? " ↗" : "")));
+    if (p.tag) a.append(el("p", null, p.tag));
+    var meta = el("div", "meta");
+    if (p.area) meta.append(el("span", "chip", "📍 " + p.area));
+    if (p.count) meta.append(el("span", "chip", "🏠 " + p.count + "곳"));
+    if (past) meta.append(el("span", "chip past", "지난 안내"));
+    a.append(meta);
+    return a;
   }
 
-  var posts = (data.posts || []).filter(function(p){ return p.listed !== false; });
-  posts.sort(function(a,b){ return (b.date || '').localeCompare(a.date || ''); });
-
-  var used = {};
-  posts.forEach(function(p){ used[p.category] = true; });
-  var cats = (data.categories || []).filter(function(c){ return used[c.key]; });
-
-  // 탭
-  tabEl.innerHTML = '<button type="button" class="tab-btn active" data-filter="all">전체</button>' +
-    cats.map(function(c){
-      return '<button type="button" class="tab-btn" data-filter="' + c.key + '">' + c.label + '</button>';
-    }).join('');
-
-  // 목록
-  listEl.innerHTML = posts.map(function(p){
-    var ext = p.external ? ' target="_blank" rel="noopener"' : '';
-    return '<a href="' + p.file + '" class="post-item" data-category="' + p.category + '"' + ext + '>' +
-             '<div>' +
-               '<div class="post-title">' + p.title + (p.external ? ' ↗' : '') + '</div>' +
-               (p.tag ? '<div class="post-tag">' + p.tag + '</div>' : '') +
-             '</div>' +
-             '<div class="post-date">' + (p.date || '') + '</div>' +
-           '</a>';
-  }).join('');
-
-  // 저장소 구조 — 폴더별 글 수를 posts.json 에서 계산
-  dirEl.innerHTML = (data.folders || []).map(function(f){
-    var n = posts.filter(function(p){ return !p.external && p.file.indexOf(f.path) === 0; }).length;
-    return '<div class="dir-card">' +
-             '<div class="dir-card-title">' + f.path + '</div>' +
-             '<div class="dir-card-text">' + f.label + (n ? ' · ' + n + '개' : '') + '</div>' +
-           '</div>';
-  }).join('');
-
-  // 탭 필터
-  tabEl.querySelectorAll('.tab-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var filter = btn.dataset.filter;
-      tabEl.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      listEl.querySelectorAll('.post-item').forEach(function(item){
-        item.classList.toggle('hidden', filter !== 'all' && item.dataset.category !== filter);
-      });
+  function render() {
+    var posts = state.data.posts.filter(function (p) { return p.section === "guide" && p.listed !== false && (state.kind === "전체" || p.kind === state.kind); });
+    posts.sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+    var t = today(), up = posts.filter(function (p) { return p.date >= t; }), past = posts.filter(function (p) { return p.date < t; });
+    var list = document.getElementById("list"); list.replaceChildren();
+    [["다가오는 안내", up, false], ["지난 안내", past, true]].forEach(function (g) {
+      if (!g[1].length) return;
+      var hd = el("div", "group-hd"); hd.append(el("h2", null, g[0]), el("span", null, g[1].length + "개")); list.append(hd);
+      var grid = el("div", "grid"); g[1].forEach(function (p) { grid.append(card(p, g[2])); }); list.append(grid);
     });
-  });
-});
+    if (!posts.length) list.append(el("p", "empty", "이 종류의 안내서는 아직 없어요."));
+  }
+
+  fetch("./posts.json", {cache: "no-cache"}).then(function (r) { return r.json(); }).then(function (d) {
+    state.data = d;
+    var kinds = ["전체"].concat(d.kinds || []), f = document.getElementById("filters");
+    kinds.forEach(function (k) {
+      var b = el("button", null, k); b.type = "button"; b.setAttribute("aria-pressed", k === state.kind);
+      b.onclick = function () { state.kind = k; f.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b); }); render(); };
+      f.append(b);
+    });
+    render();
+  }).catch(function () { document.getElementById("list").replaceChildren(el("p", "empty", "목록을 불러오지 못했어요. 새로고침해 주세요.")); });
+})();
 </script>
-
-<div class="hero">
-  <div class="eyebrow">Blog · 기록</div>
-  <h1>생각을 <em>정리하는</em><br>공간</h1>
-  <p class="hero-desc">개발, 자동화, 여행, 일상 — 기록하고 싶은 것들을 씁니다.</p>
-</div>
-
-<div class="posts">
-  <div class="section-label">📂 저장소 구조</div>
-  <div class="dir-grid" id="dirGrid"></div>
-</div>
-
-<div class="posts">
-  <div class="section-label">가이드 &amp; 프로젝트</div>
-  <div class="tab-container" id="tabs"></div>
-  <div class="post-list" id="guideList"></div>
-  <noscript>
-    <div class="empty">목록을 보려면 자바스크립트가 필요합니다.
-      <a href="https://github.com/jemmajeon/blog">저장소에서 보기</a></div>
-  </noscript>
-</div>
-
-<footer>
-  <a href="https://github.com/jemmajeon" target="_blank" rel="noopener">GitHub</a>
-</footer>
-
 </body>
 </html>

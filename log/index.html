@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>jemmajeon 블로그 — 기록</title>
+<meta name="description" content="다녀온 곳과 해 본 것들의 기록.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LTC8L11Y7J"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LTC8L11Y7J');</script>
+</head>
+<body>
+<header class="topbar"><div class="wrap"><a class="brand" href="../">jemmajeon<span>블로그</span></a><nav class="tabs" aria-label="블로그"><a href="../">안내서</a><a href="./" aria-current="page">기록</a></nav></div></header>
+<main class="wrap">
+  <section class="home-hero">
+    <div class="eyebrow">JEMMAJEON · 기록</div>
+    <h1>다녀온 곳, 해 본 것의 <em>기록</em></h1>
+    <p>안내서가 "가기 전"이라면 기록은 "다녀온 뒤"입니다.</p>
+  </section>
+  <div id="list" class="loglist"><p class="empty">불러오는 중…</p></div>
+  <footer class="site"><span>© jemmajeon</span><span><a href="https://jemmajeon.github.io/">홈</a></span></footer>
+</main>
+<script>
+(function () {
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  fetch("../posts.json", {cache: "no-cache"}).then(function (r) { return r.json(); }).then(function (d) {
+    var posts = d.posts.filter(function (p) { return p.section === "log" && p.listed !== false; }).sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+    var list = document.getElementById("list"); list.replaceChildren();
+    if (!posts.length) {
+      var e = el("div", "card empty"); e.append(el("b", null, "아직 기록이 없어요"), el("span", null, "첫 기록이 올라오면 여기에 날짜순으로 쌓입니다."));
+      list.append(e); return;
+    }
+    posts.forEach(function (p) {
+      var a = el("a", "logitem"); a.href = "./post.html?p=" + encodeURIComponent(p.slug);
+      var body = el("div"); body.append(el("h3", null, p.title)); if (p.tag) body.append(el("p", null, p.tag));
+      a.append(el("span", "date", p.date.replace(/-/g, ".")), body); list.append(a);
+    });
+  }).catch(function () { document.getElementById("list").replaceChildren(el("p", "empty", "목록을 불러오지 못했어요.")); });
+})();
+</script>
+</body>
+</html>
