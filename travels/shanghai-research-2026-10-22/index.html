@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>상하이 여행 시장조사_2026-10-22</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+SC:wght@400;500&family=Ma+Shan+Zheng&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 헤더(항공·KPI) → 고정 탭바(6탭 + 전역 A/B 코스 스위치) → 탭 패널. 모든 화면은 아래 JS 데이터 한 곳에서 그려짐 */
+:root{
+  --bg:#f2f4f7;--bg-2:#e8ecf2;--surface:#ffffff;
+  --ink:#1b2740;--ink-2:#36435e;--muted:#5d6779;--line:#d8dde6;--line-2:#c3cad6;
+  --accent:#a8741c;--accent-soft:#f3e8d3;      /* 11월 플라타너스 단풍 */
+  --water:#2c6b66;--water-soft:#dbebe8;        /* 수향 운하 */
+  --brick:#9c3d2c;--brick-soft:#f4e0da;        /* 석고문 벽돌 · 식당 */
+  --river:#9fb6cf;                             /* 지도 강 */
+  --ok:#2f7a4b;--ok-soft:#dcefe2;--warn:#b0462f;--warn-soft:#f6e0da;--hold:#9a6b06;--hold-soft:#f6ecd0;
+  --plate-fg:#fbf6ec;
+  --f-display:"Gowun Batang","Noto Serif KR",serif;
+  --f-body:"Noto Sans KR","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  --f-cn:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --f-brush:"Ma Shan Zheng","STKaiti","KaiTi",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10151f;--bg-2:#161d2a;--surface:#1a2231;--ink:#e6eaf2;--ink-2:#c3cbda;--muted:#97a1b4;--line:#2b3547;--line-2:#3a4659;
+  --accent:#d9a650;--accent-soft:#33291a;--water:#6cb9b1;--water-soft:#173230;--brick:#e08a76;--brick-soft:#3a221c;--river:#2f4a66;
+  --ok:#7cc796;--ok-soft:#173323;--warn:#ec8f7a;--warn-soft:#3a201b;--hold:#e3b85a;--hold-soft:#33290f;--plate-fg:#fbf6ec;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10151f;--bg-2:#161d2a;--surface:#1a2231;--ink:#e6eaf2;--ink-2:#c3cbda;--muted:#97a1b4;--line:#2b3547;--line-2:#3a4659;
+  --accent:#d9a650;--accent-soft:#33291a;--water:#6cb9b1;--water-soft:#173230;--brick:#e08a76;--brick-soft:#3a221c;--river:#2f4a66;
+  --ok:#7cc796;--ok-soft:#173323;--warn:#ec8f7a;--warn-soft:#3a201b;--hold:#e3b85a;--hold-soft:#33290f;--plate-fg:#fbf6ec;color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+.stack>*,.panel-stack>*,.ov-grid>*,.prep-grid>*,.map-wrap>*,header>*{min-width:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14.5px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 72px}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.3}
+h1{font-size:2.1rem}h2{font-size:1.35rem}h3{font-size:1.1rem}h4{font-size:1rem}
+p{margin:0}
+a{color:inherit}
+.cn{font-family:var(--f-cn)}
+.mono,.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.muted{color:var(--muted)}
+.small{font-size:.84rem}
+.stack{display:flex;flex-direction:column;gap:14px}
+.panel-stack{display:flex;flex-direction:column;gap:34px;padding-top:22px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.sec-head p{color:var(--muted);font-size:.88rem;flex-basis:100%;max-width:75ch}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.pad{padding:16px 18px}
+
+/* header */
+header{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px 28px;align-items:end;padding-bottom:20px}
+.title-block{display:flex;flex-direction:column;gap:8px;min-width:0}
+.title-block .lede{color:var(--muted);max-width:60ch}
+.flights{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flight{padding:12px 14px;display:flex;flex-direction:column;gap:1px;min-width:0}
+.flight b{font-family:var(--f-mono);font-size:1.3rem;font-variant-numeric:tabular-nums}
+.flight .small{color:var(--muted)}
+.kpis{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.kpi{padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.kpi .v{font-family:var(--f-mono);font-size:1.45rem;font-variant-numeric:tabular-nums;line-height:1.2}
+.kpi .s{font-size:.78rem;color:var(--muted)}
+.bar{height:6px;border-radius:99px;background:var(--bg-2);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--ok);border-radius:99px;width:0}
+
+/* top rate bar */
+.topbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 28px;padding:12px 16px;margin-bottom:22px;border-color:var(--accent);background:var(--accent-soft)}
+.tb-rate,.tb-sum{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap}
+.tb-in{font-family:var(--f-mono);font-size:1rem;display:inline-flex;align-items:center;gap:6px}
+.tb-in input{font:inherit;width:92px;padding:6px 8px;border:1.5px solid var(--accent);border-radius:8px;background:var(--surface);color:var(--ink);font-weight:500}
+.tb-sum b{font-size:1.15rem}
+.tb-note{flex-basis:100%}
+.won{color:var(--muted);font-size:.92em;white-space:nowrap}
+
+/* tab bar */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.bar-sticky{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:var(--bg);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;padding-block:8px}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1 1 auto}
+.tab{font:inherit;font-weight:700;font-size:.92rem;cursor:pointer;padding:9px 13px;border:0;border-radius:8px;background:none;color:var(--muted);white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.tab:hover:not([aria-selected="true"]){color:var(--ink);background:var(--bg-2)}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:9px;overflow:hidden;background:var(--surface);flex:0 0 auto}
+.seg button{font:inherit;font-size:.84rem;font-weight:700;border:0;background:none;color:var(--muted);padding:7px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.seg button[data-course="b"][aria-pressed="true"]{background:var(--water)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* pills / badges */
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;font-weight:700;padding:2px 9px;border-radius:99px;white-space:nowrap;background:var(--bg-2);color:var(--ink-2)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.hold{background:var(--hold-soft);color:var(--hold)}
+.pill.water{background:var(--water-soft);color:var(--water)}
+.pill.brick{background:var(--brick-soft);color:var(--brick)}
+.pill.accent{background:var(--accent-soft);color:var(--accent)}
+.linkrow{display:flex;flex-wrap:wrap;gap:6px}
+.lnk{font-size:.76rem;font-weight:500;text-decoration:none;border:1px solid var(--line-2);border-radius:6px;padding:2px 8px;color:var(--ink-2);background:var(--surface);white-space:nowrap}
+.lnk:hover{border-color:var(--accent);color:var(--accent)}
+.copy{font:inherit;font-size:.74rem;cursor:pointer;border:1px solid var(--line-2);background:var(--bg);color:var(--ink);border-radius:6px;padding:2px 8px;white-space:nowrap}
+.copy.done{border-color:var(--ok);color:var(--ok)}
+
+/* overview */
+.ov-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:start}
+.cal{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.cal-cell{font:inherit;text-align:left;cursor:pointer;color:inherit;padding:10px 12px;display:flex;flex-direction:column;gap:4px;min-height:132px;min-width:0}
+.cal-cell:hover{border-color:var(--accent)}
+.cal-cell .d{font-family:var(--f-mono);font-size:1.4rem;line-height:1}
+.cal-cell .w{font-size:.75rem;color:var(--muted)}
+.cal-cell .th{font-size:.82rem;font-weight:700;line-height:1.35}
+.cal-cell .wx{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);margin-top:auto}
+.cal-cell.waterday{border-color:var(--water);background:linear-gradient(var(--water-soft),var(--surface) 70%)}
+.cal-cell.flyday{background:var(--bg-2)}
+table{border-collapse:collapse;width:100%;font-size:.86rem}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.tbl table{min-width:660px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;letter-spacing:.05em;color:var(--muted);font-weight:700;background:var(--bg-2)}
+tr:last-child td{border-bottom:0}
+td.r,th.r{text-align:right}
+tr.done td{color:var(--muted)}
+tr.done td .lbl{text-decoration:line-through}
+.chk{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;border:1.5px solid var(--line-2);background:var(--surface);cursor:pointer;color:transparent;font-size:.8rem;padding:0;flex:0 0 auto}
+.chk[aria-checked="true"]{background:var(--ok);border-color:var(--ok);color:#fff}
+.chk[disabled]{cursor:not-allowed;opacity:.55}
+.who{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;color:var(--muted);white-space:nowrap}
+.who img{width:18px;height:18px;border-radius:50%}
+.roadmap{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.roadmap li{display:grid;grid-template-columns:70px 14px 1fr;gap:10px;align-items:start;padding-bottom:14px;position:relative}
+.roadmap .dd{font-family:var(--f-mono);font-size:.82rem;color:var(--muted);padding-top:1px;text-align:right}
+.roadmap .dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--line-2);background:var(--surface);margin-top:5px;position:relative;z-index:1}
+.roadmap li:not(:last-child)::after{content:"";position:absolute;left:calc(70px + 10px + 6px);top:18px;bottom:0;width:2px;background:var(--line)}
+.roadmap li.now .dot{border-color:var(--accent);background:var(--accent)}
+.roadmap li.past .dot{border-color:var(--ok);background:var(--ok)}
+.roadmap .rm-t{font-weight:700;font-size:.9rem}
+.roadmap .rm-s{font-size:.82rem;color:var(--muted)}
+.vote{display:flex;flex-direction:column;gap:12px}
+.vote-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vote-opt{font:inherit;color:inherit;text-align:left;cursor:pointer;padding:12px 14px;display:flex;flex-direction:column;gap:6px;border-width:1.5px}
+.vote-opt[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.vote-opt[data-course="b"][aria-pressed="true"]{border-color:var(--water);background:var(--water-soft)}
+.vote-opt .cnt{font-family:var(--f-mono);font-size:1.3rem}
+.avatars{display:flex;gap:4px;min-height:22px;flex-wrap:wrap}
+.avatars img{width:22px;height:22px;border-radius:50%;border:2px solid var(--surface)}
+.sync{font-size:.76rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.sync i{width:8px;height:8px;border-radius:50%;background:var(--line-2);display:inline-block}
+.sync.live i{background:var(--ok)}
+.flight-detail{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.fd{padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.fd ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px;font-size:.85rem}
+.fd li{display:grid;grid-template-columns:96px 1fr;gap:8px}
+.fd li span:first-child{font-family:var(--f-mono);color:var(--muted);font-size:.8rem}
+
+/* plan */
+.days{display:flex;flex-direction:column;gap:18px}
+.day{overflow:hidden;scroll-margin-top:80px}
+.day-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.day-head .date{font-family:var(--f-mono);font-size:.84rem;color:var(--accent)}
+.day.waterday{border-color:var(--water)}
+.day.waterday .date{color:var(--water)}
+.day-head .meta{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.day-strip{display:flex;flex-wrap:wrap;gap:6px 14px;padding:8px 18px;font-size:.78rem;color:var(--muted);background:var(--bg-2);border-bottom:1px solid var(--line)}
+ol.tl{list-style:none;margin:0;padding:4px 0}
+ol.tl>li{display:grid;grid-template-columns:58px 1fr;gap:12px;padding:10px 18px}
+ol.tl>li+li{border-top:1px dashed var(--line)}
+.t{font-family:var(--f-mono);font-size:.84rem;color:var(--muted);padding-top:2px}
+.what{min-width:0;display:flex;flex-direction:column;gap:4px}
+.what .ttl{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-weight:700}
+.what .sub{color:var(--ink-2);font-size:.86rem}
+.what .alt{font-size:.8rem;color:var(--muted)}
+.kind{font-size:.66rem;letter-spacing:.05em;font-weight:700;border-radius:4px;padding:0 5px;border:1px solid currentColor}
+.kind.meal{color:var(--brick)}.kind.rest{color:var(--water)}.kind.move{color:var(--muted)}.kind.see{color:var(--accent)}
+.note{font-size:.84rem;padding:10px 18px;background:var(--accent-soft);border-top:1px solid var(--line)}
+.day.waterday .note{background:var(--water-soft)}
+
+/* map */
+.map-wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+.map-box{position:relative;overflow:hidden}
+.map-box svg{display:block;width:100%;height:auto}
+.map-filter{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.fbtn{font:inherit;font-size:.78rem;font-weight:700;cursor:pointer;padding:4px 10px;border-radius:99px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2)}
+.fbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mk{cursor:pointer}
+.mk:focus{outline:none}
+.mk:focus-visible circle.ring{stroke:var(--accent);stroke-width:3}
+.side-info{padding:14px 16px;display:flex;flex-direction:column;gap:8px;position:sticky;top:76px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:.76rem;color:var(--muted);padding:10px 12px;border-top:1px solid var(--line)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+/* cards w/ plates */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.card{overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.plate{position:relative;height:118px;display:flex;align-items:flex-end;justify-content:space-between;padding:12px 14px;color:var(--plate-fg);background:#2a3550;overflow:hidden}
+.plate::before{content:"";position:absolute;inset:0;opacity:.16;background:
+  repeating-linear-gradient(0deg,transparent 0 17px,currentColor 17px 18px),
+  repeating-linear-gradient(90deg,transparent 0 17px,currentColor 17px 18px)}
+.plate .glyph{position:relative;font-family:var(--f-brush);font-size:2.6rem;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:78%}
+.plate .tagc{position:relative;font-size:.7rem;font-weight:700;letter-spacing:.06em;background:rgba(0,0,0,.28);padding:2px 8px;border-radius:99px;white-space:nowrap}
+.plate.has-ph{height:168px}
+.plate img.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none}
+.plate.has-ph::before{opacity:1;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.62));z-index:1}
+.plate.has-ph .glyph,.plate.has-ph .tagc{z-index:2;text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.plate .credit{position:absolute;top:8px;right:10px;z-index:2;font-size:.66rem;color:#fff;opacity:.85;text-decoration:none;background:rgba(0,0,0,.35);padding:1px 6px;border-radius:99px}
+.plate:not(.has-ph) .credit{display:none}
+.plate.food{background:#8a3527}.plate.food2{background:#7a4a1c}.plate.sight{background:#24324f}.plate.town{background:#245c58}.plate.spa{background:#4b3b5c}
+.card-body{padding:13px 15px 15px;display:flex;flex-direction:column;gap:9px;flex:1}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.card .name{font-family:var(--f-cn);font-size:1.03rem;font-weight:500;line-height:1.35}
+.card .kr{font-size:.82rem;color:var(--muted)}
+.card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:.83rem}
+.card dt{color:var(--muted);white-space:nowrap}
+.card dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.dishes{display:flex;flex-wrap:wrap;gap:5px}
+.dish{font-size:.76rem;border:1px solid var(--line);border-radius:6px;padding:1px 7px;background:var(--bg)}
+.dish b{font-family:var(--f-cn);font-weight:500}
+.card .foot{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.filter-row{display:flex;flex-wrap:wrap;gap:6px}
+
+/* prep */
+.prep-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;align-items:start}
+.cl-group{display:flex;flex-direction:column}
+.cl-group h4{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.cl-item{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:9px 16px;border-bottom:1px solid var(--line)}
+.cl-item:last-child{border-bottom:0}
+.cl-item .lbl{font-size:.88rem}
+.cl-item .sub{font-size:.76rem;color:var(--muted)}
+.cl-item.done .lbl{text-decoration:line-through;color:var(--muted)}
+.rate{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.86rem}
+.rate input{font:inherit;font-family:var(--f-mono);width:84px;padding:5px 8px;border:1px solid var(--line-2);border-radius:7px;background:var(--surface);color:var(--ink)}
+tfoot td{font-weight:700;background:var(--bg-2)}
+.pack{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.pack ul{margin:0;padding-left:18px;font-size:.86rem;display:flex;flex-direction:column;gap:3px}
+.callout{border:1px solid var(--warn);background:var(--warn-soft);border-radius:12px;padding:12px 16px;font-size:.86rem}
+
+/* guide */
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.phr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.phr:last-child{border-bottom:0}
+.phr .zh{font-family:var(--f-cn);font-size:1.02rem}
+.phr .py{font-size:.76rem;color:var(--muted)}
+.phr .ko{font-size:.82rem;grid-column:1}
+.phr .copy{grid-row:1/span 3;grid-column:2;align-self:center}
+.guide-grid ul{margin:0;padding-left:18px;font-size:.86rem;display:flex;flex-direction:column;gap:4px}
+footer{color:var(--muted);font-size:.78rem;padding-top:30px;display:flex;flex-direction:column;gap:4px}
+
+@media (max-width:900px){
+  header{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ov-grid,.prep-grid,.map-wrap{grid-template-columns:1fr}
+  .side-info{position:static}
+  .cal{grid-template-columns:repeat(5,minmax(110px,1fr));overflow-x:auto}
+}
+@media (max-width:520px){
+  h1{font-size:1.7rem}
+  .flights{grid-template-columns:1fr}
+  ol.tl>li{grid-template-columns:48px 1fr;gap:8px;padding:10px 14px}
+  .day-head{padding:12px 14px}.day-head .meta{margin-left:0}
+  .vote-opts{grid-template-columns:1fr}
+  .fd li{grid-template-columns:80px 1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+<div class="topbar box" role="group" aria-label="환율과 전체 예산">
+  <div class="tb-rate"><label for="rate" class="eyebrow">환율</label><span class="tb-in">₩ <input id="rate" type="number" inputmode="decimal" min="100" max="400" step="0.5" value="200"> / ¥1</span></div>
+  <div class="tb-sum"><span class="eyebrow">예상 경비 · <span id="top-course">코스 A</span></span><span><b class="num" id="top-total">—</b> <span class="muted small">4인 합계</span></span><span><b class="num" id="top-pp">—</b> <span class="muted small">1인</span></span></div>
+  <span class="muted small tb-note">환율을 바꾸면 페이지의 모든 원화 금액이 다시 계산됩니다 · 항공·숙소·쇼핑 제외 · 출발 전 은행 고시 환율로 맞추세요</span>
+</div>
+<header>
+  <div class="title-block">
+    <span class="eyebrow">두 커플 · 4인 · 숙소 난징동루 南京东路</span>
+    <h1>상하이 4박 5일</h1>
+    <p class="lede">2026.11.07 (토) – 11.11 (수). 실제로 다니는 날은 7일 오후부터 10일 밤까지 3.5일입니다. 코스 A는 도심만, 코스 B는 월요일 하루를 수향마을에 씁니다. 위쪽 A/B 스위치로 전체 화면이 바뀝니다.</p>
+  </div>
+  <div class="flights">
+    <div class="flight box"><span class="eyebrow">가는 편 · 11/7 토</span><b>13:10</b><span>푸동 PVG 도착 (현지)</span><span class="small">인천 출발은 약 12:00 KST 예상, e-티켓 확인</span></div>
+    <div class="flight box"><span class="eyebrow">오는 편 · 11/11 수</span><b>07:30</b><span>PVG 출발 → 인천</span><span class="small">인천 도착 약 10:30 KST 예상 · 당일 관광 없음</span></div>
+  </div>
+  <div class="kpis">
+    <div class="kpi box"><span class="eyebrow">출발까지</span><span class="v" id="kpi-dday">D-</span><span class="s" id="kpi-dday-s">11/7 13:10 상하이 도착</span></div>
+    <div class="kpi box"><span class="eyebrow">예상 경비 · 1인</span><span class="v" id="kpi-cost">—</span><span class="s" id="kpi-cost-s">항공·숙소 제외</span></div>
+    <div class="kpi box"><span class="eyebrow">예약 · 확인</span><span class="v" id="kpi-res">0/0</span><span class="s">개요 탭 데드라인 표</span><div class="bar"><i id="kpi-res-bar"></i></div></div>
+    <div class="kpi box"><span class="eyebrow">준비 체크리스트</span><span class="v" id="kpi-cl">0/0</span><span class="s" id="kpi-cl-s">4명이 함께 체크</span><div class="bar"><i id="kpi-cl-bar"></i></div></div>
+  </div>
+</header>
+
+<div class="bar-sticky">
+  <nav class="tabs" role="tablist" aria-label="섹션">
+    <button class="tab" role="tab" id="t-overview" data-tab="overview" aria-selected="true">개요</button>
+    <button class="tab" role="tab" id="t-plan" data-tab="plan" aria-selected="false">일정</button>
+    <button class="tab" role="tab" id="t-map" data-tab="map" aria-selected="false">지도</button>
+    <button class="tab" role="tab" id="t-food" data-tab="food" aria-selected="false">먹거리</button>
+    <button class="tab" role="tab" id="t-prep" data-tab="prep" aria-selected="false">준비</button>
+    <button class="tab" role="tab" id="t-guide" data-tab="guide" aria-selected="false">가이드</button>
+  </nav>
+  <div class="seg" role="group" aria-label="코스 선택">
+    <button data-course="a" aria-pressed="true">A 도심</button>
+    <button data-course="b" aria-pressed="false">B 수향</button>
+  </div>
+</div>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="panel-stack" id="p-overview" role="tabpanel" aria-labelledby="t-overview">
+  <div class="stack">
+    <div class="sec-head"><h2>트립 캘린더</h2><span class="pill" id="cal-course">코스 A</span><p>날짜를 누르면 그날 일정으로 이동합니다. 날씨는 11월 상하이 평년값입니다.</p></div>
+    <div class="cal" id="cal"></div>
+  </div>
+
+  <div class="ov-grid">
+    <div class="stack">
+      <div class="sec-head"><h2>예약 데드라인</h2><p>체크하면 4명 모두에게 바로 보입니다. 기준일은 오늘이고, 남은 날짜가 7일 이하이면 빨간색입니다.</p></div>
+      <div class="tbl"><table><thead><tr><th style="width:38px"></th><th>할 일</th><th>마감</th><th>상태</th><th>방법</th></tr></thead><tbody id="dl-body"></tbody></table></div>
+    </div>
+    <div class="stack">
+      <div class="sec-head"><h2>코스 투표</h2><p>각자 한 표씩. 바꾸고 싶으면 다시 누르면 됩니다.</p></div>
+      <div class="box pad vote">
+        <div class="vote-opts">
+          <button class="vote-opt box" data-course="a" aria-pressed="false"><span class="eyebrow">코스 A</span><strong>도심 집중</strong><span class="cnt" id="vote-a">0표</span><span class="avatars" id="vote-a-av"></span></button>
+          <button class="vote-opt box" data-course="b" aria-pressed="false"><span class="eyebrow">코스 B</span><strong>수향마을 포함</strong><span class="cnt" id="vote-b">0표</span><span class="avatars" id="vote-b-av"></span></button>
+        </div>
+        <span class="sync" id="sync"><i></i><span>이 기기에만 저장 중</span></span>
+      </div>
+      <div class="sec-head" style="margin-top:8px"><h2>출발 전 로드맵</h2></div>
+      <div class="box pad"><ol class="roadmap" id="roadmap"></ol></div>
+    </div>
+  </div>
+
+  <div class="stack">
+    <div class="sec-head"><h2>항공 · 공항 동선</h2><p>상하이는 한국보다 1시간 늦습니다 (CST = KST − 1). 아래 시각은 모두 상하이 시간입니다. 항공편명과 인천 쪽 시각은 e-티켓으로 확인하세요.</p></div>
+    <div class="flight-detail">
+      <div class="fd box"><h4>11/7 도착</h4><ol>
+        <li><span>13:10</span><span>PVG 도착, 입국심사 (무비자 · 입국카드는 온라인 사전 작성 가능)</span></li>
+        <li><span>14:10</span><span>짐 찾기, 공항 안에서 알리페이 결제·데이터 확인</span></li>
+        <li><span>14:30</span><span>디디 6인승(商务车) 호출 → 숙소 약 50~60분, ¥180~230</span></li>
+        <li><span>15:30</span><span>난징동루 숙소 체크인</span></li>
+      </ol></div>
+      <div class="fd box"><h4>11/11 출발</h4><ol>
+        <li><span>11/10 밤</span><span>디디 预约(예약 호출)로 05:00 6인승 예약, 짐 정리</span></li>
+        <li><span>04:30</span><span>기상 · 체크아웃 (전날 미리 정산)</span></li>
+        <li><span>05:00</span><span>숙소 출발. 새벽이라 약 45분</span></li>
+        <li><span>05:50</span><span>PVG 도착, 체크인 마감은 보통 출발 60분 전</span></li>
+        <li><span>07:30</span><span>출발. 지하철 2호선·자기부상열차 첫차로는 시간이 부족합니다</span></li>
+      </ol></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAN ============ -->
+<section class="panel-stack" id="p-plan" role="tabpanel" aria-labelledby="t-plan" hidden>
+  <div class="sec-head"><h2 id="plan-title">코스 A · 도심 집중</h2><p id="plan-lede"></p></div>
+  <div class="days" id="days"></div>
+  <div class="stack" id="towns-wrap">
+    <div class="sec-head"><h2>수향마을 비교</h2><p>코스 B의 9일(월)은 저우좡 + 퉁리를 기준으로 짰습니다. 차를 빌리지 않으면 주자자오로 바꾸세요.</p></div>
+    <div class="grid" id="towns"></div>
+  </div>
+</section>
+
+<!-- ============ MAP ============ -->
+<section class="panel-stack" id="p-map" role="tabpanel" aria-labelledby="t-map" hidden>
+  <div class="sec-head"><h2>동선 지도</h2><p>위경도를 그대로 찍은 개략도입니다. 강과 하천 선은 대략적인 위치입니다. 점을 누르면 오른쪽에 정보와 고덕지도·구글지도 링크가 나옵니다.</p></div>
+  <div class="map-wrap">
+    <div class="box map-box">
+      <div class="map-filter" id="map-filter"></div>
+      <svg id="map" viewBox="0 0 800 560" role="img" aria-label="상하이 시내 동선 개략 지도"></svg>
+      <div class="legend" id="legend"></div>
+    </div>
+    <aside class="box side-info" id="map-info" aria-live="polite">
+      <span class="eyebrow">선택한 장소</span>
+      <p class="muted small">지도에서 점을 눌러 보세요.</p>
+    </aside>
+  </div>
+  <div class="stack">
+    <div class="sec-head"><h2>근교 수향마을 위치</h2><p>숙소(난징동루)에서 각 마을까지 직선거리와 차로 걸리는 시간입니다.</p></div>
+    <div class="box"><svg id="map-towns" viewBox="0 0 800 380" role="img" aria-label="상하이와 근교 수향마을 위치 개략도" style="display:block;width:100%;height:auto"></svg></div>
+  </div>
+</section>
+
+<!-- ============ FOOD ============ -->
+<section class="panel-stack" id="p-food" role="tabpanel" aria-labelledby="t-food" hidden>
+  <div class="sec-head"><h2>먹거리</h2><p>요청한 6곳과 추가로 찾은 곳입니다. 카드 사진은 위키미디어 커먼즈의 대표 메뉴 예시 사진이고 해당 식당 사진은 아닙니다. 실제 매장 사진은 각 카드의 <b>사진</b> 링크(구글 이미지), 실제 리뷰·지점은 <b>대중점평</b> 링크로 확인하세요. 체인점은 그날 동선에서 가까운 지점을 고르면 됩니다.</p></div>
+  <div class="filter-row" id="food-filter"></div>
+  <div class="grid" id="food"></div>
+  <div class="stack">
+    <div class="sec-head"><h2>마사지</h2><p>모두 상하이에 지점이 여러 곳 있는 체인입니다. 대중점평·美团에서 지점을 고르고 단체권(团购)을 사면 정가보다 저렴합니다. 4명이 같은 방이면 “四人间”, 커플별 두 방이면 “双人间两间”.</p></div>
+    <div class="grid" id="spa"></div>
+  </div>
+</section>
+
+<!-- ============ PREP ============ -->
+<section class="panel-stack" id="p-prep" role="tabpanel" aria-labelledby="t-prep" hidden>
+  <div class="prep-grid">
+    <div class="stack">
+      <div class="sec-head"><h2>함께 쓰는 체크리스트</h2><p>누가 체크했는지 이름이 함께 표시됩니다.</p></div>
+      <div class="stack" id="checklist"></div>
+    </div>
+    <div class="stack">
+      <div class="sec-head"><h2>예상 경비</h2><span class="pill" id="budget-course">코스 A</span><p>4인 합계 기준, 항공·숙소·쇼핑 제외. 원화는 맨 위에 입력한 환율로 계산됩니다.</p></div>
+      <div class="tbl"><table style="min-width:520px"><thead><tr><th>항목</th><th class="r">4인 (¥)</th><th class="r">1인 (¥)</th><th class="r">1인 (₩)</th></tr></thead><tbody id="budget-body"></tbody><tfoot><tr><td>합계</td><td class="r num" id="b-tot"></td><td class="r num" id="b-pp"></td><td class="r num" id="b-krw"></td></tr></tfoot></table></div>
+      <p class="muted small">범위: 아끼면 약 25% 적게, 마사지·식사를 고급으로 하면 약 40% 더 나옵니다.</p>
+    </div>
+  </div>
+  <div class="stack">
+    <div class="sec-head"><h2>짐 · 준비물</h2></div>
+    <div class="pack">
+      <div class="box pad"><h4>필수</h4><ul><li>여권 (잔여 6개월 이상)</li><li>e-티켓 · 숙소 예약 확인서 (입국 시 질문 대비)</li><li>해외결제 카드 2장 (알리페이 연결용 + 예비)</li><li>현금 ¥500 정도 (비상용)</li></ul></div>
+      <div class="box pad"><h4>11월 날씨</h4><ul><li>낮 18~20°C, 밤 11~13°C</li><li>얇은 패딩이나 트렌치, 니트</li><li>접이식 우산 (11월 강수일 약 8일)</li><li>오래 걷는 날이 많아 편한 운동화</li></ul></div>
+      <div class="box pad"><h4>있으면 편한 것</h4><ul><li>보조배터리 (기내 반입만, 결제·지도에 배터리 많이 씀)</li><li>휴대용 휴지·물티슈 (공중화장실 휴지 없는 곳 많음)</li><li>멀티탭 (중국 콘센트는 한국 플러그 대부분 호환)</li><li>상비약 (소화제, 진통제)</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GUIDE ============ -->
+<section class="panel-stack" id="p-guide" role="tabpanel" aria-labelledby="t-guide" hidden>
+  <div class="stack">
+    <div class="sec-head"><h2>장소별 상세</h2><p>입장료·운영시간은 2025~2026년 판매처 기준이라 바뀔 수 있습니다.</p></div>
+    <div class="grid" id="sights"></div>
+  </div>
+  <div class="guide-grid">
+    <div class="box pad stack"><h3>첫 방문자 가이드</h3><ul>
+      <li><b>결제</b>: 거의 모든 곳이 알리페이·위챗페이 QR. 해외 카드를 연결하면 그대로 결제됩니다.</li>
+      <li><b>택시</b>: 디디는 알리페이 안 미니앱으로 부르면 한국어 화면을 쓸 수 있습니다. 4인이면 일반 차량, 짐 있으면 6인승.</li>
+      <li><b>지하철</b>: 알리페이 교통 QR로 탑승. 짐 검사가 있어 입구에서 시간이 조금 걸립니다.</li>
+      <li><b>식당 대기</b>: 인기 식당은 대중점평 또는 매장 QR로 번호표(取号). 4인 테이블(四人桌)로 받기.</li>
+      <li><b>팁</b>: 없습니다. 마사지샵도 필요 없습니다.</li>
+      <li><b>물</b>: 수돗물은 마시지 않고 생수를 삽니다.</li>
+      <li><b>인터넷</b>: 로밍이나 해외 eSIM이면 카톡·구글이 됩니다. 현지 와이파이만 쓰면 VPN이 필요합니다.</li>
+    </ul></div>
+    <div class="box pad stack"><h3>바로 쓰는 중국어</h3><div id="phrases"></div></div>
+    <div class="box pad stack"><h3>긴급 연락처</h3><ul>
+      <li>경찰 <span class="num">110</span> · 구급 <span class="num">120</span> · 소방 <span class="num">119</span></li>
+      <li>주상하이 대한민국 총영사관: <span class="cn">上海市长宁区万山路60号</span></li>
+      <li>총영사관 대표번호 <span class="num">+86-21-6295-5000</span></li>
+      <li>외교부 영사콜센터 (24시간) <span class="num">+82-2-3210-0404</span></li>
+      <li>숙소 주소를 중국어로 캡처해 두면 길 잃었을 때 택시 기사에게 보여줄 수 있습니다.</li>
+    </ul></div>
+  </div>
+</section>
+
+<footer>
+  <span>입장료·예산·영업시간은 2025~2026년 기준 대략적인 값입니다. 체인점의 지점과 주소는 출발 전에 대중점평이나 고덕지도에서 다시 확인하세요.</span>
+  <span>한국 여권 무비자 입국: 2026.12.31까지 최대 30일 (2025.11 중국 외교부 발표 기준).</span>
+</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ================= DATA (single source of truth) ================= */
+var HOTEL={lat:31.2368,lon:121.4790};
+var P={
+  hotel:{cn:"南京东路 (숙소)",kr:"숙소 · 난징동루",type:"hub",lat:31.2368,lon:121.4790},
+  pvg:{cn:"浦东国际机场",kr:"푸동공항",type:"hub",lat:31.1443,lon:121.8083,off:true},
+  nanjing:{cn:"南京路步行街",kr:"난징동루 보행가",type:"sight",lat:31.2372,lon:121.4835,
+    hours:"상시",price:"무료",tip:"저녁 네온이 켜진 뒤가 예쁩니다. 외탄까지 걸어서 15분.",cat:"도심"},
+  bund:{cn:"外滩",kr:"외탄 (와이탄)",type:"sight",lat:31.2400,lon:121.4905,
+    hours:"상시 · 경관 조명은 해 진 뒤~22시경",price:"무료",tip:"11월 일몰은 약 17시. 16시 반에 도착하면 해 지는 모습과 점등을 둘 다 봅니다.",cat:"도심"},
+  yuyuan:{cn:"豫园",kr:"예원 · 성황묘",type:"sight",lat:31.2272,lon:121.4921,
+    hours:"정원 09:00~16:30 전후 · 월요일 휴원",price:"정원 ¥40 (성수기)",tip:"주말엔 9시 전에 도착. 여권 지참(실명 매표). 상가와 九曲桥는 정원 표 없이도 볼 수 있습니다.",cat:"올드 상하이"},
+  wukang:{cn:"武康大楼",kr:"우캉맨션 · 우캉루",type:"sight",lat:31.2050,lon:121.4380,
+    hours:"상시 (외관)",price:"무료",tip:"11월 플라타너스 단풍 시즌. 건너편 교차로가 사진 포인트입니다.",cat:"프랑스 조계지"},
+  anfu:{cn:"安福路",kr:"안푸루",type:"sight",lat:31.2120,lon:121.4440,
+    hours:"상점 대부분 10:00~22:00",price:"무료",tip:"작은 편집숍과 카페 거리. 우캉루에서 걸어서 10분.",cat:"프랑스 조계지"},
+  jingan:{cn:"静安寺",kr:"징안사",type:"sight",lat:31.2236,lon:121.4453,
+    hours:"07:30~17:00",price:"¥50",tip:"금빛 지붕 사원. 바로 옆이 愚园路 골목입니다.",cat:"징안"},
+  xintiandi:{cn:"新天地",kr:"신천지",type:"sight",lat:31.2196,lon:121.4752,
+    hours:"상점 10:00~22:00",price:"무료",tip:"석고문(石库门) 골목을 고쳐 만든 거리. 브런치 카페가 많습니다.",cat:"황푸 남부"},
+  tianzifang:{cn:"田子坊",kr:"톈쯔팡",type:"sight",lat:31.2087,lon:121.4686,
+    hours:"10:00~21:00 전후",price:"무료",tip:"좁은 골목에 공방·기념품 가게. 오전이 덜 붐빕니다.",cat:"황푸 남부"},
+  zhangyuan:{cn:"张园",kr:"장위안",type:"sight",lat:31.2292,lon:121.4622,
+    hours:"10:00~22:00",price:"무료",tip:"복원한 석고문 단지. 명품 매장과 카페, 기념 사진 찍기 좋습니다.",cat:"징안"},
+  shtower:{cn:"上海中心大厦",kr:"상하이타워 118층 전망대",type:"sight",lat:31.2335,lon:121.5055,
+    hours:"08:30~22:00 (21:30 입장 마감)",price:"¥180",tip:"맑은 날 전날 밤에 온라인 예매. 흐리면 东方明珠로 바꾸세요.",cat:"푸동"},
+  binjiang:{cn:"陆家嘴滨江",kr:"루자쭈이 강변",type:"sight",lat:31.2405,lon:121.4990,
+    hours:"상시",price:"무료",tip:"강 건너에서 외탄 건물들을 한눈에 봅니다.",cat:"푸동"},
+  cruise:{cn:"黄浦江游览 (十六铺码头)",kr:"황푸강 야경 크루즈",type:"sight",lat:31.2320,lon:121.4975,
+    hours:"저녁 18:30~21:30 회차 다수",price:"¥100~150",tip:"약 40~60분. 싸게 가려면 東昌路↔复兴东路 페리 ¥2.",cat:"도심"},
+  /* food */
+  siji:{cn:"四季民福烤鸭店",kr:"쓰지민푸 카오야",type:"food",lat:31.2450,lon:121.4735},
+  hjyq:{cn:"很久以前羊肉串",kr:"헌지우이첸 양꼬치",type:"food",lat:31.2290,lon:121.4800},
+  fei:{cn:"费大厨辣椒炒肉",kr:"페이따추 고추돼지볶음",type:"food",lat:31.2340,lon:121.4760,approx:true},
+  renhe_j:{cn:"人和馆 (静安寺店)",kr:"런허관 징안사점",type:"food",lat:31.2245,lon:121.4470},
+  renhe_z:{cn:"人和馆 (肇嘉浜路店)",kr:"런허관 자오자방루점",type:"food",lat:31.2025,lon:121.4620},
+  ddd:{cn:"点都德 (陆家嘴)",kr:"디엔두더 딤섬",type:"food",lat:31.2370,lon:121.5080,approx:true},
+  wasabi:{cn:"芥末Wasabi (华润时代广场)",kr:"와사비 일식",type:"food",lat:31.2300,lon:121.5250},
+  qxt:{cn:"七欣天香辣蟹火锅",kr:"치신톈 매운 게 훠궈",type:"food",lat:31.2330,lon:121.4720,approx:true},
+  mala:{cn:"麻辣香锅",kr:"마라샹궈",type:"food",lat:31.2150,lon:121.4720,approx:true},
+  dongbei:{cn:"东北菜",kr:"동북요리",type:"food",lat:31.2400,lon:121.4760,approx:true},
+  spa:{cn:"足疗 · 按摩",kr:"마사지",type:"rest",lat:31.2355,lon:121.4760,approx:true},
+  /* towns */
+  zhouzhuang:{cn:"周庄",kr:"저우좡",type:"town",lat:31.1170,lon:120.8460,off:true},
+  tongli:{cn:"同里",kr:"퉁리",type:"town",lat:31.1610,lon:120.7190,off:true}
+};
+
+/* photos: Wikimedia Commons file names (장소·대표 메뉴 예시 사진, 해당 식당 사진 아님) */
+var IMG={
+  bund:"Bund_at_night.jpg",nanjing:"East_Nanjing_Road_at_night,_Shanghai.jpg",yuyuan:"Shanghai_-_Yu_Garden_-_0034.jpg",
+  wukang:"Wukang_Mansion.jpg",anfu:"Wukang_Road,_Shanghai,_May_2016.JPG",jingan:"Jing'an_Temple_Shanghai_6.jpg",
+  xintiandi:"Xintiandi_21745-Shanghai_(33049656255).jpg",tianzifang:"Tianzifang_21669-Shanghai_(33070816285).jpg",zhangyuan:"Chan-su-ho_Garden.jpg",
+  shtower:"Shanghai_-_Shanghai_Tower_-_0003.jpg",binjiang:"Lujiazui_Skyline_from_Bund.jpg",cruise:"Night_Ship_Pudong_Bund_Shanghai_01.jpg",
+  zhouzhuang:"Zhouzhuang_water_town.jpg",tongli:"The_Three_Bridges_of_Tongli.jpg",jinxi:"Town_of_Jinxi_Jiangsu_China.JPG",
+  zhujiajiao:"1_zhujiajiao_ancient_water_town_2023.jpg",xitang:"Street_view_near_Huixiuqiao_Bridge_in_Xitang_Town_at_night.jpg",wuzhen:"Night_in_Wuzhen_Xizha_(20171231174337).jpg",
+  siji:"Sliced_Peking_Duck.jpg",dadong:"Sliced_Peking_Duck_with_traditional_condiments.jpg",hjyq:"Chinese_chuan_sticks.jpg",
+  fei:"Fried_Pork_with_Pepper_20210630.jpg",renhe_j:"红烧肉_Grandma's_Pork_with_rice_-_The_Bund_AUD9.jpg",ddd:"Dimsum.jpg",
+  wasabi:"Nigiri_Sushi_(25966163204).jpg",qxt:"Spicy_crab_claws.jpg",mala:"Ma_La_Xiang_Guo.jpg",
+  yaoji:"Guobaorou_at_Zhenbutong,_Changchun_(20220826174428).jpg",dongbei:"Guobaorou_a0.jpg"
+};
+var DOW=["일","월","화","수","목","금","토"];
+var DAYMETA=[
+  {d:7,w:"토",wx:"19° / 12°",sun:"일몰 16:59"},
+  {d:8,w:"일",wx:"19° / 12°",sun:"일몰 16:58"},
+  {d:9,w:"월",wx:"18° / 12°",sun:"일몰 16:57"},
+  {d:10,w:"화",wx:"18° / 11°",sun:"일몰 16:56"},
+  {d:11,w:"수",wx:"",sun:""}
+];
+
+/* kind: see | meal | rest | move */
+var D1=[
+  {t:"13:10",kind:"move",k:"pvg",title:"푸동공항 도착",sub:"입국·짐 찾기 약 1시간. 공항에서 알리페이 결제와 데이터부터 확인."},
+  {t:"14:30",kind:"move",k:"hotel",title:"디디 6인승으로 숙소",sub:"약 50~60분, ¥180~230. 지하철 2호선 직행은 약 70분, 1인 ¥8."},
+  {t:"15:40",kind:"rest",k:"hotel",title:"체크인 · 잠깐 휴식"},
+  {t:"16:30",kind:"see",k:"nanjing",title:"난징동루 보행가 → 외탄",sub:"걸어서 15분. 17시 일몰과 점등을 둘 다 봅니다.",then:"bund"},
+  {t:"18:30",kind:"meal",k:"siji",title:"四季民福 · 베이징 카오야",sub:"西藏北路 大悦城 5F, 택시 10분. 저녁 대기가 길어 17시쯤 대중점평으로 번호표.",alt:"대안: 很久以前羊肉串 (云南南路, 숙소에서 도보)"},
+  {t:"20:30",kind:"rest",k:"spa",title:"발마사지 90분",sub:"비행 후 다리 피로 풀기. 숙소 근처 지점을 4인실(四人间)로."}
+];
+var COURSES={
+ a:{name:"코스 A · 도심 집중",lede:"하루에 한 구역씩 묶어서 이동을 줄였습니다. 첫날은 숙소 주변, 둘째 날은 올드 상하이와 프랑스 조계지, 셋째 날은 푸동, 넷째 날은 신천지와 쇼핑입니다.",
+  days:[
+   {title:"도착 · 난징동루 · 외탄 야경",area:"숙소 주변 도보",items:D1},
+   {title:"올드 상하이 · 프랑스 조계지",area:"황푸 → 쉬후이 → 징안",items:[
+     {t:"08:30",kind:"see",k:"yuyuan",title:"예원 · 성황묘 상가",sub:"일요일이라 9시 전 도착. 정원은 09:00 개장, 九曲桥 사진은 그 전에."},
+     {t:"11:30",kind:"meal",k:"fei",title:"费大厨辣椒炒肉 · 후난식 고추돼지볶음",sub:"인민광장·난징동루 쪽 지점. 11시 반 전에 번호표.",alt:"대안: 东北菜 점심"},
+     {t:"13:30",kind:"see",k:"wukang",title:"우캉루 · 우캉맨션 → 안푸루 산책",sub:"11월 플라타너스 단풍이 가장 예쁜 때. 커플 사진 찍기 좋은 길.",then:"anfu"},
+     {t:"16:30",kind:"see",k:"jingan",title:"징안사 → 愚园路",sub:"택시 10분. 사원을 보고 골목 카페로."},
+     {t:"18:00",kind:"meal",k:"renhe_j",title:"人和馆 · 상하이 본방요리",sub:"静安寺점 愚园路142-146号 3F. 홍소육(红烧肉). 예약 필수.",res:"res_renhe"},
+     {t:"20:30",kind:"meal",k:"hjyq",title:"야식 · 很久以前羊肉串",sub:"숙소로 돌아와 云南南路에서 꼬치에 맥주. 새벽까지 영업.",alt:"선택 사항"}
+   ]},
+   {title:"푸동 · 루자쭈이 스카이라인",area:"푸동 신구",note:"월요일은 상하이박물관이 쉬어서 박물관 대신 전망대와 강변을 넣었습니다.",items:[
+     {t:"10:00",kind:"meal",k:"ddd",title:"点都德 · 광둥 딤섬 브런치",sub:"陆家嘴 지점. 하가우·차슈바오·에그타르트. 4명이 10접시 정도."},
+     {t:"12:00",kind:"see",k:"shtower",title:"상하이타워 118층 전망대",sub:"1인 ¥180. 맑은 날 추천.",res:"res_tower"},
+     {t:"14:30",kind:"see",k:"binjiang",title:"루자쭈이 강변 산책"},
+     {t:"16:30",kind:"see",k:"wasabi",title:"世纪大道역 · 화룬시대광장 쇼핑",sub:"지하철 2정거장."},
+     {t:"18:00",kind:"meal",k:"wasabi",title:"芥末Wasabi (华润时代店) · 일식",sub:"张杨路500号 华润时代广场."},
+     {t:"20:00",kind:"see",k:"cruise",title:"황푸강 야경 크루즈",sub:"十六铺 부두 출발 40~60분, ¥100~150."},
+     {t:"21:30",kind:"rest",k:"spa",title:"전신 마사지 60~90분"}
+   ]},
+   {title:"신천지 · 톈쯔팡 · 마지막 밤",area:"황푸 남부 → 징안",note:"11/11 귀국: 04:30 기상 → 05:00 디디 6인승(전날 밤 예약) → 약 05:50 PVG → 07:30 출발.",items:[
+     {t:"10:00",kind:"see",k:"xintiandi",title:"신천지 석고문 골목 · 브런치 카페"},
+     {t:"11:30",kind:"see",k:"tianzifang",title:"톈쯔팡",sub:"택시 10분. 공방·기념품 골목."},
+     {t:"13:00",kind:"meal",k:"mala",title:"마라샹궈 (麻辣香锅)",sub:"재료를 골라 무게로 계산. 4명이면 큰 냄비 하나와 밥.",alt:"대안: 东北菜 꿔바로우·지싼셴"},
+     {t:"15:00",kind:"see",k:"zhangyuan",title:"장위안 · 난징시루 쇼핑",sub:"기념품도 여기서."},
+     {t:"17:30",kind:"meal",k:"qxt",title:"七欣天香辣蟹火锅 · 매운 게 훠궈",sub:"게찜을 먹고 남은 국물에 훠궈. 4명이 한 냄비."},
+     {t:"19:30",kind:"rest",k:"spa",title:"마지막 마사지 → 짐 정리 → 22:00 취침",res:"res_didi"}
+   ]}
+  ]},
+ b:{name:"코스 B · 수향마을 포함",lede:"월요일 하루를 근교 수향마을에 쓰고, 시내는 일요일과 화요일 이틀로 줄였습니다. 4인이면 기사 딸린 차(包车)를 하루 빌리는 게 버스보다 편하고, 1인당 비용도 비슷합니다.",
+  days:[
+   {title:"도착 · 난징동루 · 외탄 야경",area:"코스 A와 같음",items:D1},
+   {title:"올드 상하이 · 조계지 압축판",area:"황푸 → 쉬후이",items:[
+     {t:"08:30",kind:"see",k:"yuyuan",title:"예원 · 성황묘",sub:"월요일은 정원이 쉬므로 이날 꼭."},
+     {t:"11:30",kind:"meal",k:"fei",title:"费大厨辣椒炒肉",sub:"인민광장·난징동루 쪽 지점."},
+     {t:"13:30",kind:"see",k:"wukang",title:"우캉루 · 안푸루 단풍길",then:"anfu"},
+     {t:"16:30",kind:"see",k:"xintiandi",title:"신천지에서 커피",sub:"택시 15분."},
+     {t:"18:00",kind:"meal",k:"renhe_z",title:"人和馆 · 상하이 본방요리",sub:"이 동선엔 신천지와 가까운 肇嘉浜路407号점이 편합니다. 예약 필수.",res:"res_renhe"},
+     {t:"21:00",kind:"meal",k:"hjyq",title:"야식 · 很久以前羊肉串",sub:"다음 날 일찍 나가니 가볍게."}
+   ]},
+   {water:true,title:"수향마을 데이",area:"장쑤 쿤산 · 쑤저우 근교",note:"차를 빌리지 않는다면 주자자오(朱家角)가 가장 쉽습니다. 지하철 17호선, 숙소에서 약 1시간 10분, 마을 입장 무료. 반나절이면 충분해 오후는 시내로 돌릴 수 있습니다.",items:[
+     {t:"08:00",kind:"move",k:"hotel",title:"숙소 앞에서 차량(包车) 출발",sub:"7인승 하루 ¥900~1,300. 톨비·주차비 포함인지 확인. 클룩·트립닷컴에서 한국어 예약.",res:"res_car"},
+     {t:"09:40",kind:"see",k:"zhouzhuang",title:"저우좡 (周庄)",sub:"쌍교(双桥), 沈厅, 나룻배(摇橹船). 입장권 정가 ¥100, 온라인이 더 쌉니다."},
+     {t:"12:30",kind:"meal",k:"zhouzhuang",title:"점심 · 万三蹄 · 奥灶面",sub:"돼지족 찜과 쿤산식 국수. 마을 안 식당에서."},
+     {t:"14:00",kind:"see",k:"tongli",title:"퉁리 (同里)",sub:"차로 30~40분. 退思园 정원, 저우좡보다 조용합니다. 입장권 정가 ¥100.",alt:"대안: 진시(锦溪), 더 조용함"},
+     {t:"17:00",kind:"move",k:"hotel",title:"상하이로 복귀",sub:"약 1시간 30분. 퇴근길 정체 고려."},
+     {t:"19:00",kind:"meal",k:"qxt",title:"七欣天香辣蟹火锅",sub:"종일 걸은 날엔 둘러앉는 냄비 요리.",alt:"대안: 东北菜 铁锅炖"},
+     {t:"21:00",kind:"rest",k:"spa",title:"전신 마사지"}
+   ]},
+   {title:"푸동 · 마지막 밤",area:"푸동 신구 → 외탄",note:"11/11 귀국: 04:30 기상 → 05:00 디디 6인승(전날 밤 예약) → 약 05:50 PVG → 07:30 출발.",items:[
+     {t:"10:00",kind:"meal",k:"ddd",title:"点都德 · 딤섬 브런치",sub:"陆家嘴 지점."},
+     {t:"12:00",kind:"see",k:"shtower",title:"상하이타워 118층 → 강변 산책",res:"res_tower",then:"binjiang"},
+     {t:"15:00",kind:"see",k:"wasabi",title:"화룬시대광장 쇼핑",sub:"世纪大道역."},
+     {t:"17:30",kind:"meal",k:"wasabi",title:"芥末Wasabi (华润时代店)",sub:"마지막 밤이라 조금 이르게.",alt:"마라샹궈가 먹고 싶다면 점심 딤섬 대신 넣으세요."},
+     {t:"19:30",kind:"see",k:"cruise",title:"황푸강 야경 크루즈"},
+     {t:"21:00",kind:"rest",k:"spa",title:"짧은 발마사지 → 22:30 취침",res:"res_didi"}
+   ]}
+  ]}
+};
+
+var FOOD=[
+ {k:"hjyq",req:true,plate:"羊肉串",cls:"food",cuisine:"양꼬치 · 내몽골식 꼬치구이",branch:"云南南路180号 (近金陵东路), 숙소에서 도보",hours:"17:00 ~ 새벽 4시경",budget:"¥120~150",
+  dishes:[["羊肉串","양꼬치"],["烤馕","구운 난"],["羊排","양갈비"],["烤茄子","가지구이"]],order:"양꼬치 40개 + 곁들이 3~4개 + 맥주",tip:"웨이팅이 길어 위챗·대중점평으로 번호표. 2025년 일부 매장 품질 이슈 보도가 있어 최근 리뷰 확인.",when:{a:"2일차 야식",b:"2일차 야식"}},
+ {k:"fei",req:true,plate:"辣椒炒肉",cls:"food",cuisine:"후난요리 · 고추돼지볶음",branch:"황푸·징안·푸동 등 직영 30여 곳, 인민광장 쪽 추천",hours:"10:30~21:30 전후",budget:"¥80~100",
+  dishes:[["辣椒炒肉","고추돼지볶음"],["小炒黄牛肉","소고기볶음"],["擂辣椒皮蛋","피단 고추무침"]],order:"요리 4개 + 밥(리필)",tip:"맵기 조절: 微辣(약간 매움), 不辣(안 맵게).",when:{a:"2일차 점심",b:"2일차 점심"}},
+ {k:"renhe_j",req:true,plate:"红烧肉",cls:"food2",cuisine:"상하이 본방요리 · 미쉐린 가이드",branch:"静安寺점 愚园路142-146号 3F / 肇嘉浜路407号점 (徐汇)",hours:"11:00~14:00, 17:00~21:30",budget:"¥160~250",
+  dishes:[["红烧肉","홍소육"],["油爆虾","새우볶음"],["葱油拌面","파기름국수"],["腌笃鲜","죽순 수프"]],order:"요리 5개 + 국수 2개",tip:"주말 저녁은 꼭 예약 (대중점평 또는 전화).",when:{a:"2일차 저녁 (静安寺)",b:"2일차 저녁 (肇嘉浜路)"}},
+ {k:"ddd",req:true,plate:"点心",cls:"food2",cuisine:"광둥 딤섬 · 얌차",branch:"陆家嘴 상권 지점",hours:"09:00~22:00 전후",budget:"¥80~120",
+  dishes:[["虾饺","하가우"],["叉烧包","차슈바오"],["红米肠","창펀"],["蛋挞","에그타르트"]],order:"딤섬 10접시 + 차",tip:"주문표에 체크하는 방식이라 주문이 쉽습니다.",when:{a:"3일차 브런치",b:"4일차 브런치"}},
+ {k:"wasabi",req:true,plate:"寿司",cls:"food",cuisine:"일식",branch:"张杨路500号 华润时代广场 (지하철 世纪大道역)",hours:"쇼핑몰 영업시간",budget:"¥150~250",
+  dishes:[["刺身","사시미"],["寿司","스시"]],order:"모둠 2 + 각자 단품",tip:"쇼핑몰 안이라 쇼핑과 묶기 좋습니다.",when:{a:"3일차 저녁",b:"4일차 저녁"}},
+ {k:"qxt",req:true,plate:"香辣蟹",cls:"food",cuisine:"매운 게찜 + 훠궈",branch:"쇼핑몰 지점 다수, 그날 동선 근처로",hours:"11:00~22:00 전후",budget:"¥120~150",
+  dishes:[["香辣蟹","매운 게"],["火锅配菜","훠궈 재료"],["年糕","떡"]],order:"게 大份 1 + 훠궈 재료 4~5",tip:"게를 먹고 남은 국물에 훠궈를 이어 먹습니다. 맵기 선택.",when:{a:"4일차 저녁",b:"3일차 저녁"}},
+ {k:"siji",req:false,plate:"烤鸭",cls:"food2",cuisine:"베이징 카오야 · 추가",branch:"西藏北路198号 大悦城 5F (숙소 택시 10분) / 南京西路1168号 中信泰富 4F",hours:"10:30~21:30 (주말 22:30)",budget:"¥150~200",
+  dishes:[["烤鸭","카오야"],["炸酱面","짜장면"],["宫保虾球","궁바오 새우"]],order:"오리 1마리 + 요리 3~4개",tip:"저녁 대기 1시간 이상 흔함. 미리 번호표.",when:{a:"1일차 저녁",b:"1일차 저녁"}},
+ {k:"dadong",req:false,plate:"大董",cls:"food2",cuisine:"고급 베이징 카오야 · 추가",branch:"淮海中路999号 环贸iapm 6F",hours:"11:00~22:00",budget:"¥400 이상",
+  dishes:[["酥不腻烤鸭","대표 카오야"]],order:"오리 1마리 + 코스 요리",tip:"분위기 있는 저녁을 원할 때 四季民福 대신. 예약 권장.",when:{}},
+ {k:"mala",req:false,plate:"麻辣香锅",cls:"food",cuisine:"마라샹궈 · 추가",branch:"대중점평에서 “麻辣香锅” 검색 → 평점 4.5 이상, 근처 순",hours:"매장별",budget:"¥60~90",
+  dishes:[["牛肉","소고기"],["午餐肉","햄"],["藕片","연근"],["宽粉","넓은 당면"]],order:"큰 냄비 1 + 밥 4",tip:"고수 빼려면 “不要香菜”. 맵기는 微辣부터.",when:{a:"4일차 점심"}},
+ {k:"yaoji",req:false,plate:"铁锅炖",cls:"food2",cuisine:"동북요리 · 철솥찜 · 추가",branch:"姚稷大铁锅, 상하이 20여 곳",hours:"11:00~22:00 전후",budget:"¥80 안팎",
+  dishes:[["铁锅炖大鹅","거위 철솥찜"],["锅包肉","꿔바로우"],["地三鲜","지싼셴"],["拉皮","량피"]],order:"솥 1 + 요리 2~3",tip:"큰 솥 하나를 4명이 나눠 먹는 구성.",when:{a:"대안",b:"3일차 대안"}},
+ {k:"dongbei",req:false,plate:"锅包肉",cls:"food",cuisine:"동북요리 · 다른 후보 찾기",branch:"대중점평에서 “东北菜” + 黄浦区·静安区 필터",hours:"매장별",budget:"¥60~90",
+  dishes:[["锅包肉","꿔바로우"],["地三鲜","지싼셴"],["酸菜白肉","쏸차이 돼지고기"],["东北大拉皮","량피"]],order:"양이 많아 요리 3~4개면 충분",tip:"꿔바로우는 거의 모든 동북 식당의 대표 메뉴.",when:{a:"2·4일차 점심 대안"}}
+];
+var SPA=[
+ {cn:"青籁养身 Green Massage",plate:"青籁",kr:"전신·아로마 · 깔끔한 분위기",branch:"신천지·징안 등",budget:"60분 ¥300 안팎",best:"커플끼리 조용하게 받을 때"},
+ {cn:"蜻蜓 Dragonfly",plate:"蜻蜓",kr:"전신·발 · 외국인이 많이 찾는 곳",branch:"시내 곳곳",budget:"60분 ¥250~350",best:"영어가 잘 통함"},
+ {cn:"富侨足道",plate:"足道",kr:"발마사지 · 가성비 · 늦게까지",branch:"시내 다수",budget:"90분 ¥150~250",best:"첫날 밤, 많이 걸은 날"}
+];
+var TOWNS=[
+ {k:"zhouzhuang",cn:"周庄",kr:"저우좡",lat:31.1170,lon:120.8460,time:"약 1시간 30분",how:"차량 · 버스",price:"정가 ¥100",feat:"가장 유명. 쌍교와 나룻배. 관광객 많음",pick:"B 오전 추천"},
+ {k:"tongli",cn:"同里",kr:"퉁리",lat:31.1610,lon:120.7190,time:"약 1시간 40분",how:"차량",price:"정가 ¥100",feat:"덜 상업적. 退思园 정원이 예쁨",pick:"B 오후 추천"},
+ {k:"jinxi",cn:"锦溪",kr:"진시",lat:31.1830,lon:120.9050,time:"약 1시간 20분",how:"차량",price:"¥65 전후",feat:"조용한 마을. 퉁리 대신 가도 좋음",pick:"대안"},
+ {k:"zhujiajiao",cn:"朱家角",kr:"주자자오",lat:31.1100,lon:121.0560,time:"약 1시간 10분",how:"지하철 17호선",price:"마을 무료",feat:"가장 쉽게 가는 곳. 반나절 코스",pick:"차 없이 갈 때"},
+ {k:"xitang",cn:"西塘",kr:"시탕",lat:30.9440,lon:120.8910,time:"약 1시간 40분",how:"차량",price:"¥95 전후",feat:"지붕 덮인 회랑과 야경",pick:"대안"},
+ {k:"wuzhen",cn:"乌镇",kr:"우전",lat:30.7460,lon:120.4880,time:"약 2시간",how:"차량 · 고속철",price:"西栅 ¥150 전후",feat:"가장 아름답지만 1박이 맞음",pick:"이번엔 비추천"}
+];
+/* deadlines & checklist (shared) */
+var DEADLINES=[
+ {id:"dl_passport",label:"4명 여권 유효기간 6개월 이상 확인",due:"2026-10-25",how:"여권 사진면 단톡방 공유"},
+ {id:"dl_vote",label:"코스 A/B 결정",due:"2026-10-27",how:"개요 탭 투표"},
+ {id:"res_renhe",label:"人和馆 2일차 저녁 4인 예약",due:"2026-10-31",how:"대중점평 预订 또는 전화",course:"ab"},
+ {id:"res_car",label:"수향마을 차량(包车) 7인승 예약",due:"2026-11-01",how:"클룩·트립닷컴, 톨비 포함 확인",course:"b"},
+ {id:"dl_pay",label:"알리페이 해외카드 연결 · 실명인증 (4명)",due:"2026-10-31",how:"알리페이 앱 → 카드 추가"},
+ {id:"dl_ins",label:"여행자 보험 가입",due:"2026-11-04",how:"보험사 앱"},
+ {id:"dl_esim",label:"중국 eSIM 또는 로밍 신청 (4명)",due:"2026-11-04",how:"홍콩 회선 eSIM 추천"},
+ {id:"dl_arrival",label:"입국카드 온라인 사전 작성",due:"2026-11-06",how:"국가이민관리국 앱/웹"},
+ {id:"res_tower",label:"상하이타워 전망대 티켓",due:"전날",how:"날씨 보고 공식 미니앱·트립닷컴"},
+ {id:"res_didi",label:"11/11 05:00 공항 디디 6인승 예약",due:"2026-11-10",how:"디디 预约 (예약 호출)"}
+];
+var CHECKLIST=[
+ {g:"서류 · 입국",items:[["cl_pass","여권 4개 챙기기"],["cl_ticket","e-티켓 · 숙소 확인서 캡처"],["cl_addr","숙소 중국어 주소 캡처","택시용"]]},
+ {g:"결제 · 앱",items:[["cl_alipay","알리페이 설치 · 카드 연결","4명 모두"],["cl_didi","디디 미니앱 열어 보기","알리페이 안"],["cl_amap","고덕지도 설치"],["cl_dp","대중점평 설치","번호표·단체권"],["cl_trans","파파고/번역 앱 오프라인 중국어"]]},
+ {g:"통신 · 전기",items:[["cl_esim","eSIM 설치 · 개통 확인"],["cl_battery","보조배터리 (기내 반입)"],["cl_cable","충전 케이블 · 멀티탭"]]},
+ {g:"돈 · 정산",items:[["cl_cash","비상 현금 ¥500 환전"],["cl_split","공동경비 정산 방식 정하기","한 명 결제 후 정산"]]}
+];
+var ROADMAP=[
+ {date:"2026-10-22",t:"지금 · 코스 투표, 여권 확인",s:"이 페이지를 4명에게 공유"},
+ {date:"2026-10-31",t:"D-7 · 人和馆 예약, 알리페이 준비",s:"코스 B면 차량도 이때 예약"},
+ {date:"2026-11-04",t:"D-3 · eSIM·보험·환전",s:"날씨 예보 확인 후 옷 정하기"},
+ {date:"2026-11-06",t:"D-1 · 짐 싸기, 입국카드",s:"숙소 주소·지도 오프라인 저장"},
+ {date:"2026-11-07",t:"출발 · 13:10 상하이 도착",s:"공항에서 결제·데이터 확인"},
+ {date:"2026-11-10",t:"마지막 밤 · 공항 디디 예약",s:"05:00 출발, 6인승"}
+];
+/* budget rows: [label, cny for 4 people] */
+var BUDGET={
+ a:[["교통 · 공항 왕복 디디 6인승",400],["교통 · 시내 디디·지하철 4일",600],["식사 · 계획한 식당 8곳",4420],["식사 · 아침·카페·간식",800],["관광 · 상하이타워 · 예원 · 크루즈",1360],["마사지 · 4회",3520]],
+ b:[["교통 · 공항 왕복 디디 6인승",400],["교통 · 시내 디디·지하철",400],["교통 · 수향 차량 하루",1100],["식사 · 계획한 식당 8곳",4440],["식사 · 아침·카페·간식",800],["관광 · 예원 · 저우좡 · 퉁리 · 전망대 · 크루즈",2160],["마사지 · 4회",3520]]
+};
+var PHRASES=[
+ ["我们四个人","wǒmen sì ge rén","우리 4명이에요"],
+ ["我要这个","wǒ yào zhège","이거 주세요 (메뉴 가리키며)"],
+ ["微辣 / 不要辣","wēi là / bú yào là","조금 맵게 / 안 맵게"],
+ ["不要香菜","bú yào xiāngcài","고수 빼 주세요"],
+ ["买单","mǎidān","계산할게요"],
+ ["打包","dǎbāo","포장해 주세요"],
+ ["洗手间在哪里？","xǐshǒujiān zài nǎlǐ","화장실 어디예요?"],
+ ["请到这个地址","qǐng dào zhège dìzhǐ","이 주소로 가 주세요"],
+ ["四人间，九十分钟","sì rén jiān, jiǔshí fēnzhōng","4인실, 90분이요 (마사지)"],
+ ["轻一点 / 重一点","qīng yìdiǎn / zhòng yìdiǎn","살살 / 세게 (마사지)"]
+];
+
+/* ================= helpers ================= */
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]})}
+function enc(s){return encodeURIComponent(s)}
+function cleanName(cn){return cn.replace(/\s*\(.*?\)\s*/g," ").replace(/[（(].*$/,"").trim()}
+function links(cn,opts){
+  opts=opts||{};var q=cleanName(cn);
+  var h='';
+  if(opts.photo!==false) h+='<a class="lnk" target="_blank" rel="noopener" href="https://www.google.com/search?tbm=isch&q='+enc(q+" 上海")+'">사진</a>';
+  if(opts.dp) h+='<a class="lnk" target="_blank" rel="noopener" href="https://www.dianping.com/search/keyword/1/0_'+enc(q)+'">대중점평</a>';
+  h+='<a class="lnk" target="_blank" rel="noopener" href="https://www.amap.com/search?query='+enc(q)+'&city=310000">고덕지도</a>';
+  h+='<a class="lnk" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+enc(q+" 上海")+'">구글지도</a>';
+  return '<div class="linkrow">'+h+'</div>';
+}
+function photo(key){var f=IMG[key];if(!f)return "";
+  return '<img class="ph" alt="" loading="lazy" referrerpolicy="no-referrer" src="https://commons.wikimedia.org/wiki/Special:FilePath/'+enc(f)+'?width=640" onerror="this.parentNode.classList.remove(\'has-ph\');this.remove()">'}
+function plate(key,cls,glyph,tag){var has=!!IMG[key];
+  return '<div class="plate '+cls+(has?" has-ph":"")+'">'+photo(key)+'<span class="glyph">'+glyph+'</span><span class="tagc">'+tag+'</span>'+(has?'<a class="credit" target="_blank" rel="noopener" href="https://commons.wikimedia.org/wiki/File:'+enc(IMG[key])+'">사진 출처</a>':'')+'</div>'}
+function copyBtn(txt){return '<button class="copy" type="button" data-cn="'+esc(txt)+'">복사</button>'}
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+function fmt(n){return Math.round(n).toLocaleString("ko-KR")}
+var KIND={see:"관광",meal:"식사",rest:"휴식",move:"이동"};
+function krw(n){var v=n*S.rate;return fmt(v<10000?Math.round(v/100)*100:Math.round(v/1000)*1000)}
+/* append won to every ¥ amount in a text: "¥120~150" -> "¥120~150 (₩24,000~30,000)" */
+function kw(s){return String(s==null?"":s).replace(/¥\s?([\d,]+)(?:\s?~\s?([\d,]+))?/g,function(m,a,b){var x=+a.replace(/,/g,""),y=b?+b.replace(/,/g,""):0;return m+' <span class="won">(₩'+krw(x)+(y?"~"+krw(y):"")+')</span>'})}
+
+/* ================= state ================= */
+var S={tab:"overview",course:"a",rate:200,checks:{},votes:{},uid:null,live:false,readOnly:false,db:null,user:null,profiles:{},mapDay:"all",foodF:"all",sel:null};
+(function(){var c=store("sh-course");if(c==="a"||c==="b")S.course=c;var r=parseFloat(store("sh-rate"));if(r>50&&r<500)S.rate=r;
+  try{var lc=JSON.parse(store("sh-checks")||"{}");if(lc&&typeof lc==="object")S.checks=lc}catch(e){}
+  try{var lv=JSON.parse(store("sh-votes")||"{}");if(lv&&typeof lv==="object")S.votes=lv}catch(e){}
+})();
+
+/* ================= render: header KPIs ================= */
+function daysUntil(iso){var t=new Date(iso+"T00:00:00+08:00").getTime();var now=Date.now();return Math.ceil((t-now)/86400000)}
+function renderKPIs(){
+  var arrive=new Date("2026-11-07T13:10:00+08:00").getTime();var diff=arrive-Date.now();
+  var d=Math.ceil(diff/86400000);
+  $("#kpi-dday").textContent=diff>0?("D-"+d):(Date.now()<new Date("2026-11-11T07:30:00+08:00").getTime()?"여행 중":"다녀옴");
+  var tot=BUDGET[S.course].reduce(function(a,r){return a+r[1]},0);
+  $("#kpi-cost").textContent="₩"+fmt(tot/4*S.rate);
+  $("#top-total").textContent="₩"+fmt(tot*S.rate);$("#top-pp").textContent="₩"+fmt(tot/4*S.rate);$("#top-course").textContent="코스 "+S.course.toUpperCase();
+  $("#kpi-cost-s").textContent="코스 "+S.course.toUpperCase()+" · ¥"+fmt(tot/4)+" · 항공·숙소 제외";
+  var dls=DEADLINES.filter(dlVisible);var dn=dls.filter(function(x){return isDone(x.id)}).length;
+  $("#kpi-res").textContent=dn+"/"+dls.length;$("#kpi-res-bar").style.width=(dls.length?dn/dls.length*100:0)+"%";
+  var all=[];CHECKLIST.forEach(function(g){g.items.forEach(function(i){all.push(i[0])})});
+  var cn=all.filter(isDone).length;$("#kpi-cl").textContent=cn+"/"+all.length;$("#kpi-cl-bar").style.width=(cn/all.length*100)+"%";
+}
+function isDone(id){var c=S.checks[id];return !!(c&&c.done)}
+function dlVisible(x){return !x.course||x.course==="ab"||x.course===S.course}
+
+/* ================= overview ================= */
+function renderCal(){
+  var c=COURSES[S.course];$("#cal-course").textContent="코스 "+S.course.toUpperCase();
+  $("#cal").innerHTML=DAYMETA.map(function(m,i){
+    var day=c.days[i];var water=day&&day.water;
+    var th=day?day.title:"귀국 · 07:30 PVG 출발";
+    return '<button class="cal-cell box'+(water?" waterday":"")+(i===4?" flyday":"")+'" type="button" data-day="'+i+'">'+
+      '<span class="w">11월 · '+m.w+'</span><span class="d">'+m.d+'</span><span class="th">'+esc(th)+'</span>'+
+      (m.wx?'<span class="wx">'+m.wx+' · '+m.sun+'</span>':'<span class="wx">04:30 기상</span>')+'</button>';
+  }).join("");
+}
+function statusPill(x){
+  if(isDone(x.id))return '<span class="pill ok">완료</span>';
+  if(!/^\d{4}/.test(x.due))return '<span class="pill">'+esc(x.due)+'</span>';
+  var d=daysUntil(x.due);
+  if(d<0)return '<span class="pill warn">'+(-d)+'일 지남</span>';
+  if(d<=7)return '<span class="pill warn">D-'+d+'</span>';
+  if(d<=14)return '<span class="pill hold">D-'+d+'</span>';
+  return '<span class="pill">D-'+d+'</span>';
+}
+function chk(id){var on=isDone(id);return '<button type="button" class="chk" role="checkbox" aria-checked="'+on+'" data-check="'+id+'"'+(S.readOnly?" disabled":"")+' aria-label="완료 표시">✓</button>'}
+function renderDeadlines(){
+  var rows=DEADLINES.filter(dlVisible).slice().sort(function(a,b){
+    var da=/^\d/.test(a.due)?a.due:"2026-11-09",db=/^\d/.test(b.due)?b.due:"2026-11-09";return da<db?-1:da>db?1:0});
+  $("#dl-body").innerHTML=rows.map(function(x){
+    var due=/^\d/.test(x.due)?x.due.slice(5).replace("-","/"):x.due;
+    return '<tr class="'+(isDone(x.id)?"done":"")+'"><td>'+chk(x.id)+'</td><td><span class="lbl">'+esc(x.label)+'</span>'+(x.course==="b"?' <span class="pill water">B</span>':'')+'</td><td class="num">'+due+'</td><td>'+statusPill(x)+' '+whoSlot(x.id)+'</td><td class="muted">'+esc(x.how)+'</td></tr>';
+  }).join("");
+  paintWho();
+}
+function whoSlot(id){return '<span class="who" data-who="'+id+'"></span>'}
+function paintWho(){
+  $$("[data-who]").forEach(function(el){
+    var c=S.checks[el.dataset.who];el.innerHTML="";
+    if(!c||!c.done||!c.by)return;
+    var p=S.profiles[c.by];if(!p)return;
+    var img=document.createElement("img");img.alt="";img.src=p.avatarUrl;var sp=document.createElement("span");sp.textContent=p.isMe?"나":(p.name||"동행");
+    el.appendChild(img);el.appendChild(sp);
+  });
+}
+function renderVotes(){
+  var a=[],b=[];Object.keys(S.votes).forEach(function(u){var v=S.votes[u];if(v==="a")a.push(u);else if(v==="b")b.push(u)});
+  $("#vote-a").textContent=a.length+"표";$("#vote-b").textContent=b.length+"표";
+  var mine=S.votes[S.uid||"me"];
+  $$(".vote-opt").forEach(function(btn){btn.setAttribute("aria-pressed",String(mine===btn.dataset.course));btn.disabled=S.readOnly});
+  [["#vote-a-av",a],["#vote-b-av",b]].forEach(function(p){
+    var el=$(p[0]);el.innerHTML="";
+    p[1].forEach(function(u){var pr=S.profiles[u];var img=document.createElement("img");img.alt=pr?(pr.name||"동행"):"";img.title=pr?(pr.isMe?"나":(pr.name||"동행")):"나";
+      img.src=pr?pr.avatarUrl:"data:image/svg+xml,"+enc('<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"><circle cx="11" cy="11" r="11" fill="#a8741c"/></svg>');el.appendChild(img)});
+  });
+  var sy=$("#sync");sy.classList.toggle("live",S.live);
+  sy.lastElementChild.textContent=S.live?(S.readOnly?"공유 데이터 보기 전용 (편집 권한 필요)":"4명이 실시간으로 공유 중"):"이 기기에만 저장 중";
+}
+function renderRoadmap(){
+  var today=new Date();var iso=today.toISOString().slice(0,10);
+  var nowIdx=-1;ROADMAP.forEach(function(r,i){if(r.date<=iso)nowIdx=i});
+  $("#roadmap").innerHTML=ROADMAP.map(function(r,i){
+    var cls=i<nowIdx?"past":(i===nowIdx?"now":"");
+    return '<li class="'+cls+'"><span class="dd">'+r.date.slice(5).replace("-","/")+'</span><span class="dot"></span><span><div class="rm-t">'+esc(r.t)+'</div><div class="rm-s">'+esc(r.s)+'</div></span></li>';
+  }).join("");
+}
+
+/* ================= plan ================= */
+function renderPlan(){
+  var c=COURSES[S.course];$("#plan-title").textContent=c.name;$("#plan-lede").textContent=c.lede;
+  $("#days").innerHTML=c.days.map(function(day,i){
+    var m=DAYMETA[i];
+    var head='<div class="day-head"><span class="date">DAY '+(i+1)+' · 11/'+m.d+' '+m.w+'</span><h3>'+esc(day.title)+'</h3><span class="meta"><span class="pill">'+esc(day.area)+'</span>'+(day.water?'<span class="pill water">수향</span>':'')+'</span></div>';
+    var strip='<div class="day-strip"><span>날씨 '+m.wx+'</span><span>'+m.sun+'</span><span>식사 '+day.items.filter(function(x){return x.kind==="meal"}).length+'곳</span></div>';
+    var lis=day.items.map(function(it){
+      var p=P[it.k]||{};
+      var res=it.res?(isDone(it.res)?'<span class="pill ok">예약 완료</span>':'<span class="pill warn">예약 필요</span>'):'';
+      var lk=(it.kind!=="move"&&it.kind!=="rest"&&p.cn&&!p.off)||(p.type==="town")?links(p.cn,{dp:it.kind==="meal"}):"";
+      return '<li><span class="t">'+it.t+'</span><div class="what"><div class="ttl"><span class="kind '+it.kind+'">'+KIND[it.kind]+'</span><span>'+esc(it.title)+'</span>'+res+'</div>'+
+        (it.sub?'<div class="sub">'+kw(esc(it.sub))+'</div>':'')+(it.alt?'<div class="alt">'+kw(esc(it.alt))+'</div>':'')+lk+'</div></li>';
+    }).join("");
+    return '<article class="day box'+(day.water?" waterday":"")+'" id="day-'+i+'">'+head+strip+'<ol class="tl">'+lis+'</ol>'+(day.note?'<p class="note">'+kw(esc(day.note))+'</p>':'')+'</article>';
+  }).join("")+
+  '<article class="day box" id="day-4"><div class="day-head"><span class="date">DAY 5 · 11/11 수</span><h3>귀국</h3><span class="meta"><span class="pill">관광 없음</span></span></div><ol class="tl">'+
+  '<li><span class="t">04:30</span><div class="what"><div class="ttl"><span class="kind move">이동</span><span>기상 · 체크아웃</span></div></div></li>'+
+  '<li><span class="t">05:00</span><div class="what"><div class="ttl"><span class="kind move">이동</span><span>예약해 둔 디디 6인승으로 PVG</span>'+(isDone("res_didi")?'<span class="pill ok">예약 완료</span>':'<span class="pill warn">예약 필요</span>')+'</div><div class="sub">새벽이라 약 45~50분.</div></div></li>'+
+  '<li><span class="t">07:30</span><div class="what"><div class="ttl"><span class="kind move">이동</span><span>PVG 출발 → 인천 약 10:30 KST 도착</span></div></div></li></ol></article>';
+  $("#towns-wrap").hidden=S.course!=="b";
+  $("#towns").innerHTML=TOWNS.map(function(t){
+    return '<div class="card box">'+plate(t.k,"town",t.cn,esc(t.pick))+'<div class="card-body"><div class="card-top"><div><div class="name">'+t.cn+'</div><div class="kr">'+t.kr+'</div></div>'+copyBtn(t.cn)+'</div>'+
+      '<dl><dt>숙소에서</dt><dd>'+t.time+'</dd><dt>가는 법</dt><dd>'+t.how+'</dd><dt>입장</dt><dd>'+kw(t.price)+'</dd><dt>특징</dt><dd>'+esc(t.feat)+'</dd></dl><div class="foot">'+links(t.cn+"古镇")+'</div></div></div>';
+  }).join("");
+}
+
+/* ================= map ================= */
+var DAYCOL=["#a8741c","#9c3d2c","#2c6b66","#4b5fa0"];
+var BB={lat0:31.196,lat1:31.262,lon0:121.428,lon1:121.534};
+function proj(lat,lon){var W=800,H=560,pad=34;var kx=Math.cos(31.23*Math.PI/180);
+  var w=(BB.lon1-BB.lon0)*kx,h=(BB.lat1-BB.lat0);var s=Math.min((W-2*pad)/w,(H-2*pad)/h);
+  var ox=(W-w*s)/2,oy=(H-h*s)/2;return [ox+(lon-BB.lon0)*kx*s, oy+(BB.lat1-lat)*s]}
+function poly(pts){return pts.map(function(p){var q=proj(p[0],p[1]);return q[0].toFixed(1)+","+q[1].toFixed(1)}).join(" ")}
+var RIVER=[[31.196,121.478],[31.205,121.488],[31.2155,121.4975],[31.2255,121.4985],[31.2330,121.4960],[31.2400,121.4930],[31.2448,121.4925],[31.2475,121.5005],[31.2480,121.5100],[31.2530,121.5190],[31.2600,121.5270],[31.262,121.534]];
+var CREEK=[[31.2448,121.4905],[31.2462,121.4820],[31.2440,121.4730],[31.2470,121.4640],[31.2440,121.4520],[31.2480,121.4400],[31.250,121.428]];
+function dayStops(i){var d=COURSES[S.course].days[i];var out=[];d.items.forEach(function(it){[it.k,it.then].forEach(function(k){var p=P[k];if(k&&p&&!p.off&&out[out.length-1]!==k)out.push(k)})});return out}
+function renderMap(){
+  var c=COURSES[S.course];
+  var fb='<button class="fbtn" data-mday="all" aria-pressed="'+(S.mapDay==="all")+'">전체</button>'+c.days.map(function(d,i){return '<button class="fbtn" data-mday="'+i+'" aria-pressed="'+(String(i)===String(S.mapDay))+'">'+(i+1)+'일차 · 11/'+DAYMETA[i].d+'</button>'}).join("");
+  $("#map-filter").innerHTML=fb;
+  var svg='<rect x="0" y="0" width="800" height="560" fill="var(--surface)"/>';
+  for(var g=0;g<=8;g++){svg+='<line x1="'+(g*100)+'" y1="0" x2="'+(g*100)+'" y2="560" stroke="var(--line)" stroke-width="1" opacity=".5"/>'}
+  for(var g2=0;g2<=5;g2++){svg+='<line x1="0" y1="'+(g2*112)+'" x2="800" y2="'+(g2*112)+'" stroke="var(--line)" stroke-width="1" opacity=".5"/>'}
+  svg+='<polyline points="'+poly(RIVER)+'" fill="none" stroke="var(--river)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>';
+  svg+='<polyline points="'+poly(CREEK)+'" fill="none" stroke="var(--river)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>';
+  var rl=proj(31.2165,121.5010);svg+='<text x="'+rl[0]+'" y="'+rl[1]+'" fill="var(--muted)" font-size="12" font-family="var(--f-cn)" transform="rotate(-70 '+rl[0]+' '+rl[1]+')">黄浦江 황푸강</text>';
+  var cl=proj(31.2478,121.4560);svg+='<text x="'+cl[0]+'" y="'+cl[1]+'" fill="var(--muted)" font-size="11" font-family="var(--f-cn)">苏州河</text>';
+  var pd=proj(31.2250,121.5230);svg+='<text x="'+pd[0]+'" y="'+pd[1]+'" fill="var(--muted)" font-size="13" font-weight="700" opacity=".7">푸동 浦东</text>';
+  var px=proj(31.2120,121.4330);svg+='<text x="'+px[0]+'" y="'+px[1]+'" fill="var(--muted)" font-size="13" font-weight="700" opacity=".7">쉬후이·조계지</text>';
+  var days=S.mapDay==="all"?c.days.map(function(_,i){return i}):[parseInt(S.mapDay,10)];
+  var used={};
+  days.forEach(function(i){
+    var st=["hotel"].concat(dayStops(i));var pts=st.map(function(k){return [P[k].lat,P[k].lon]});
+    svg+='<polyline points="'+poly(pts)+'" fill="none" stroke="'+DAYCOL[i]+'" stroke-width="2.5" stroke-dasharray="6 5" stroke-linejoin="round" opacity=".85"/>';
+    st.forEach(function(k){if(!used[k])used[k]=i});
+  });
+  /* label placement nudges */
+  var nudge={nanjing:[8,-10],bund:[10,4],hotel:[-8,18],fei:[-10,-10],spa:[-10,16],qxt:[-12,-8],cruise:[10,12],binjiang:[10,-8],ddd:[10,14],dongbei:[-10,-8],siji:[8,-8]};
+  Object.keys(used).forEach(function(k){
+    var p=P[k],q=proj(p.lat,p.lon),i=used[k];
+    var col=k==="hotel"?"var(--ink)":(p.type==="food"?"var(--brick)":(p.type==="rest"?"var(--water)":DAYCOL[i]));
+    var r=k==="hotel"?9:7;var n=nudge[k]||[10,4];var anchor=n[0]<0?"end":"start";
+    var lbl=(p.kr||p.cn).replace(/ · .*$/,"");
+    svg+='<g class="mk" tabindex="0" role="button" aria-label="'+esc(p.kr||p.cn)+'" data-k="'+k+'">'+
+      '<circle class="ring" cx="'+q[0]+'" cy="'+q[1]+'" r="'+(r+5)+'" fill="transparent" stroke="'+(S.sel===k?"var(--ink)":"transparent")+'" stroke-width="2"/>'+
+      '<circle cx="'+q[0]+'" cy="'+q[1]+'" r="'+r+'" fill="'+col+'" stroke="var(--surface)" stroke-width="2"'+(p.approx?' stroke-dasharray="2 2"':'')+'/>'+
+      (k==="hotel"?'<text x="'+q[0]+'" y="'+(q[1]+4)+'" text-anchor="middle" font-size="10" font-weight="700" fill="var(--surface)">H</text>':'')+
+      '<text x="'+(q[0]+n[0])+'" y="'+(q[1]+n[1])+'" text-anchor="'+anchor+'" font-size="11.5" fill="var(--ink)" paint-order="stroke" stroke="var(--surface)" stroke-width="3">'+esc(lbl)+'</text></g>';
+  });
+  var sb1=proj(31.200,121.500),sb2=proj(31.200,121.500+1/(111.32*Math.cos(31.23*Math.PI/180)));
+  svg+='<line x1="'+sb1[0]+'" y1="'+(sb1[1]+12)+'" x2="'+sb2[0]+'" y2="'+(sb2[1]+12)+'" stroke="var(--ink)" stroke-width="2"/><text x="'+((sb1[0]+sb2[0])/2)+'" y="'+(sb1[1]+28)+'" font-size="10.5" text-anchor="middle" fill="var(--muted)">1 km</text>';
+  $("#map").innerHTML=svg;
+  $("#legend").innerHTML=(days.map(function(i){return '<span><i style="background:'+DAYCOL[i]+'"></i>'+(i+1)+'일차 동선</span>'}).join(""))+'<span><i style="background:var(--brick)"></i>식당</span><span><i style="background:var(--water)"></i>마사지</span><span><i style="background:var(--surface);border:1.5px dashed var(--muted)"></i>체인점 · 위치 대략</span>';
+  renderTownMap();
+}
+function infoFor(k){
+  var p=P[k];var f=FOOD.filter(function(x){return x.k===k})[0];
+  var h='<span class="eyebrow">'+(p.type==="food"?"식당":p.type==="rest"?"마사지":p.type==="hub"?"숙소":"관광")+'</span><h3 class="cn">'+esc(p.cn)+'</h3><span class="kr muted small">'+esc(p.kr)+'</span>';
+  if(f){h+='<dl class="small" style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px"><dt class="muted">지점</dt><dd style="margin:0">'+esc(f.branch)+'</dd><dt class="muted">예산</dt><dd style="margin:0">1인 '+kw(esc(f.budget))+'</dd></dl>'}
+  else if(p.hours){h+='<dl class="small" style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px"><dt class="muted">시간</dt><dd style="margin:0">'+esc(p.hours)+'</dd><dt class="muted">요금</dt><dd style="margin:0">'+kw(esc(p.price))+'</dd></dl><p class="small">'+kw(esc(p.tip))+'</p>'}
+  if(p.approx)h+='<p class="small muted">체인점이라 지도 위치는 대략입니다. 가까운 지점은 대중점평에서 찾으세요.</p>';
+  var whenDays=[];COURSES[S.course].days.forEach(function(d,i){if(d.items.some(function(it){return it.k===k||it.then===k}))whenDays.push((i+1)+"일차")});
+  if(whenDays.length)h+='<span class="pill accent">코스 '+S.course.toUpperCase()+' · '+whenDays.join(", ")+'</span>';
+  if(k!=="hotel"&&k!=="spa")h+=links(p.cn,{dp:p.type==="food"});
+  return h;
+}
+function selectMarker(k){S.sel=k;$("#map-info").innerHTML=infoFor(k);$$("#map .mk").forEach(function(g){var r=g.querySelector(".ring");r.setAttribute("stroke",g.dataset.k===k?"var(--ink)":"transparent")})}
+function renderTownMap(){
+  var W=800,H=380,pad=40;var pts=TOWNS.map(function(t){return [t.lat,t.lon]}).concat([[HOTEL.lat,HOTEL.lon],[31.1443,121.8083]]);
+  var la0=30.70,la1=31.30,lo0=120.42,lo1=121.86,kx=Math.cos(31*Math.PI/180);
+  var s=Math.min((W-2*pad)/((lo1-lo0)*kx),(H-2*pad)/(la1-la0));var ox=(W-(lo1-lo0)*kx*s)/2,oy=(H-(la1-la0)*s)/2;
+  function pj(la,lo){return [ox+(lo-lo0)*kx*s,oy+(la1-la)*s]}
+  function km(a,b,c,d){var R=6371,toR=Math.PI/180;var dl=(c-a)*toR,dn=(d-b)*toR;var x=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a*toR)*Math.cos(c*toR)*Math.sin(dn/2)*Math.sin(dn/2);return 2*R*Math.asin(Math.sqrt(x))}
+  var h=pj(HOTEL.lat,HOTEL.lon);
+  var svg='<rect width="800" height="380" fill="var(--surface)"/>';
+  /* Tai Lake hint west & Dianshan lake */
+  var dl=pj(31.12,120.96);svg+='<ellipse cx="'+dl[0]+'" cy="'+dl[1]+'" rx="16" ry="22" fill="var(--river)" opacity=".7"/><text x="'+(dl[0]-4)+'" y="'+(dl[1]+36)+'" font-size="10.5" fill="var(--muted)" text-anchor="middle" font-family="var(--f-cn)">淀山湖</text>';
+  TOWNS.forEach(function(t){var q=pj(t.lat,t.lon);var pick=/추천/.test(t.pick);
+    svg+='<line x1="'+h[0]+'" y1="'+h[1]+'" x2="'+q[0]+'" y2="'+q[1]+'" stroke="'+(pick?"var(--water)":"var(--line-2)")+'" stroke-width="'+(pick?2.5:1.5)+'" stroke-dasharray="5 5"/>'});
+  TOWNS.forEach(function(t){var q=pj(t.lat,t.lon);var pick=/추천/.test(t.pick);var d=Math.round(km(HOTEL.lat,HOTEL.lon,t.lat,t.lon));
+    var below=t.k==="zhujiajiao"||t.k==="xitang"||t.k==="wuzhen";
+    svg+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="'+(pick?8:6)+'" fill="'+(pick?"var(--water)":"var(--muted)")+'" stroke="var(--surface)" stroke-width="2"/>'+
+      '<text x="'+q[0]+'" y="'+(q[1]+(below?24:-14))+'" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="var(--f-cn)" paint-order="stroke" stroke="var(--surface)" stroke-width="3">'+t.cn+' '+t.kr+'</text>'+
+      '<text x="'+q[0]+'" y="'+(q[1]+(below?38:-28)+(below?0:0))+'" text-anchor="middle" font-size="10.5" fill="var(--muted)" paint-order="stroke" stroke="var(--surface)" stroke-width="3">'+d+'km · '+t.time.replace("약 ","")+'</text>'});
+  svg+='<circle cx="'+h[0]+'" cy="'+h[1]+'" r="10" fill="var(--ink)" stroke="var(--surface)" stroke-width="2"/><text x="'+h[0]+'" y="'+(h[1]+4)+'" text-anchor="middle" font-size="10" font-weight="700" fill="var(--surface)">H</text><text x="'+h[0]+'" y="'+(h[1]-16)+'" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)" paint-order="stroke" stroke="var(--surface)" stroke-width="3">상하이 숙소</text>';
+  var pv=pj(31.1443,121.8083);svg+='<circle cx="'+pv[0]+'" cy="'+pv[1]+'" r="6" fill="var(--muted)"/><text x="'+(pv[0]-10)+'" y="'+(pv[1]+20)+'" text-anchor="end" font-size="11" fill="var(--muted)">PVG 공항</text>';
+  $("#map-towns").innerHTML=svg;
+}
+
+/* ================= food / spa / sights ================= */
+function renderFood(){
+  var F=[["all","전체"],["req","요청한 6곳"],["extra","추가 추천"],["course","코스 "+S.course.toUpperCase()+"에 들어간 곳"]];
+  $("#food-filter").innerHTML=F.map(function(f){return '<button class="fbtn" data-ff="'+f[0]+'" aria-pressed="'+(S.foodF===f[0])+'">'+f[1]+'</button>'}).join("");
+  var list=FOOD.filter(function(x){if(S.foodF==="req")return x.req;if(S.foodF==="extra")return !x.req;if(S.foodF==="course")return !!x.when[S.course];return true});
+  $("#food").innerHTML=list.map(function(x){
+    var p=P[x.k]||{cn:x.k==="dadong"?"大董":x.k==="yaoji"?"姚稷大铁锅":x.plate,kr:""};
+    var cn=x.k==="dadong"?"大董":x.k==="yaoji"?"姚稷大铁锅":p.cn;
+    var when=x.when[S.course];
+    return '<div class="card box">'+plate(x.k==="renhe_j"?"renhe_j":x.k,x.cls,x.plate,(x.req?"요청":"추가"))+'<div class="card-body">'+
+      '<div class="card-top"><div><div class="name">'+esc(cn)+'</div><div class="kr">'+esc(x.cuisine)+'</div></div>'+copyBtn(cleanName(cn))+'</div>'+
+      '<dl><dt>지점</dt><dd>'+esc(x.branch)+'</dd><dt>시간</dt><dd>'+esc(x.hours)+'</dd><dt>예산</dt><dd>1인 '+kw(esc(x.budget))+'</dd><dt>4인 주문</dt><dd>'+esc(x.order)+'</dd></dl>'+
+      '<div class="dishes">'+x.dishes.map(function(d){return '<span class="dish"><b>'+d[0]+'</b> '+d[1]+'</span>'}).join("")+'</div>'+
+      '<p class="small muted">'+esc(x.tip)+'</p>'+
+      '<div class="foot">'+(when?'<span class="pill accent">코스 '+S.course.toUpperCase()+' · '+esc(when)+'</span>':'<span class="pill">코스 '+S.course.toUpperCase()+'엔 없음 · 대안</span>')+links(cn,{dp:true})+'</div></div></div>';
+  }).join("");
+  $("#spa").innerHTML=SPA.map(function(s){
+    return '<div class="card box"><div class="plate spa"><span class="glyph">'+s.plate+'</span><span class="tagc">마사지</span></div><div class="card-body"><div class="card-top"><div><div class="name">'+esc(s.cn)+'</div><div class="kr">'+esc(s.kr)+'</div></div>'+copyBtn(s.cn.split(" ")[0])+'</div>'+
+      '<dl><dt>지점</dt><dd>'+esc(s.branch)+'</dd><dt>예산</dt><dd>'+kw(esc(s.budget))+'</dd><dt>추천</dt><dd>'+esc(s.best)+'</dd></dl><div class="foot">'+links(s.cn.split(" ")[0],{dp:true})+'</div></div></div>';
+  }).join("");
+}
+function renderSights(){
+  var keys=["bund","nanjing","yuyuan","wukang","anfu","jingan","xintiandi","tianzifang","zhangyuan","shtower","binjiang","cruise"];
+  $("#sights").innerHTML=keys.map(function(k){var p=P[k];
+    var inDays=[];COURSES[S.course].days.forEach(function(d,i){if(d.items.some(function(it){return it.k===k||it.then===k}))inDays.push((i+1)+"일차")});
+    var glyph=cleanName(p.cn).replace("南京路步行街","南京路").replace("上海中心大厦","上海中心").replace("黄浦江游览","黄浦江").replace("陆家嘴滨江","滨江");
+    return '<div class="card box">'+plate(k,"sight",esc(glyph),esc(p.cat))+'<div class="card-body"><div class="card-top"><div><div class="name">'+esc(p.cn)+'</div><div class="kr">'+esc(p.kr)+'</div></div>'+copyBtn(cleanName(p.cn))+'</div>'+
+      '<dl><dt>시간</dt><dd>'+esc(p.hours)+'</dd><dt>요금</dt><dd>'+kw(esc(p.price))+'</dd></dl><p class="small">'+kw(esc(p.tip))+'</p><div class="foot">'+(inDays.length?'<span class="pill accent">코스 '+S.course.toUpperCase()+' · '+inDays.join(", ")+'</span>':'<span class="pill">코스 '+S.course.toUpperCase()+'엔 없음</span>')+links(p.cn)+'</div></div></div>';
+  }).join("");
+  $("#phrases").innerHTML=PHRASES.map(function(p){return '<div class="phr"><span class="zh">'+p[0]+'</span><span class="py">'+p[1]+'</span><span class="ko">'+p[2]+'</span>'+copyBtn(p[0])+'</div>'}).join("");
+}
+
+/* ================= prep ================= */
+function renderChecklist(){
+  $("#checklist").innerHTML=CHECKLIST.map(function(g){
+    var n=g.items.filter(function(i){return isDone(i[0])}).length;
+    return '<div class="box cl-group"><h4><span>'+esc(g.g)+'</span><span class="num muted small">'+n+'/'+g.items.length+'</span></h4>'+g.items.map(function(i){
+      return '<div class="cl-item'+(isDone(i[0])?" done":"")+'">'+chk(i[0])+'<div><div class="lbl">'+esc(i[1])+'</div>'+(i[2]?'<div class="sub">'+esc(i[2])+'</div>':'')+'</div>'+whoSlot(i[0])+'</div>';
+    }).join("")+'</div>';
+  }).join("");
+  paintWho();
+}
+function renderBudget(){
+  $("#budget-course").textContent="코스 "+S.course.toUpperCase();
+  var rows=BUDGET[S.course];var tot=0;
+  $("#budget-body").innerHTML=rows.map(function(r){tot+=r[1];return '<tr><td>'+esc(r[0])+'</td><td class="r num">'+fmt(r[1])+'</td><td class="r num">'+fmt(r[1]/4)+'</td><td class="r num">'+fmt(r[1]/4*S.rate)+'</td></tr>'}).join("");
+  $("#b-tot").textContent="¥"+fmt(tot);$("#b-pp").textContent="¥"+fmt(tot/4);$("#b-krw").textContent="₩"+fmt(tot/4*S.rate);
+}
+
+/* ================= master render ================= */
+function renderShared(){renderKPIs();renderDeadlines();renderChecklist();renderVotes();if(S.tab==="plan")renderPlan()}
+function renderAll(){
+  $$(".seg button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.course===S.course))});
+  renderKPIs();renderCal();renderDeadlines();renderVotes();renderRoadmap();renderPlan();renderMap();renderFood();renderSights();renderChecklist();renderBudget();
+  if(S.sel&&P[S.sel])selectMarker(S.sel);
+}
+function setTab(t){
+  S.tab=t;$$(".tab").forEach(function(b){b.setAttribute("aria-selected",String(b.dataset.tab===t))});
+  ["overview","plan","map","food","prep","guide"].forEach(function(id){$("#p-"+id).hidden=id!==t});
+}
+
+/* ================= events ================= */
+document.addEventListener("click",function(e){
+  var el;
+  if((el=e.target.closest(".tab"))){setTab(el.dataset.tab);return}
+  if((el=e.target.closest(".seg button"))){S.course=el.dataset.course;store("sh-course",S.course);if(S.mapDay!=="all")S.mapDay="all";renderAll();return}
+  if((el=e.target.closest(".cal-cell"))){setTab("plan");var d=$("#day-"+el.dataset.day);if(d)d.scrollIntoView({behavior:"smooth",block:"start"});return}
+  if((el=e.target.closest("[data-mday]"))){S.mapDay=el.dataset.mday;renderMap();if(S.sel)selectMarker(S.sel);return}
+  if((el=e.target.closest("[data-ff]"))){S.foodF=el.dataset.ff;renderFood();return}
+  if((el=e.target.closest("#map .mk"))){selectMarker(el.dataset.k);return}
+  if((el=e.target.closest(".chk"))){toggleCheck(el.dataset.check);return}
+  if((el=e.target.closest(".vote-opt"))){castVote(el.dataset.course);return}
+  if((el=e.target.closest(".copy"))){doCopy(el);return}
+});
+document.addEventListener("keydown",function(e){var g=e.target.closest&&e.target.closest("#map .mk");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();selectMarker(g.dataset.k)}});
+$("#rate").value=S.rate;
+$("#rate").addEventListener("input",function(){var v=parseFloat(this.value);if(v>50&&v<500){S.rate=v;store("sh-rate",String(v));renderAll()}});
+function doCopy(b){
+  var txt=b.dataset.cn;
+  function ok(){b.textContent="복사됨";b.classList.add("done");setTimeout(function(){b.textContent="복사";b.classList.remove("done")},1500)}
+  function fb(){var host=b.closest(".card,.phr");var n=host&&host.querySelector(".name,.zh");if(n){var r=document.createRange();r.selectNodeContents(n);var s=window.getSelection();s.removeAllRanges();s.addRange(r)}b.textContent="선택됨";setTimeout(function(){b.textContent="복사"},1500)}
+  try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,fb)}else fb()}catch(err){fb()}
+}
+
+/* ================= shared state (db) ================= */
+function saveLocal(){store("sh-checks",JSON.stringify(S.checks));store("sh-votes",JSON.stringify(S.votes))}
+function toggleCheck(id){
+  if(S.readOnly)return;
+  var next={done:!isDone(id),by:S.uid||null,at:new Date().toISOString()};
+  S.checks[id]=next;renderShared();
+  if(S.live&&S.db){S.db.collection("checks").doc(id).set(next).catch(onWriteErr)}else saveLocal();
+}
+function castVote(c){
+  if(S.readOnly)return;var me=S.uid||"me";
+  S.votes[me]=c;renderVotes();
+  if(S.live&&S.db&&S.uid){S.db.collection("votes").doc(S.uid).set({course:c,at:new Date().toISOString()}).catch(onWriteErr)}else saveLocal();
+}
+function onWriteErr(e){if(e&&e.code==="invalid_argument"){S.readOnly=true;renderShared()}}
+function refreshProfiles(){
+  if(!S.user)return;var ids={};
+  Object.keys(S.checks).forEach(function(k){var c=S.checks[k];if(c&&c.by)ids[c.by]=1});
+  Object.keys(S.votes).forEach(function(u){ids[u]=1});
+  var list=Object.keys(ids);if(!list.length)return;
+  S.user.profiles(list).then(function(ps){S.profiles=ps||{};paintWho();renderVotes()}).catch(function(){});
+}
+function initShared(){
+  if(!window.claude||typeof window.claude.use!=="function")return;
+  Promise.all([window.claude.use("db"),window.claude.use("user")]).then(function(r){
+    var db=r[0],user=r[1];if(!db)return;
+    S.db=db;S.user=user;
+    (user?user.id():Promise.resolve(null)).then(function(uid){
+      S.uid=uid;S.live=true;S.checks={};S.votes={};
+      if(user&&user.can){user.can("data.write").then(function(v){if(v===false){S.readOnly=true;renderShared()}}).catch(function(){})}
+      db.collection("checks").onSnapshot(function(snap){var m={};snap.docs.forEach(function(d){m[d.id]=d.data()});S.checks=m;renderShared();refreshProfiles()},function(){S.live=false;renderShared()});
+      db.collection("votes").onSnapshot(function(snap){var m={};snap.docs.forEach(function(d){var v=d.data();if(v&&v.course)m[d.id]=v.course});S.votes=m;renderVotes();refreshProfiles()},function(){});
+      renderShared();
+    });
+  }).catch(function(){});
+}
+
+/* ================= boot ================= */
+var h=(location.hash||"").replace("#","");
+renderAll();
+setTab(["overview","plan","map","food","prep","guide"].indexOf(h)>=0?h:"overview");
+initShared();
+})();
+</script>
+
+<script src="../../assets/bar.js" data-base="../../"></script>
+</body>
+</html>

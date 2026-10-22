@@ -1,12 +1,21 @@
 {
   "_comment": "블로그 목록의 단일 진실 소스. section=guide 는 안내서 탭, section=log 는 기록 탭에 나온다. 안내서 본문은 각 .json(형식: assets/GUIDE_SCHEMA.md), 기록 본문은 log/<slug>.md.",
-  "updated": "2026-10-20",
+  "updated": "2026-10-22",
   "kinds": [
     "모임",
     "나들이",
     "여행"
   ],
   "posts": [
+    {
+      "section": "guide",
+      "title": "상하이 여행 시장조사_2026-10-22",
+      "file": "travels/shanghai-research-2026-10-22/",
+      "tag": "두 커플 4박 5일 · 도심 vs 수향마을 · 식당 11곳",
+      "kind": "여행",
+      "area": "상하이",
+      "date": "2026-11-07"
+    },
     {
       "section": "guide",
       "title": "사당역 맛집 가이드",
