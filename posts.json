@@ -3,7 +3,8 @@
   "updated": "2026-10-19",
   "categories": [
     { "key": "restaurant", "label": "🍽️ 맛집" },
-    { "key": "travel",     "label": "✈️ 여행" }
+    { "key": "travel",     "label": "✈️ 여행" },
+    { "key": "life",       "label": "🩺 생활" }
   ],
   "posts": [
     { "title": "사당역 맛집 완벽 가이드",       "file": "restaurant/sadang.html",               "tag": "버티컬 탭 · 14곳",      "category": "restaurant", "date": "2026-06-16" },

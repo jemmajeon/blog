@@ -78,6 +78,16 @@ h1 em{color:var(--accent);font-style:normal;}
   border-radius:4px;background:#f1efe9;color:var(--muted);margin-top:4px;
 }
 .empty{padding:40px 0;color:var(--muted);font-size:15px;}
+/* 전체 보기(?all=1) 전용 */
+.post-tag.priv{background:#fdece4;color:#c2410c;}
+.allbar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 14px;margin-bottom:16px;background:var(--surface);
+  border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:4px;font-size:13px;color:var(--ink-2);
+}
+.allbar a{color:var(--accent);font-weight:600;text-decoration:none;white-space:nowrap;}
+.allbar a:hover{text-decoration:underline;}
 /* Directory structure */
 .dir-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;font-size:13px;}
 .dir-card{padding:12px;border:1px solid var(--line);border-radius:6px;}
@@ -133,7 +143,24 @@ document.addEventListener('DOMContentLoaded', async function(){
     return;
   }
 
-  var posts = (data.posts || []).filter(function(p){ return p.listed !== false; });
+  // 전체 보기 스위치 — ?all=1 로 켜고 ?all=0 으로 끈다. 브라우저에 기억된다.
+  var qAll = new URLSearchParams(location.search).get('all');
+  var showHidden;
+  try {
+    if (qAll === '1' || qAll === '0') localStorage.setItem('blog:showHidden', qAll);
+    showHidden = localStorage.getItem('blog:showHidden') === '1';
+  } catch (e) {
+    showHidden = qAll === '1';   // 저장이 막힌 브라우저에서는 주소로만 동작
+  }
+
+  var barEl = document.getElementById('allBar');
+  if (showHidden) {
+    var nHidden = (data.posts || []).filter(function(p){ return p.listed === false; }).length;
+    barEl.innerHTML = '<span>전체 보기 — 목록 비노출 ' + nHidden + '개 포함</span>' +
+                      '<a href="?all=0">끄기</a>';
+  }
+
+  var posts = (data.posts || []).filter(function(p){ return showHidden || p.listed !== false; });
   posts.sort(function(a,b){ return (b.date || '').localeCompare(a.date || ''); });
 
   var used = {};
@@ -152,7 +179,8 @@ document.addEventListener('DOMContentLoaded', async function(){
     return '<a href="' + p.file + '" class="post-item" data-category="' + p.category + '"' + ext + '>' +
              '<div>' +
                '<div class="post-title">' + p.title + (p.external ? ' ↗' : '') + '</div>' +
-               (p.tag ? '<div class="post-tag">' + p.tag + '</div>' : '') +
+               (p.tag ? '<span class="post-tag">' + p.tag + '</span>' : '') +
+               (p.listed === false ? ' <span class="post-tag priv">목록 비노출</span>' : '') +
              '</div>' +
              '<div class="post-date">' + (p.date || '') + '</div>' +
            '</a>';
@@ -194,6 +222,7 @@ document.addEventListener('DOMContentLoaded', async function(){
 
 <div class="posts">
   <div class="section-label">가이드 &amp; 프로젝트</div>
+  <div id="allBar"></div>
   <div class="tab-container" id="tabs"></div>
   <div class="post-list" id="guideList"></div>
   <noscript>
