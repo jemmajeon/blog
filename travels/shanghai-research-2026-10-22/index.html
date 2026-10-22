@@ -623,7 +623,7 @@ var FOOD=[
 ];
 var SPA=[
  {cn:"青籁养身 Green Massage",plate:"青籁",kr:"전신·아로마 · 깔끔한 분위기",branch:"신천지·징안 등",budget:"60분 ¥300 안팎",best:"커플끼리 조용하게 받을 때"},
- {cn:"蜻蜓 Dragonfly",plate:"蜻蜓",kr:"전신·발 · 외국인이 많이 찾는 곳",branch:"시내 곳곳",budget:"60분 ¥250~350",best:"영어가 잘 통함"},
+ {cn:"悠庭 Dragonfly",plate:"悠庭",kr:"전신·발 · 외국인이 많이 찾는 곳",branch:"시내 곳곳",budget:"60분 ¥250~350",best:"영어가 잘 통함"},
  {cn:"富侨足道",plate:"足道",kr:"발마사지 · 가성비 · 늦게까지",branch:"시내 다수",budget:"90분 ¥150~250",best:"첫날 밤, 많이 걸은 날"}
 ];
 var TOWNS=[
@@ -891,9 +891,9 @@ function renderTownMap(){
   var svg='<rect width="800" height="380" fill="var(--surface)"/>';
   /* Tai Lake hint west & Dianshan lake */
   var dl=pj(31.12,120.96);svg+='<ellipse cx="'+dl[0]+'" cy="'+dl[1]+'" rx="16" ry="22" fill="var(--river)" opacity=".7"/><text x="'+(dl[0]-4)+'" y="'+(dl[1]+36)+'" font-size="10.5" fill="var(--muted)" text-anchor="middle" font-family="var(--f-cn)">淀山湖</text>';
-  TOWNS.forEach(function(t){var q=pj(t.lat,t.lon);var pick=/추천/.test(t.pick);
+  TOWNS.forEach(function(t){var q=pj(t.lat,t.lon);var pick=t.pick.indexOf("B ")===0;
     svg+='<line x1="'+h[0]+'" y1="'+h[1]+'" x2="'+q[0]+'" y2="'+q[1]+'" stroke="'+(pick?"var(--water)":"var(--line-2)")+'" stroke-width="'+(pick?2.5:1.5)+'" stroke-dasharray="5 5"/>'});
-  TOWNS.forEach(function(t){var q=pj(t.lat,t.lon);var pick=/추천/.test(t.pick);var d=Math.round(km(HOTEL.lat,HOTEL.lon,t.lat,t.lon));
+  TOWNS.forEach(function(t){var q=pj(t.lat,t.lon);var pick=t.pick.indexOf("B ")===0;var d=Math.round(km(HOTEL.lat,HOTEL.lon,t.lat,t.lon));
     var below=t.k==="zhujiajiao"||t.k==="xitang"||t.k==="wuzhen";
     svg+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="'+(pick?8:6)+'" fill="'+(pick?"var(--water)":"var(--muted)")+'" stroke="var(--surface)" stroke-width="2"/>'+
       '<text x="'+q[0]+'" y="'+(q[1]+(below?24:-14))+'" text-anchor="middle" font-size="13" fill="var(--ink)" font-family="var(--f-cn)" paint-order="stroke" stroke="var(--surface)" stroke-width="3">'+t.cn+' '+t.kr+'</text>'+

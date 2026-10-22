@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 410" font-family="Noto Sans KR, Apple SD Gothic Neo, Malgun Gothic, sans-serif">
+<rect width="800" height="410" fill="#fbfaf7"/>
+<ellipse cx="323" cy="130" rx="16" ry="22" fill="#bcd0e3"/><text x="323" y="132" font-size="10" fill="#4a5a6c" text-anchor="middle">淀山湖</text>
+<line x1="545" y1="72" x2="274" y2="131" stroke="#2c6b66" stroke-width="2.5" stroke-dasharray="5 5"/>
+<line x1="545" y1="72" x2="220" y2="109" stroke="#2c6b66" stroke-width="2.5" stroke-dasharray="5 5"/>
+<line x1="545" y1="72" x2="299" y2="99" stroke="#c3cad6" stroke-width="1.5" stroke-dasharray="5 5"/>
+<line x1="545" y1="72" x2="364" y2="135" stroke="#c3cad6" stroke-width="1.5" stroke-dasharray="5 5"/>
+<line x1="545" y1="72" x2="293" y2="218" stroke="#c3cad6" stroke-width="1.5" stroke-dasharray="5 5"/>
+<line x1="545" y1="72" x2="121" y2="317" stroke="#c3cad6" stroke-width="1.5" stroke-dasharray="5 5"/>
+<circle cx="274" cy="131" r="8" fill="#2c6b66" stroke="#fff" stroke-width="2"/>
+<text x="274" y="155" font-size="13" fill="#1b2740" text-anchor="middle" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">저우좡 周庄</text>
+<text x="274" y="169" font-size="11" fill="#666" text-anchor="middle" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">직선 62km · 1시간 30분</text>
+<circle cx="220" cy="109" r="8" fill="#2c6b66" stroke="#fff" stroke-width="2"/>
+<text x="208" y="105" font-size="13" fill="#1b2740" text-anchor="end" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">퉁리 同里</text>
+<text x="208" y="119" font-size="11" fill="#666" text-anchor="end" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">직선 73km · 1시간 40분</text>
+<circle cx="299" cy="99" r="6" fill="#8a8f9a" stroke="#fff" stroke-width="2"/>
+<text x="299" y="69" font-size="13" fill="#1b2740" text-anchor="middle" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">진시 锦溪</text>
+<text x="299" y="83" font-size="11" fill="#666" text-anchor="middle" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">직선 55km · 1시간 20분</text>
+<circle cx="364" cy="135" r="6" fill="#8a8f9a" stroke="#fff" stroke-width="2"/>
+<text x="376" y="157" font-size="13" fill="#1b2740" text-anchor="start" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">주자자오 朱家角</text>
+<text x="376" y="171" font-size="11" fill="#666" text-anchor="start" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">직선 43km · 1시간 10분</text>
+<circle cx="293" cy="218" r="6" fill="#8a8f9a" stroke="#fff" stroke-width="2"/>
+<text x="305" y="222" font-size="13" fill="#1b2740" text-anchor="start" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">시탕 西塘</text>
+<text x="305" y="236" font-size="11" fill="#666" text-anchor="start" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">직선 65km · 1시간 40분</text>
+<circle cx="121" cy="317" r="6" fill="#8a8f9a" stroke="#fff" stroke-width="2"/>
+<text x="121" y="341" font-size="13" fill="#1b2740" text-anchor="middle" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">우전 乌镇</text>
+<text x="121" y="355" font-size="11" fill="#666" text-anchor="middle" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">직선 109km · 2시간</text>
+<circle cx="545" cy="72" r="10" fill="#1b2740" stroke="#fff" stroke-width="2"/><text x="545" y="76" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">H</text><text x="545" y="56" font-size="13" font-weight="700" fill="#1b2740" text-anchor="middle" paint-order="stroke" stroke="#fbfaf7" stroke-width="3">상하이 숙소</text>
+<circle cx="686" cy="118" r="6" fill="#8a8f9a"/><text x="676" y="138" font-size="11.5" fill="#666" text-anchor="end">푸동공항</text>
+<text x="20" y="398" font-size="11.5" fill="#888">초록색 선이 코스 B 추천(저우좡 오전, 퉁리 오후). 시간은 차로 이동 기준이며 정체에 따라 달라집니다.</text></svg>
