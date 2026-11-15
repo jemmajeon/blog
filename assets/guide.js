@@ -94,11 +94,19 @@
     var foot = el("p", "g-foot", (g.source ? "조사 기준: " + g.source + " · " : "") + "가격·영업시간은 바뀔 수 있어요.");
     root.append(foot);
 
-    // 지금 보고 있는 섹션을 상단 칩에 표시
+    // 지금 보고 있는 섹션을 상단 칩에 표시. 칩 줄(.row)만 가로로 옮긴다:
+    // scrollIntoView 는 sticky 안의 칩을 보이게 하려고 페이지까지 끌어올려, 스크롤이 멈출 때마다 화면이 위로 튀었다.
     if ("IntersectionObserver" in window && secs.length > 1) {
-      var links = root.querySelectorAll(".secnav a");
+      var links = root.querySelectorAll(".secnav a"), navRow = root.querySelector(".secnav .row"), cur = null;
       var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) links.forEach(function (a) { var on = a.dataset.id === e.target.id; a.classList.toggle("on", on); if (on) a.scrollIntoView({block: "nearest", inline: "nearest"}); }); });
+        es.forEach(function (e) {
+          if (!e.isIntersecting || e.target.id === cur) return;
+          cur = e.target.id;
+          links.forEach(function (a) {
+            var on = a.dataset.id === cur; a.classList.toggle("on", on);
+            if (on) { var r = a.getBoundingClientRect(), rr = navRow.getBoundingClientRect(); navRow.scrollBy({left: (r.left - rr.left) - (rr.width - r.width) / 2, behavior: "smooth"}); }
+          });
+        });
       }, {rootMargin: "-130px 0px -60% 0px"});
       secs.forEach(function (s) { var t = document.getElementById(s.id); if (t) io.observe(t); });
     }
