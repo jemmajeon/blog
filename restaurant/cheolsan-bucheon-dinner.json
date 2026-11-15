@@ -6,6 +6,153 @@
   "time": "17:00",
   "area": "마곡, 철산, 부천, 부평",
   "source": "네이버 예약, 다이닝코드, 폴레, 당근, 블로그 후기 (2026.11.15 기준, 가격은 조사 당시, 음료와 술 별도)",
+  "hero": "hero",
+  "images": {
+    "hero": {
+      "src": "img/food-hero.jpg",
+      "title": "Korean barbecue - dipping grilled pork shoulder in meljeot.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Korean_barbecue_-_dipping_grilled_pork_shoulder_in_meljeot.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "대경라이프"
+    },
+    "beef": {
+      "src": "img/food-beef.jpg",
+      "title": "Korean barbecue - moksal, samgyeopsal, beoseot, and meljeot on a gridiron.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Korean_barbecue_-_moksal,_samgyeopsal,_beoseot,_and_meljeot_on_a_gridiron.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "대경라이프"
+    },
+    "hanwoo": {
+      "src": "img/food-hanwoo.jpg",
+      "title": "Korean.food-Galbi-03.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Korean.food-Galbi-03.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "ayustety (a flickr user)"
+    },
+    "galbi": {
+      "src": "img/food-galbi.jpg",
+      "title": "Korean barbeque-Galbi-14.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Korean_barbeque-Galbi-14.jpg",
+      "license": "CC BY 2.0",
+      "artist": "by karendotcom127"
+    },
+    "clam": {
+      "src": "img/food-clam.jpg",
+      "title": "Grilled scallops dish.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Grilled_scallops_dish.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "CNEcija12345"
+    },
+    "chinese": {
+      "src": "img/food-chinese.jpg",
+      "title": "Tangsuyuk.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Tangsuyuk.jpg",
+      "license": "CC0",
+      "artist": "최광모"
+    },
+    "sushi": {
+      "src": "img/food-sushi.jpg",
+      "title": "Sushi platter.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Sushi_platter.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "chidorian from Japan"
+    },
+    "italian": {
+      "src": "img/food-italian.jpg",
+      "title": "Pork tagliatelle pasta dish at restaurant in Rome, Italy.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Pork_tagliatelle_pasta_dish_at_restaurant_in_Rome,_Italy.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Philip Mallis"
+    },
+    "paella": {
+      "src": "img/food-paella.jpg",
+      "title": "Paella kamilo.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Paella_kamilo.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "2020 kamilo"
+    },
+    "shabu": {
+      "src": "img/food-shabu.jpg",
+      "title": "Tajima Beef Shabu-Shabu Hot Pot (25519259666).jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Tajima_Beef_Shabu-Shabu_Hot_Pot_(25519259666).jpg",
+      "license": "CC BY 2.0",
+      "artist": "Nishimuraya Kinosaki Onsen"
+    },
+    "eel": {
+      "src": "img/food-eel.jpg",
+      "title": "Hapcheongun County 01 (16768909507).jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Hapcheongun_County_01_(16768909507).jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Republic of  Korea from Seoul, Republic of Korea"
+    },
+    "baeksuk": {
+      "src": "img/food-baeksuk.jpg",
+      "title": "Samgye-tang 2.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Samgye-tang_2.jpg",
+      "license": "CC0",
+      "artist": "wizdata"
+    },
+    "cake": {
+      "src": "img/food-cake.jpg",
+      "title": "Prague Praha 2014 Holmstad Obneci Dum kake cake at cafè.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Prague_Praha_2014_Holmstad_Obneci_Dum_kake_cake_at_caf%C3%A8.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "Øyvind Holmstad"
+    },
+    "coffee": {
+      "src": "img/food-coffee.jpg",
+      "title": "Cup of coffee with latte art 2016.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Cup_of_coffee_with_latte_art_2016.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Abdulrohmatt"
+    }
+  },
+  "tabs": [
+    {
+      "id": "rec",
+      "label": "🏆 추천",
+      "sections": [
+        "pick",
+        "day",
+        "jinwon",
+        "howto"
+      ]
+    },
+    {
+      "id": "beef",
+      "label": "🥩 소고기 4만 원대",
+      "sections": [
+        "beef4"
+      ]
+    },
+    {
+      "id": "other",
+      "label": "🍽️ 다른 메뉴",
+      "sections": [
+        "clam",
+        "premium",
+        "first",
+        "bamil",
+        "value"
+      ]
+    },
+    {
+      "id": "dessert",
+      "label": "🍰 후식",
+      "sections": [
+        "dessert"
+      ]
+    },
+    {
+      "id": "price",
+      "label": "📊 금액 비교",
+      "sections": [
+        "compare",
+        "call",
+        "out"
+      ]
+    }
+  ],
   "summary": [
     "조건: 일요일 17:00, 4명, 주차 필수, 1인 4만 원대까지",
     "원래 고른 곳: 진원소우 (소고기 무한리필) 1인 29,000원 / 4인 총 116,000원, 부천상동점과 발산역점",
@@ -131,7 +278,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EC%A7%84%EC%9B%90%EC%86%8C%EC%9A%B0%20%EB%B6%80%EC%B2%9C%EC%83%81%EB%8F%99%EC%A0%90"
             }
-          ]
+          ],
+          "img": "beef"
         },
         {
           "name": "진원소우 발산역점",
@@ -181,7 +329,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EC%A7%84%EC%9B%90%EC%86%8C%EC%9A%B0%20%EB%B0%9C%EC%82%B0%EC%97%AD%EC%A0%90"
             }
-          ]
+          ],
+          "img": "beef"
         }
       ]
     },
@@ -287,7 +436,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EC%86%8C%EB%93%A4%EB%85%98%20%EA%B4%91%EB%AA%85%EC%A0%90"
             }
-          ]
+          ],
+          "img": "galbi"
         },
         {
           "name": "송추가마골 인 어반 목동점",
@@ -339,7 +489,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EC%86%A1%EC%B6%94%EA%B0%80%EB%A7%88%EA%B3%A8%20%EC%9D%B8%20%EC%96%B4%EB%B0%98%20%EB%AA%A9%EB%8F%99%EC%A0%90"
             }
-          ]
+          ],
+          "img": "galbi"
         },
         {
           "name": "한우정가",
@@ -392,7 +543,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%ED%95%9C%EC%9A%B0%EC%A0%95%EA%B0%80%20%EB%B6%80%EC%B2%9C"
             }
-          ]
+          ],
+          "img": "hanwoo"
         },
         {
           "name": "투뿔한우 넘버나인 마곡본점",
@@ -447,7 +599,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%ED%88%AC%EB%BF%94%ED%95%9C%EC%9A%B0%20%EB%84%98%EB%B2%84%EB%82%98%EC%9D%B8%20%EB%A7%88%EA%B3%A1"
             }
-          ]
+          ],
+          "img": "hanwoo"
         },
         {
           "name": "화우 부천점",
@@ -499,7 +652,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%ED%99%94%EC%9A%B0%20%EB%B6%80%EC%B2%9C"
             }
-          ]
+          ],
+          "img": "hanwoo"
         },
         {
           "name": "우아한 (한우 짝갈비)",
@@ -548,7 +702,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EC%9A%B0%EC%95%84%ED%95%9C%20%EB%B6%80%ED%8F%89%20%EC%A7%9D%EA%B0%88%EB%B9%84"
             }
-          ]
+          ],
+          "img": "galbi"
         }
       ]
     },
@@ -612,7 +767,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EB%A7%88%EC%8B%9C%EC%95%88%EC%96%B4%EB%B6%80%EC%A7%91"
             }
-          ]
+          ],
+          "img": "clam"
         }
       ]
     },
@@ -671,7 +827,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EB%B6%80%EC%B2%9C%EC%83%81%ED%95%98%EC%9D%B4"
             }
-          ]
+          ],
+          "img": "chinese"
         },
         {
           "name": "스시웨이 부천본점",
@@ -708,7 +865,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EC%8A%A4%EC%8B%9C%EC%9B%A8%EC%9D%B4%20%EB%B6%80%EC%B2%9C%EB%B3%B8%EC%A0%90"
             }
-          ]
+          ],
+          "img": "sushi"
         }
       ]
     },
@@ -750,7 +908,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EB%A7%88%EB%98%90%EC%9D%B4%EB%94%B0%20%EC%B2%A0%EC%82%B0"
             }
-          ]
+          ],
+          "img": "italian"
         },
         {
           "name": "리오리오 광명",
@@ -781,7 +940,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EB%A6%AC%EC%98%A4%EB%A6%AC%EC%98%A4%20%EA%B4%91%EB%AA%85"
             }
-          ]
+          ],
+          "img": "paella"
         }
       ]
     },
@@ -825,7 +985,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EA%B4%91%EB%AA%85%20%EC%95%84%EB%A6%AC%EB%9E%91"
             }
-          ]
+          ],
+          "img": "galbi"
         },
         {
           "name": "신농한우정육식당 광명본점",
@@ -854,7 +1015,8 @@
               "label": "정보",
               "url": "https://www.ktriptips.com/kor/food/2830295"
             }
-          ]
+          ],
+          "img": "hanwoo"
         },
         {
           "name": "강화나루 한방 민물장어",
@@ -882,7 +1044,8 @@
               "label": "정보",
               "url": "https://polle.com/place/3QFhVM"
             }
-          ]
+          ],
+          "img": "eel"
         },
         {
           "name": "남해바다장어 민물장어참숯불구이",
@@ -910,7 +1073,8 @@
               "label": "정보",
               "url": "https://www.ktriptips.com/kor/food/2831148"
             }
-          ]
+          ],
+          "img": "eel"
         },
         {
           "name": "광이정",
@@ -938,7 +1102,8 @@
               "label": "정보",
               "url": "https://polle.com/place/2tdjf1"
             }
-          ]
+          ],
+          "img": "baeksuk"
         }
       ]
     },
@@ -968,7 +1133,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EC%98%A5%EC%86%8C%EB%B0%98%20%EB%B6%80%EC%B2%9C%EC%8B%9C%EC%B2%AD%EC%A0%90"
             }
-          ]
+          ],
+          "img": "shabu"
         },
         {
           "name": "우리동네소고기무한리필 부천역점",
@@ -991,7 +1157,8 @@
               "label": "다이닝코드",
               "url": "https://www.diningcode.com/profile.php?rid=o5dcldqwOaeu"
             }
-          ]
+          ],
+          "img": "beef"
         },
         {
           "name": "채영진의명품생고기무한리필 본점",
@@ -1018,7 +1185,8 @@
               "label": "다이닝코드",
               "url": "https://www.diningcode.com/profile.php?rid=yfKsZbgocdYS"
             }
-          ]
+          ],
+          "img": "beef"
         },
         {
           "name": "샤브올데이 광명철산점",
@@ -1045,7 +1213,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%EC%83%A4%EB%B8%8C%EC%98%AC%EB%8D%B0%EC%9D%B4%20%EA%B4%91%EB%AA%85%EC%B2%A0%EC%82%B0%EC%A0%90"
             }
-          ]
+          ],
+          "img": "shabu"
         },
         {
           "name": "유유샤브 부천점",
@@ -1069,7 +1238,8 @@
               "label": "다이닝코드",
               "url": "https://www.diningcode.com/profile.php?rid=DP9Eat44t8ly"
             }
-          ]
+          ],
+          "img": "shabu"
         },
         {
           "name": "편편집 부천상동점",
@@ -1096,7 +1266,8 @@
               "label": "네이버지도",
               "url": "https://map.naver.com/p/search/%ED%8E%B8%ED%8E%B8%EC%A7%91%20%EB%B6%80%EC%B2%9C%EC%83%81%EB%8F%99%EC%A0%90"
             }
-          ]
+          ],
+          "img": "shabu"
         }
       ]
     },
@@ -1146,7 +1317,8 @@
               "label": "다이닝코드",
               "url": "https://www.diningcode.com/profile.php?rid=Z8LNZ7ewEpeD"
             }
-          ]
+          ],
+          "img": "beef"
         },
         {
           "name": "스너그 로스터리 (철산)",
@@ -1173,7 +1345,8 @@
               "label": "정보",
               "url": "https://polle.com/place/2eI96Q"
             }
-          ]
+          ],
+          "img": "coffee"
         },
         {
           "name": "라메종슈크레 (철산)",
@@ -1200,7 +1373,8 @@
               "label": "다이닝코드",
               "url": "https://www.diningcode.com/profile.php?rid=L1LmJKv58kA2"
             }
-          ]
+          ],
+          "img": "cake"
         },
         {
           "name": "오라델떼 (부천)",
@@ -1228,7 +1402,8 @@
               "label": "정보",
               "url": "https://www.ktriptips.com/kor/food/2870173"
             }
-          ]
+          ],
+          "img": "cake"
         },
         {
           "name": "미블랑 (부천)",
@@ -1249,171 +1424,167 @@
               "label": "정보",
               "url": "https://polle.com/place/4GFExV"
             }
-          ]
+          ],
+          "img": "cake"
         }
       ]
     },
     {
       "id": "compare",
-      "title": "📊 금액 비교 (음료와 술 별도)",
-      "type": "table",
-      "columns": [
-        "식당",
-        "메뉴",
-        "1인",
-        "4인 총액"
-      ],
-      "rows": [
-        [
-          "진원소우 부천상동점",
-          "소고기 무한리필 (원래 고른 곳)",
-          "29,000원",
-          "116,000원"
-        ],
-        [
-          "진원소우 발산역점",
-          "소고기 무한리필",
-          "29,000원",
-          "116,000원"
-        ],
-        [
-          "소들녘 광명점",
-          "양념갈비, 주물럭 정식 (룸)",
-          "48,000원",
-          "192,000원"
-        ],
-        [
-          "송추가마골 인 어반 목동점",
-          "양념갈비 (룸)",
-          "41,000원",
-          "164,000원"
-        ],
-        [
-          "한우정가",
-          "한우 1++ 구이",
-          "41,000원",
-          "164,000원"
-        ],
-        [
-          "투뿔한우 넘버나인 마곡본점",
-          "한우 구이 (룸)",
-          "48,000원",
-          "192,000원"
-        ],
-        [
-          "화우 부천점",
-          "한우 구이 (룸)",
-          "45,500원",
-          "182,000원"
-        ],
-        [
-          "우아한 (한우 짝갈비)",
-          "한우 짝갈비",
-          "44,650원",
-          "178,600원"
-        ],
-        [
-          "마시안어부집",
-          "조개구이 (바다 전망)",
-          "40,750원",
-          "163,000원"
-        ],
-        [
-          "부천상하이",
-          "중식 코스",
-          "39,000원",
-          "156,000원"
-        ],
-        [
-          "스시웨이 부천본점",
-          "스시 코스",
-          "35,000원",
-          "140,000원"
-        ],
-        [
-          "마또이따 철산",
-          "이탈리안",
-          "약 40,500원",
-          "약 162,000원"
-        ],
-        [
-          "리오리오 광명",
-          "스페인식",
-          "약 30,000-39,500원",
-          "약 121,000-158,000원"
-        ],
-        [
-          "옥소반 부천시청점",
-          "샤브 (한우 옵션)",
-          "34,900-41,900원",
-          "139,600-167,600원"
-        ],
-        [
-          "우리동네소고기무한리필 부천역점",
-          "소고기 무한리필",
-          "32,900원",
-          "131,600원"
-        ],
-        [
-          "채영진의명품생고기무한리필 본점",
-          "소고기 무한리필",
-          "32,000원",
-          "128,000원"
-        ],
-        [
-          "샤브올데이 광명철산점",
-          "샤브 무한리필",
-          "29,900원",
-          "119,600원"
-        ],
-        [
-          "유유샤브 부천점",
-          "편백찜",
-          "21,000원",
-          "84,000원"
-        ],
-        [
-          "편편집 부천상동점",
-          "편백찜 무한리필",
-          "17,500-19,900원",
-          "70,000-79,600원"
-        ],
-        [
-          "광명 아리랑",
-          "갈비 정식 (룸)",
-          "확인 필요",
-          "확인 필요"
-        ],
-        [
-          "신농한우정육식당 광명본점",
-          "한우 정육식당",
-          "확인 필요",
-          "확인 필요"
-        ],
-        [
-          "강화나루 한방 민물장어",
-          "민물장어 숯불구이",
-          "약 32,000-40,000원",
-          "약 128,000-160,000원"
-        ],
-        [
-          "남해바다장어 민물장어참숯불구이",
-          "장어 숯불구이",
-          "확인 필요",
-          "확인 필요"
-        ],
-        [
-          "광이정",
-          "백숙, 해신탕",
-          "약 30,000-33,000원",
-          "약 120,000-130,000원"
-        ]
+      "title": "📊 4인 총액 비교",
+      "type": "bars",
+      "intro": "4인 총액이 낮은 순. 범위가 있는 곳은 낮은 값으로 막대를 그렸다. 음료와 술 별도.",
+      "items": [
+        {
+          "label": "편편집 부천상동점",
+          "sub": "편백찜, 샤브 무한리필",
+          "text": "1인 17,500-19,900원 / 4인 70,000-79,600원",
+          "value": 70000
+        },
+        {
+          "label": "유유샤브 부천점",
+          "sub": "편백찜, 샤브",
+          "text": "1인 21,000원 / 4인 84,000원",
+          "value": 84000
+        },
+        {
+          "label": "진원소우 부천상동점",
+          "sub": "원래 고른 곳, 소고기 무한리필",
+          "text": "1인 29,000원 / 4인 116,000원",
+          "value": 116000,
+          "hl": true
+        },
+        {
+          "label": "진원소우 발산역점",
+          "sub": "원래 고른 곳 (발산역), 소고기 무한리필",
+          "text": "1인 29,000원 / 4인 116,000원",
+          "value": 116000,
+          "hl": true
+        },
+        {
+          "label": "샤브올데이 광명철산점",
+          "sub": "샤브 무한리필",
+          "text": "1인 29,900원 / 4인 119,600원",
+          "value": 119600
+        },
+        {
+          "label": "광이정",
+          "sub": "백숙, 해신탕",
+          "text": "1인 약 30,000-33,000원 / 4인 약 120,000-130,000원",
+          "value": 120000
+        },
+        {
+          "label": "리오리오 광명",
+          "sub": "스페인식 (빠에야, 감바스)",
+          "text": "1인 약 30,000-39,500원 / 4인 약 121,000-158,000원",
+          "value": 121000
+        },
+        {
+          "label": "강화나루 한방 민물장어",
+          "sub": "민물장어 숯불구이",
+          "text": "1인 약 32,000-40,000원 / 4인 약 128,000-160,000원",
+          "value": 128000
+        },
+        {
+          "label": "채영진의명품생고기무한리필 본점",
+          "sub": "소고기 무한리필",
+          "text": "1인 32,000원 / 4인 128,000원",
+          "value": 128000
+        },
+        {
+          "label": "우리동네소고기무한리필 부천역점",
+          "sub": "소고기 무한리필",
+          "text": "1인 32,900원 / 4인 131,600원",
+          "value": 131600
+        },
+        {
+          "label": "옥소반 부천시청점",
+          "sub": "샤브, 스키야키 (한우 옵션)",
+          "text": "1인 34,900-41,900원 / 4인 139,600-167,600원",
+          "value": 139600
+        },
+        {
+          "label": "스시웨이 부천본점",
+          "sub": "일식 (스시 코스)",
+          "text": "1인 35,000원 / 4인 140,000원",
+          "value": 140000
+        },
+        {
+          "label": "부천상하이",
+          "sub": "중식 코스 (룸)",
+          "text": "1인 39,000원 / 4인 156,000원",
+          "value": 156000
+        },
+        {
+          "label": "마또이따 철산",
+          "sub": "이탈리안 (스테이크, 파스타)",
+          "text": "1인 약 40,500원 / 4인 약 162,000원",
+          "value": 162000
+        },
+        {
+          "label": "마시안어부집",
+          "sub": "조개구이 (바다 전망)",
+          "text": "1인 40,750원 / 4인 163,000원",
+          "value": 163000
+        },
+        {
+          "label": "송추가마골 인 어반 목동점",
+          "sub": "양념갈비 (룸)",
+          "text": "1인 41,000원 / 4인 164,000원",
+          "value": 164000
+        },
+        {
+          "label": "한우정가",
+          "sub": "한우 1++ 구이",
+          "text": "1인 41,000원 / 4인 164,000원",
+          "value": 164000
+        },
+        {
+          "label": "우아한 (한우 짝갈비)",
+          "sub": "한우 짝갈비",
+          "text": "1인 44,650원 / 4인 178,600원",
+          "value": 178600
+        },
+        {
+          "label": "화우 부천점",
+          "sub": "한우 구이 (룸)",
+          "text": "1인 45,500원 / 4인 182,000원",
+          "value": 182000
+        },
+        {
+          "label": "소들녘 광명점",
+          "sub": "양념갈비, 주물럭 정식 (룸)",
+          "text": "1인 48,000원 / 4인 192,000원",
+          "value": 192000
+        },
+        {
+          "label": "투뿔한우 넘버나인 마곡본점",
+          "sub": "한우 구이 (룸)",
+          "text": "1인 48,000원 / 4인 192,000원",
+          "value": 192000
+        },
+        {
+          "label": "광명 아리랑",
+          "sub": "갈비 정식 (룸)",
+          "text": "가격 확인 필요"
+        },
+        {
+          "label": "신농한우정육식당 광명본점",
+          "sub": "한우 정육식당",
+          "text": "가격 확인 필요"
+        },
+        {
+          "label": "남해바다장어 민물장어참숯불구이",
+          "sub": "장어 숯불구이",
+          "text": "가격 확인 필요"
+        }
       ]
     },
     {
       "id": "call",
       "title": "📞 전화로 확인할 것",
       "type": "list",
+      "style": "check",
       "items": [
         "일요일 17:00 4명 자리, 룸이나 칸막이",
         "지금 코스, 세트 가격",
@@ -1426,6 +1597,7 @@
       "id": "out",
       "title": "🚫 뺀 곳",
       "type": "list",
+      "style": "muted",
       "items": [
         "나리스키친 부천: 룸과 후기는 좋지만 1인 57,000원부터",
         "도화 철산 (회): 1인 5만 원대",
